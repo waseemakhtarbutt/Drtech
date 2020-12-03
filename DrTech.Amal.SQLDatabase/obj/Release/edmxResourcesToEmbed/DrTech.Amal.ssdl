@@ -1,0 +1,2031 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DrTech.Amal.Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Ad">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="AdTypeID" Type="int" />
+    <Property Name="AreaID" Type="int" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="FileName" Type="varchar" MaxLength="300" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CityID" Type="int" />
+  </EntityType>
+  <EntityType Name="AdType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Area">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="300" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CityID" Type="int" />
+  </EntityType>
+  <EntityType Name="BinDetails">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Capacity" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FileName" Type="varchar(max)" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="QRCode" Type="varchar" MaxLength="200" />
+    <Property Name="BinName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="Business">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Phone" Type="nchar" MaxLength="11" Nullable="false" />
+    <Property Name="GreenPoints" Type="int" />
+    <Property Name="Level" Type="varchar" MaxLength="50" />
+    <Property Name="EmployeeGreenPoints" Type="int" />
+    <Property Name="ParentId" Type="int" />
+    <Property Name="FileName" Type="varchar(max)" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="IsVerified" Type="bit" />
+    <Property Name="Email" Type="varchar" MaxLength="250" />
+    <Property Name="CityID" Type="int" />
+    <Property Name="OfficeName" Type="varchar" MaxLength="500" />
+    <Property Name="ContactPerson" Type="varchar" MaxLength="250" />
+    <Property Name="BusTypeID" Type="int" />
+    <Property Name="IsMainBranch" Type="bit" />
+    <Property Name="DocumentFileName" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="BusinessGP_Log">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="GreenPoints" Type="int" Nullable="false" />
+    <Property Name="BusID" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="RsID" Type="int" />
+    <Property Name="Type" Type="varchar" MaxLength="200" />
+    <Property Name="EmployeeID" Type="int" />
+  </EntityType>
+  <EntityType Name="BusinessType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BusTypeName" Type="nvarchar(max)" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="BuyBin">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BinID" Type="int" Nullable="false" />
+    <Property Name="StatusID" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="Qty" Type="int" Nullable="false" />
+    <Property Name="TrackingNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FileName" Type="varchar(max)" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="GreenPoints" Type="int" />
+    <Property Name="DeliveryDate" Type="datetime" />
+    <Property Name="UserPaymentID" Type="int" />
+  </EntityType>
+  <EntityType Name="BuyBinComments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BinID" Type="int" Nullable="false" />
+    <Property Name="Comments" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Child">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="SchoolID" Type="int" Nullable="false" />
+    <Property Name="SectionName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ClassName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="RegistrationNo" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsVerified" Type="bit" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="FileName" Type="varchar(max)" />
+    <Property Name="Gender" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CityName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Phone" Type="nchar" MaxLength="11" Nullable="false" />
+    <Property Name="FileName" Type="varchar(max)" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="Email" Type="varchar" MaxLength="250" />
+    <Property Name="CityID" Type="int" />
+    <Property Name="ContactPerson" Type="varchar" MaxLength="250" />
+    <Property Name="QRCode" Type="varchar(max)" />
+    <Property Name="BusinessKey" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="ContactUs">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Phone" Type="varchar" MaxLength="15" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Comments" Type="varchar" MaxLength="300" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="Driver">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" />
+    <Property Name="Address" Type="varchar" MaxLength="250" />
+    <Property Name="CityID" Type="int" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Phone" Type="varchar" MaxLength="50" />
+    <Property Name="VehicleID" Type="int" />
+    <Property Name="RegNumber" Type="varchar" MaxLength="50" />
+    <Property Name="FileName" Type="varchar" MaxLength="300" />
+    <Property Name="LicienceFileName" Type="varchar" MaxLength="300" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="PIN" Type="varchar" MaxLength="50" />
+    <Property Name="GreenShopID" Type="int" />
+    <Property Name="Type" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="EmailNotification">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmailTo" Type="varchar" MaxLength="200" />
+    <Property Name="EmailCC" Type="varchar" MaxLength="200" />
+    <Property Name="EmailSubject" Type="varchar" MaxLength="200" />
+    <Property Name="EmailBody" Type="varchar(max)" />
+    <Property Name="Status" Type="int" />
+    <Property Name="ServerMessage" Type="varchar" MaxLength="200" />
+    <Property Name="TryCount" Type="smallint" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="EmailNotificationEvent">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+    <Property Name="Description" Type="varchar" MaxLength="200" />
+    <Property Name="EmailTemplateSubject" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="EmailTemplateBody" Type="varchar(max)" Nullable="false" />
+    <Property Name="EventId" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="Employment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BusId" Type="int" Nullable="false" />
+    <Property Name="Designation" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Department" Type="varchar" MaxLength="50" />
+    <Property Name="EmployeeID" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsVerified" Type="bit" Nullable="false" />
+    <Property Name="FromDate" Type="datetime2" Precision="7" />
+    <Property Name="ToDate" Type="datetime2" Precision="7" />
+    <Property Name="IsCurrentlyWorking" Type="bit" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" />
+    <Property Name="FileName" Type="varchar(max)" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+    <Property Name="SubOffice" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="ExpoPushNotificationEvent">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="50" />
+    <Property Name="Body" Type="varchar" MaxLength="300" />
+    <Property Name="NavigateTo" Type="varchar" MaxLength="50" />
+    <Property Name="EventID" Type="int" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="AmalID" Type="int" />
+  </EntityType>
+  <EntityType Name="GCRedeem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="GCRedeemed" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="AmountGivenToUser" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="UpdateBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="GPLevel">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Level" Type="varchar(max)" />
+    <Property Name="GPStart" Type="int" />
+    <Property Name="GPEnd" Type="int" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="GreenShop">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="ContactPerson" Type="nvarchar" MaxLength="300" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="200" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="FileName" Type="varchar(max)" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="LookupType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="FileName" Type="varchar" MaxLength="200" />
+    <Property Name="ParentID" Type="int" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="K1" Type="nvarchar" MaxLength="200" />
+    <Property Name="V1" Type="nvarchar" MaxLength="200" />
+    <Property Name="K2" Type="nvarchar" MaxLength="200" />
+    <Property Name="V2" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Members">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrgId" Type="int" Nullable="false" />
+    <Property Name="Designation" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Department" Type="varchar" MaxLength="50" />
+    <Property Name="EmployeeID" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsVerified" Type="bit" Nullable="false" />
+    <Property Name="FromDate" Type="datetime2" Precision="7" />
+    <Property Name="ToDate" Type="datetime2" Precision="7" />
+    <Property Name="IsCurrentlyWorking" Type="bit" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" />
+    <Property Name="FileName" Type="varchar(max)" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+    <Property Name="Location" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="NGONeeds">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeID" Type="int" Nullable="false" />
+    <Property Name="SubTypeID" Type="int" Nullable="false" />
+    <Property Name="CityID" Type="int" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="OrgID" Type="int" />
+    <Property Name="Qty" Type="int" />
+    <Property Name="TypeDescription" Type="varchar" MaxLength="500" />
+    <Property Name="SubTypeDescription" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="OrderTracking">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RsID" Type="int" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AssignTo" Type="int" />
+    <Property Name="StatusID" Type="int" Nullable="false" />
+    <Property Name="DeliveredTo" Type="int" />
+    <Property Name="CollectedFrom" Type="int" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="FileNameTakenByDriver" Type="varchar" MaxLength="300" />
+    <Property Name="FileNameTakenByUser" Type="varchar" MaxLength="300" />
+    <Property Name="FileNameTakenByOrg" Type="varchar" MaxLength="300" />
+    <Property Name="CollectedPendingConfirmation" Type="bit" />
+    <Property Name="DeliveredPendingConfirmation" Type="bit" />
+    <Property Name="CollectedDate" Type="datetime2" Precision="7" />
+    <Property Name="DeliveredDate" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="Organization">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Phone" Type="nchar" MaxLength="11" Nullable="false" />
+    <Property Name="GreenPoints" Type="int" Nullable="false" />
+    <Property Name="Level" Type="varchar" MaxLength="50" />
+    <Property Name="EmployeeGreenPoints" Type="int" Nullable="false" />
+    <Property Name="ParentID" Type="int" />
+    <Property Name="FileName" Type="varchar(max)" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="IsVerified" Type="bit" />
+    <Property Name="Email" Type="varchar" MaxLength="250" />
+    <Property Name="OrgTypeID" Type="int" />
+    <Property Name="CityID" Type="int" />
+    <Property Name="SiteOffice" Type="varchar" MaxLength="250" />
+    <Property Name="ContactPerson" Type="varchar" MaxLength="250" />
+    <Property Name="IsMainBranch" Type="bit" />
+    <Property Name="DocumentFileName" Type="varchar" MaxLength="300" />
+    <Property Name="AreaID" Type="int" />
+  </EntityType>
+  <EntityType Name="OrgnizationGP_Log">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="GreenPoints" Type="int" Nullable="false" />
+    <Property Name="OrgID" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="RsID" Type="int" />
+    <Property Name="Type" Type="varchar" MaxLength="200" />
+    <Property Name="MemberID" Type="int" />
+  </EntityType>
+  <EntityType Name="OrgType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeName" Type="nvarchar(max)" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="PaymentMethod">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="Recycle">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FileName" Type="varchar(max)" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="CollectorDateTime" Type="datetime2" Precision="7" />
+    <Property Name="StatusID" Type="int" />
+    <Property Name="GreenPoints" Type="int" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="Cash" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="RecycleComments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RecycleID" Type="int" Nullable="false" />
+    <Property Name="Comments" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RecycleSubItems">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RecycleID" Type="int" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="300" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsParent" Type="bit" />
+    <Property Name="GreenPoints" Type="int" />
+    <Property Name="Weight" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="WasteTypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="RecycleSubItemsTypes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RecycleSubItemID" Type="int" />
+    <Property Name="Weight" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="WasteTypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="Reduce">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FileName" Type="varchar(max)" Nullable="false" />
+    <Property Name="Idea" Type="varchar(max)" Nullable="false" />
+    <Property Name="Longitude" Type="decimal" Precision="18" Scale="10" Nullable="false" />
+    <Property Name="Latitude" Type="decimal" Precision="18" Scale="10" Nullable="false" />
+    <Property Name="GreenPoints" Type="int" Nullable="false" />
+    <Property Name="StatusID" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="RefTable">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GreenPointValue" Type="int" />
+    <Property Name="FromDate" Type="datetime2" Precision="7" />
+    <Property Name="ToDate" Type="datetime2" Precision="7" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="Type" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Refuse">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FileName" Type="varchar(max)" Nullable="false" />
+    <Property Name="Idea" Type="varchar(max)" Nullable="false" />
+    <Property Name="Longitude" Type="decimal" Precision="18" Scale="10" Nullable="false" />
+    <Property Name="Latitude" Type="decimal" Precision="18" Scale="10" Nullable="false" />
+    <Property Name="StatusID" Type="int" Nullable="false" />
+    <Property Name="GreenPoints" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RegBusiness">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar(max)" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="UserID" Type="int" />
+  </EntityType>
+  <EntityType Name="Regift">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Longitude" Type="decimal" Precision="18" Scale="10" Nullable="false" />
+    <Property Name="Latitude" Type="decimal" Precision="18" Scale="10" Nullable="false" />
+    <Property Name="FileName" Type="varchar(max)" Nullable="false" />
+    <Property Name="RecieptFileName" Type="varchar(max)" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="PickupDate" Type="datetime2" Precision="7" />
+    <Property Name="DonateToID" Type="int" Nullable="false" />
+    <Property Name="StatusID" Type="int" Nullable="false" />
+    <Property Name="CityID" Type="int" />
+    <Property Name="AgeGroupID" Type="int" Nullable="false" />
+    <Property Name="GreenPoints" Type="int" Nullable="false" />
+    <Property Name="NeedTypeID" Type="int" />
+    <Property Name="SubTypeTitle" Type="varchar" MaxLength="50" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="Quality" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="RegiftComments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RegiftID" Type="int" Nullable="false" />
+    <Property Name="Comments" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RegiftSubItems">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RegiftID" Type="int" Nullable="false" />
+    <Property Name="TypeID" Type="int" />
+    <Property Name="SubTypeID" Type="int" />
+    <Property Name="Qty" Type="int" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsParent" Type="bit" />
+    <Property Name="GreenPoints" Type="int" />
+  </EntityType>
+  <EntityType Name="RegOrganization">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar(max)" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="UserID" Type="int" />
+  </EntityType>
+  <EntityType Name="RegSchools">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar(max)" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="UserID" Type="int" />
+  </EntityType>
+  <EntityType Name="Replant">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Longitude" Type="decimal" Precision="18" Scale="10" Nullable="false" />
+    <Property Name="Latitude" Type="decimal" Precision="18" Scale="10" Nullable="false" />
+    <Property Name="FileName" Type="varchar(max)" Nullable="false" />
+    <Property Name="PlantID" Type="int" Nullable="false" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="TreeCount" Type="int" Nullable="false" />
+    <Property Name="Height" Type="float" Nullable="false" />
+    <Property Name="Reminder" Type="int" />
+    <Property Name="StatusID" Type="int" Nullable="false" />
+    <Property Name="GreenPoints" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="Report">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Longitude" Type="decimal" Precision="18" Scale="10" Nullable="false" />
+    <Property Name="Latitude" Type="decimal" Precision="18" Scale="10" Nullable="false" />
+    <Property Name="FileName" Type="varchar(max)" Nullable="false" />
+    <Property Name="Description" Type="varchar(max)" Nullable="false" />
+    <Property Name="Priority" Type="nchar" MaxLength="10" />
+    <Property Name="StatusID" Type="int" Nullable="false" />
+    <Property Name="GreenPoints" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="Reuse">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FileName" Type="varchar(max)" Nullable="false" />
+    <Property Name="Idea" Type="varchar(max)" />
+    <Property Name="GreenPoints" Type="int" />
+    <Property Name="TypeID" Type="int" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="Longitude" Type="decimal" Precision="18" Scale="10" Nullable="false" />
+    <Property Name="Latitude" Type="decimal" Precision="18" Scale="10" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="StatusID" Type="int" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar(max)" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="ScheduleDetails">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentID" Type="int" />
+    <Property Name="FromTime" Type="time" Precision="7" />
+    <Property Name="ToTime" Type="time" Precision="7" />
+    <Property Name="Day" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="Date" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="School">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar(max)" Nullable="false" />
+    <Property Name="Address" Type="varchar(max)" Nullable="false" />
+    <Property Name="Phone" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="GreenPoints" Type="int" Nullable="false" />
+    <Property Name="Level" Type="varchar" MaxLength="50" />
+    <Property Name="ParentsGreenPoints" Type="int" Nullable="false" />
+    <Property Name="ParentID" Type="int" />
+    <Property Name="FileName" Type="varchar(max)" />
+    <Property Name="Email" Type="varchar(max)" Nullable="false" />
+    <Property Name="BranchName" Type="varchar" MaxLength="200" />
+    <Property Name="ContactPerson" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ContactPersonPhone" Type="varchar" MaxLength="15" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="IsVerified" Type="bit" />
+    <Property Name="CityID" Type="int" />
+    <Property Name="IsMainBranch" Type="bit" />
+    <Property Name="RegFormat" Type="varchar" MaxLength="300" />
+    <Property Name="DocumentFileName" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="SchoolGP_Log">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="GreenPoints" Type="int" Nullable="false" />
+    <Property Name="SchoolID" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="RsID" Type="int" />
+    <Property Name="Type" Type="varchar" MaxLength="200" />
+    <Property Name="ChildID" Type="int" />
+    <Property Name="StaffID" Type="int" />
+  </EntityType>
+  <EntityType Name="SchoolStaff">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="SchoolID" Type="int" Nullable="false" />
+    <Property Name="Designation" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Department" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="EmployeeID" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsVerified" Type="bit" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="FileName" Type="varchar(max)" />
+    <Property Name="SessionStartDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="SessionEndDate" Type="datetime2" Precision="7" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="SMSNotificationEvents">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SMSTemplateBody" Type="varchar(max)" Nullable="false" />
+    <Property Name="EventID" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="SMSNotifications">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NotificationEventID" Type="int" />
+    <Property Name="SMSTemplateText" Type="varchar" MaxLength="200" />
+    <Property Name="MobileNumber" Type="nchar" MaxLength="15" />
+    <Property Name="SMSText" Type="varchar(max)" />
+    <Property Name="Status" Type="smallint" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StatusName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="STG_Business">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Phone" Type="nchar" MaxLength="11" Nullable="false" />
+    <Property Name="GreenPoints" Type="int" />
+    <Property Name="Level" Type="varchar" MaxLength="50" />
+    <Property Name="EmployeeGreenPoints" Type="int" />
+    <Property Name="ParentId" Type="int" />
+    <Property Name="FileName" Type="varchar(max)" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="IsVerified" Type="bit" />
+    <Property Name="Email" Type="varchar" MaxLength="250" />
+    <Property Name="CityID" Type="int" />
+    <Property Name="OfficeName" Type="varchar" MaxLength="500" />
+    <Property Name="ContactPerson" Type="varchar" MaxLength="250" />
+    <Property Name="BusTypeID" Type="int" />
+    <Property Name="IsMainBranch" Type="bit" />
+  </EntityType>
+  <EntityType Name="STG_Organization">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Phone" Type="nchar" MaxLength="11" Nullable="false" />
+    <Property Name="GreenPoints" Type="int" Nullable="false" />
+    <Property Name="Level" Type="varchar" MaxLength="50" />
+    <Property Name="EmployeeGreenPoints" Type="int" Nullable="false" />
+    <Property Name="ParentID" Type="int" />
+    <Property Name="FileName" Type="varchar(max)" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="IsVerified" Type="bit" />
+    <Property Name="Email" Type="varchar" MaxLength="250" />
+    <Property Name="OrgTypeID" Type="int" />
+    <Property Name="CityID" Type="int" />
+    <Property Name="SiteOffice" Type="varchar" MaxLength="250" />
+    <Property Name="ContactPerson" Type="varchar" MaxLength="250" />
+    <Property Name="IsMainBranch" Type="bit" />
+    <Property Name="AreaID" Type="int" />
+  </EntityType>
+  <EntityType Name="STG_School">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar(max)" Nullable="false" />
+    <Property Name="Address" Type="varchar(max)" Nullable="false" />
+    <Property Name="Phone" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="GreenPoints" Type="int" Nullable="false" />
+    <Property Name="Level" Type="varchar" MaxLength="50" />
+    <Property Name="ParentsGreenPoints" Type="int" Nullable="false" />
+    <Property Name="ParentID" Type="int" />
+    <Property Name="FileName" Type="varchar(max)" Nullable="false" />
+    <Property Name="Email" Type="varchar(max)" Nullable="false" />
+    <Property Name="BranchName" Type="varchar" MaxLength="200" />
+    <Property Name="ContactPerson" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ContactPersonPhone" Type="varchar" MaxLength="15" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="IsVerified" Type="bit" />
+    <Property Name="CityID" Type="int" />
+    <Property Name="IsMainBranch" Type="bit" />
+    <Property Name="RegFormat" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="UserPayment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="PaymentMethodID" Type="int" />
+    <Property Name="OrderPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DeductedFromWallet" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="AmountPaid" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="IsSuccess" Type="varchar" MaxLength="100" />
+    <Property Name="batchNumber" Type="varchar" MaxLength="100" />
+    <Property Name="orderRefNumber" Type="varchar" MaxLength="100" />
+    <Property Name="transactionResponse" Type="varchar" MaxLength="100" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="Mobile" Type="varchar" MaxLength="50" />
+    <Property Name="StoreId" Type="varchar" MaxLength="50" />
+    <Property Name="authorizeId" Type="varchar" MaxLength="150" />
+    <Property Name="transactionNumber" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="varchar" MaxLength="80" />
+    <Property Name="Phone" Type="varchar" MaxLength="50" />
+    <Property Name="Address" Type="varchar" MaxLength="250" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="UserTypeID" Type="int" />
+    <Property Name="RoleID" Type="int" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="Latitude" Type="decimal" Precision="18" Scale="10" />
+    <Property Name="Longitude" Type="decimal" Precision="18" Scale="10" />
+    <Property Name="GreenPoints" Type="int" />
+    <Property Name="FileName" Type="varchar(max)" />
+    <Property Name="QRCode" Type="varchar(max)" />
+    <Property Name="DeviceID" Type="varchar" MaxLength="50" />
+    <Property Name="OSType" Type="varchar" MaxLength="50" />
+    <Property Name="SocialMediaKey" Type="varchar" MaxLength="50" />
+    <Property Name="SocialMediaName" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="CityId" Type="int" />
+    <Property Name="IsVerified" Type="bit" />
+    <Property Name="SMSCodeRequired" Type="bit" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="City" Type="varchar" MaxLength="200" />
+    <Property Name="DeviceToken" Type="varchar" MaxLength="250" />
+    <Property Name="Redeemed" Type="int" />
+    <Property Name="AreaID" Type="int" />
+    <Property Name="UnionCouncil" Type="varchar" MaxLength="20" />
+    <Property Name="Type" Type="char" MaxLength="1" />
+    <Property Name="CompanyID" Type="int" />
+    <Property Name="RefUserID" Type="int" />
+    <Property Name="WalletBalance" Type="decimal" Precision="18" Scale="2" />
+    <!--<Property Name="GoogleKey" Type="varchar" MaxLength="100" />
+          <Property Name="GoogleName" Type="varchar" MaxLength="100" />-->
+  </EntityType>
+  <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserTypeName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="VehicleType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VehicleName" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="WasteType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="WetWasteSchedule">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AreaID" Type="int" Nullable="false" />
+    <Property Name="Month" Type="int" />
+    <Property Name="Day" Type="int" />
+    <Property Name="Year" Type="int" />
+    <Property Name="ScheduleDate" Type="datetime2" Precision="7" />
+    <Property Name="FromTime" Type="time" Precision="7" />
+    <Property Name="ToTime" Type="time" Precision="7" />
+    <Property Name="DriverID" Type="int" />
+    <Property Name="CompanyID" Type="int" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CityID" Type="int" />
+  </EntityType>
+  <EntityType Name="WorkingHours">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Shift" Type="varchar" MaxLength="50" />
+    <Property Name="StartTime" Type="time" Precision="7" />
+    <Property Name="EndTime" Type="time" Precision="7" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <Association Name="FK__Ad__AdTypeID__2B5F6B28">
+    <End Role="AdType" Type="Self.AdType" Multiplicity="0..1" />
+    <End Role="Ad" Type="Self.Ad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AdType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Ad">
+        <PropertyRef Name="AdTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ad__AdTypeID__2F2FFC0C">
+    <End Role="AdType" Type="Self.AdType" Multiplicity="0..1" />
+    <End Role="Ad" Type="Self.Ad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AdType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Ad">
+        <PropertyRef Name="AdTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ad__AreaID__2C538F61">
+    <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+    <End Role="Ad" Type="Self.Ad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Area">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Ad">
+        <PropertyRef Name="AreaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ad__AreaID__30242045">
+    <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+    <End Role="Ad" Type="Self.Ad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Area">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Ad">
+        <PropertyRef Name="AreaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BuyBin__UserPaym__3D7E1B63">
+    <End Role="UserPayment" Type="Self.UserPayment" Multiplicity="0..1" />
+    <End Role="BuyBin" Type="Self.BuyBin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserPayment">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BuyBin">
+        <PropertyRef Name="UserPaymentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RecycleSu__Waste__6F4A8121">
+    <End Role="WasteType" Type="Self.WasteType" Multiplicity="0..1" />
+    <End Role="RecycleSubItems" Type="Self.RecycleSubItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WasteType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RecycleSubItems">
+        <PropertyRef Name="WasteTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserPayme__Payme__39AD8A7F">
+    <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="0..1" />
+    <End Role="UserPayment" Type="Self.UserPayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentMethod">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserPayment">
+        <PropertyRef Name="PaymentMethodID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserPayme__UserI__34E8D562">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="UserPayment" Type="Self.UserPayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserPayment">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Users__AreaID__36470DEF">
+    <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Area">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="AreaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Area_City">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="Area" Type="Self.Area" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Area">
+        <PropertyRef Name="CityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Business_LookupType">
+    <End Role="LookupType" Type="Self.LookupType" Multiplicity="0..1" />
+    <End Role="Business" Type="Self.Business" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LookupType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Business">
+        <PropertyRef Name="BusTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Business_RegBusiness">
+    <End Role="RegBusiness" Type="Self.RegBusiness" Multiplicity="0..1" />
+    <End Role="Business" Type="Self.Business" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RegBusiness">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Business">
+        <PropertyRef Name="ParentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Business_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Business" Type="Self.Business" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Business">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BusinessGP_Log_Businesses">
+    <End Role="Business" Type="Self.Business" Multiplicity="1" />
+    <End Role="BusinessGP_Log" Type="Self.BusinessGP_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Business">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BusinessGP_Log">
+        <PropertyRef Name="BusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BusinessGP_Log_Employee">
+    <End Role="Employment" Type="Self.Employment" Multiplicity="0..1" />
+    <End Role="BusinessGP_Log" Type="Self.BusinessGP_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employment">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BusinessGP_Log">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BusinessGP_Log_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="BusinessGP_Log" Type="Self.BusinessGP_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BusinessGP_Log">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BuyBinComments_BuyBin">
+    <End Role="BuyBin" Type="Self.BuyBin" Multiplicity="1" />
+    <End Role="BuyBinComments" Type="Self.BuyBinComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BuyBin">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BuyBinComments">
+        <PropertyRef Name="BinID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BuyBinComments_CreatedBy">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="BuyBinComments" Type="Self.BuyBinComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BuyBinComments">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BuyBinComments_UpdatedBy">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="BuyBinComments" Type="Self.BuyBinComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BuyBinComments">
+        <PropertyRef Name="UpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Child_School">
+    <End Role="School" Type="Self.School" Multiplicity="1" />
+    <End Role="Child" Type="Self.Child" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="School">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Child">
+        <PropertyRef Name="SchoolID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Driver_GreenShop">
+    <End Role="GreenShop" Type="Self.GreenShop" Multiplicity="0..1" />
+    <End Role="Driver" Type="Self.Driver" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GreenShop">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Driver">
+        <PropertyRef Name="GreenShopID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GCRedeem_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="GCRedeem" Type="Self.GCRedeem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GCRedeem">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GreenShop_CreatedBy">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="GreenShop" Type="Self.GreenShop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GreenShop">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GreenShop_UpdatedBy">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="GreenShop" Type="Self.GreenShop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GreenShop">
+        <PropertyRef Name="UpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderTracking_Status">
+    <End Role="Status" Type="Self.Status" Multiplicity="1" />
+    <End Role="OrderTracking" Type="Self.OrderTracking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrderTracking">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrganizationGP_Log_Organizations">
+    <End Role="Organization" Type="Self.Organization" Multiplicity="1" />
+    <End Role="OrgnizationGP_Log" Type="Self.OrgnizationGP_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organization">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrgnizationGP_Log">
+        <PropertyRef Name="OrgID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrganizationGP_Log_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="OrgnizationGP_Log" Type="Self.OrgnizationGP_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrgnizationGP_Log">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrgnizationGP_Log_Member">
+    <End Role="Members" Type="Self.Members" Multiplicity="0..1" />
+    <End Role="OrgnizationGP_Log" Type="Self.OrgnizationGP_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Members">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrgnizationGP_Log">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RecycleComments_CreatedBy">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="RecycleComments" Type="Self.RecycleComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RecycleComments">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RecycleComments_Regift">
+    <End Role="Recycle" Type="Self.Recycle" Multiplicity="1" />
+    <End Role="RecycleComments" Type="Self.RecycleComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Recycle">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RecycleComments">
+        <PropertyRef Name="RecycleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RecycleComments_UpdatedBy">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="RecycleComments" Type="Self.RecycleComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RecycleComments">
+        <PropertyRef Name="UpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RecycleSubItems_Recycle">
+    <End Role="Recycle" Type="Self.Recycle" Multiplicity="1" />
+    <End Role="RecycleSubItems" Type="Self.RecycleSubItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Recycle">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RecycleSubItems">
+        <PropertyRef Name="RecycleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RecycleSubItemsTypes_RecycleSubItems">
+    <End Role="RecycleSubItems" Type="Self.RecycleSubItems" Multiplicity="0..1" />
+    <End Role="RecycleSubItemsTypes" Type="Self.RecycleSubItemsTypes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RecycleSubItems">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RecycleSubItemsTypes">
+        <PropertyRef Name="RecycleSubItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RecycleSubItemsTypes_WasteType">
+    <End Role="WasteType" Type="Self.WasteType" Multiplicity="0..1" />
+    <End Role="RecycleSubItemsTypes" Type="Self.RecycleSubItemsTypes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WasteType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RecycleSubItemsTypes">
+        <PropertyRef Name="WasteTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Refuse_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Refuse" Type="Self.Refuse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Refuse">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Regift_LookupType">
+    <End Role="LookupType" Type="Self.LookupType" Multiplicity="0..1" />
+    <End Role="Regift" Type="Self.Regift" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LookupType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Regift">
+        <PropertyRef Name="CityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Regift_Organization">
+    <End Role="Organization" Type="Self.Organization" Multiplicity="1" />
+    <End Role="Regift" Type="Self.Regift" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organization">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Regift">
+        <PropertyRef Name="DonateToID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Regift_Regift">
+    <End Role="Regift" Type="Self.Regift" Multiplicity="1" />
+    <End Role="Regift1" Type="Self.Regift" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Regift">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Regift1">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Regift_Status">
+    <End Role="Status" Type="Self.Status" Multiplicity="1" />
+    <End Role="Regift" Type="Self.Regift" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Regift">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Regift_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Regift" Type="Self.Regift" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Regift">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RegiftComments_CreatedBy">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="RegiftComments" Type="Self.RegiftComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RegiftComments">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RegiftComments_Regift">
+    <End Role="Regift" Type="Self.Regift" Multiplicity="1" />
+    <End Role="RegiftComments" Type="Self.RegiftComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Regift">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RegiftComments">
+        <PropertyRef Name="RegiftID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RegiftComments_UpdatedBy">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="RegiftComments" Type="Self.RegiftComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RegiftComments">
+        <PropertyRef Name="UpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RegiftSubItems_Regift">
+    <End Role="Regift" Type="Self.Regift" Multiplicity="1" />
+    <End Role="RegiftSubItems" Type="Self.RegiftSubItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Regift">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RegiftSubItems">
+        <PropertyRef Name="RegiftID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ScheduleDetails_WetWasteSchedule">
+    <End Role="WetWasteSchedule" Type="Self.WetWasteSchedule" Multiplicity="0..1" />
+    <End Role="ScheduleDetails" Type="Self.ScheduleDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WetWasteSchedule">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ScheduleDetails">
+        <PropertyRef Name="ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SchoolGP_Log_Children">
+    <End Role="Child" Type="Self.Child" Multiplicity="0..1" />
+    <End Role="SchoolGP_Log" Type="Self.SchoolGP_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Child">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SchoolGP_Log">
+        <PropertyRef Name="ChildID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SchoolGP_Log_Schools">
+    <End Role="School" Type="Self.School" Multiplicity="1" />
+    <End Role="SchoolGP_Log" Type="Self.SchoolGP_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="School">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SchoolGP_Log">
+        <PropertyRef Name="SchoolID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SchoolGP_Log_SchoolStaff">
+    <End Role="SchoolStaff" Type="Self.SchoolStaff" Multiplicity="0..1" />
+    <End Role="SchoolGP_Log" Type="Self.SchoolGP_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SchoolStaff">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SchoolGP_Log">
+        <PropertyRef Name="StaffID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SchoolGP_Log_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="SchoolGP_Log" Type="Self.SchoolGP_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SchoolGP_Log">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WetWasteSchedule_Area">
+    <End Role="Area" Type="Self.Area" Multiplicity="1" />
+    <End Role="WetWasteSchedule" Type="Self.WetWasteSchedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Area">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="WetWasteSchedule">
+        <PropertyRef Name="AreaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WetWasteSchedule_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+    <End Role="WetWasteSchedule" Type="Self.WetWasteSchedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="WetWasteSchedule">
+        <PropertyRef Name="CompanyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="GetDataForRecycleDetailChartByAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetGOIChart" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetGOIGreenPoints" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="GOI1" Type="int" Mode="In" />
+    <Parameter Name="GOI2" Type="int" Mode="In" />
+    <Parameter Name="GOI3" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetGreenPointsMonthWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetGreenPointsYearWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spGetDailyGreenPoints" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spGetWasteWeightDaily" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="DrTechAmalModelStoreContainer">
+    <EntitySet Name="Ad" EntityType="Self.Ad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AdType" EntityType="Self.AdType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BinDetails" EntityType="Self.BinDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Business" EntityType="Self.Business" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BusinessGP_Log" EntityType="Self.BusinessGP_Log" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BusinessType" EntityType="Self.BusinessType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BuyBin" EntityType="Self.BuyBin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BuyBinComments" EntityType="Self.BuyBinComments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Child" EntityType="Self.Child" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ContactUs" EntityType="Self.ContactUs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Driver" EntityType="Self.Driver" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmailNotification" EntityType="Self.EmailNotification" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmailNotificationEvent" EntityType="Self.EmailNotificationEvent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employment" EntityType="Self.Employment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExpoPushNotificationEvent" EntityType="Self.ExpoPushNotificationEvent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GCRedeem" EntityType="Self.GCRedeem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GPLevel" EntityType="Self.GPLevel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GreenShop" EntityType="Self.GreenShop" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LookupType" EntityType="Self.LookupType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Members" EntityType="Self.Members" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NGONeeds" EntityType="Self.NGONeeds" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderTracking" EntityType="Self.OrderTracking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Organization" EntityType="Self.Organization" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrgnizationGP_Log" EntityType="Self.OrgnizationGP_Log" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrgType" EntityType="Self.OrgType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Recycle" EntityType="Self.Recycle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RecycleComments" EntityType="Self.RecycleComments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RecycleSubItems" EntityType="Self.RecycleSubItems" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RecycleSubItemsTypes" EntityType="Self.RecycleSubItemsTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reduce" EntityType="Self.Reduce" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RefTable" EntityType="Self.RefTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Refuse" EntityType="Self.Refuse" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RegBusiness" EntityType="Self.RegBusiness" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Regift" EntityType="Self.Regift" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RegiftComments" EntityType="Self.RegiftComments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RegiftSubItems" EntityType="Self.RegiftSubItems" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RegOrganization" EntityType="Self.RegOrganization" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RegSchools" EntityType="Self.RegSchools" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Replant" EntityType="Self.Replant" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Report" EntityType="Self.Report" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reuse" EntityType="Self.Reuse" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ScheduleDetails" EntityType="Self.ScheduleDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="School" EntityType="Self.School" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SchoolGP_Log" EntityType="Self.SchoolGP_Log" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SchoolStaff" EntityType="Self.SchoolStaff" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SMSNotificationEvents" EntityType="Self.SMSNotificationEvents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SMSNotifications" EntityType="Self.SMSNotifications" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="STG_Business" EntityType="Self.STG_Business" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="STG_Organization" EntityType="Self.STG_Organization" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="STG_School" EntityType="Self.STG_School" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserPayment" EntityType="Self.UserPayment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VehicleType" EntityType="Self.VehicleType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WasteType" EntityType="Self.WasteType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WetWasteSchedule" EntityType="Self.WetWasteSchedule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WorkingHours" EntityType="Self.WorkingHours" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Ad__AdTypeID__2B5F6B28" Association="Self.FK__Ad__AdTypeID__2B5F6B28">
+      <End Role="AdType" EntitySet="AdType" />
+      <End Role="Ad" EntitySet="Ad" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ad__AdTypeID__2F2FFC0C" Association="Self.FK__Ad__AdTypeID__2F2FFC0C">
+      <End Role="AdType" EntitySet="AdType" />
+      <End Role="Ad" EntitySet="Ad" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ad__AreaID__2C538F61" Association="Self.FK__Ad__AreaID__2C538F61">
+      <End Role="Area" EntitySet="Area" />
+      <End Role="Ad" EntitySet="Ad" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ad__AreaID__30242045" Association="Self.FK__Ad__AreaID__30242045">
+      <End Role="Area" EntitySet="Area" />
+      <End Role="Ad" EntitySet="Ad" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BuyBin__UserPaym__3D7E1B63" Association="Self.FK__BuyBin__UserPaym__3D7E1B63">
+      <End Role="UserPayment" EntitySet="UserPayment" />
+      <End Role="BuyBin" EntitySet="BuyBin" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RecycleSu__Waste__6F4A8121" Association="Self.FK__RecycleSu__Waste__6F4A8121">
+      <End Role="WasteType" EntitySet="WasteType" />
+      <End Role="RecycleSubItems" EntitySet="RecycleSubItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserPayme__Payme__39AD8A7F" Association="Self.FK__UserPayme__Payme__39AD8A7F">
+      <End Role="PaymentMethod" EntitySet="PaymentMethod" />
+      <End Role="UserPayment" EntitySet="UserPayment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserPayme__UserI__34E8D562" Association="Self.FK__UserPayme__UserI__34E8D562">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserPayment" EntitySet="UserPayment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Users__AreaID__36470DEF" Association="Self.FK__Users__AreaID__36470DEF">
+      <End Role="Area" EntitySet="Area" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Area_City" Association="Self.FK_Area_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="Area" EntitySet="Area" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Business_LookupType" Association="Self.FK_Business_LookupType">
+      <End Role="LookupType" EntitySet="LookupType" />
+      <End Role="Business" EntitySet="Business" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Business_RegBusiness" Association="Self.FK_Business_RegBusiness">
+      <End Role="RegBusiness" EntitySet="RegBusiness" />
+      <End Role="Business" EntitySet="Business" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Business_Users" Association="Self.FK_Business_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Business" EntitySet="Business" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BusinessGP_Log_Businesses" Association="Self.FK_BusinessGP_Log_Businesses">
+      <End Role="Business" EntitySet="Business" />
+      <End Role="BusinessGP_Log" EntitySet="BusinessGP_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BusinessGP_Log_Employee" Association="Self.FK_BusinessGP_Log_Employee">
+      <End Role="Employment" EntitySet="Employment" />
+      <End Role="BusinessGP_Log" EntitySet="BusinessGP_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BusinessGP_Log_Users" Association="Self.FK_BusinessGP_Log_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="BusinessGP_Log" EntitySet="BusinessGP_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BuyBinComments_BuyBin" Association="Self.FK_BuyBinComments_BuyBin">
+      <End Role="BuyBin" EntitySet="BuyBin" />
+      <End Role="BuyBinComments" EntitySet="BuyBinComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BuyBinComments_CreatedBy" Association="Self.FK_BuyBinComments_CreatedBy">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="BuyBinComments" EntitySet="BuyBinComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BuyBinComments_UpdatedBy" Association="Self.FK_BuyBinComments_UpdatedBy">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="BuyBinComments" EntitySet="BuyBinComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Child_School" Association="Self.FK_Child_School">
+      <End Role="School" EntitySet="School" />
+      <End Role="Child" EntitySet="Child" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Driver_GreenShop" Association="Self.FK_Driver_GreenShop">
+      <End Role="GreenShop" EntitySet="GreenShop" />
+      <End Role="Driver" EntitySet="Driver" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GCRedeem_Users" Association="Self.FK_GCRedeem_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="GCRedeem" EntitySet="GCRedeem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GreenShop_CreatedBy" Association="Self.FK_GreenShop_CreatedBy">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="GreenShop" EntitySet="GreenShop" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GreenShop_UpdatedBy" Association="Self.FK_GreenShop_UpdatedBy">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="GreenShop" EntitySet="GreenShop" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderTracking_Status" Association="Self.FK_OrderTracking_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="OrderTracking" EntitySet="OrderTracking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrganizationGP_Log_Organizations" Association="Self.FK_OrganizationGP_Log_Organizations">
+      <End Role="Organization" EntitySet="Organization" />
+      <End Role="OrgnizationGP_Log" EntitySet="OrgnizationGP_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrganizationGP_Log_Users" Association="Self.FK_OrganizationGP_Log_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="OrgnizationGP_Log" EntitySet="OrgnizationGP_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrgnizationGP_Log_Member" Association="Self.FK_OrgnizationGP_Log_Member">
+      <End Role="Members" EntitySet="Members" />
+      <End Role="OrgnizationGP_Log" EntitySet="OrgnizationGP_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RecycleComments_CreatedBy" Association="Self.FK_RecycleComments_CreatedBy">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="RecycleComments" EntitySet="RecycleComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RecycleComments_Regift" Association="Self.FK_RecycleComments_Regift">
+      <End Role="Recycle" EntitySet="Recycle" />
+      <End Role="RecycleComments" EntitySet="RecycleComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RecycleComments_UpdatedBy" Association="Self.FK_RecycleComments_UpdatedBy">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="RecycleComments" EntitySet="RecycleComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RecycleSubItems_Recycle" Association="Self.FK_RecycleSubItems_Recycle">
+      <End Role="Recycle" EntitySet="Recycle" />
+      <End Role="RecycleSubItems" EntitySet="RecycleSubItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RecycleSubItemsTypes_RecycleSubItems" Association="Self.FK_RecycleSubItemsTypes_RecycleSubItems">
+      <End Role="RecycleSubItems" EntitySet="RecycleSubItems" />
+      <End Role="RecycleSubItemsTypes" EntitySet="RecycleSubItemsTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RecycleSubItemsTypes_WasteType" Association="Self.FK_RecycleSubItemsTypes_WasteType">
+      <End Role="WasteType" EntitySet="WasteType" />
+      <End Role="RecycleSubItemsTypes" EntitySet="RecycleSubItemsTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Refuse_Users" Association="Self.FK_Refuse_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Refuse" EntitySet="Refuse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Regift_LookupType" Association="Self.FK_Regift_LookupType">
+      <End Role="LookupType" EntitySet="LookupType" />
+      <End Role="Regift" EntitySet="Regift" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Regift_Organization" Association="Self.FK_Regift_Organization">
+      <End Role="Organization" EntitySet="Organization" />
+      <End Role="Regift" EntitySet="Regift" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Regift_Regift" Association="Self.FK_Regift_Regift">
+      <End Role="Regift" EntitySet="Regift" />
+      <End Role="Regift1" EntitySet="Regift" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Regift_Status" Association="Self.FK_Regift_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Regift" EntitySet="Regift" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Regift_Users" Association="Self.FK_Regift_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Regift" EntitySet="Regift" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RegiftComments_CreatedBy" Association="Self.FK_RegiftComments_CreatedBy">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="RegiftComments" EntitySet="RegiftComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RegiftComments_Regift" Association="Self.FK_RegiftComments_Regift">
+      <End Role="Regift" EntitySet="Regift" />
+      <End Role="RegiftComments" EntitySet="RegiftComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RegiftComments_UpdatedBy" Association="Self.FK_RegiftComments_UpdatedBy">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="RegiftComments" EntitySet="RegiftComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RegiftSubItems_Regift" Association="Self.FK_RegiftSubItems_Regift">
+      <End Role="Regift" EntitySet="Regift" />
+      <End Role="RegiftSubItems" EntitySet="RegiftSubItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ScheduleDetails_WetWasteSchedule" Association="Self.FK_ScheduleDetails_WetWasteSchedule">
+      <End Role="WetWasteSchedule" EntitySet="WetWasteSchedule" />
+      <End Role="ScheduleDetails" EntitySet="ScheduleDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SchoolGP_Log_Children" Association="Self.FK_SchoolGP_Log_Children">
+      <End Role="Child" EntitySet="Child" />
+      <End Role="SchoolGP_Log" EntitySet="SchoolGP_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SchoolGP_Log_Schools" Association="Self.FK_SchoolGP_Log_Schools">
+      <End Role="School" EntitySet="School" />
+      <End Role="SchoolGP_Log" EntitySet="SchoolGP_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SchoolGP_Log_SchoolStaff" Association="Self.FK_SchoolGP_Log_SchoolStaff">
+      <End Role="SchoolStaff" EntitySet="SchoolStaff" />
+      <End Role="SchoolGP_Log" EntitySet="SchoolGP_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SchoolGP_Log_Users" Association="Self.FK_SchoolGP_Log_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="SchoolGP_Log" EntitySet="SchoolGP_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WetWasteSchedule_Area" Association="Self.FK_WetWasteSchedule_Area">
+      <End Role="Area" EntitySet="Area" />
+      <End Role="WetWasteSchedule" EntitySet="WetWasteSchedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WetWasteSchedule_Company" Association="Self.FK_WetWasteSchedule_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="WetWasteSchedule" EntitySet="WetWasteSchedule" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
