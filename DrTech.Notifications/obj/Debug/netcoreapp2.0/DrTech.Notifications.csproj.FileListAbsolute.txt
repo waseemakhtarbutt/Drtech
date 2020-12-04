@@ -1,0 +1,4 @@
+F:\drtech\Application\Web\Source\DrTech\DrTech.Notifications\obj\Debug\netcoreapp2.0\DrTech.Notifications.csprojAssemblyReference.cache
+F:\drtech\Application\Web\Source\DrTech\DrTech.Notifications\obj\Debug\netcoreapp2.0\DrTech.Notifications.csproj.CoreCompileInputs.cache
+F:\drtech\Application\Web\Source\DrTech\DrTech.Notifications\obj\Debug\netcoreapp2.0\DrTech.Notifications.AssemblyInfoInputs.cache
+F:\drtech\Application\Web\Source\DrTech\DrTech.Notifications\obj\Debug\netcoreapp2.0\DrTech.Notifications.AssemblyInfo.cs
