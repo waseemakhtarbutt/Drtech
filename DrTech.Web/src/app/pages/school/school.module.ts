@@ -27,7 +27,7 @@ import { ProgressComponent } from './progress/progress.component';
     DateInputsModule,
     ChartsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAlvCDVT2aSGDwNp6di7tlPPS6MAZo2hQo',
+      apiKey: 'AIzaSyAdd8mG4D6aF656mtwuL-w1mE84a0ZY8Mo',
       libraries: ['places'],
     }),
     NgMultiSelectDropDownModule.forRoot(),

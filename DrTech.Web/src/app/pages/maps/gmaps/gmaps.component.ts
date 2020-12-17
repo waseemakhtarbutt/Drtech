@@ -29,7 +29,7 @@ export class GmapsComponent implements OnInit {
       label: element.label,
       draggable: false,
       icon: {
-        url: '/assets/images/map/' + element.pinImage,
+       // url: '/assets/images/map/' + element.pinImage,
         scaledSize: {
           width: 44,
           height: 66,

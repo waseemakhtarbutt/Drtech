@@ -138,15 +138,15 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                           childrenCount = children.Where(x => x.UserID == UserID && x.IsActive == true).Count(),
                                           staffCount = staff.Where(x => x.UserID == UserID && x.IsActive == true).Count()
 
-                                      }).ToList()
+                                      }).GroupBy(x => x.Name).ToList()
                                      .Select(z => new
                                      {
-                                         z.ID,
-                                         z.Name,
-                                         z.FileName,
-                                         z.greenWorth,
-                                         Level = Utility.GetLevelByGP(z.greenWorth),
-                                         IsAdded = (z.childrenCount + z.staffCount > 0) ? true : false,
+                                         z.FirstOrDefault().ID,
+                                         z.FirstOrDefault().Name,
+                                         z.FirstOrDefault().FileName,
+                                         z.FirstOrDefault().greenWorth,
+                                         Level = Utility.GetLevelByGP(z.FirstOrDefault().greenWorth),
+                                         IsAdded = (z.FirstOrDefault().childrenCount + z.FirstOrDefault().staffCount > 0) ? true : false,
                                      }).ToList<object>();
             return mdlSchool;
         }
@@ -1033,12 +1033,12 @@ namespace DrTech.Amal.SQLDataAccess.Repository
 
             mdlBranches = (from rs in context.RegSchools
                            join sch in context.Schools on rs.ID equals sch.ParentID
-                           where (rs.UserID == UserId && sch.IsActive != false && rs.IsActive != false)
+                           where (rs.UserID == UserId)
                            select new
                            {
                                schoolId = sch.ID,
-                               schoolName = sch.Name,
-                           }).Distinct().ToList<object>();
+                               schoolName = sch.BranchName,
+                           }).ToList<object>();
 
             return mdlBranches;
         }

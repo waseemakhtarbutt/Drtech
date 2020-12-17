@@ -33,6 +33,7 @@ namespace DrTech.Amal.SQLServices.Controllers
                 {
                     throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
                 }
+                string AreaName = string.Empty;
                 int? UserID =  JwtDecoder.GetUserIdFromToken(Request.Headers.Authorization.Parameter);
                 //string FileName = string.Empty;
                 //HttpPostedFile file = HttpContext.Current.Request.Files[0];
@@ -58,9 +59,12 @@ namespace DrTech.Amal.SQLServices.Controllers
                     mdlSchool.ContactPersonPhone = HttpContext.Current.Request.Form["contactPersonPhone"].ToString();
                 if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["email"]))
                     mdlSchool.Email = HttpContext.Current.Request.Form["email"].ToString();
-
                 if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["cityid"]))
                     mdlSchool.CityID = Convert.ToInt32(HttpContext.Current.Request.Form["cityid"]);
+                if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["areaid"]))
+                    mdlSchool.AreaID = Convert.ToInt32(HttpContext.Current.Request.Form["areaid"]);
+                if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["areaname"]))
+                    AreaName = HttpContext.Current.Request.Form["areaname"];
 
                 mdlSchool.IsVerified = false;
                 mdlSchool.IsActive = true;
@@ -69,7 +73,25 @@ namespace DrTech.Amal.SQLServices.Controllers
                 mdlSchool.GreenPoints = 0;
                 mdlSchool.CreatedBy = (int)UserID;                
                 mdlSchool.CreatedDate = DateTime.Now;
-              //  mdlSchool.UserID = UserID;
+                //  mdlSchool.UserID = UserID;
+                //if (AreaName != null)
+                //{
+                //    var UserArea = db.Repository<Area>().GetAll().Where(x => x.Name == AreaName).FirstOrDefault();
+                //    if (UserArea == null)
+                //    {
+
+                //        Area area = new Area();
+                //        area.Name = AreaName;
+                //        area.CityID = mdlSchool.CityID;
+                //        area.IsActive = true;
+                //        area.CreatedBy = mdlSchool.ID;
+                //        area.CreatedDate = DateTime.UtcNow;
+                //        db.Repository<Area>().Insert(area);
+                //        db.Save();
+                //        UserArea = db.Repository<Area>().GetAll().Where(x => x.Name == AreaName).FirstOrDefault();
+                //        mdlSchool.AreaID = UserArea.ID;
+                //    }
+                //}
 
                 db.Repository<STG_School>().Insert(mdlSchool);
                 db.Save();
@@ -238,10 +260,8 @@ namespace DrTech.Amal.SQLServices.Controllers
                 {
                     throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
                 }
-
                 if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["requestType"]))
                     requestType = HttpContext.Current.Request.Form["requestType"].ToString();
-
                 //school edit request 
                 if (requestType == "Edit")
                 {
@@ -260,7 +280,6 @@ namespace DrTech.Amal.SQLServices.Controllers
                     if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["fileName"]))
                         mdlSchool.FileName = HttpContext.Current.Request.Form["fileName"].ToString();
                 }
-
                 if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["fileToUpload"]))
                 {
                     if (HttpContext.Current.Request.Files.Count == 1)
@@ -280,7 +299,6 @@ namespace DrTech.Amal.SQLServices.Controllers
                     if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["DocumentFileName"]))
                         mdlSchool.DocumentFileName = HttpContext.Current.Request.Form["DocumentFileName"].ToString();
                 }
-
                 if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["name"]))
                     mdlSchool.Name = HttpContext.Current.Request.Form["name"].ToString();
                 if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["address"]))
@@ -303,11 +321,9 @@ namespace DrTech.Amal.SQLServices.Controllers
                     mdlSchool.RegFormat = HttpContext.Current.Request.Form["regFormat"].ToString();
                 if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["cityid"]))
                     mdlSchool.CityID = Convert.ToInt32(HttpContext.Current.Request.Form["cityid"]);
-
                 mdlSchool.IsVerified = true;
                 mdlSchool.IsActive = true;
                 // mdlSchool.UserID = UserID;
-
                 if (requestType != "Edit")
                 {
                     if (mdlSchool.ParentID <= 0)
@@ -350,8 +366,6 @@ namespace DrTech.Amal.SQLServices.Controllers
                     //mdlSchool.UserID = mdlUsers.ID;
                     mdlSchool.User = mdlUsers;
                 }
-
-
                 if (requestType != "Edit")
                 {
                     mdlSchool.ParentsGreenPoints = 0;
@@ -361,7 +375,6 @@ namespace DrTech.Amal.SQLServices.Controllers
                     db.Repository<School>().Insert(mdlSchool);
                     db.Save();
                 }
-                 
                 else
                 {
                     mdlSchool.ParentsGreenPoints = 0;
@@ -371,8 +384,6 @@ namespace DrTech.Amal.SQLServices.Controllers
                     db.Repository<School>().Update(mdlSchool);
                     db.Save();
                 }
-                  
-
                 int stgSchoolID = 0;
                 if (requestType == "S")
                 {
@@ -385,8 +396,6 @@ namespace DrTech.Amal.SQLServices.Controllers
                         db.Save();
                     }
                 }
-               
-
                 NotifyEvent _event = new NotifyEvent();
                 _event.Parameters.Add("ContactPerson", mdlSchool.ContactPerson);
                 _event.Parameters.Add("Name", mdlSchool.Name);
@@ -407,7 +416,6 @@ namespace DrTech.Amal.SQLServices.Controllers
                 string QRPath = string.Empty;
                 QRPath = QRCodeTagHelper.QRCodeGeneratorImage(CodeModel);
                 EmailHelper.SendEmailByTemplate(mdlSchool.Name, mdlSchool.Email, QRPath);
-
                 if (requestType != "Edit")
                 {
                     return ServiceResponse.SuccessReponse(true, MessageEnum.SchoolAddedSuccessfully);
