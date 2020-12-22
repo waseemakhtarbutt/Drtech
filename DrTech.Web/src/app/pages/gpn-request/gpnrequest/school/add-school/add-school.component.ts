@@ -74,9 +74,9 @@ export class AddSchoolComponent implements OnInit {
     this.service.GetAllCitys().subscribe(result => {
       this.cityList = result.data;
     });
-    // var cityResponse = await this.service.GetAllCitys();
-    // if (regResponse.statusCode == 0)
-    //   this.schoolList = regResponse.data;
+     var cityResponse = await this.service.GetAllCitys();
+    if (regResponse.statusCode == 0)
+     this.schoolList = regResponse.data;
 
     // if (cityResponse.statusCode == 0)
     //   this.cityList = cityResponse.data;

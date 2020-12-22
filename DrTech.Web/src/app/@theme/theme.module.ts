@@ -153,7 +153,7 @@ const NB_THEME_PROVIDERS = [
   ...NbWindowModule.forRoot().providers,
   ...NbToastrModule.forRoot().providers,
   ...NbChatModule.forRoot({
-    messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
+    messageGoogleMapKey: 'AIzaSyAdd8mG4D6aF656mtwuL-w1mE84a0ZY8Mo',
   }).providers,
 ];
 

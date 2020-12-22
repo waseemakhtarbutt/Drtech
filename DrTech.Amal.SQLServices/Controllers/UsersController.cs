@@ -172,7 +172,7 @@ namespace DrTech.Amal.SQLServices.Controllers
                     _mdlUser.Password = User.Password;
                 if (string.IsNullOrEmpty(_mdlUser.Phone))
                     _mdlUser.Phone = User.Phone;
-                if (_mdlUser.Latitude == 0)
+                if (_mdlUser.Latitude == 0) 
                     _mdlUser.Latitude = User.Latitude;
                 if (_mdlUser.Longitude == 0)
                     _mdlUser.Longitude = User.Longitude;

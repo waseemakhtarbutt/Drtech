@@ -35,6 +35,7 @@ namespace DrTech.Amal.SQLModels
         public Nullable<int> UserID { get; set; }
         public Nullable<bool> IsVerified { get; set; }
         public Nullable<int> CityID { get; set; }
+        public Nullable<int> AreaID { get; set; }
         public Nullable<bool> IsMainBranch { get; set; }
         public string RegFormat { get; set; }
     }

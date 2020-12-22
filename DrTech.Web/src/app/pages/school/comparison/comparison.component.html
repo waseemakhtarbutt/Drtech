@@ -148,13 +148,13 @@
                   <kendo-chart-title text="Monthly Progress (Green Points)"></kendo-chart-title>
                   <kendo-chart-category-axis >
                       <kendo-chart-category-axis-item 
-                      [categories]="['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul']"
+                      [categories]="chartData"
                       [title]="{ text: 'Months' }">
-                          
+
                       </kendo-chart-category-axis-item>
                   </kendo-chart-category-axis>
                   <kendo-chart-series>
-                    <kendo-chart-series-item type="line" [data]="[123, 276, 310, 212, 240, 156, 98]">
+                    <kendo-chart-series-item type="line" [data]="greenPoints">
                     </kendo-chart-series-item>
              
                   </kendo-chart-series>
