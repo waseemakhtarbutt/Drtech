@@ -61,4 +61,8 @@ export class SchoolService extends BaseService {
   async GetComparisonGreenPoints(clas, sections, schools, fromDate, toDate): Promise<ResponseObject<any>> {
     return await this.Get<any>('School/GetSchoolComparison?clas=' + clas + '&sct=' + sections + '&sch=' + schools + '&fd=' + fromDate + '&td=' + toDate);
   }
+
+  async GetSchoolsBranchesComparisionChartBySchoolAdmin(model): Promise<ResponseObject<any>> {
+    return await this.Post<any>('School/GetSchoolsBranchesComparisionChartBySchoolAdmin',model);
+  }
 }

@@ -2241,7 +2241,7 @@
         "dependencies": {
           "AspNetCore.Identity.MongoDbCore": "1.1.0",
           "DrTech.Common": "1.0.0",
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.2"
         },
         "compile": {
           "bin/placeholder/DrTech.Models.dll": {}
@@ -7215,23 +7215,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\DrTech\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\ihsan\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\drtech\\Application\\Web\\Source\\DrTech\\DrTech.Notifications\\DrTech.Notifications.csproj",
+      "projectUniqueName": "E:\\Dev\\Drtech\\DrTech.Notifications\\DrTech.Notifications.csproj",
       "projectName": "DrTech.Notifications",
-      "projectPath": "F:\\drtech\\Application\\Web\\Source\\DrTech\\DrTech.Notifications\\DrTech.Notifications.csproj",
-      "packagesPath": "C:\\Users\\DrTech\\.nuget\\packages\\",
-      "outputPath": "F:\\drtech\\Application\\Web\\Source\\DrTech\\DrTech.Notifications\\obj\\",
+      "projectPath": "E:\\Dev\\Drtech\\DrTech.Notifications\\DrTech.Notifications.csproj",
+      "packagesPath": "C:\\Users\\ihsan\\.nuget\\packages\\",
+      "outputPath": "E:\\Dev\\Drtech\\DrTech.Notifications\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\DrTech\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ihsan\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7244,11 +7240,11 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "F:\\drtech\\Application\\Web\\Source\\DrTech\\DrTech.DAL\\DrTech.DAL.csproj": {
-              "projectPath": "F:\\drtech\\Application\\Web\\Source\\DrTech\\DrTech.DAL\\DrTech.DAL.csproj"
+            "E:\\Dev\\Drtech\\DrTech.DAL\\DrTech.DAL.csproj": {
+              "projectPath": "E:\\Dev\\Drtech\\DrTech.DAL\\DrTech.DAL.csproj"
             },
-            "F:\\drtech\\Application\\Web\\Source\\DrTech\\DrTech.Models\\DrTech.Models.csproj": {
-              "projectPath": "F:\\drtech\\Application\\Web\\Source\\DrTech\\DrTech.Models\\DrTech.Models.csproj"
+            "E:\\Dev\\Drtech\\DrTech.Models\\DrTech.Models.csproj": {
+              "projectPath": "E:\\Dev\\Drtech\\DrTech.Models\\DrTech.Models.csproj"
             }
           }
         }
@@ -7270,10 +7266,16 @@
           }
         },
         "imports": [
-          "net461"
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

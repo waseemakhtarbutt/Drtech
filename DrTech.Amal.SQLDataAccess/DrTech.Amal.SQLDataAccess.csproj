@@ -108,6 +108,8 @@
     <Compile Include="CustomModels\RegiftViewModel.cs" />
     <Compile Include="CustomModels\ReportProblemViewModel.cs" />
     <Compile Include="CustomModels\RequestCount.cs" />
+    <Compile Include="CustomModels\SchoolsComparisionCriteria.cs" />
+    <Compile Include="CustomModels\SchoolsComparisionResult.cs" />
     <Compile Include="CustomModels\SegregatedDataViewModel.cs" />
     <Compile Include="CustomModels\ShiftViewModel.cs" />
     <Compile Include="CustomModels\TokenViewModel.cs" />
