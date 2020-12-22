@@ -16,3 +16,12 @@ E:\DrTech\DrTech.Amal.ExceptionLogger\obj\Debug\DrTech.Amal.ExceptionLogger.cspr
 E:\DrTech\DrTech.Amal.ExceptionLogger\obj\Debug\DrTech.Amal.ExceptionLogger.csproj.CopyComplete
 E:\DrTech\DrTech.Amal.ExceptionLogger\obj\Debug\DrTech.Amal.ExceptionLogger.dll
 E:\DrTech\DrTech.Amal.ExceptionLogger\obj\Debug\DrTech.Amal.ExceptionLogger.pdb
+E:\Dev\Drtech\DrTech.Amal.ExceptionLogger\bin\Debug\DrTech.Amal.ExceptionLogger.dll
+E:\Dev\Drtech\DrTech.Amal.ExceptionLogger\bin\Debug\DrTech.Amal.ExceptionLogger.pdb
+E:\Dev\Drtech\DrTech.Amal.ExceptionLogger\bin\Debug\NLog.dll
+E:\Dev\Drtech\DrTech.Amal.ExceptionLogger\bin\Debug\NLog.xml
+E:\Dev\Drtech\DrTech.Amal.ExceptionLogger\obj\Debug\DrTech.Amal.ExceptionLogger.csprojAssemblyReference.cache
+E:\Dev\Drtech\DrTech.Amal.ExceptionLogger\obj\Debug\DrTech.Amal.ExceptionLogger.csproj.CoreCompileInputs.cache
+E:\Dev\Drtech\DrTech.Amal.ExceptionLogger\obj\Debug\DrTech.Amal.ExceptionLogger.csproj.CopyComplete
+E:\Dev\Drtech\DrTech.Amal.ExceptionLogger\obj\Debug\DrTech.Amal.ExceptionLogger.dll
+E:\Dev\Drtech\DrTech.Amal.ExceptionLogger\obj\Debug\DrTech.Amal.ExceptionLogger.pdb

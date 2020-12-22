@@ -2,6 +2,7 @@
 using DrTech.Amal.Common.Helpers;
 using DrTech.Amal.Common.ServerResponse;
 using DrTech.Amal.Notifications;
+using DrTech.Amal.SQLDataAccess.CustomModels;
 using DrTech.Amal.SQLDataAccess.Repository;
 using DrTech.Amal.SQLModels;
 using DrTech.Amal.SQLServices.Auth;
@@ -874,6 +875,16 @@ namespace DrTech.Amal.SQLServices.Controllers
             {
                 return ServiceResponse.ErrorReponse<bool>(exp);
             }
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<ResponseObject<List<SchoolsComparisionResult>>> GetSchoolsBranchesComparisionChartBySchoolAdmin( SchoolsComparisionCriteria model)
+        {
+            int? UserID = JwtDecoder.GetUserIdFromToken(Request.Headers.Authorization.Parameter);
+            var reuslt = db.ExtRepositoryFor<SchoolRepository>().GetSchoolsBranchesComparisionChartBySchoolAdmin(model,Convert.ToInt32(UserID));
+            return ServiceResponse.SuccessReponse(reuslt, MessageEnum.RecordFoundSuccessfully);
+
         }
     }
 }

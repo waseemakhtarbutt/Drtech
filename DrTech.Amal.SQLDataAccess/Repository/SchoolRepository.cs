@@ -9,15 +9,19 @@ using System.Text;
 using System.Threading.Tasks;
 using DrTech.Amal.Common.Helpers;
 using System.Data.Entity.Core.Objects;
+using DrTech.Amal.SQLDataAccess.CustomModels;
 
 namespace DrTech.Amal.SQLDataAccess.Repository
 {
     public class SchoolRepository : Repository<School>
     {
+
+        public ContextDB db;
         public SchoolRepository(Amal_Entities context)
         : base(context)
         {
             dbSet = context.Set<School>();
+            db = new ContextDB();
         }
 
         public List<School> GetChildSchoolByUserID(int? UserID)
@@ -1107,6 +1111,112 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                        .ToList<object>();
 
             return mdlList;
+        }
+
+        public List<SchoolsComparisionResult> GetSchoolsBranchesComparisionChartBySchoolAdmin(SchoolsComparisionCriteria  filter, int UserID)
+        {
+           
+            List<SchoolsComparisionResult> compList = new List<SchoolsComparisionResult>();
+            List<School> schoolsList = new List<School>();
+            var result = db.Repository<School>().GetAll().ToList();
+
+            if(filter.ShoolId.Count > 0)
+            {
+                foreach (var id in filter.ShoolId)
+                {
+                    var school = result.Where(x => x.ID == id).FirstOrDefault();
+                    schoolsList.Add(school);
+                }
+            }
+
+            List<SchoolGP_Log> schoolsgpLog = new List<SchoolGP_Log>();
+
+            foreach (var item in schoolsList)
+            {
+                var list = db.Repository<SchoolGP_Log>().GetAll().Where(x => x.SchoolID == item.ID).ToList();
+                schoolsgpLog.AddRange(list);
+            }
+
+            schoolsgpLog = schoolsgpLog.Where(x => x.CreatedDate >= filter.From && x.CreatedDate <= filter.To).ToList();
+
+           // List<Entity> lst = new List<Entity>();
+            var data = schoolsgpLog.Select(k => new { k.School.Name, k.CreatedDate.Year, k.CreatedDate.Month, k.GreenPoints}).GroupBy(x => new { x.Name, x.Year, x.Month }, (key, group) => new // SchoolsComparisionResult
+            {
+                 Name = key.Name,
+               // yr = key.Year,
+                name = key.Month,
+                value = group.Sum(k => k.GreenPoints)
+            }).ToList();
+
+            var results = from p in data
+                          group p by p.Name into g
+                          select new { Name = g.Key, series = g.ToList().Select(i => new {i.name,i.value }).ToList()};
+            foreach (var r in results)
+            {
+                SchoolsComparisionResult schoolsComparisionResult = new SchoolsComparisionResult();
+                schoolsComparisionResult.Name = r.Name;
+                foreach (var item in r.series)
+                {
+                    Records record = new Records();
+                    record.name = getAbbreviatedName(item.name);
+                    record.value = item.value;
+                    schoolsComparisionResult.Series.Add(record);
+
+                }
+                compList.Add(schoolsComparisionResult);
+
+
+            }
+
+
+
+            return compList;
+
+
+            //////var v = (from goi in context.GetDataForRecycleDetailChartByAdmin(UserID)
+            //////         select goi);
+            //////List<GetDataForRecycleDetailChartByAdmin_Result> newList = new List<GetDataForRecycleDetailChartByAdmin_Result>(v);
+            //////List<RecycleDetailChartVM> myREsults = new List<RecycleDetailChartVM>();
+            //////try
+            //////{
+
+            //////    var xResult = newList.Select(p => new
+            //////    {
+            //////        Month = p.MON
+
+            //////    }).Distinct().ToList();
+
+
+            //////    foreach (var item in xResult)
+            //////    {
+            //////        RecycleDetailChartVM myREsult = new RecycleDetailChartVM();
+            //////        myREsult.name = item.Month;
+            //////        List<Records> recordsList = new List<Records>();
+            //////        List<GetDataForRecycleDetailChartByAdmin_Result> InnerREsult = newList.Where(x => x.MON == item.Month).ToList();
+            //////        foreach (var inneritem in InnerREsult)
+            //////        {
+            //////            Records records = new Records();
+            //////            records.name = inneritem.name;
+            //////            records.value = inneritem.wei;
+            //////            myREsult.series.Add(records);
+            //////        }
+            //////        myREsults.Add(myREsult);
+
+            //////    }
+            //////}
+            //////catch (Exception ex)
+            //////{
+            //////    //Log
+            //////}
+            //////// GetCircularChartData(UserID);
+            //////return myREsults.ToList();
+        }
+
+        static string getAbbreviatedName(int month)
+        {
+            DateTime date = new DateTime(2020, month, 1);
+
+            return date.ToString("MMM");
         }
 
         //public List<object> GetStudentStaffRsByRole(int? UserID, int? RoleID)

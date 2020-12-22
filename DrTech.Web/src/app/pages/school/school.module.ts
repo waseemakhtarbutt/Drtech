@@ -16,6 +16,7 @@ import { ComparisonComponent } from './comparison/comparison.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { ChartsModule } from '@progress/kendo-angular-charts';
 import { ProgressComponent } from './progress/progress.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import { ProgressComponent } from './progress/progress.component';
       libraries: ['places'],
     }),
     NgMultiSelectDropDownModule.forRoot(),
+    NgxChartsModule
   ],
   providers: [RegistrationRequestService,
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },

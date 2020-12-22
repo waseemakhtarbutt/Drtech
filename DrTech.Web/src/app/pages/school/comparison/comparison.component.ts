@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {SchoolService} from '../service/school.service'
 import { Router } from '@angular/router';
 import { NbTokenService } from '../../../common/auth';
+import {multi} from './dataa'
 import 'hammerjs';
+import { SchoolsComparisionCriteria } from '../models/schools-comparision-criteria';
 
 @Component({
   selector: 'ngx-comparison',
@@ -10,6 +12,30 @@ import 'hammerjs';
   styleUrls: ['./comparison.component.scss']
 })
 export class ComparisonComponent implements OnInit {
+
+
+  multi: any[];
+  view: any[] = [1250, 500];
+
+  // options
+  legend: boolean = true;
+  showLabels: boolean = true;
+  animations: boolean = true;
+  xAxis: boolean = true;
+  yAxis: boolean = true;
+  showYAxisLabel: boolean = true;
+  showXAxisLabel: boolean = true;
+  xAxisLabel: string = 'Month';
+  yAxisLabel: string = 'Green Credits';
+  timeline: boolean = true;
+
+  colorScheme = {
+    domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
+  };
+
+
+
+
   subAdminFromDate: Date;
   subAdminToDate: Date;
   schoolAdminFromDate: Date;
@@ -23,7 +49,9 @@ export class ComparisonComponent implements OnInit {
   sectionList: Array<string> = new Array<string>();
   schoolList: Array<School> = new Array<School>();
 
-  constructor(public schoolService: SchoolService, private router: Router, private tokenService: NbTokenService) { }
+  constructor(public schoolService: SchoolService, private router: Router, private tokenService: NbTokenService) {
+   // Object.assign(this, { multi });
+   }
   dropdownList = [];
   selectedSections = [];
   selectedSchools = [];
@@ -34,6 +62,7 @@ export class ComparisonComponent implements OnInit {
   ddlClassList:any;
   IsSearched:boolean;
   roleId: number;
+  criteria:SchoolsComparisionCriteria = new SchoolsComparisionCriteria();
 
   async ngOnInit() {
     this.roleId = this.tokenService.getRole();
@@ -79,6 +108,37 @@ export class ComparisonComponent implements OnInit {
     };
   }
 
+
+  GetComparisonGraph():void{
+    console.log('api clicked')
+     this.criteria
+      this.selectedSchools.forEach(element =>{
+        this.criteria.shoolId.push(element['item_id']);
+      })
+
+    //this.criteria.shoolId.push(34);
+    //this.criteria.shoolId.push(38);
+    console.log('selected schools',this.selectedSchools)
+    this.criteria.city = 1; //
+    console.log('&&&&&&&&&&&&&&&&&&&&&&&&&',this.criteria)
+
+    this.callAPI();
+
+  }
+
+  async callAPI()
+  {
+    var response =  this.schoolService.GetSchoolsBranchesComparisionChartBySchoolAdmin(this.criteria);
+    if((await response).statusCode == 0)
+    {
+      console.log('GRPHH data is ')
+      console.log((await response).data)
+      this.multi = (await response).data
+     // Object.assign(this, (await response).data);
+    }
+    console.log('Comparision graph result **************',response)
+  }
+
   async onChange(deviceValue) {
     var response = await this.schoolService.GetSectionList(deviceValue);
 
@@ -95,7 +155,7 @@ export class ComparisonComponent implements OnInit {
   }
 
   onItemSelect(item: any) {
-    console.log(item);
+    console.log('item selected done',item);
   }
 
   onSelectAll(items: any) {
@@ -365,6 +425,22 @@ export class ComparisonComponent implements OnInit {
     }
     
   }
+
+
+  onSelect(data): void {
+    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
+  }
+
+  onActivate(data): void {
+    console.log('Activate', JSON.parse(JSON.stringify(data)));
+  }
+
+  onDeactivate(data): void {
+    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
+  }
+
+
+
 }
 
 export class ChartData {

@@ -13071,19 +13071,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\RSC\\.nuget\\packages\\": {}
+    "C:\\Users\\ihsan\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\DrTech\\DrTech\\DrTech.csproj",
+      "projectUniqueName": "E:\\Dev\\Drtech\\DrTech\\DrTech.csproj",
       "projectName": "DrTech",
-      "projectPath": "E:\\DrTech\\DrTech\\DrTech.csproj",
-      "packagesPath": "C:\\Users\\RSC\\.nuget\\packages\\",
-      "outputPath": "E:\\DrTech\\DrTech\\obj\\",
+      "projectPath": "E:\\Dev\\Drtech\\DrTech\\DrTech.csproj",
+      "packagesPath": "C:\\Users\\ihsan\\.nuget\\packages\\",
+      "outputPath": "E:\\Dev\\Drtech\\DrTech\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\RSC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ihsan\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -13132,7 +13132,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

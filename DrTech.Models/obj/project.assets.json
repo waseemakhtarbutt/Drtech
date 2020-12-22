@@ -810,13 +810,22 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       },
-      "Newtonsoft.Json/11.0.2": {
+      "Newtonsoft.Json/12.0.2": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         },
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
+      "NLog/4.5.11": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/NLog.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/NLog.dll": {}
         }
       },
       "runtime.native.System/4.3.0": {
@@ -2164,7 +2173,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
         "dependencies": {
-          "F:\\drtech\\Application\\Web\\Source\\DrTech\\DrTech.Logging\\DrTech.ExceptionLogger.csproj": "1.0.0",
+          "DrTech.ExceptionLogger": "1.0.0",
           "Microsoft.AspNetCore.Razor": "2.0.0",
           "Microsoft.Extensions.Configuration": "2.0.0",
           "Microsoft.Extensions.Configuration.Json": "2.0.0",
@@ -2176,6 +2185,22 @@
         },
         "runtime": {
           "bin/placeholder/DrTech.Common.dll": {}
+        }
+      },
+      "DrTech.ExceptionLogger/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "AspNetCore.Identity.MongoDbCore": "1.0.9",
+          "Microsoft.Extensions.Configuration": "2.0.0",
+          "Microsoft.Extensions.Configuration.Json": "2.0.0",
+          "NLog": "4.5.11"
+        },
+        "compile": {
+          "bin/placeholder/DrTech.ExceptionLogger.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DrTech.ExceptionLogger.dll": {}
         }
       }
     }
@@ -3325,10 +3350,10 @@
         "netstandard.library.nuspec"
       ]
     },
-    "Newtonsoft.Json/11.0.2": {
-      "sha512": "IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
+    "Newtonsoft.Json/12.0.2": {
+      "sha512": "rTK0s2EKlfHsQsH6Yx2smvcTCeyoDNgCW7FEYyV01drPlh2T243PR2DiDXqtC5N4GDm4Ma/lkxfW5a/4793vbA==",
       "type": "package",
-      "path": "newtonsoft.json/11.0.2",
+      "path": "newtonsoft.json/12.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3351,8 +3376,41 @@
         "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
-        "newtonsoft.json.11.0.2.nupkg.sha512",
+        "newtonsoft.json.12.0.2.nupkg.sha512",
         "newtonsoft.json.nuspec"
+      ]
+    },
+    "NLog/4.5.11": {
+      "sha512": "Yni/XrDfbEhaCSXJsDkmW/n5AunhOxZ7OKKb+0U1I1/d8ZaKt3Jjzf20g/xPiKljmYuZKYqI5iI34g138kK8UQ==",
+      "type": "package",
+      "path": "nlog/4.5.11",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/monoandroid44/NLog.dll",
+        "lib/monoandroid44/NLog.xml",
+        "lib/net35/NLog.dll",
+        "lib/net35/NLog.xml",
+        "lib/net40-client/NLog.dll",
+        "lib/net40-client/NLog.xml",
+        "lib/net45/NLog.dll",
+        "lib/net45/NLog.xml",
+        "lib/netstandard1.3/NLog.dll",
+        "lib/netstandard1.3/NLog.xml",
+        "lib/netstandard1.5/NLog.dll",
+        "lib/netstandard1.5/NLog.xml",
+        "lib/netstandard2.0/NLog.dll",
+        "lib/netstandard2.0/NLog.xml",
+        "lib/sl4/NLog.dll",
+        "lib/sl4/NLog.xml",
+        "lib/sl5/NLog.dll",
+        "lib/sl5/NLog.xml",
+        "lib/wp8/NLog.dll",
+        "lib/wp8/NLog.xml",
+        "lib/xamarinios10/NLog.dll",
+        "lib/xamarinios10/NLog.xml",
+        "nlog.4.5.11.nupkg.sha512",
+        "nlog.nuspec"
       ]
     },
     "runtime.native.System/4.3.0": {
@@ -7072,6 +7130,11 @@
       "type": "project",
       "path": "../DrTech.Common/DrTech.Common.csproj",
       "msbuildProject": "../DrTech.Common/DrTech.Common.csproj"
+    },
+    "DrTech.ExceptionLogger/1.0.0": {
+      "type": "project",
+      "path": "../DrTech.Logging/DrTech.ExceptionLogger.csproj",
+      "msbuildProject": "../DrTech.Logging/DrTech.ExceptionLogger.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -7079,27 +7142,23 @@
       "AspNetCore.Identity.MongoDbCore >= 1.1.0",
       "DrTech.Common >= 1.0.0",
       "Microsoft.NETCore.App >= 2.0.0",
-      "Newtonsoft.Json >= 11.0.2"
+      "Newtonsoft.Json >= 12.0.2"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\DrTech\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\ihsan\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\drtech\\Application\\Web\\Source\\DrTech\\DrTech.Models\\DrTech.Models.csproj",
+      "projectUniqueName": "E:\\Dev\\Drtech\\DrTech.Models\\DrTech.Models.csproj",
       "projectName": "DrTech.Models",
-      "projectPath": "F:\\drtech\\Application\\Web\\Source\\DrTech\\DrTech.Models\\DrTech.Models.csproj",
-      "packagesPath": "C:\\Users\\DrTech\\.nuget\\packages\\",
-      "outputPath": "F:\\drtech\\Application\\Web\\Source\\DrTech\\DrTech.Models\\obj\\",
+      "projectPath": "E:\\Dev\\Drtech\\DrTech.Models\\DrTech.Models.csproj",
+      "packagesPath": "C:\\Users\\ihsan\\.nuget\\packages\\",
+      "outputPath": "E:\\Dev\\Drtech\\DrTech.Models\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\DrTech\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ihsan\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7112,8 +7171,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "F:\\drtech\\Application\\Web\\Source\\DrTech\\DrTech.Common\\DrTech.Common.csproj": {
-              "projectPath": "F:\\drtech\\Application\\Web\\Source\\DrTech\\DrTech.Common\\DrTech.Common.csproj"
+            "E:\\Dev\\Drtech\\DrTech.Common\\DrTech.Common.csproj": {
+              "projectPath": "E:\\Dev\\Drtech\\DrTech.Common\\DrTech.Common.csproj"
             }
           }
         }
@@ -7139,35 +7198,21 @@
           },
           "Newtonsoft.Json": {
             "target": "Package",
-            "version": "[11.0.2, )"
+            "version": "[12.0.2, )"
           }
         },
         "imports": [
-          "net461"
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1105",
-      "level": "Error",
-      "message": "Unable to find project information for 'F:\\drtech\\Application\\Web\\Source\\DrTech\\DrTech.Logging\\DrTech.ExceptionLogger.csproj'. Inside Visual Studio, this may be because the project is unloaded or not part of current solution. Otherwise the project file may be invalid or missing targets required for restore.",
-      "libraryId": "F:\\drtech\\Application\\Web\\Source\\DrTech\\DrTech.Logging\\DrTech.ExceptionLogger.csproj",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.0"
-      ]
-    },
-    {
-      "code": "NU1605",
-      "level": "Error",
-      "message": "Detected package downgrade: Newtonsoft.Json from 12.0.2 to 11.0.2. Reference the package directly from the project to select a different version. \r\n DrTech.Models -> DrTech.Common -> Newtonsoft.Json (>= 12.0.2) \r\n DrTech.Models -> Newtonsoft.Json (>= 11.0.2)",
-      "libraryId": "Newtonsoft.Json",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.0"
-      ]
-    }
-  ]
+  }
 }
