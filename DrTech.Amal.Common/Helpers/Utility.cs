@@ -32,7 +32,14 @@ namespace DrTech.Amal.Common.Helpers
 
             return _date;
         }
-
+        public static DateTime GetLocalDateTimeFromUTC(DateTime dateTimeInUTC)
+        {
+            DateTime dateTimeInUTC1 = Convert.ToDateTime(dateTimeInUTC);
+            TimeZoneInfo pakZone = TimeZoneInfo.FindSystemTimeZoneById("Pakistan Standard Time");
+            DateTime easternTime = TimeZoneInfo.ConvertTimeFromUtc(dateTimeInUTC1, pakZone);
+            return easternTime;
+            //  return TimeZoneInfo.ConvertTimeFromUtc(dateTimeInUTC,TimeZoneInfo.ConvertTimeBySystemTimeZoneId();
+        }
         public static string GetFormattedTime(DateTime date)
         {
             string timeFormat = ReadConfiguration("TimeFormat");

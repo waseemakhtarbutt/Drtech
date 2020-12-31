@@ -38,7 +38,8 @@ namespace DrTech.Amal.SQLServices.Controllers
                 HttpPostedFile file = HttpContext.Current.Request.Files[0];
                 FileName = await FileOpsHelper.UploadFileNew(file, ContainerName.RECYCLE);
                 mdlRecycle.FileName = FileName;
-                mdlRecycle.CollectorDateTime = Utility.GetParsedDate(HttpContext.Current.Request.Form["collectorDateTime"].ToString()); 
+                DateTime dateTime = Convert.ToDateTime(HttpContext.Current.Request.Form["collectorDateTime"].ToString());
+                mdlRecycle.CollectorDateTime = Utility.GetLocalDateTimeFromUTC(dateTime); 
                 mdlRecycle.StatusID = (int)StatusEnum.Submit;
                 mdlRecycle.GreenPoints  = 0;              
                 mdlRecycle.CreatedBy = (int)UserID;

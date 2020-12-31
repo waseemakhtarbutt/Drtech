@@ -563,3 +563,7 @@ E:\DrTech\DrTech.Amal.SQLServices\bin\DocumentFormat.OpenXml.xml
 E:\DrTech\DrTech.Amal.SQLServices\bin\ExcelNumberFormat.xml
 E:\DrTech\DrTech.Amal.SQLServices\bin\Microsoft.AspNetCore.Mvc.Abstractions.xml
 E:\DrTech\DrTech.Amal.SQLServices\bin\Microsoft.AspNetCore.Routing.Abstractions.xml
+D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.SQLServices\obj\Release\DrTech.Amal.SQLServices.csprojAssemblyReference.cache
+D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.SQLServices\obj\Release\DrTech.Amal.SQLServices.csproj.CoreCompileInputs.cache
+D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.SQLServices\obj\Release\DrTech.Amal.SQLServices.dll
+D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.SQLServices\obj\Release\DrTech.Amal.SQLServices.pdb

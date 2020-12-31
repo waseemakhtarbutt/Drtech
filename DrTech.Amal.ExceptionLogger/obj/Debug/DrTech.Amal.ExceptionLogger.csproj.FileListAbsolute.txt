@@ -25,3 +25,12 @@ E:\Dev\Drtech\DrTech.Amal.ExceptionLogger\obj\Debug\DrTech.Amal.ExceptionLogger.
 E:\Dev\Drtech\DrTech.Amal.ExceptionLogger\obj\Debug\DrTech.Amal.ExceptionLogger.csproj.CopyComplete
 E:\Dev\Drtech\DrTech.Amal.ExceptionLogger\obj\Debug\DrTech.Amal.ExceptionLogger.dll
 E:\Dev\Drtech\DrTech.Amal.ExceptionLogger\obj\Debug\DrTech.Amal.ExceptionLogger.pdb
+D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.ExceptionLogger\bin\Debug\DrTech.Amal.ExceptionLogger.dll
+D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.ExceptionLogger\bin\Debug\DrTech.Amal.ExceptionLogger.pdb
+D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.ExceptionLogger\bin\Debug\NLog.dll
+D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.ExceptionLogger\bin\Debug\NLog.xml
+D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.ExceptionLogger\obj\Debug\DrTech.Amal.ExceptionLogger.csprojAssemblyReference.cache
+D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.ExceptionLogger\obj\Debug\DrTech.Amal.ExceptionLogger.csproj.CoreCompileInputs.cache
+D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.ExceptionLogger\obj\Debug\DrTech.Amal.ExceptionLogger.csproj.CopyComplete
+D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.ExceptionLogger\obj\Debug\DrTech.Amal.ExceptionLogger.dll
+D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.ExceptionLogger\obj\Debug\DrTech.Amal.ExceptionLogger.pdb

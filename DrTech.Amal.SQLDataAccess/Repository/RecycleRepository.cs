@@ -267,6 +267,8 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                         join sub in context.RecycleSubItems on rc.ID equals sub.RecycleID
                                         join status in context.Status on rc.StatusID equals status.ID
                                         join users in context.Users on rc.UserID equals users.ID
+                                        //join city in context.LookupTypes on sub.CityID equals city.ID
+
                                         where (StatusID > 0 && rc.StatusID == StatusID && sub.IsParent == true) || (StatusID == 0 && sub.IsParent == true)
                                         select new
                                         {
@@ -280,10 +282,19 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                             userName = users.FullName,
                                             rc.FileName,
                                             rc.CreatedDate,
-                                            updatedDate = Convert.ToDateTime(rc.CreatedDate).ToString("MMM dd, yyyy"),
+                                            collectorDateTime = GetLocalDateTimeFromUTC(rc.CollectorDateTime).ToString("MMM dd, yyyy h:mm tt"),
+                                            updatedDate = Convert.ToDateTime(rc.CreatedDate).ToString("MMM dd, yyyy "),
                                         }).OrderByDescending(o => o.CreatedDate).ToList<object>();
 
             return mdlRecycles;
+        }
+        public DateTime GetLocalDateTimeFromUTC(DateTime? dateTimeInUTC)
+        {
+            DateTime dateTimeInUTC1 = Convert.ToDateTime(dateTimeInUTC);
+            TimeZoneInfo pakZone = TimeZoneInfo.FindSystemTimeZoneById("Pakistan Standard Time");
+            DateTime easternTime = TimeZoneInfo.ConvertTimeFromUtc(dateTimeInUTC1, pakZone);
+            return easternTime;
+            //  return TimeZoneInfo.ConvertTimeFromUtc(dateTimeInUTC,TimeZoneInfo.ConvertTimeBySystemTimeZoneId();
         }
         public RecycleViewModel GetRecycleDetailById(int RecycleID, bool IsWebAdmin)
         {
@@ -338,8 +349,9 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                 // Recycle
 
                 Recycle mdlRecycle = context.Recycles.Include(x=>x.RecycleSubItems).First(x => x.ID == _mdlRecycleVM.ID);
+                DateTime dateTime = Convert.ToDateTime(_mdlRecycleVM.CollectorDate);
 
-                mdlRecycle.CollectorDateTime = Utility.GetParsedDate(_mdlRecycleVM.CollectorDate);
+                mdlRecycle.CollectorDateTime = Utility.GetLocalDateTimeFromUTC(dateTime);
 
                 if (_mdlRecycleVM.AssignTo != null)
                 {
