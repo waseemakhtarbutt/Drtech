@@ -110,8 +110,10 @@ export class ComparisonComponent implements OnInit {
 
 
   GetComparisonGraph():void{
+    debugger;
     console.log('api clicked')
      this.criteria
+     this.criteria.shoolId =[];
       this.selectedSchools.forEach(element =>{
         this.criteria.shoolId.push(element['item_id']);
       })
@@ -131,9 +133,12 @@ export class ComparisonComponent implements OnInit {
     var response =  this.schoolService.GetSchoolsBranchesComparisionChartBySchoolAdmin(this.criteria);
     if((await response).statusCode == 0)
     {
+      this.criteria.shoolId = [];
       console.log('GRPHH data is ')
       console.log((await response).data)
-      this.multi = (await response).data
+      this.multi = (await response).data;
+      console.log('graps data is bellow',this.multi);
+      console.log('actual grap data is bellow',multi)
      // Object.assign(this, (await response).data);
     }
     console.log('Comparision graph result **************',response)

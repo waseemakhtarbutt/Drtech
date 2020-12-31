@@ -1118,7 +1118,8 @@ namespace DrTech.Amal.SQLDataAccess.Repository
            
             List<SchoolsComparisionResult> compList = new List<SchoolsComparisionResult>();
             List<School> schoolsList = new List<School>();
-            var result = db.Repository<School>().GetAll().ToList();
+            var userSchoolParentID = db.Repository<RegSchool>().GetAll().Where(x => x.UserID == UserID).FirstOrDefault().ID;
+            var result = db.Repository<School>().GetAll().Where(x=>x.ParentID == userSchoolParentID).ToList();
 
             if(filter.ShoolId.Count > 0)
             {
@@ -1138,19 +1139,36 @@ namespace DrTech.Amal.SQLDataAccess.Repository
             }
 
             schoolsgpLog = schoolsgpLog.Where(x => x.CreatedDate >= filter.From && x.CreatedDate <= filter.To).ToList();
+            var newData = schoolsgpLog.Select(k => new { k.School.BranchName, k.CreatedDate.Month, k.GreenPoints }).ToList();
 
-           // List<Entity> lst = new List<Entity>();
-            var data = schoolsgpLog.Select(k => new { k.School.Name, k.CreatedDate.Year, k.CreatedDate.Month, k.GreenPoints}).GroupBy(x => new { x.Name, x.Year, x.Month }, (key, group) => new // SchoolsComparisionResult
-            {
-                 Name = key.Name,
-               // yr = key.Year,
-                name = key.Month,
-                value = group.Sum(k => k.GreenPoints)
-            }).ToList();
+            //var data = schoolsgpLog.Select(k => new { k.School.BranchName, k.CreatedDate.Year, k.CreatedDate.Month, k.GreenPoints }).GroupBy(x => new { x.BranchName, x.Year, x.Month }, (key, group) => new // SchoolsComparisionResult
+            //{
+            //    Name = key.BranchName,
+            //    // yr = key.Year,0
+            //    name = key.Month,
+            //    value = group.Sum(k => k.GreenPoints)
+            //}).ToList();
+            var model = newData
+                .GroupBy(x => new { x.BranchName,x.Month }, (key, group) => new 
+                {
+                    Name = key.BranchName,
+                        month = key.Month,
+                        value = group.Sum(k => k.GreenPoints)
 
-            var results = from p in data
+
+                    //Month = key.BranchName,
+                    //Year = key.,
+                    //Total = g.Count(),
+                    //HearingDate = g.Key.ToString(),
+                    //AllCases = db.tblCases.Where(c => g.Select(h => h.fldCaseId).Contains(c.fldCaseId)).ToList()
+
+                })
+                .OrderBy(a => a.month)
+                .ToList();
+
+            var results = from p in model
                           group p by p.Name into g
-                          select new { Name = g.Key, series = g.ToList().Select(i => new {i.name,i.value }).ToList()};
+                          select new { Name = g.Key, series = g.ToList().Select(i => new { i.month, i.value }).ToList() };
             foreach (var r in results)
             {
                 SchoolsComparisionResult schoolsComparisionResult = new SchoolsComparisionResult();
@@ -1158,7 +1176,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                 foreach (var item in r.series)
                 {
                     Records record = new Records();
-                    record.name = getAbbreviatedName(item.name);
+                    record.name = getAbbreviatedName(item.month);
                     record.value = item.value;
                     schoolsComparisionResult.Series.Add(record);
 
