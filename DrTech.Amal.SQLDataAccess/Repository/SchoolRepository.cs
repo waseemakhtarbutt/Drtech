@@ -1115,16 +1115,14 @@ namespace DrTech.Amal.SQLDataAccess.Repository
             return mdlList;
         }
 
-
-        public List<SchoolsComparisionResult> GetSchoolsBranchesComparisionChartBySchoolAdmin(SchoolsComparisionCriteria filter, int UserID)
+        public List<SchoolsComparisionResult> GetSchoolsBranchesComparisionChartBySchoolAdmin(SchoolsComparisionCriteria  filter, int UserID)
         {
-
+           
             List<SchoolsComparisionResult> compList = new List<SchoolsComparisionResult>();
             List<School> schoolsList = new List<School>();
-            var userSchoolParentID = db.Repository<RegSchool>().GetAll().Where(x => x.UserID == UserID).FirstOrDefault().ID;
-            var result = db.Repository<School>().GetAll().Where(x => x.ParentID == userSchoolParentID).ToList();
+            var result = db.Repository<School>().GetAll().ToList();
 
-            if (filter.ShoolId.Count > 0)
+            if(filter.ShoolId.Count > 0)
             {
                 foreach (var id in filter.ShoolId)
                 {
@@ -1142,36 +1140,19 @@ namespace DrTech.Amal.SQLDataAccess.Repository
             }
 
             schoolsgpLog = schoolsgpLog.Where(x => x.CreatedDate >= filter.From && x.CreatedDate <= filter.To).ToList();
-            var newData = schoolsgpLog.Select(k => new { k.School.BranchName, k.CreatedDate.Month, k.GreenPoints }).ToList();
 
-            //var data = schoolsgpLog.Select(k => new { k.School.BranchName, k.CreatedDate.Year, k.CreatedDate.Month, k.GreenPoints }).GroupBy(x => new { x.BranchName, x.Year, x.Month }, (key, group) => new // SchoolsComparisionResult
-            //{
-            //    Name = key.BranchName,
-            //    // yr = key.Year,0
-            //    name = key.Month,
-            //    value = group.Sum(k => k.GreenPoints)
-            //}).ToList();
-            var model = newData
-                .GroupBy(x => new { x.BranchName, x.Month }, (key, group) => new
-                {
-                    Name = key.BranchName,
-                    month = key.Month,
-                    value = group.Sum(k => k.GreenPoints)
+           // List<Entity> lst = new List<Entity>();
+            var data = schoolsgpLog.Select(k => new { k.School.Name, k.CreatedDate.Year, k.CreatedDate.Month, k.GreenPoints}).GroupBy(x => new { x.Name, x.Year, x.Month }, (key, group) => new // SchoolsComparisionResult
+            {
+                 Name = key.Name,
+               // yr = key.Year,
+                name = key.Month,
+                value = group.Sum(k => k.GreenPoints)
+            }).ToList();
 
-
-                    //Month = key.BranchName,
-                    //Year = key.,
-                    //Total = g.Count(),
-                    //HearingDate = g.Key.ToString(),
-                    //AllCases = db.tblCases.Where(c => g.Select(h => h.fldCaseId).Contains(c.fldCaseId)).ToList()
-
-                })
-                .OrderBy(a => a.month)
-                .ToList();
-
-            var results = from p in model
+            var results = from p in data
                           group p by p.Name into g
-                          select new { Name = g.Key, series = g.ToList().Select(i => new { i.month, i.value }).ToList() };
+                          select new { Name = g.Key, series = g.ToList().Select(i => new {i.name,i.value }).ToList()};
             foreach (var r in results)
             {
                 SchoolsComparisionResult schoolsComparisionResult = new SchoolsComparisionResult();
@@ -1179,7 +1160,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                 foreach (var item in r.series)
                 {
                     Records record = new Records();
-                    record.name = getAbbreviatedName(item.month);
+                    record.name = getAbbreviatedName(item.name);
                     record.value = item.value;
                     schoolsComparisionResult.Series.Add(record);
 
@@ -1232,9 +1213,10 @@ namespace DrTech.Amal.SQLDataAccess.Repository
             //////// GetCircularChartData(UserID);
             //////return myREsults.ToList();
         }
+
         static string getAbbreviatedName(int month)
         {
-            DateTime date = new DateTime(2021, month, 1);
+            DateTime date = new DateTime(2020, month, 1);
 
             return date.ToString("MMM");
         }

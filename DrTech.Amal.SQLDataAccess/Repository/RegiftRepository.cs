@@ -118,8 +118,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                            cityDescription = city.Name,
                                            rg.FileName,
                                            rg.CreatedDate,
-                                           rg.UpdatedDate,
-                                           rg.PickupDate
+                                           rg.UpdatedDate
                                        }).OrderByDescending(o => o.CreatedDate).ToList().Select(u => new
                                        {
                                            ID = u.ID,
@@ -135,21 +134,13 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                            cityDescription = u.cityDescription,
                                            FileName = u.FileName,
                                            CreatedDate = u.CreatedDate,
-                                           pickupDate = Convert.ToDateTime(u.PickupDate).ToString("MMM dd, yyyy h:mm tt"),
                                            updatedDate = Convert.ToDateTime(u.CreatedDate).ToString("MMM dd, yyyy"),
                                        })
                                        .ToList<object>();
 
             return mdlRegifts;
         }
-        public DateTime GetLocalDateTimeFromUTC(DateTime? dateTimeInUTC)
-        {
-            DateTime dateTimeInUTC1 = Convert.ToDateTime(dateTimeInUTC);
-            TimeZoneInfo pakZone = TimeZoneInfo.FindSystemTimeZoneById("Pakistan Standard Time");
-            DateTime easternTime = TimeZoneInfo.ConvertTimeFromUtc(dateTimeInUTC1, pakZone);
-            return easternTime;
-            //  return TimeZoneInfo.ConvertTimeFromUtc(dateTimeInUTC,TimeZoneInfo.ConvertTimeBySystemTimeZoneId();
-        }
+
         public int subitemscalculate (int id)
         {
             int count = 0;
