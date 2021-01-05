@@ -91,7 +91,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
 
             return reGift;
 
-        }
+        } 
         public List<object> GetRegiftsListByStatus(int StatusID)
         {
             List<object> mdlRegifts = (from rg in context.Regifts
