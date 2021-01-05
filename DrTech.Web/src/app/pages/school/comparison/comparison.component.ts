@@ -136,6 +136,7 @@ export class ComparisonComponent implements OnInit {
       this.criteria.shoolId = [];
       console.log('GRPHH data is ')
       console.log((await response).data)
+      this.multi = (await response).data
       this.multi = (await response).data;
       console.log('graps data is bellow',this.multi);
       console.log('actual grap data is bellow',multi)

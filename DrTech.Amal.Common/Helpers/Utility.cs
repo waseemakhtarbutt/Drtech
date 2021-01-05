@@ -14,7 +14,13 @@ namespace DrTech.Amal.Common.Helpers
         {
             return GetFormattedDate(_DateTime) + " " + GetFormattedTime(_DateTime);
         }
-
+        public static DateTime GetParsedDates(string date)
+        {
+            // DateTime parsedDate=  DateTime.Now.ToUniversalTime();
+            DateTime parsedDate = Convert.ToDateTime(date, System.Globalization.CultureInfo.GetCultureInfo("ur-PK").DateTimeFormat);
+            // DateTime parsedDate = DateTime.ParseExact(date, "dd/MM/yyyy hh:mm", CultureInfo.InvariantCulture);
+            return parsedDate;
+        }
         public static DateTime GetParsedDate(string date)
         {
             DateTime parsedDate=  DateTime.Now.ToUniversalTime();
