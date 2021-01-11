@@ -12,6 +12,7 @@ namespace DrTech.Amal.SQLDataAccess.CustomModels
         public DateTime From { get; set; }
         public DateTime To { get; set; }
         public List<int> ShoolId { get; set; }
+        public string Type { get; set; }
 
     }
 }

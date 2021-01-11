@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using DrTech.Amal.Common.Helpers;
 using System.Data.Entity.Core.Objects;
 using DrTech.Amal.SQLDataAccess.CustomModels;
+using System.Dynamic;
 
 namespace DrTech.Amal.SQLDataAccess.Repository
 {
@@ -1139,20 +1140,64 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                 schoolsgpLog.AddRange(list);
             }
 
-            schoolsgpLog = schoolsgpLog.Where(x => x.CreatedDate >= filter.From && x.CreatedDate <= filter.To).ToList();
-
-           // List<Entity> lst = new List<Entity>();
-            var data = schoolsgpLog.Select(k => new { k.School.Name, k.CreatedDate.Year, k.CreatedDate.Month, k.GreenPoints}).GroupBy(x => new { x.Name, x.Year, x.Month }, (key, group) => new // SchoolsComparisionResult
+            schoolsgpLog = schoolsgpLog.Where(x => x.CreatedDate >= filter.From && x.CreatedDate <= filter.To).OrderBy(x=>x.CreatedDate.Year).ThenBy(x=>x.CreatedDate.Month).ToList();
+                if (filter.Type.Trim().ToLower() == "y")
+               {
+                compList = Yearly(schoolsgpLog);
+            }
+                else if(filter.Type.Trim().ToLower() == "m")
             {
-                 Name = key.Name,
-               // yr = key.Year,
-                name = key.Month,
+                compList = Monthly(schoolsgpLog);
+            }
+            else
+            {
+                compList = Daily(schoolsgpLog);
+            }
+
+
+                //////////var resultedData = new object();
+                //////////dynamic MyDynamicData = new ExpandoObject();
+                //////////if (filter.Type.Trim().ToLower() == "m")
+                //////////{
+                //////////    resultedData = schoolsgpLog.Select(k => new { k.School.Name, k.CreatedDate.Year, k.CreatedDate.Month, k.GreenPoints }).GroupBy(x => new { x.Name, x.Year, x.Month }, (key, group) => new // SchoolsComparisionResult
+                //////////    {
+                //////////        Name = key.Name,
+                //////////        // yr = key.Year,
+                //////////        name = key.Month,
+                //////////        value = group.Sum(k => k.GreenPoints)
+                //////////    }).ToList();
+                //////////}
+                //////////else if (filter.Type.Trim().ToLower() == "y")
+                //////////{
+                //////////    MyDynamicData = schoolsgpLog.Select(k => new { k.School.Name, k.CreatedDate.Year, k.CreatedDate.Month, k.GreenPoints }).GroupBy(x => new { x.Name, x.Year, x.Month }, (key, group) => new // SchoolsComparisionResult
+                //////////    {
+                //////////        Name = key.Name,
+                //////////        // yr = key.Year,
+                //////////        name = key.Year,
+                //////////        value = group.Sum(k => k.GreenPoints)
+                //////////    }).ToList();
+                //////////}
+
+
+
+
+                return compList;
+        }
+
+        private List<SchoolsComparisionResult> Yearly(List<SchoolGP_Log> list)
+        {
+            List<SchoolsComparisionResult> compList = new List<SchoolsComparisionResult>();
+            var data = list.Select(k => new { k.School.BranchName, k.CreatedDate.Year, k.CreatedDate.Month, k.GreenPoints }).GroupBy(x => new { x.BranchName, x.Year, x.Month }, (key, group) => new // SchoolsComparisionResult
+            {
+                Name = key.BranchName,
+                // yr = key.Year,
+                name = key.Year,
                 value = group.Sum(k => k.GreenPoints)
             }).ToList();
 
             var results = from p in data
                           group p by p.Name into g
-                          select new { Name = g.Key, series = g.ToList().Select(i => new {i.name,i.value }).ToList()};
+                          select new { Name = g.Key, series = g.ToList().Select(i => new { i.name, i.value }).ToList() };
             foreach (var r in results)
             {
                 SchoolsComparisionResult schoolsComparisionResult = new SchoolsComparisionResult();
@@ -1160,7 +1205,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                 foreach (var item in r.series)
                 {
                     Records record = new Records();
-                    record.name = getAbbreviatedName(item.name);
+                    record.name = item.name.ToString();      //getAbbreviatedName(item.name);
                     record.value = item.value;
                     schoolsComparisionResult.Series.Add(record);
 
@@ -1169,159 +1214,81 @@ namespace DrTech.Amal.SQLDataAccess.Repository
 
 
             }
-
-
-
             return compList;
+        }
+        private List<SchoolsComparisionResult> Monthly(List<SchoolGP_Log> list)
+        {
+            List<SchoolsComparisionResult> compList = new List<SchoolsComparisionResult>();
+            var data = list.Select(k => new { k.School.BranchName, k.CreatedDate.Year, k.CreatedDate.Month, k.GreenPoints }).GroupBy(x => new { x.BranchName, x.Year, x.Month }, (key, group) => new // SchoolsComparisionResult
+            {
+                Name = key.BranchName,
+                // yr = key.Year,
+                name = getAbbreviatedName(key.Month) + "_"+ key.Year,
+                value = group.Sum(k => k.GreenPoints)
+            }).ToList();
+
+            var results = from p in data
+                          group p by p.Name into g
+                          select new { Name = g.Key, series = g.ToList().Select(i => new { i.name, i.value }).ToList() };
+            foreach (var r in results)
+            {
+                SchoolsComparisionResult schoolsComparisionResult = new SchoolsComparisionResult();
+                schoolsComparisionResult.Name = r.Name;
+                foreach (var item in r.series)
+                {
+                    Records record = new Records();
+                    record.name =item.name;
+                    record.value = item.value;
+                    schoolsComparisionResult.Series.Add(record);
+
+                }
+                compList.Add(schoolsComparisionResult);
 
 
-            //////var v = (from goi in context.GetDataForRecycleDetailChartByAdmin(UserID)
-            //////         select goi);
-            //////List<GetDataForRecycleDetailChartByAdmin_Result> newList = new List<GetDataForRecycleDetailChartByAdmin_Result>(v);
-            //////List<RecycleDetailChartVM> myREsults = new List<RecycleDetailChartVM>();
-            //////try
-            //////{
+            }
+            return compList;
+        }
+        private List<SchoolsComparisionResult> Daily(List<SchoolGP_Log> list)
+        {
+            List<SchoolsComparisionResult> compList = new List<SchoolsComparisionResult>();
+            var data = list.Select(k => new { k.School.BranchName, k.CreatedDate.Month, k.CreatedDate.Day, k.GreenPoints }).GroupBy(x => new { x.BranchName, x.Month, x.Day }, (key, group) => new // SchoolsComparisionResult
+            {
+                Name = key.BranchName,
+                // yr = key.Year,
+                name = key.Day + "_" + getAbbreviatedName(key.Month),
+                value = group.Sum(k => k.GreenPoints)
+            }).ToList();
 
-            //////    var xResult = newList.Select(p => new
-            //////    {
-            //////        Month = p.MON
+            var results = from p in data
+                          group p by p.Name into g
+                          select new { Name = g.Key, series = g.ToList().Select(i => new { i.name, i.value }).ToList() };
+            foreach (var r in results)
+            {
+                SchoolsComparisionResult schoolsComparisionResult = new SchoolsComparisionResult();
+                schoolsComparisionResult.Name = r.Name;
+                foreach (var item in r.series)
+                {
+                    Records record = new Records();
+                    record.name = item.name.ToString();   //getAbbreviatedName(item.name);
+                    record.value = item.value;
+                    schoolsComparisionResult.Series.Add(record);
 
-            //////    }).Distinct().ToList();
+                }
+                compList.Add(schoolsComparisionResult);
+                
 
-
-            //////    foreach (var item in xResult)
-            //////    {
-            //////        RecycleDetailChartVM myREsult = new RecycleDetailChartVM();
-            //////        myREsult.name = item.Month;
-            //////        List<Records> recordsList = new List<Records>();
-            //////        List<GetDataForRecycleDetailChartByAdmin_Result> InnerREsult = newList.Where(x => x.MON == item.Month).ToList();
-            //////        foreach (var inneritem in InnerREsult)
-            //////        {
-            //////            Records records = new Records();
-            //////            records.name = inneritem.name;
-            //////            records.value = inneritem.wei;
-            //////            myREsult.series.Add(records);
-            //////        }
-            //////        myREsults.Add(myREsult);
-
-            //////    }
-            //////}
-            //////catch (Exception ex)
-            //////{
-            //////    //Log
-            //////}
-            //////// GetCircularChartData(UserID);
-            //////return myREsults.ToList();
+            }
+            //compList.OrderBy(x => x.Series.OrderBy(y => y.name)).ToList();
+            return compList;
         }
 
         static string getAbbreviatedName(int month)
         {
-            DateTime date = new DateTime(2020, month, 1);
+            DateTime date = new DateTime(2021,month,1);
 
             return date.ToString("MMM");
         }
 
-        //public List<object> GetStudentStaffRsByRole(int? UserID, int? RoleID)
-        //{
-        //    List<object> mdlChildren = new List<object>();
-
-        //    if (RoleID == (int)UserRoleTypeEnum.SubSchoolAdmin)
-        //    {
-        //        mdlChildren = (from ch in context.Children
-        //                       join sch in context.Schools on ch.SchoolID equals sch.ID
-        //                       join user in context.Users on ch.UserID equals user.ID
-        //                       join re in context.Refuses on user.ID equals re.UserID
-        //                       join rd in context.Reduces on user.ID equals rd.UserID
-        //                       join ru in context.Reuses on user.ID equals ru.UserID
-        //                       join rp in context.Replants on user.ID equals rp.UserID
-        //                       join rc in context.Recycles on user.ID equals rc.UserID
-        //                       join rg in context.Regifts on user.ID equals rg.UserID
-        //                       join rpt in context.Reports on user.ID equals rpt.UserID
-        //                       where sch.UserID == UserID && ch.IsActive != false
-        //                       select new
-        //                       {
-        //                           id = ch.ID,
-        //                           name = ch.Name,
-
-        //                           refuseLat = re.Latitude,
-        //                           refuseLong = re.Longitude,
-        //                           refuseGP = re.GreenPoints,
-
-        //                           reduceLat = rd.Latitude,
-        //                           reduceLong = rd.Longitude,
-        //                           reduceGP = rd.GreenPoints,
-
-        //                           reuseLat = ru.Latitude,
-        //                           reuseLong = ru.Longitude,
-        //                           reuseGP = ru.GreenPoints,
-
-        //                           replantLat = rp.Latitude,
-        //                           replantLong = rp.Longitude,
-        //                           replantGP = rp.GreenPoints,
-
-        //                           recylceLat = user.Latitude,
-        //                           recycleLong = user.Longitude,
-        //                           recycleGP = rc.GreenPoints,
-
-        //                           regiftLat = rg.Latitude,
-        //                           regiftLong = rg.Longitude,
-        //                           regiftGP = rg.GreenPoints,
-
-        //                           reportLat = rpt.Latitude,
-        //                           reportLong = rpt.Longitude,
-        //                           reportGP = rpt.GreenPoints,
-        //                       }).ToList<object>();
-        //    }
-        //    else if (RoleID == (int)UserRoleTypeEnum.SchoolAdmin)
-        //    {
-        //        mdlChildren = (from rs in context.RegSchools
-        //                       join sch in context.Schools on rs.ID equals sch.ParentID
-        //                       join ch in context.Children on sch.ID equals ch.SchoolID
-        //                       join user in context.Users on ch.UserID equals user.ID
-        //                       join re in context.Refuses on user.ID equals re.UserID
-        //                       join rd in context.Reduces on user.ID equals rd.UserID
-        //                       join ru in context.Reuses on user.ID equals ru.UserID
-        //                       join rp in context.Replants on user.ID equals rp.UserID
-        //                       join rc in context.Recycles on user.ID equals rc.UserID
-        //                       join rg in context.Regifts on user.ID equals rg.UserID
-        //                       join rpt in context.Reports on user.ID equals rpt.UserID
-        //                       where rs.UserID == UserID && ch.IsActive != false
-        //                       select new
-        //                       {
-        //                           id = ch.ID,
-        //                           name = ch.Name,
-
-        //                           refuseLat = re.Latitude,
-        //                           refuseLong = re.Longitude,
-        //                           refuseGP = re.GreenPoints,
-
-        //                           reduceLat = rd.Latitude,
-        //                           reduceLong = rd.Longitude,
-        //                           reduceGP = rd.GreenPoints,
-
-        //                           reuseLat = ru.Latitude,
-        //                           reuseLong = ru.Longitude,
-        //                           reuseGP = ru.GreenPoints,
-
-        //                           replantLat = rp.Latitude,
-        //                           replantLong = rp.Longitude,
-        //                           replantGP = rp.GreenPoints,
-
-        //                           recylceLat = user.Latitude,
-        //                           recycleLong = user.Longitude,
-        //                           recycleGP = rc.GreenPoints,
-
-        //                           regiftLat = rg.Latitude,
-        //                           regiftLong = rg.Longitude,
-        //                           regiftGP = rg.GreenPoints,
-
-        //                           reportLat = rpt.Latitude,
-        //                           reportLong = rpt.Longitude,
-        //                           reportGP = rpt.GreenPoints,
-        //                       }).ToList<object>();
-        //    }
-
-        //    return mdlChildren;
-        //}
+        
     }
 }
