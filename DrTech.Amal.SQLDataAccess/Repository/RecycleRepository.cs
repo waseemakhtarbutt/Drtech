@@ -267,7 +267,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                         join sub in context.RecycleSubItems on rc.ID equals sub.RecycleID
                                         join status in context.Status on rc.StatusID equals status.ID
                                         join users in context.Users on rc.UserID equals users.ID
-                                        //join city in context.LookupTypes on sub.CityID equals city.ID
+                                         join city in context.Cities on users.CityId equals city.ID
 
                                         where (StatusID > 0 && rc.StatusID == StatusID && sub.IsParent == true) || (StatusID == 0 && sub.IsParent == true)
                                         select new
@@ -282,6 +282,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                             userName = users.FullName,
                                             rc.FileName,
                                             rc.CreatedDate,
+                                            city.CityName,
                                             collectorDateTime = GetLocalDateTimeFromUTC(rc.CollectorDateTime).ToString("MMM dd, yyyy h:mm tt"),
                                             updatedDate = Convert.ToDateTime(rc.CreatedDate).ToString("MMM dd, yyyy "),
                                         }).OrderByDescending(o => o.CreatedDate).ToList<object>();
@@ -302,6 +303,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                          join users in context.Users on rc.UserID equals users.ID
                                          join orderTracking in context.OrderTrackings on rc.ID equals orderTracking.RsID
                                          join status in context.Status on orderTracking.StatusID equals status.ID
+                                         join city in context.Cities on users.CityId equals city.ID
                                          where (rc.ID == RecycleID && orderTracking.Type == "Recycle")
                                          select new RecycleViewModel()
                                          {
@@ -331,6 +333,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                              OrderID = orderTracking.ID,
                                              UserID = users.ID,
                                              UserName = users.FullName,
+                                             CityName=city.CityName,
                                              UserPhone = users.Phone,
                                              UserAddress = users.Address,
                                              StatusName = status.StatusName,

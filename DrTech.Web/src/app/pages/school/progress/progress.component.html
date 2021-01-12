@@ -40,9 +40,14 @@
           </div>
         </ng-template>
       </kendo-grid-column>
-      <kendo-grid-column field="totalGP" title="Green Credits" width="150" filterable="false">
+      <kendo-grid-column field="totalGP" title="Green Credits" width="*" filterable="false">
         <ng-template kendoGridCellTemplate let-dataItem>
           <div class="gp">{{ dataItem.totalGP }}</div>
+        </ng-template>
+      </kendo-grid-column>
+      <kendo-grid-column field="weight" title="Weight" width="*" filterable="false">
+        <ng-template kendoGridCellTemplate let-dataItem>
+          <div>{{ dataItem.weight }}</div>
         </ng-template>
       </kendo-grid-column>
     </kendo-grid>

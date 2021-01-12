@@ -38,8 +38,11 @@ namespace DrTech.Amal.SQLServices.Controllers
                 HttpPostedFile file = HttpContext.Current.Request.Files[0];
                 FileName = await FileOpsHelper.UploadFileNew(file, ContainerName.RECYCLE);
                 mdlRecycle.FileName = FileName;
-                DateTime dateTime = Convert.ToDateTime(HttpContext.Current.Request.Form["collectorDateTime"].ToString());
-                mdlRecycle.CollectorDateTime = Utility.GetLocalDateTimeFromUTC(dateTime); 
+                mdlRecycle.CollectorDateTime = Utility.GetParsedDate(HttpContext.Current.Request.Form["collectorDateTime"].ToString());
+                //var Date = HttpContext.Current.Request.Form["collectorDateTime"].ToString();
+                //mdlRecycle.CollectorDateTime = Convert.ToDateTime(Date);
+              //  mdlRecycle.CollectorDateTime = Convert.ToDateTime(HttpContext.Current.Request.Form["collectorDateTime"].ToString());
+                //mdlRecycle.CollectorDateTime = Utility.GetLocalDateTimeFromUTC(dateTime); 
                 mdlRecycle.StatusID = (int)StatusEnum.Submit;
                 mdlRecycle.GreenPoints  = 0;              
                 mdlRecycle.CreatedBy = (int)UserID;
@@ -67,13 +70,13 @@ namespace DrTech.Amal.SQLServices.Controllers
 
                 NotifyEvent _event = new NotifyEvent();
                 _event.Parameters.Add("UserID", Convert.ToString(UserID));
-                _event.Parameters.Add("DateTime", mdlRecycle.CollectorDateTime);
+               // _event.Parameters.Add("DateTime", mdlRecycle.CollectorDateTime);
                 _event.AddNotifyEvent((long)NotificationEventConstants.Recycle.EmailSendToAdminRecycleInfo, FileName);
 
                 SMSNotifyEvent _events = new SMSNotifyEvent();
                 _events.Parameters.Add("Description", Description);
                 _events.AddSMSNotifyEvent((long)NotificationEventConstants.Recycle.SMSSentoUser, Convert.ToString(UserID));
-                _events.AddSMSNotifyEvent((long)NotificationEventConstants.Recycle.SMSSentoUser, Convert.ToString(UserID));
+               // _events.AddSMSNotifyEvent((long)NotificationEventConstants.Recycle.SMSSentoUser, Convert.ToString(UserID));
 
                 return ServiceResponse.SuccessReponse(true, MessageEnum.RecycleItemsAdded);
 
