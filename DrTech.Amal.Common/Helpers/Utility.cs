@@ -14,7 +14,13 @@ namespace DrTech.Amal.Common.Helpers
         {
             return GetFormattedDate(_DateTime) + " " + GetFormattedTime(_DateTime);
         }
-
+        public static DateTime GetParsedDates(string date)
+        {
+           // DateTime parsedDate = DateTime.Now.ToUniversalTime();
+            //DateTime parsedDate = Convert.ToDateTime(date, System.Globalization.CultureInfo.GetCultureInfo("ur-PK").DateTimeFormat);
+            DateTime parsedDate = DateTime.ParseExact(date, "dd/MM/yyyy hh:mm", CultureInfo.InvariantCulture);
+            return parsedDate;
+        }
         public static DateTime GetParsedDate(string date)
         {
             DateTime parsedDate=  DateTime.Now.ToUniversalTime();
@@ -67,6 +73,23 @@ namespace DrTech.Amal.Common.Helpers
             return date;
         }
 
+        public static string GetLevelByGP1(decimal GP)
+        {
+            string Level = string.Empty;
+
+            if (GP > 0 && GP <= 500)
+                Level = "Captain";
+            else if (GP > 500 && GP <= 1000)
+                Level = "Major";
+            else if (GP > 1000 && GP <= 5000)
+                Level = "General";
+            else if (GP > 5000)
+                Level = "Commander";
+            else
+                Level = "Captain";
+
+            return Level;
+        }
         public static string GetLevelByGP (int GP)
         {
             string Level = string.Empty;

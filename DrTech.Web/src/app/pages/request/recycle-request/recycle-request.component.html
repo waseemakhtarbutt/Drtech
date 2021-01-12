@@ -35,10 +35,11 @@
       <kendo-grid-column field="statusDescription" title="Status" width="*"></kendo-grid-column>
       <kendo-grid-column field="collectorDateTime" title="Collector DateTime" width="*"></kendo-grid-column>
       <kendo-grid-column field="updatedDate" title="Date" width="*"></kendo-grid-column>
-      <kendo-grid-column field="userName" title="User" width="*">
+      <kendo-grid-column field="userName" title="User" width="*"></kendo-grid-column>
+     <kendo-grid-column field="cityName" title="City Name" width="*"></kendo-grid-column>
 
 
-
+     <kendo-grid-column>
         <ng-template kendoGridCellTemplate let-dataItem>
           <a class="lnk" [routerLink]="['/pages/user/detail/', dataItem.userId]">{{dataItem.userName}}</a>
         </ng-template>

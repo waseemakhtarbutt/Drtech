@@ -53,7 +53,7 @@ namespace DrTech.Amal.SQLServices.Auth
 
         private static DateTime FromUnixTime(long unixTime)
         {
-            var epoch = new DateTime(2022, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            var epoch = new DateTime(2023, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             return epoch.AddSeconds(unixTime);
         }
 
