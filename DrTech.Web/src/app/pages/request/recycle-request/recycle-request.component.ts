@@ -115,8 +115,8 @@ export class RecycleRequestComponent implements OnInit {
         filters: [
           { field: "idea", operator: "contains", value: search },
           { field: "userName", operator: "contains", value: search },
-          { field: "statusDescription", operator: "contains", value: search }
-
+          { field: "statusDescription", operator: "contains", value: search },
+          { field: "cityName", operator: "contains", value: search }
         ]
       });
 
