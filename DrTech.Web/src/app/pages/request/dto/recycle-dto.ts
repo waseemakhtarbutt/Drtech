@@ -16,6 +16,7 @@ export class RecycleDTO {
   userPhone: string;
   userAddress: string;
   statusName: string;
+  cityName: string;
   assignTo: number;
   recycleSubItems: Array<RecycleSubItemDTO>;
   collectTime: Date;

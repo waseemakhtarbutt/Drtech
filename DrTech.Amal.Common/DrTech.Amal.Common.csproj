@@ -63,7 +63,7 @@
       <HintPath>..\packages\MimeKit.2.4.0.1\lib\net46\MimeKit.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PJ.DrawingCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\PJ.DrawingCore.1.0.0\lib\net45\PJ.DrawingCore.dll</HintPath>
@@ -134,14 +134,7 @@
     <Compile Include="ServerResponse\ResponseObject.cs" />
     <Compile Include="ServerResponse\ServiceResponse.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="bin\Debug\DrTech.Amal.Common.dll" />
-    <Content Include="bin\Debug\DrTech.Amal.Common.pdb" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Release\" />
-    <Folder Include="obj\Debug\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\DrTech.Amal.ExceptionLogger\DrTech.Amal.ExceptionLogger.csproj">
       <Project>{c28dd847-df45-440b-be0f-40260ea978b7}</Project>

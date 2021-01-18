@@ -434,6 +434,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                //&& ch.IsActive != false
                                select new
                                {
+                                   RecyclesWeight = recycles.Select(g => g.RecycleSubItems).Select(x => x.Select(y => y.Weight).DefaultIfEmpty(0).Sum()).DefaultIfEmpty(0).Sum() ?? 0,
                                    id = ch.ID,
                                    name = ch.Name,
                                    filename = ch.FileName,
@@ -446,7 +447,6 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                    Reduces = reduses.Select(g => g.GreenPoints).DefaultIfEmpty(0).Sum(),
                                    Reuses = reuses.Select(g => g.GreenPoints).DefaultIfEmpty(0).Sum() ?? 0,
                                    Replants = replants.Select(g => g.GreenPoints).DefaultIfEmpty(0).Sum(),
-                                   RecyclesWeight = recycles.Select(g => g.RecycleSubItems).Select(x => x.Select(y => y.Weight).DefaultIfEmpty(0).Sum()).DefaultIfEmpty(0).Sum() ?? 0,
                                    Recycles = recycles.Select(g => g.RecycleSubItems).Select(x => x.Select(y => y.GreenPoints).DefaultIfEmpty(0).Sum()).DefaultIfEmpty(0).Sum() ?? 0,
                                    Regifts = regifts.Select(g => g.RegiftSubItems).Select(x => x.Select(y => y.GreenPoints).DefaultIfEmpty(0).Sum()).DefaultIfEmpty(0).Sum() ?? 0,
                                    Reports = reports.Select(g => g.GreenPoints).DefaultIfEmpty(0).Sum(),
@@ -454,6 +454,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                })
                                .Select(g => new
                                {
+                                   weight = g.RecyclesWeight.ToString(),
                                    id = g.id,
                                    name = g.name,
                                    filename = g.filename,
@@ -462,7 +463,6 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                    // section = g.section,
                                    //  rollno = g.rollno,
                                    // contactno = g.contactno,
-                                   Weight=g.RecyclesWeight,
                                    totalGP = g.Refuses + g.Reduces + g.Reuses + g.Replants + g.Recycles + g.Regifts + g.Reports + g.Bins,
                                    level = Utility.GetLevelByGP(g.Refuses + g.Reduces + g.Reuses + g.Replants + g.Recycles + g.Regifts + g.Reports + g.Bins)
                                }).OrderByDescending(x => x.totalGP).ToList<object>();
@@ -494,6 +494,8 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                    //section = ch.SectionName,
                                    //rollno = ch.RegistrationNo,
                                    //contactno = user.Phone,
+                                   RecyclesWeight = recycles.Select(g => g.RecycleSubItems).Select(x => x.Select(y => y.Weight).DefaultIfEmpty(0).Sum()).DefaultIfEmpty(0).Sum() ?? 0,
+
                                    Refuses = refuses.Select(g => g.GreenPoints).DefaultIfEmpty(0).Sum(),
                                    Reduces = reduses.Select(g => g.GreenPoints).DefaultIfEmpty(0).Sum(),
                                    Reuses = reuses.Select(g => g.GreenPoints).DefaultIfEmpty(0).Sum() ?? 0,
@@ -514,6 +516,8 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                    //section = g.section,
                                    //rollno = g.rollno,
                                    //contactno = g.contactno,
+                                   weight = g.RecyclesWeight,
+
                                    totalGP = g.Refuses + g.Reduces + g.Reuses + g.Replants + g.Recycles + g.Regifts + g.Reports + g.Bins,
                                    level = Utility.GetLevelByGP(g.Refuses + g.Reduces + g.Reuses + g.Replants + g.Recycles + g.Regifts + g.Reports + g.Bins)
                                }).OrderByDescending(x => x.totalGP).ToList<object>();
@@ -1142,9 +1146,9 @@ namespace DrTech.Amal.SQLDataAccess.Repository
             schoolsgpLog = schoolsgpLog.Where(x => x.CreatedDate >= filter.From && x.CreatedDate <= filter.To).ToList();
 
            // List<Entity> lst = new List<Entity>();
-            var data = schoolsgpLog.Select(k => new { k.School.Name, k.CreatedDate.Year, k.CreatedDate.Month, k.GreenPoints}).GroupBy(x => new { x.Name, x.Year, x.Month }, (key, group) => new // SchoolsComparisionResult
+            var data = schoolsgpLog.Select(k => new { k.School.BranchName, k.CreatedDate.Year, k.CreatedDate.Month, k.GreenPoints}).GroupBy(x => new { x.BranchName, x.Year, x.Month }, (key, group) => new // SchoolsComparisionResult
             {
-                 Name = key.Name,
+                 Name = key.BranchName,
                // yr = key.Year,
                 name = key.Month,
                 value = group.Sum(k => k.GreenPoints)

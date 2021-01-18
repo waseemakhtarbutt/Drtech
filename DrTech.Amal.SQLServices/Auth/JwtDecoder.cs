@@ -38,7 +38,7 @@ namespace DrTech.Amal.SQLServices.Auth
             var jsonSerializer = new JavaScriptSerializer();
             var decodedToken = JsonWebToken.Decode(token, key);
             var data = jsonSerializer.Deserialize<Dictionary<string, object>>(decodedToken);
-            object role, exp;
+            object role;
             data.TryGetValue("role", out role);
             // data.TryGetValue("exp", out exp);
             var validTo = FromUnixTime(long.Parse(role.ToString()));
@@ -53,7 +53,7 @@ namespace DrTech.Amal.SQLServices.Auth
 
         private static DateTime FromUnixTime(long unixTime)
         {
-            var epoch = new DateTime(2021, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            var epoch = new DateTime(2023, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             return epoch.AddSeconds(unixTime);
         }
 

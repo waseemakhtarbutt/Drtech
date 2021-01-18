@@ -24,6 +24,7 @@ namespace DrTech.Amal.SQLDataAccess.CustomModels
         public int? AssignTo { get; set; }
         public int UserID { get; set; }
         public string UserName { get; set; }
+        public string CityName { get; set; }
         public string UserPhone { get; set; } 
         public string UserAddress { get; set; }
         public string StatusName { get; set; }
