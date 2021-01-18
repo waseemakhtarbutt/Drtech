@@ -4,4 +4,5 @@ export class SchoolsComparisionCriteria
     from :Date
     to :Date;
     shoolId :number[] = []
+    type:string;
 }

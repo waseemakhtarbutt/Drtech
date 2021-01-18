@@ -9,6 +9,7 @@ import { LocationLinkComponent, UserDetailLinkComponent } from '../../../common/
 import { ActivatedRoute, Router } from '@angular/router';
 import { GridDataResult, PageChangeEvent } from '@progress/kendo-angular-grid';
 import { compileFilter, SortDescriptor, orderBy } from '@progress/kendo-data-query';
+import { ExcelService } from '../../../common/service/excel.service';
 
 @Component({
   selector: 'ngx-recycle-request',
@@ -55,7 +56,7 @@ export class RecycleRequestComponent implements OnInit {
   public multiple = false;
   public allowUnsort = true;
   statusList: Array<DropdownDTO> = new Array<DropdownDTO>();
-  constructor(public requestService: RequestService, public commonService: CommonService, private dialogService: NbDialogService, private route: ActivatedRoute, private router: Router) {
+  constructor(public requestService: RequestService,private excelService: ExcelService, public commonService: CommonService, private dialogService: NbDialogService, private route: ActivatedRoute, private router: Router) {
     this.userId = route.snapshot.paramMap.get("id");
     this.statusId = 1;
   }
@@ -80,6 +81,10 @@ export class RecycleRequestComponent implements OnInit {
     });
 
     // this.loading = false
+  }
+  exportAsXLSX(): void {
+    debugger
+    this.excelService.exportAsExcelFile(this.listViewModel, 'sample');
   }
   public onSelect(e) {
     this.router.navigate(["/pages/driver/assign-driver/recycle-assign/" + this.gridView.data[e.index % this.pageSize].id]);
@@ -115,8 +120,8 @@ export class RecycleRequestComponent implements OnInit {
         filters: [
           { field: "idea", operator: "contains", value: search },
           { field: "userName", operator: "contains", value: search },
-          { field: "statusDescription", operator: "contains", value: search }
-
+          { field: "statusDescription", operator: "contains", value: search },
+          { field: "cityName", operator: "contains", value: search }
         ]
       });
 

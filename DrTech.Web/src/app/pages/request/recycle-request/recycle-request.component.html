@@ -18,7 +18,12 @@
   <!-- <nb-card-header>
     Recycle List
   </nb-card-header> -->
-
+  <nb-card-header class="headerText">
+    {{GridHeaderText}}  
+    <button type="button" class="btn btn-success btn-sm"
+    style="font-size: 0.95rem !important; float: right" (click)="exportAsXLSX()" >Downloud Excel File</button>
+    <br>
+  </nb-card-header> 
   <nb-card-body>
     <kendo-grid [data]="gridView" [pageSize]="pageSize" [pageable]="true" [skip]="skip" [height]="600" [sortable]="{
         allowUnsort: allowUnsort,
@@ -35,9 +40,7 @@
       <kendo-grid-column field="statusDescription" title="Status" width="*"></kendo-grid-column>
       <kendo-grid-column field="collectorDateTime" title="Collector DateTime" width="*"></kendo-grid-column>
       <kendo-grid-column field="updatedDate" title="Date" width="*"></kendo-grid-column>
-      <kendo-grid-column field="userName" title="User" width="*"></kendo-grid-column>
      <kendo-grid-column field="cityName" title="City Name" width="*"></kendo-grid-column>
-
 
      <kendo-grid-column>
         <ng-template kendoGridCellTemplate let-dataItem>

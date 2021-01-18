@@ -69,7 +69,7 @@
         </div>   
       </div>
       <div class="row pl15 pt15 ctr" *ngIf='this.roleId == 2'> <!--School Admin-->       
-        <div class="form-group col-md-5">
+        <div class="form-group col-md-3">
             <div class="row" >
               <div class="mt3 p7">
                   Branch
@@ -86,6 +86,22 @@
               </div>
             </div>
         </div>
+        <div class="form-group col-md-2">
+          <div class="row" >
+            <div class="mt3 p7">
+                Type
+            </div>
+            <div style="width: 70%">
+              <select [(ngModel)]="criteria.type"  #mySelect
+              (change)='onTypeSelected(mySelect.value)'>               
+                  <option value="y">Yearly</option>
+                  <option value="m">Monthly</option> 
+                  <option value="d">Daily</option>              
+               
+              </select>
+            </div>
+          </div>
+      </div>
        
         <div class="form-group col-md-3">
             <div class="row" >

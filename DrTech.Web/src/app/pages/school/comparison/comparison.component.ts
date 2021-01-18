@@ -12,8 +12,6 @@ import { SchoolsComparisionCriteria } from '../models/schools-comparision-criter
   styleUrls: ['./comparison.component.scss']
 })
 export class ComparisonComponent implements OnInit {
-
-
   multi: any[];
   view: any[] = [1250, 500];
 
@@ -107,10 +105,22 @@ export class ComparisonComponent implements OnInit {
       enableCheckAll: false,
     };
   }
-
+  onTypeSelected(value:string)
+  {
+    if(value == 'y')
+    {
+     this.xAxisLabel = "Year";
+    }
+   else if(value == 'm')
+    {
+      this.xAxisLabel = "Month";
+    }
+    else{
+        this.xAxisLabel = "Date";
+    }
+  }
 
   GetComparisonGraph():void{
-    debugger;
     console.log('api clicked')
      this.criteria
      this.criteria.shoolId =[];
@@ -127,16 +137,15 @@ export class ComparisonComponent implements OnInit {
     this.callAPI();
 
   }
-
+ 
   async callAPI()
   {
     var response =  this.schoolService.GetSchoolsBranchesComparisionChartBySchoolAdmin(this.criteria);
     if((await response).statusCode == 0)
     {
+      this.multi = [];
       this.criteria.shoolId = [];
-      console.log('GRPHH data is ')
-      console.log((await response).data)
-      this.multi = (await response).data
+      console.log('WAseem sb ',await (await response).data)
       this.multi = (await response).data;
       console.log('graps data is bellow',this.multi);
       console.log('actual grap data is bellow',multi)

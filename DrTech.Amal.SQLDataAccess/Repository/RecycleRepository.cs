@@ -267,7 +267,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                         join sub in context.RecycleSubItems on rc.ID equals sub.RecycleID
                                         join status in context.Status on rc.StatusID equals status.ID
                                         join users in context.Users on rc.UserID equals users.ID
-                                         join city in context.Cities on users.CityId equals city.ID
+                                        join city in context.Cities on users.CityId equals city.ID
 
                                         where (StatusID > 0 && rc.StatusID == StatusID && sub.IsParent == true) || (StatusID == 0 && sub.IsParent == true)
                                         select new
