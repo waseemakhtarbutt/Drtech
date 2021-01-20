@@ -1289,6 +1289,73 @@ namespace DrTech.Amal.SQLDataAccess.Repository
             return date.ToString("MMM");
         }
 
+        public List<Records> GetSchoolsBranchesComparisionPieChartBySchoolAdmin(int UserID)
+        {
+            
+            List<Records> compList = new List<Records>();
+            List<School> schoolsList = new List<School>();
+            var baseSchool = db.Repository<RegSchool>().GetAll().Where(x=>x.UserID == UserID).FirstOrDefault();
+            var result = db.Repository<School>().GetAll().Where(x => x.ParentID == baseSchool.ID);
+            //schoolsList = result.Where(x => x.UserID == UserID).ToList();
+            List<SchoolGP_Log> schoolsgpLog = new List<SchoolGP_Log>();
+            foreach (var item in result)
+            {
+                var list = db.Repository<SchoolGP_Log>().GetAll().Where(x => x.SchoolID == item.ID).ToList();
+                schoolsgpLog.AddRange(list);
+            }
+
+            var data = schoolsgpLog.Select(k => new { k.School.BranchName, k.GreenPoints }).GroupBy(x => new { x.BranchName}, (key, group) => new
+            {
+                name = key.BranchName,
+                value = group.Sum(k => k.GreenPoints)
+            }).ToList();
+
+            foreach (var item in data)
+            {
+                Records record = new Records();
+                record.name = item.name;
+                record.value = item.value;
+                compList.Add(record);
+            }
+
+            return compList;
+        }
+
+        public List<Records> GetSchoolsBranchesStudentsPieChartBySchoolAdmin(int UserID)
+        {
+            List<Records> compList = new List<Records>();
+            List<School> schoolsList = new List<School>();
+            List<Child> students = new List<Child>();
+            var baseSchool = db.Repository<RegSchool>().GetAll().Where(x => x.UserID == UserID).FirstOrDefault();
+            var result = db.Repository<School>().GetAll().Where(x => x.ParentID == baseSchool.ID);
+            foreach (var item in result)
+            {
+                var student = db.Repository<Child>().GetAll().Where(x => x.SchoolID == item.ID).ToList();
+                students.AddRange(student);
+            }
+            //foreach (var item in result)
+            //{
+            //    var list = db.Repository<SchoolGP_Log>().GetAll().Where(x => x.SchoolID == item.ID).ToList();
+            //    schoolsgpLog.AddRange(list);
+            //}
+
+            var data = students.Select(k => new { k.School.BranchName }).GroupBy(x => new { x.BranchName }, (key, group) => new
+            {
+                name = key.BranchName,
+                value = group.Count()
+        }).ToList();
+
+            foreach (var item in data)
+            {
+                Records record = new Records();
+                record.name = item.name;
+                record.value = item.value;
+                compList.Add(record);
+            }
+
+            return compList;
+        }
+
 
     }
 }
