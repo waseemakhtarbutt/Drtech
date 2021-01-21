@@ -65,4 +65,10 @@ export class SchoolService extends BaseService {
   async GetSchoolsBranchesComparisionChartBySchoolAdmin(model): Promise<ResponseObject<any>> {
     return await this.Post<any>('School/GetSchoolsBranchesComparisionChartBySchoolAdmin',model);
   }
+  async GetSchoolsBranchesComparisionPieChartBySchoolAdmin(): Promise<ResponseObject<any>> {
+    return await this.Post<any>('School/GetSchoolsBranchesComparisionPieChartBySchoolAdmin');
+  }
+  async GetSchoolsBranchesStudentsPieChartBySchoolAdmin(): Promise<ResponseObject<any>> {
+    return await this.Post<any>('School/GetSchoolsBranchesStudentsPieChartBySchoolAdmin');
+  }
 }
