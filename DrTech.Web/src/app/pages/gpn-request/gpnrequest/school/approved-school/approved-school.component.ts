@@ -4,6 +4,7 @@ import {GpnRequestService} from '../../../service/gpn-request.service'
 import { Router } from '@angular/router';
 import { NbDialogService, NbDialogRef } from '@nebular/theme';
 import { compileFilter, SortDescriptor, orderBy } from '@progress/kendo-data-query';
+import { ExcelService } from '../../../../../common/service/excel.service';
 
 @Component({
   selector: 'ngx-approved-school',
@@ -26,7 +27,7 @@ export class ApprovedSchoolComponent implements OnInit {
   public multiple = false;
   public allowUnsort = true;
 
-  constructor(public gpnRequestService: GpnRequestService, private router: Router,private dialogService: NbDialogService) { }
+  constructor(public gpnRequestService: GpnRequestService,private excelService: ExcelService, private router: Router,private dialogService: NbDialogService) { }
 
   async ngOnInit() {
     this.loading = true;
@@ -47,6 +48,10 @@ export class ApprovedSchoolComponent implements OnInit {
   public sortChange(sort: SortDescriptor[]): void {
     this.sort = sort;
     this.loadItems();
+}
+exportAsXLSX(): void {
+  debugger
+  this.excelService.exportAsExcelFile(this.listViewModel, 'sample');
 }
   private loadItems(): void {
     if(this.skip == this.listViewModel.length)

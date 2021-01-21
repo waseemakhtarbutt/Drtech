@@ -11,6 +11,7 @@ import { LocationLinkComponent, UserDetailLinkComponent } from '../../../common/
 import { ActivatedRoute } from '@angular/router';
 import { ReportDTO } from '../dto/report-dto';
 import { compileFilter, SortDescriptor, orderBy } from '@progress/kendo-data-query';
+import { ExcelService } from '../../../common/service/excel.service';
 
 @Component({
   selector: 'ngx-report-request',
@@ -40,7 +41,7 @@ export class ReportRequestComponent implements OnInit {
   }];
   public multiple = false;
   public allowUnsort = true;
-  constructor(public requestService: RequestService, public commonService: CommonService, private router: Router, private dialogService: NbDialogService) { }
+  constructor(public requestService: RequestService,private excelService: ExcelService, public commonService: CommonService, private router: Router, private dialogService: NbDialogService) { }
 
   async ngOnInit() {
 
@@ -62,7 +63,10 @@ export class ReportRequestComponent implements OnInit {
       this.DefaultGreenPoints = response.data.greenPointValue;
     }
   }
-
+  exportAsXLSX(): void {
+    debugger
+    this.excelService.exportAsExcelFile(this.listViewModel, 'sample');
+  }
   public pageChange(event: PageChangeEvent): void {
     this.skip = event.skip;
     this.loadItems();

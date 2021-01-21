@@ -10,6 +10,7 @@ import { LocationLinkComponent, UserDetailLinkComponent } from '../../../common/
 import { ActivatedRoute, Router } from '@angular/router';
 import { GridDataResult, PageChangeEvent } from '@progress/kendo-angular-grid';
 import { compileFilter, SortDescriptor, orderBy } from '@progress/kendo-data-query';
+import { ExcelService } from '../../../common/service/excel.service';
 
 @Component({
   selector: 'ngx-regift-request',
@@ -61,7 +62,7 @@ export class RegiftRequestComponent implements OnInit {
   // }];
   public multiple = false;
   public allowUnsort = true;
-  constructor(public requestService: RequestService, public commonService: CommonService, private dialogService: NbDialogService, private route: ActivatedRoute, private router: Router) {
+  constructor(public requestService: RequestService,private excelService: ExcelService, public commonService: CommonService, private dialogService: NbDialogService, private route: ActivatedRoute, private router: Router) {
     this.userId = route.snapshot.paramMap.get("id");
     this.statusId = 1;
   }
@@ -85,6 +86,10 @@ export class RegiftRequestComponent implements OnInit {
     });
 
 
+  }
+  exportAsXLSX(): void {
+    debugger
+    this.excelService.exportAsExcelFile(this.listViewModel, 'sample');
   }
   public onSelect(e) {
     this.router.navigate(["/pages/driver/assign-driver/regift-assign/" + this.gridView.data[e.index % this.pageSize].id]);

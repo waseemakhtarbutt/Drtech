@@ -3,6 +3,7 @@ import { GpnRequestService } from '../../service/gpn-request.service';
 import { GridDataResult, PageChangeEvent } from '@progress/kendo-angular-grid';
 import { NbDialogService, NbDialogRef } from '@nebular/theme';
 import { compileFilter, SortDescriptor, orderBy } from '@progress/kendo-data-query';
+import { ExcelService } from '../../../../common/service/excel.service';
 
 @Component({
   selector: 'ngx-organization',
@@ -24,7 +25,7 @@ export class OrganizationComponent implements OnInit {
   public multiple = false;
   public allowUnsort = true;
 
-  constructor(public gpnRequestService: GpnRequestService,private dialogService: NbDialogService) { }
+  constructor(public gpnRequestService: GpnRequestService,private excelService: ExcelService,private dialogService: NbDialogService) { }
   async ngOnInit() {
     this.loading=true;
     var response = await this.gpnRequestService.GetStgOrganizationList();
@@ -44,7 +45,10 @@ badgeCount() {
  this.organizationBadge = '';
   this.messageEvent.emit(this.organizationBadge)
 }
-
+exportAsXLSX(): void {
+  debugger
+  this.excelService.exportAsExcelFile(this.listViewModel, 'sample');
+}
 public pageChange(event: PageChangeEvent): void {
   this.skip = event.skip;
   this.loadItems();

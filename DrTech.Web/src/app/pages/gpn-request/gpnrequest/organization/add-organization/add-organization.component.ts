@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { GpnRequestService } from '../../../service/gpn-request.service';
 import { NbDialogService, NbDialogRef } from '@nebular/theme';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ExcelService } from '../../../../../common/service/excel.service';
 
 @Component({
   selector: 'ngx-add-organization',
@@ -37,7 +38,7 @@ export class AddOrganizationComponent implements OnInit {
   orgDD: boolean = false;
   loading: boolean = false;
   areaList: any[];
-  constructor(public service: GpnRequestService, private route: ActivatedRoute, private router: Router, private dialogService: NbDialogService, private sanitizer: DomSanitizer) { }
+  constructor(public service: GpnRequestService,  private excelService: ExcelService,private route: ActivatedRoute, private router: Router, private dialogService: NbDialogService, private sanitizer: DomSanitizer) { }
   async ngOnInit() {
 
     var queryParameter = this.route.snapshot.paramMap.get("id");
@@ -121,7 +122,10 @@ export class AddOrganizationComponent implements OnInit {
     }
   }
 
-
+  exportAsXLSX(): void {
+    debugger
+    this.excelService.exportAsExcelFile(this._viewModel, 'sample');
+  }
   public uploadImage(event) {
     if (event.target.files.length == 0) {
       console.log("No file selected!");

@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { GridDataResult, PageChangeEvent } from '@progress/kendo-angular-grid';
 import { DriverService } from '../service/driver.service';
+import { ExcelService } from '../../../common/service/excel.service';
 
 @Component({
   selector: 'ngx-delivered-driverlist',
@@ -18,7 +19,7 @@ export class DeliveredDriverlistComponent implements OnInit {
   public pageSize = 8;
   public skip = 0;
 
-  constructor(public driverService: DriverService) { }
+  constructor(public driverService: DriverService,private excelService: ExcelService) { }
   async ngOnInit() {
     this.loading = true;
   
@@ -29,7 +30,10 @@ export class DeliveredDriverlistComponent implements OnInit {
   }
   this.loading = false
 }
-
+exportAsXLSX(): void {
+  debugger
+  this.excelService.exportAsExcelFile(this.listViewModel, 'sample');
+}
 badgeCount() {
   this.messageEvent.emit(this.deliveredBadge)
 }

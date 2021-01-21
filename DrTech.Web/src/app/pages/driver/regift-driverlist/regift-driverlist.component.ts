@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { PageChangeEvent, GridDataResult } from '@progress/kendo-angular-grid';
 import { DriverService } from '../service/driver.service';
+import { ExcelService } from '../../../common/service/excel.service';
 
 @Component({
   selector: 'ngx-regift-driverlist',
@@ -19,7 +20,7 @@ export class RegiftDriverlistComponent implements OnInit {
   public pageSize = 8;
   public skip = 0;
 
-  constructor(public driverService: DriverService) { }
+  constructor(public driverService: DriverService, private excelService: ExcelService) { }
   async ngOnInit() {
     this.loading = true;
   
@@ -30,7 +31,10 @@ export class RegiftDriverlistComponent implements OnInit {
   }
   this.loading = false
 }
-
+exportAsXLSX(): void {
+  debugger
+  this.excelService.exportAsExcelFile(this.listViewModel, 'sample');
+}
 badgeCount() {
   this.messageEvent.emit(this.regiftBadge)
 }

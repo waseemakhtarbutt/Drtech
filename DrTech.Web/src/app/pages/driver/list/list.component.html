@@ -28,6 +28,12 @@
         </div>
      -->
          <nb-card  [nbSpinner]="loading" nbSpinnerStatus="success" nbSpinnerSize="xlarge">
+          <nb-card-header class="headerText">
+            {{GridHeaderText}}  
+            <button type="button" class="btn btn-success btn-sm"
+            style="font-size: 0.95rem !important; float: right" (click)="exportAsXLSX()" >Downloud Excel File</button>
+            <br>
+          </nb-card-header> 
         <nb-card-body>
 
             <!-- <input class="k-textbox" (input)="searchGrid($event.target.value)" /> -->

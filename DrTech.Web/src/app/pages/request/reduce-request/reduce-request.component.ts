@@ -12,6 +12,7 @@ import { LocationLinkComponent, UserDetailLinkComponent } from '../../../common/
 import { ActivatedRoute } from '@angular/router';
 import { ReduceDTO } from '../../registration-request/dto/reduce-dto';
 import { compileFilter, SortDescriptor, orderBy } from '@progress/kendo-data-query';
+import { ExcelService } from '../../../common/service/excel.service';
 
 @Component({
   selector: 'ngx-reduce-request',
@@ -42,7 +43,7 @@ export class ReduceRequestComponent implements OnInit {
   public multiple = false;
   public allowUnsort = true;
 
-  constructor(public requestService: RequestService, public commonService: CommonService, private router: Router, private dialogService: NbDialogService) { }
+  constructor(public requestService: RequestService,private excelService: ExcelService, public commonService: CommonService, private router: Router, private dialogService: NbDialogService) { }
 
   async ngOnInit() {
 
@@ -69,7 +70,10 @@ export class ReduceRequestComponent implements OnInit {
       this.DefaultGreenPoints = response.data.greenPointValue;
     }
   }
-
+  exportAsXLSX(): void {
+    debugger
+    this.excelService.exportAsExcelFile(this.listViewModel, 'sample');
+  }
   public pageChange(event: PageChangeEvent): void {
     this.skip = event.skip;
     this.loadItems();

@@ -2,7 +2,13 @@
   <div class="col-md-12">
 
     <nb-card style="margin-top:10px;">
-      <nb-card-header>{{headerInfo}}</nb-card-header>
+      <!-- <nb-card-header>{{headerInfo}}</nb-card-header> -->
+      <nb-card-header class="headerText">
+        {{GridHeaderText}}  
+        <button type="button" class="btn btn-success btn-sm"
+        style="font-size: 0.95rem !important; float: right" (click)="exportAsXLSX()" >Downloud Excel File</button>
+        <br>
+      </nb-card-header> 
       <nb-card-body>
         <form (ngSubmit)="onSubmit()" #schoolForm="ngForm">
 

@@ -3,6 +3,7 @@ import { GpnRequestService } from '../../../service/gpn-request.service';
 import { GridDataResult, PageChangeEvent } from '@progress/kendo-angular-grid';
 import { NbDialogService, NbDialogRef } from '@nebular/theme';
 import { compileFilter, SortDescriptor, orderBy } from '@progress/kendo-data-query';
+import { ExcelService } from '../../../../../common/service/excel.service';
 
 @Component({
   selector: 'ngx-school',
@@ -26,7 +27,7 @@ export class SchoolComponent implements OnInit {
   public allowUnsort = true;
 
 
-  constructor(public gpnRequestService: GpnRequestService,private dialogService: NbDialogService) { }
+  constructor(public gpnRequestService: GpnRequestService,private excelService: ExcelService,private dialogService: NbDialogService) { }
   async ngOnInit() {
     this.loading = true;
 
@@ -48,7 +49,10 @@ badgeCount() {
  this.schoolBadge = '';
   this.messageEvent.emit(this.schoolBadge)
 }
-
+exportAsXLSX(): void {
+  debugger
+  this.excelService.exportAsExcelFile(this.listViewModel, 'sample');
+}
 public pageChange(event: PageChangeEvent): void {
   this.skip = event.skip;
   this.loadItems();

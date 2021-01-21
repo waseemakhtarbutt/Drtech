@@ -3,6 +3,7 @@ import { GpnRequestService } from '../../service/gpn-request.service';
 import { GridDataResult, PageChangeEvent } from '@progress/kendo-angular-grid';
 import { NbDialogService, NbDialogRef } from '@nebular/theme';
 import { compileFilter, SortDescriptor, orderBy } from '@progress/kendo-data-query';
+import { ExcelService } from '../../../../common/service/excel.service';
 
 @Component({
   selector: 'ngx-business',
@@ -25,7 +26,7 @@ export class BusinessComponent implements OnInit {
   }];
   public multiple = false;
   public allowUnsort = true;
-  constructor(public gpnRequestService: GpnRequestService,private dialogService: NbDialogService) { }
+  constructor(public gpnRequestService: GpnRequestService,private excelService: ExcelService,private dialogService: NbDialogService) { }
   async ngOnInit() {
     this.loading=true;
     var response = await this.gpnRequestService.GetStgBusinessList();
@@ -60,7 +61,10 @@ private loadItems(): void {
   };
   this.badgeCount();
 }
-
+exportAsXLSX(): void {
+  debugger
+  this.excelService.exportAsExcelFile(this.listViewModel, 'sample');
+}
 async deleteBusiness(id,dialog: NbDialogRef<any>)
 {
   dialog.close();

@@ -268,23 +268,26 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                         join status in context.Status on rc.StatusID equals status.ID
                                         join users in context.Users on rc.UserID equals users.ID
                                         join city in context.Cities on users.CityId equals city.ID
+                                        join area in context.Areas on users.AreaID equals area.ID
 
                                         where (StatusID > 0 && rc.StatusID == StatusID && sub.IsParent == true) || (StatusID == 0 && sub.IsParent == true)
                                         select new
                                         {
                                             rc.ID,
-                                            sub.Description,
-                                            rc.GreenPoints,
+                                            //sub.Description,
+                                           // rc.GreenPoints,
                                             statusDescription = status.StatusName,
-                                            users.Longitude,
-                                            users.Latitude,
+                                            //users.Longitude,
+                                            //users.Latitude,
                                             userId = users.ID,
                                             userName = users.FullName,
-                                            rc.FileName,
+                                           /// rc.FileName,
                                             rc.CreatedDate,
                                             city.CityName,
+                                            areaName=  area.Name,
+                                            users.Address,
                                             collectorDateTime = GetLocalDateTimeFromUTC(rc.CollectorDateTime).ToString("MMM dd, yyyy h:mm tt"),
-                                            updatedDate = Convert.ToDateTime(rc.CreatedDate).ToString("MMM dd, yyyy "),
+                                            ///updatedDate = Convert.ToDateTime(rc.CreatedDate).ToString("MMM dd, yyyy "),
                                         }).OrderByDescending(o => o.CreatedDate).ToList<object>();
 
             return mdlRecycles;

@@ -20,6 +20,12 @@
   <!-- <nb-card-header>
     Regift List
   </nb-card-header> -->
+  <nb-card-header class="headerText">
+    {{GridHeaderText}}  
+    <button type="button" class="btn btn-success btn-sm"
+    style="font-size: 0.95rem !important; float: right" (click)="exportAsXLSX()" >Downloud Excel File</button>
+    <br>
+  </nb-card-header> 
   <nb-card-body>
     <kendo-grid [data]="gridView" [pageSize]="pageSize" [pageable]="true" [height]="600" [skip]="skip" [sortable]="{
       allowUnsort: allowUnsort,

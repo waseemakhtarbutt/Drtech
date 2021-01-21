@@ -3,6 +3,7 @@ import { GridDataResult, PageChangeEvent } from '@progress/kendo-angular-grid';
 import {GpnRequestService} from '../../../service/gpn-request.service'
 import { Router } from '@angular/router';
 import { compileFilter, SortDescriptor, orderBy } from '@progress/kendo-data-query';
+import { ExcelService } from '../../../../../common/service/excel.service';
 
 @Component({
   selector: 'ngx-suspended-business',
@@ -23,7 +24,7 @@ export class SuspendedBusinessComponent implements OnInit {
   }];
   public multiple = false;
   public allowUnsort = true;
-  constructor(public gpnRequestService: GpnRequestService, private router: Router) { }
+  constructor(public gpnRequestService: GpnRequestService, private excelService: ExcelService,private router: Router) { }
 
   async ngOnInit() {
     this.loading = true;
@@ -35,7 +36,10 @@ export class SuspendedBusinessComponent implements OnInit {
     }
     this.loading=false;
   }
-
+  exportAsXLSX(): void {
+    debugger
+    this.excelService.exportAsExcelFile(this.listViewModel, 'sample');
+  }
   badgeCount() {
     if(!!this.listViewModel){
       this.businessBadge = (this.listViewModel.length == 0 ? '' : this.listViewModel.length);

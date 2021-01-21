@@ -4,6 +4,7 @@ import {GpnRequestService} from '../../../service/gpn-request.service'
 import { Router } from '@angular/router';
 import { NbDialogService, NbDialogRef } from '@nebular/theme';
 import { compileFilter, SortDescriptor, orderBy } from '@progress/kendo-data-query';
+import { ExcelService } from '../../../../../common/service/excel.service';
 
 @Component({
   selector: 'ngx-suspended-organization',
@@ -24,7 +25,7 @@ export class SuspendedOrganizationComponent implements OnInit {
   }];
   public multiple = false;
   public allowUnsort = true;
-  constructor(public gpnRequestService: GpnRequestService, private router: Router,private dialogService: NbDialogService) { }
+  constructor(public gpnRequestService: GpnRequestService,private excelService: ExcelService, private router: Router,private dialogService: NbDialogService) { }
 
   async ngOnInit() {
     this.loading = true;
@@ -36,7 +37,10 @@ export class SuspendedOrganizationComponent implements OnInit {
     }
     this.loading=false;
   }
-
+  exportAsXLSX(): void {
+    debugger
+    this.excelService.exportAsExcelFile(this.listViewModel, 'sample');
+  }
   badgeCount() {
     if(!!this.listViewModel){
       this.organizationBadge = (this.listViewModel.length == 0 ? '' : this.listViewModel.length);

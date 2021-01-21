@@ -4,6 +4,7 @@ import {GpnRequestService} from '../../../service/gpn-request.service'
 import { Router } from '@angular/router';
 import { NbDialogService, NbDialogRef } from '@nebular/theme';
 import { compileFilter, SortDescriptor, orderBy } from '@progress/kendo-data-query';
+import { ExcelService } from '../../../../../common/service/excel.service';
 
 @Component({
   selector: 'ngx-approved-organization',
@@ -24,7 +25,7 @@ export class ApprovedOrganizationComponent implements OnInit {
   }];
   public multiple = false;
   public allowUnsort = true;
-  constructor(public gpnRequestService: GpnRequestService, private router: Router,private dialogService: NbDialogService) { }
+  constructor(public gpnRequestService: GpnRequestService,private excelService: ExcelService, private router: Router,private dialogService: NbDialogService) { }
 
   async ngOnInit() {
     this.loading = true;
@@ -73,7 +74,10 @@ export class ApprovedOrganizationComponent implements OnInit {
     }
   }
 }
-
+exportAsXLSX(): void {
+  debugger
+  this.excelService.exportAsExcelFile(this.listViewModel, 'sample');
+}
 onComplaintAction(dialog: TemplateRef<any>, id: any) {
   //this.updatedStatus = event.data.status;
   const dialogRef = this.dialogService.open(

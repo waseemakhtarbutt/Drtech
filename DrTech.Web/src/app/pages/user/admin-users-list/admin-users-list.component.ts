@@ -5,6 +5,7 @@ import { CompositeFilterDescriptor, filterBy, compileFilter, SortDescriptor, ord
 import { NbDialogService, NbDialogRef } from '@nebular/theme';
 import { LocalDataSource } from 'ng2-smart-table';
 import { UserService } from '../service/user-service';
+import { ExcelService } from '../../../common/service/excel.service';
 
 
 @Component({
@@ -34,7 +35,7 @@ export class AdminUsersListComponent implements OnInit {
   }];
   public multiple = false;
   public allowUnsort = true;
-  constructor(public userService: UserService, private router: Router) { }
+  constructor(public userService: UserService, private excelService: ExcelService,private router: Router) { }
   async ngOnInit() {
 
     this.reloadGrid();
@@ -56,7 +57,10 @@ export class AdminUsersListComponent implements OnInit {
     //   this.DefaultGreenPoints = response.data.greenPointValue;
     // }
   }
-
+  exportAsXLSX(): void {
+    debugger
+    this.excelService.exportAsExcelFile(this.listViewModel, 'sample');
+  }
   public pageChange(event: PageChangeEvent): void {
     this.skip = event.skip;
     this.loadItems();

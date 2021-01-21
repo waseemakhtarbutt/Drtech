@@ -4,6 +4,7 @@ import {DriverService} from '../service/driver.service'
 import { Router } from '@angular/router';
 import { CompositeFilterDescriptor, filterBy, compileFilter, SortDescriptor, orderBy } from '@progress/kendo-data-query';
 import { NbDialogService, NbDialogRef } from '@nebular/theme';
+import { ExcelService } from '../../../common/service/excel.service';
 
 @Component({
   selector: 'ngx-list',
@@ -28,7 +29,7 @@ export class ListComponent implements OnInit {
   }];
   public multiple = false;
   public allowUnsort = true;
-  constructor(public driverService: DriverService, private router: Router, private dialogService: NbDialogService) { }
+  constructor(public driverService: DriverService, private excelService: ExcelService,private router: Router, private dialogService: NbDialogService) { }
 
   async ngOnInit() {
     this.LoadData();
@@ -70,7 +71,10 @@ export class ListComponent implements OnInit {
    else
    this.driverBadge = '';
   }
-
+  exportAsXLSX(): void {
+    debugger
+    this.excelService.exportAsExcelFile(this.listViewModel, 'sample');
+  }
   onComplaintAction(dialog: TemplateRef<any>, event: any, id: any) {
     this.driverName = this.listViewModel.find(x=>x.id==id).fullName;
     this.deleteDriver(id)
