@@ -17,6 +17,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { ChartsModule } from '@progress/kendo-angular-charts';
 import { ProgressComponent } from './progress/progress.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { BranchesComparisionComponent } from './branches-comparision/branches-comparision.component';
 
 @NgModule({
   imports: [
@@ -42,7 +43,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     AdminStudentListComponent,
     AdminStaffListComponent,
     ComparisonComponent,
-    ProgressComponent
+    ProgressComponent,
+    BranchesComparisionComponent
   ],
   exports: [...routedComponents ],
 })
