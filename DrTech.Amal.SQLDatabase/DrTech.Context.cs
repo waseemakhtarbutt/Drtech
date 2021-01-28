@@ -91,6 +91,7 @@ namespace DrTech.Amal.SQLDatabase
         public virtual DbSet<GCRedeem> GCRedeems { get; set; }
         public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
         public virtual DbSet<UserPayment> UserPayments { get; set; }
+        public virtual DbSet<AddWeight> AddWeights { get; set; }
     
         public virtual ObjectResult<GetGOIChart_Result> GetGOIChart(Nullable<int> userID)
         {

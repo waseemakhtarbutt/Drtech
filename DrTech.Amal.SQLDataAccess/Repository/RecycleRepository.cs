@@ -355,7 +355,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                 // Recycle
 
                 Recycle mdlRecycle = context.Recycles.Include(x=>x.RecycleSubItems).First(x => x.ID == _mdlRecycleVM.ID);
-                DateTime dateTime = Convert.ToDateTime(_mdlRecycleVM.CollectorDate);
+                DateTime dateTime = Convert.ToDateTime(_mdlRecycleVM.CollectDate);
 
                 mdlRecycle.CollectorDateTime = Utility.GetLocalDateTimeFromUTC(dateTime);
 

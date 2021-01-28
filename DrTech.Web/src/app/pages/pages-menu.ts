@@ -85,7 +85,7 @@ export const MENU_ITEMS_ADMIN: NbMenuItem[] = [
       },
 
       {
-        title: 'Bin',
+        title: 'Amal MarketPlace',
         link: '/pages/request/buybin',
       },
     ],

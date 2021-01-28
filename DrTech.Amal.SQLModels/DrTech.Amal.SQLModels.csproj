@@ -44,6 +44,9 @@
     <Compile Include="Ad.cs">
       <DependentUpon>DrTech.tt</DependentUpon>
     </Compile>
+    <Compile Include="AddWeight.cs">
+      <DependentUpon>DrTech.tt</DependentUpon>
+    </Compile>
     <Compile Include="AdType.cs">
       <DependentUpon>DrTech.tt</DependentUpon>
     </Compile>

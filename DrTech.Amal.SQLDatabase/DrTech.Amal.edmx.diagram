@@ -157,6 +157,10 @@
         <AssociationConnector Association="DrTech.Amal.Model.FK__BuyBin__UserPaym__3D7E1B63" />
         <AssociationConnector Association="DrTech.Amal.Model.FK__UserPayme__Payme__39AD8A7F" />
         <AssociationConnector Association="DrTech.Amal.Model.FK__UserPayme__UserI__34E8D562" />
+        <AssociationConnector Association="DrTech.Amal.Model.FK__AddWeight__AreaI__62CF9BA3" />
+        <AssociationConnector Association="DrTech.Amal.Model.FK__AddWeight__AreaI__63C3BFDC" />
+        <AssociationConnector Association="DrTech.Amal.Model.FK__AddWeight__AreaI__679450C0" />
+        <AssociationConnector Association="DrTech.Amal.Model.FK__AddWeight__AreaI__688874F9" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

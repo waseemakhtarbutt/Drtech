@@ -138,6 +138,8 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                    select new
                                    {
                                        subrec.Description,
+                                       subrec.Weight,
+                                       subrec.GreenPoints,
                                        fullName = string.Concat(drv.FirstName, drv.LastName),
                                        vch.VehicleName,
                                        drv.RegNumber,
@@ -163,6 +165,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                    select new
                                    {
                                        dtl.Description,
+                                       
                                        fullName = string.Concat(drv.FirstName, drv.LastName),
                                        vch.VehicleName,
                                        drv.RegNumber,

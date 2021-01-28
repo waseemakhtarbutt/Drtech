@@ -21,6 +21,20 @@
           <Property Name="IsActive" Type="bit" />
           <Property Name="CityID" Type="int" />
         </EntityType>
+        <EntityType Name="AddWeight">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Weight" Type="varchar(max)" />
+          <Property Name="AreaID" Type="int" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CityID" Type="int" />
+        </EntityType>
         <EntityType Name="AdType">
           <Key>
             <PropertyRef Name="ID" />
@@ -401,6 +415,7 @@
           <Property Name="FileName" Type="varchar(max)" />
           <Property Name="Gender" Type="nvarchar" MaxLength="50" />
           <Property Name="Location" Type="nvarchar" MaxLength="200" />
+          <Property Name="AreaName" Type="nvarchar" MaxLength="150" />
         </EntityType>
         <EntityType Name="NGONeeds">
           <Key>
@@ -615,8 +630,8 @@
           <Property Name="CreatedBy" Type="int" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="UpdatedBy" Type="int" />
-          <Property Name="IsActive" Type="bit" />
           <Property Name="UpdatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
         </EntityType>
         <EntityType Name="RegBusiness">
           <Key>
@@ -1010,14 +1025,14 @@
           <Property Name="OrderPrice" Type="decimal" Precision="18" Scale="2" />
           <Property Name="DeductedFromWallet" Type="decimal" Precision="18" Scale="2" />
           <Property Name="AmountPaid" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="IsSuccess" Type="varchar" MaxLength="100" />
-          <Property Name="batchNumber" Type="varchar" MaxLength="100" />
-          <Property Name="orderRefNumber" Type="varchar" MaxLength="100" />
-          <Property Name="transactionResponse" Type="varchar" MaxLength="100" />
-          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="IsSuccess" Type="nvarchar" MaxLength="100" />
+          <Property Name="batchNumber" Type="varchar" MaxLength="50" />
+          <Property Name="orderRefNumber" Type="varchar" MaxLength="50" />
+          <Property Name="transactionResponse" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
           <Property Name="Mobile" Type="varchar" MaxLength="50" />
           <Property Name="StoreId" Type="varchar" MaxLength="50" />
-          <Property Name="authorizeId" Type="varchar" MaxLength="150" />
+          <Property Name="authorizeId" Type="varchar" MaxLength="50" />
           <Property Name="transactionNumber" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Users">
@@ -1059,8 +1074,7 @@
           <Property Name="CompanyID" Type="int" />
           <Property Name="RefUserID" Type="int" />
           <Property Name="WalletBalance" Type="decimal" Precision="18" Scale="2" />
-          <!--<Property Name="GoogleKey" Type="varchar" MaxLength="100" />
-          <Property Name="GoogleName" Type="varchar" MaxLength="100" />-->
+          <Property Name="AreaName" Type="nvarchar" MaxLength="150" />
         </EntityType>
         <EntityType Name="UserType">
           <Key>
@@ -1129,7 +1143,7 @@
           <Property Name="UpdatedDate" Type="datetime2" Precision="7" />
           <Property Name="IsActive" Type="bit" />
         </EntityType>
-        <Association Name="FK__Ad__AdTypeID__2B5F6B28">
+        <Association Name="FK__Ad__AdTypeID__75235608">
           <End Role="AdType" Type="Self.AdType" Multiplicity="0..1" />
           <End Role="Ad" Type="Self.Ad" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1141,7 +1155,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Ad__AdTypeID__2F2FFC0C">
+        <Association Name="FK__Ad__AdTypeID__76177A41">
           <End Role="AdType" Type="Self.AdType" Multiplicity="0..1" />
           <End Role="Ad" Type="Self.Ad" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1153,7 +1167,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Ad__AreaID__2C538F61">
+        <Association Name="FK__Ad__AreaID__770B9E7A">
           <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
           <End Role="Ad" Type="Self.Ad" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1165,7 +1179,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Ad__AreaID__30242045">
+        <Association Name="FK__Ad__AreaID__77FFC2B3">
           <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
           <End Role="Ad" Type="Self.Ad" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1177,7 +1191,55 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__BuyBin__UserPaym__3D7E1B63">
+        <Association Name="FK__AddWeight__AreaI__62CF9BA3">
+          <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+          <End Role="AddWeight" Type="Self.AddWeight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AddWeight">
+              <PropertyRef Name="AreaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AddWeight__AreaI__63C3BFDC">
+          <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+          <End Role="AddWeight" Type="Self.AddWeight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AddWeight">
+              <PropertyRef Name="AreaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AddWeight__AreaI__679450C0">
+          <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+          <End Role="AddWeight" Type="Self.AddWeight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AddWeight">
+              <PropertyRef Name="AreaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AddWeight__AreaI__688874F9">
+          <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+          <End Role="AddWeight" Type="Self.AddWeight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AddWeight">
+              <PropertyRef Name="AreaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BuyBin__UserPaym__07420643">
           <End Role="UserPayment" Type="Self.UserPayment" Multiplicity="0..1" />
           <End Role="BuyBin" Type="Self.BuyBin" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1189,7 +1251,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RecycleSu__Waste__6F4A8121">
+        <Association Name="FK__RecycleSu__Waste__3DD3211E">
           <End Role="WasteType" Type="Self.WasteType" Multiplicity="0..1" />
           <End Role="RecycleSubItems" Type="Self.RecycleSubItems" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1201,7 +1263,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserPayme__Payme__39AD8A7F">
+        <Association Name="FK__RecycleSu__Waste__5F3414E9">
+          <End Role="WasteType" Type="Self.WasteType" Multiplicity="0..1" />
+          <End Role="RecycleSubItems" Type="Self.RecycleSubItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WasteType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RecycleSubItems">
+              <PropertyRef Name="WasteTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserPayme__Payme__0371755F">
           <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="0..1" />
           <End Role="UserPayment" Type="Self.UserPayment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1213,7 +1287,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserPayme__UserI__34E8D562">
+        <Association Name="FK__UserPayme__UserI__7FA0E47B">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="UserPayment" Type="Self.UserPayment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1225,7 +1299,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Users__AreaID__36470DEF">
+        <Association Name="FK__Users__AreaID__520F23F5">
           <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1501,18 +1575,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RecycleSubItems_Recycle">
-          <End Role="Recycle" Type="Self.Recycle" Multiplicity="1" />
-          <End Role="RecycleSubItems" Type="Self.RecycleSubItems" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Recycle">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="RecycleSubItems">
-              <PropertyRef Name="RecycleID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_RecycleSubItemsTypes_RecycleSubItems">
           <End Role="RecycleSubItems" Type="Self.RecycleSubItems" Multiplicity="0..1" />
           <End Role="RecycleSubItemsTypes" Type="Self.RecycleSubItemsTypes" Multiplicity="*" />
@@ -1534,18 +1596,6 @@
             </Principal>
             <Dependent Role="RecycleSubItemsTypes">
               <PropertyRef Name="WasteTypeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Refuse_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Refuse" Type="Self.Refuse" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Refuse">
-              <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1766,6 +1816,7 @@
         </Function>
         <EntityContainer Name="DrTechAmalModelStoreContainer">
           <EntitySet Name="Ad" EntityType="Self.Ad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AddWeight" EntityType="Self.AddWeight" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdType" EntityType="Self.AdType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BinDetails" EntityType="Self.BinDetails" Schema="dbo" store:Type="Tables" />
@@ -1828,39 +1879,59 @@
           <EntitySet Name="WasteType" EntityType="Self.WasteType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WetWasteSchedule" EntityType="Self.WetWasteSchedule" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WorkingHours" EntityType="Self.WorkingHours" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Ad__AdTypeID__2B5F6B28" Association="Self.FK__Ad__AdTypeID__2B5F6B28">
+          <AssociationSet Name="FK__Ad__AdTypeID__75235608" Association="Self.FK__Ad__AdTypeID__75235608">
             <End Role="AdType" EntitySet="AdType" />
             <End Role="Ad" EntitySet="Ad" />
           </AssociationSet>
-          <AssociationSet Name="FK__Ad__AdTypeID__2F2FFC0C" Association="Self.FK__Ad__AdTypeID__2F2FFC0C">
+          <AssociationSet Name="FK__Ad__AdTypeID__76177A41" Association="Self.FK__Ad__AdTypeID__76177A41">
             <End Role="AdType" EntitySet="AdType" />
             <End Role="Ad" EntitySet="Ad" />
           </AssociationSet>
-          <AssociationSet Name="FK__Ad__AreaID__2C538F61" Association="Self.FK__Ad__AreaID__2C538F61">
+          <AssociationSet Name="FK__Ad__AreaID__770B9E7A" Association="Self.FK__Ad__AreaID__770B9E7A">
             <End Role="Area" EntitySet="Area" />
             <End Role="Ad" EntitySet="Ad" />
           </AssociationSet>
-          <AssociationSet Name="FK__Ad__AreaID__30242045" Association="Self.FK__Ad__AreaID__30242045">
+          <AssociationSet Name="FK__Ad__AreaID__77FFC2B3" Association="Self.FK__Ad__AreaID__77FFC2B3">
             <End Role="Area" EntitySet="Area" />
             <End Role="Ad" EntitySet="Ad" />
           </AssociationSet>
-          <AssociationSet Name="FK__BuyBin__UserPaym__3D7E1B63" Association="Self.FK__BuyBin__UserPaym__3D7E1B63">
+          <AssociationSet Name="FK__AddWeight__AreaI__62CF9BA3" Association="Self.FK__AddWeight__AreaI__62CF9BA3">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="AddWeight" EntitySet="AddWeight" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AddWeight__AreaI__63C3BFDC" Association="Self.FK__AddWeight__AreaI__63C3BFDC">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="AddWeight" EntitySet="AddWeight" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AddWeight__AreaI__679450C0" Association="Self.FK__AddWeight__AreaI__679450C0">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="AddWeight" EntitySet="AddWeight" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AddWeight__AreaI__688874F9" Association="Self.FK__AddWeight__AreaI__688874F9">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="AddWeight" EntitySet="AddWeight" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BuyBin__UserPaym__07420643" Association="Self.FK__BuyBin__UserPaym__07420643">
             <End Role="UserPayment" EntitySet="UserPayment" />
             <End Role="BuyBin" EntitySet="BuyBin" />
           </AssociationSet>
-          <AssociationSet Name="FK__RecycleSu__Waste__6F4A8121" Association="Self.FK__RecycleSu__Waste__6F4A8121">
+          <AssociationSet Name="FK__RecycleSu__Waste__3DD3211E" Association="Self.FK__RecycleSu__Waste__3DD3211E">
             <End Role="WasteType" EntitySet="WasteType" />
             <End Role="RecycleSubItems" EntitySet="RecycleSubItems" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserPayme__Payme__39AD8A7F" Association="Self.FK__UserPayme__Payme__39AD8A7F">
+          <AssociationSet Name="FK__RecycleSu__Waste__5F3414E9" Association="Self.FK__RecycleSu__Waste__5F3414E9">
+            <End Role="WasteType" EntitySet="WasteType" />
+            <End Role="RecycleSubItems" EntitySet="RecycleSubItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserPayme__Payme__0371755F" Association="Self.FK__UserPayme__Payme__0371755F">
             <End Role="PaymentMethod" EntitySet="PaymentMethod" />
             <End Role="UserPayment" EntitySet="UserPayment" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserPayme__UserI__34E8D562" Association="Self.FK__UserPayme__UserI__34E8D562">
+          <AssociationSet Name="FK__UserPayme__UserI__7FA0E47B" Association="Self.FK__UserPayme__UserI__7FA0E47B">
             <End Role="Users" EntitySet="Users" />
             <End Role="UserPayment" EntitySet="UserPayment" />
           </AssociationSet>
-          <AssociationSet Name="FK__Users__AreaID__36470DEF" Association="Self.FK__Users__AreaID__36470DEF">
+          <AssociationSet Name="FK__Users__AreaID__520F23F5" Association="Self.FK__Users__AreaID__520F23F5">
             <End Role="Area" EntitySet="Area" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
@@ -1952,10 +2023,6 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="RecycleComments" EntitySet="RecycleComments" />
           </AssociationSet>
-          <AssociationSet Name="FK_RecycleSubItems_Recycle" Association="Self.FK_RecycleSubItems_Recycle">
-            <End Role="Recycle" EntitySet="Recycle" />
-            <End Role="RecycleSubItems" EntitySet="RecycleSubItems" />
-          </AssociationSet>
           <AssociationSet Name="FK_RecycleSubItemsTypes_RecycleSubItems" Association="Self.FK_RecycleSubItemsTypes_RecycleSubItems">
             <End Role="RecycleSubItems" EntitySet="RecycleSubItems" />
             <End Role="RecycleSubItemsTypes" EntitySet="RecycleSubItemsTypes" />
@@ -1963,10 +2030,6 @@
           <AssociationSet Name="FK_RecycleSubItemsTypes_WasteType" Association="Self.FK_RecycleSubItemsTypes_WasteType">
             <End Role="WasteType" EntitySet="WasteType" />
             <End Role="RecycleSubItemsTypes" EntitySet="RecycleSubItemsTypes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Refuse_Users" Association="Self.FK_Refuse_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Refuse" EntitySet="Refuse" />
           </AssociationSet>
           <AssociationSet Name="FK_Regift_LookupType" Association="Self.FK_Regift_LookupType">
             <End Role="LookupType" EntitySet="LookupType" />
@@ -2480,6 +2543,23 @@
             <End Role="User" EntitySet="Users" />
             <End Role="UserPayment" EntitySet="UserPayments" />
           </AssociationSet>
+          <EntitySet Name="AddWeights" EntityType="DrTech.Amal.Model.AddWeight" />
+          <AssociationSet Name="FK__AddWeight__AreaI__62CF9BA3" Association="DrTech.Amal.Model.FK__AddWeight__AreaI__62CF9BA3">
+            <End Role="Area" EntitySet="Areas" />
+            <End Role="AddWeight" EntitySet="AddWeights" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AddWeight__AreaI__63C3BFDC" Association="DrTech.Amal.Model.FK__AddWeight__AreaI__63C3BFDC">
+            <End Role="Area" EntitySet="Areas" />
+            <End Role="AddWeight" EntitySet="AddWeights" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AddWeight__AreaI__679450C0" Association="DrTech.Amal.Model.FK__AddWeight__AreaI__679450C0">
+            <End Role="Area" EntitySet="Areas" />
+            <End Role="AddWeight" EntitySet="AddWeights" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AddWeight__AreaI__688874F9" Association="DrTech.Amal.Model.FK__AddWeight__AreaI__688874F9">
+            <End Role="Area" EntitySet="Areas" />
+            <End Role="AddWeight" EntitySet="AddWeights" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Area">
           <Key>
@@ -2498,6 +2578,10 @@
           <NavigationProperty Name="City" Relationship="DrTech.Amal.Model.FK_Area_City" FromRole="Area" ToRole="City" />
           <NavigationProperty Name="Ads" Relationship="DrTech.Amal.Model.FK__Ad__AreaID__2C538F61" FromRole="Area" ToRole="Ad" />
           <NavigationProperty Name="Ads1" Relationship="DrTech.Amal.Model.FK__Ad__AreaID__30242045" FromRole="Area" ToRole="Ad" />
+          <NavigationProperty Name="AddWeights" Relationship="DrTech.Amal.Model.FK__AddWeight__AreaI__62CF9BA3" FromRole="Area" ToRole="AddWeight" />
+          <NavigationProperty Name="AddWeights1" Relationship="DrTech.Amal.Model.FK__AddWeight__AreaI__63C3BFDC" FromRole="Area" ToRole="AddWeight" />
+          <NavigationProperty Name="AddWeights2" Relationship="DrTech.Amal.Model.FK__AddWeight__AreaI__679450C0" FromRole="Area" ToRole="AddWeight" />
+          <NavigationProperty Name="AddWeights3" Relationship="DrTech.Amal.Model.FK__AddWeight__AreaI__688874F9" FromRole="Area" ToRole="AddWeight" />
         </EntityType>
         <EntityType Name="BinDetail">
           <Key>
@@ -2838,6 +2922,7 @@
           <NavigationProperty Name="Organization" Relationship="DrTech.Amal.Model.FK_Members_Organization" FromRole="Member" ToRole="Organization" />
           <NavigationProperty Name="User" Relationship="DrTech.Amal.Model.FK_Members_Users" FromRole="Member" ToRole="User" />
           <NavigationProperty Name="OrgnizationGP_Log" Relationship="DrTech.Amal.Model.FK_OrgnizationGP_Log_Member" FromRole="Member" ToRole="OrgnizationGP_Log" />
+          <Property Name="AreaName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="NGONeed">
           <Key>
@@ -3469,6 +3554,7 @@
           <Property Name="WalletBalance" Type="Decimal" Precision="18" Scale="2" />
           <NavigationProperty Name="GCRedeems" Relationship="DrTech.Amal.Model.FK_GCRedeem_Users" FromRole="User" ToRole="GCRedeem" />
           <NavigationProperty Name="UserPayments" Relationship="DrTech.Amal.Model.FK__UserPayme__UserI__34E8D562" FromRole="User" ToRole="UserPayment" />
+          <Property Name="AreaName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <!--<Property Name="GoogleKey" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="GoogleName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />-->
         </EntityType>
@@ -4840,14 +4926,14 @@
           <NavigationProperty Name="BuyBins" Relationship="DrTech.Amal.Model.FK__BuyBin__UserPaym__3D7E1B63" FromRole="UserPayment" ToRole="BuyBin" />
           <NavigationProperty Name="PaymentMethod" Relationship="DrTech.Amal.Model.FK__UserPayme__Payme__39AD8A7F" FromRole="UserPayment" ToRole="PaymentMethod" />
           <NavigationProperty Name="User" Relationship="DrTech.Amal.Model.FK__UserPayme__UserI__34E8D562" FromRole="UserPayment" ToRole="User" />
-          <Property Name="IsSuccess" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
-          <Property Name="batchNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="orderRefNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="transactionResponse" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsSuccess" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="batchNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="orderRefNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="transactionResponse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="StoreId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="authorizeId" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="authorizeId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="transactionNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK__BuyBin__UserPaym__3D7E1B63">
@@ -4883,6 +4969,72 @@
             </Principal>
             <Dependent Role="UserPayment">
               <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AddWeight">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Weight" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AreaID" Type="Int32" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="7" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CityID" Type="Int32" />
+          <NavigationProperty Name="Area" Relationship="DrTech.Amal.Model.FK__AddWeight__AreaI__62CF9BA3" FromRole="AddWeight" ToRole="Area" />
+          <NavigationProperty Name="Area1" Relationship="DrTech.Amal.Model.FK__AddWeight__AreaI__63C3BFDC" FromRole="AddWeight" ToRole="Area" />
+          <NavigationProperty Name="Area2" Relationship="DrTech.Amal.Model.FK__AddWeight__AreaI__679450C0" FromRole="AddWeight" ToRole="Area" />
+          <NavigationProperty Name="Area3" Relationship="DrTech.Amal.Model.FK__AddWeight__AreaI__688874F9" FromRole="AddWeight" ToRole="Area" />
+        </EntityType>
+        <Association Name="FK__AddWeight__AreaI__62CF9BA3">
+          <End Type="DrTech.Amal.Model.Area" Role="Area" Multiplicity="0..1" />
+          <End Type="DrTech.Amal.Model.AddWeight" Role="AddWeight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AddWeight">
+              <PropertyRef Name="AreaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AddWeight__AreaI__63C3BFDC">
+          <End Type="DrTech.Amal.Model.Area" Role="Area" Multiplicity="0..1" />
+          <End Type="DrTech.Amal.Model.AddWeight" Role="AddWeight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AddWeight">
+              <PropertyRef Name="AreaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AddWeight__AreaI__679450C0">
+          <End Type="DrTech.Amal.Model.Area" Role="Area" Multiplicity="0..1" />
+          <End Type="DrTech.Amal.Model.AddWeight" Role="AddWeight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AddWeight">
+              <PropertyRef Name="AreaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AddWeight__AreaI__688874F9">
+          <End Type="DrTech.Amal.Model.Area" Role="Area" Multiplicity="0..1" />
+          <End Type="DrTech.Amal.Model.AddWeight" Role="AddWeight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AddWeight">
+              <PropertyRef Name="AreaID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -5200,6 +5352,7 @@
           <EntitySetMapping Name="Members">
             <EntityTypeMapping TypeName="DrTech.Amal.Model.Member">
               <MappingFragment StoreEntitySet="Members">
+                <ScalarProperty Name="AreaName" ColumnName="AreaName" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
                 <ScalarProperty Name="FileName" ColumnName="FileName" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -5747,6 +5900,7 @@
               <MappingFragment StoreEntitySet="Users">
                 <!--<ScalarProperty Name="GoogleName" ColumnName="GoogleName" />
                 <ScalarProperty Name="GoogleKey" ColumnName="GoogleKey" />-->
+                <ScalarProperty Name="AreaName" ColumnName="AreaName" />
                 <ScalarProperty Name="WalletBalance" ColumnName="WalletBalance" />
                 <ScalarProperty Name="RefUserID" ColumnName="RefUserID" />
                 <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
@@ -6138,6 +6292,21 @@
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AddWeights">
+            <EntityTypeMapping TypeName="DrTech.Amal.Model.AddWeight">
+              <MappingFragment StoreEntitySet="AddWeight">
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -29,7 +29,7 @@ namespace DrTech.Amal.SQLDataAccess.CustomModels
         public string UserAddress { get; set; }
         public string StatusName { get; set; }
         public DateTime? CollectDate { get; set; }
-        public string CollectorDate { get; set; }
+        public DateTime CollectorDate { get; set; }
         public List<RecycleSubItemViewModel> RecycleSubItems { get; set; }
         public int? GPV { get; set; }
         public int TotalGP { get; set; }

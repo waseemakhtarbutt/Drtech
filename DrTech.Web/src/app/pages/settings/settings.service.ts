@@ -53,6 +53,17 @@ export class SettingsService extends BaseService {
   async SaveAD(file, model): Promise<ResponseObject<any>> {
     return await this.UploadData<any>(file, 'UserPayment/AddAdInformation', model);
   }
+  async SaveWeight(model): Promise<ResponseObject<any>> {
+    return await this.Post<any>('UserPayment/AddWeightInformation',model);
+  }
+  GetAllWeight(): Observable<ResponseObject<Array<any>>> {
+    const link = this.baseUrl + 'UserPayment/GetWeight';
+    return this.http.get<ResponseObject<Array<any>>>(link)
+      .pipe(catchError(this.handleError));
+  }
+  async GetWeight(): Promise<ResponseObject<any>> {
+    return await this.Get<any>('UserPayment/GetWeight');
+  }
   async GetAdList(): Promise<ResponseObject<any>> {
     return await this.Get<any>('UserPayment/GetAdList');
   }

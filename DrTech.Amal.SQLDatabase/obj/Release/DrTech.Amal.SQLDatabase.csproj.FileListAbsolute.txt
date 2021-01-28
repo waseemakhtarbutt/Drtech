@@ -12,3 +12,17 @@ D:\Drtech\DrTech.Amal.SQLDatabase\obj\Release\DrTech.Amal.SQLDatabase.csproj.Cor
 D:\Drtech\DrTech.Amal.SQLDatabase\obj\Release\DrTech.Amal.SQLDatabase.csproj.CopyComplete
 D:\Drtech\DrTech.Amal.SQLDatabase\obj\Release\DrTech.Amal.SQLDatabase.dll
 D:\Drtech\DrTech.Amal.SQLDatabase\obj\Release\DrTech.Amal.SQLDatabase.pdb
+E:\Drtech\DrTech.Amal.SQLDatabase\bin\Release\DrTech.Amal.SQLDatabase.dll.config
+E:\Drtech\DrTech.Amal.SQLDatabase\bin\Release\DrTech.Amal.SQLDatabase.dll
+E:\Drtech\DrTech.Amal.SQLDatabase\bin\Release\DrTech.Amal.SQLDatabase.pdb
+E:\Drtech\DrTech.Amal.SQLDatabase\bin\Release\DrTech.Amal.SQLModels.dll
+E:\Drtech\DrTech.Amal.SQLDatabase\bin\Release\EntityFramework.dll
+E:\Drtech\DrTech.Amal.SQLDatabase\bin\Release\EntityFramework.SqlServer.dll
+E:\Drtech\DrTech.Amal.SQLDatabase\bin\Release\DrTech.Amal.SQLModels.pdb
+E:\Drtech\DrTech.Amal.SQLDatabase\bin\Release\EntityFramework.xml
+E:\Drtech\DrTech.Amal.SQLDatabase\bin\Release\EntityFramework.SqlServer.xml
+E:\Drtech\DrTech.Amal.SQLDatabase\obj\Release\DrTech.Amal.SQLDatabase.csprojAssemblyReference.cache
+E:\Drtech\DrTech.Amal.SQLDatabase\obj\Release\DrTech.Amal.SQLDatabase.csproj.CoreCompileInputs.cache
+E:\Drtech\DrTech.Amal.SQLDatabase\obj\Release\DrTech.Amal.SQLDatabase.csproj.CopyComplete
+E:\Drtech\DrTech.Amal.SQLDatabase\obj\Release\DrTech.Amal.SQLDatabase.dll
+E:\Drtech\DrTech.Amal.SQLDatabase\obj\Release\DrTech.Amal.SQLDatabase.pdb

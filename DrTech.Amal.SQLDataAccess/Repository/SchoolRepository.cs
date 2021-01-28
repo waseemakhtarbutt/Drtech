@@ -139,7 +139,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                           reg.Name,
                                           sch.CreatedDate,
                                           sch.FileName,
-                                          greenWorth = GetAllBranchesGreenPointWorth(reg.ID),
+                                          greenWorth = 0,//GetAllBranchesGreenPointWorth(reg.ID),
                                           childrenCount = children.Where(x => x.UserID == UserID && x.IsActive == true).Count(),
                                           staffCount = staff.Where(x => x.UserID == UserID && x.IsActive == true).Count()
 
@@ -174,32 +174,41 @@ namespace DrTech.Amal.SQLDataAccess.Repository
         public int GetAllBranchesGreenPointWorth(int? ParentID)
         {
             int SchoolGreenWorthTotal = 0;
-            var allBranches = context.Schools.Where(x => x.ParentID == ParentID).ToList();
-            if (allBranches.Count > 0)
+            var allschool = context.Schools.Where(x => x.ParentID == ParentID).ToList();
+            if (allschool.Count > 0)
             {
-                foreach (var item in allBranches)
-                {
-                    SchoolGreenWorthTotal += GetSchoolGreenPoints(item.ID);
-                }
-
-                //foreach (var item in allBranches)
-                //{
-
-                //    var allLoggedSchools = context.SchoolGP_Log.Where(x => x.SchoolID == item.ID).ToList();
-                //    if(allLoggedSchools.Count > 0)
-                //    {
-                //        int total = 0;
-                //        foreach (var log in allLoggedSchools)
-                //        {
-                //            total += log.GreenPoints;
-                //        }
-
-                //        //total += allLoggedSchools.Sum(pm => pm.GreenPoints);
-                //        SchoolGreenWorthTotal += total;
-                //    }
-
-                //}
+                SchoolGreenWorthTotal = allschool.Sum(item => item.GreenPoints);
             }
+            else
+            {
+                return 0;
+            }
+            // int SchoolGreenWorthTotal = context.Schools.sum(x => x.ParentID == ParentID).ToList();
+            //if (allBranches.Count > 0)
+            //{
+            //    foreach (var item in allBranches)
+            //    {
+            //        SchoolGreenWorthTotal += GetSchoolGreenPoints(item.ID);
+            //    }
+
+            //    //foreach (var item in allBranches)
+            //    //{
+
+            //    //    var allLoggedSchools = context.SchoolGP_Log.Where(x => x.SchoolID == item.ID).ToList();
+            //    //    if(allLoggedSchools.Count > 0)
+            //    //    {
+            //    //        int total = 0;
+            //    //        foreach (var log in allLoggedSchools)
+            //    //        {
+            //    //            total += log.GreenPoints;
+            //    //        }
+
+            //    //        //total += allLoggedSchools.Sum(pm => pm.GreenPoints);
+            //    //        SchoolGreenWorthTotal += total;
+            //    //    }
+
+            //    //}
+            //}
             return SchoolGreenWorthTotal;
         }
 
@@ -522,7 +531,6 @@ namespace DrTech.Amal.SQLDataAccess.Repository
 
             return mdlChildren;
         }
-
         public List<object> GetStaffListByRole(int? UserID, bool IsSuspended, int? RoleID)
         {
             List<object> mdlStaff = new List<object>();
@@ -1003,7 +1011,6 @@ namespace DrTech.Amal.SQLDataAccess.Repository
 
             return new List<object>();
         }
-
         public List<object> GetClassesBySchool(int? UserId, int? RoleId)
         {
             List<object> mdlClasses = new List<object>();
@@ -1018,7 +1025,6 @@ namespace DrTech.Amal.SQLDataAccess.Repository
 
             return mdlClasses;
         }
-
         public List<object> GetSectionByClass(int? UserId, int? RoleId, string Class)
         {
             List<object> mdlClasses = new List<object>();
@@ -1033,7 +1039,6 @@ namespace DrTech.Amal.SQLDataAccess.Repository
 
             return mdlClasses;
         }
-
         public List<object> GetBranchesBySchoolAdmin(int? UserId)
         {
             List<object> mdlBranches = new List<object>();
@@ -1049,7 +1054,6 @@ namespace DrTech.Amal.SQLDataAccess.Repository
 
             return mdlBranches;
         }
-
         public List<object> GetSchoolComparison(int? BranchId, string Clas, string Sections, string Schools, DateTime FromDate, DateTime ToDate, int? RoleId)
         {
             List<object> mdlList = new List<object>();
@@ -1115,7 +1119,6 @@ namespace DrTech.Amal.SQLDataAccess.Repository
 
             return mdlList;
         }
-
         public List<SchoolsComparisionResult> GetSchoolsBranchesComparisionChartBySchoolAdmin(SchoolsComparisionCriteria filter, int UserID)
         {
 
@@ -1183,7 +1186,6 @@ namespace DrTech.Amal.SQLDataAccess.Repository
 
             return compList;
         }
-
         private List<SchoolsComparisionResult> Yearly(List<SchoolGP_Log> list)
         {
             List<SchoolsComparisionResult> compList = new List<SchoolsComparisionResult>();
@@ -1281,14 +1283,12 @@ namespace DrTech.Amal.SQLDataAccess.Repository
             //compList.OrderBy(x => x.Series.OrderBy(y => y.name)).ToList();
             return compList;
         }
-
         static string getAbbreviatedName(int month)
         {
             DateTime date = new DateTime(2021, month, 1);
 
             return date.ToString("MMM");
         }
-
         public List<Records> GetSchoolsBranchesComparisionPieChartBySchoolAdmin(int UserID)
         {
             
@@ -1320,7 +1320,6 @@ namespace DrTech.Amal.SQLDataAccess.Repository
 
             return compList;
         }
-
         public List<Records> GetSchoolsBranchesStudentsPieChartBySchoolAdmin(int UserID)
         {
             List<Records> compList = new List<Records>();

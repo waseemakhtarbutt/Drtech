@@ -21,6 +21,10 @@ namespace DrTech.Amal.SQLModels
             this.WetWasteSchedules = new HashSet<WetWasteSchedule>();
             this.Ads = new HashSet<Ad>();
             this.Ads1 = new HashSet<Ad>();
+            this.AddWeights = new HashSet<AddWeight>();
+            this.AddWeights1 = new HashSet<AddWeight>();
+            this.AddWeights2 = new HashSet<AddWeight>();
+            this.AddWeights3 = new HashSet<AddWeight>();
         }
     
         public int ID { get; set; }
@@ -41,5 +45,13 @@ namespace DrTech.Amal.SQLModels
         public virtual ICollection<Ad> Ads { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ad> Ads1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AddWeight> AddWeights { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AddWeight> AddWeights1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AddWeight> AddWeights2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AddWeight> AddWeights3 { get; set; }
     }
 }

@@ -22,6 +22,9 @@
         <kendo-grid-column field="userName" title="User Name" width="*"></kendo-grid-column>
         <kendo-grid-column field="vehicleName" title="Vehicle" width="*"></kendo-grid-column>
         <kendo-grid-column field="regNumber" title="Vehicle Number" width="*"></kendo-grid-column>
+        <kendo-grid-column field="weight" title="Weight" width="*"  ></kendo-grid-column>
+        <kendo-grid-column field="greenPoints" title="GreenPoints" width="*"  ></kendo-grid-column>
+
         <kendo-grid-column field="Location" title="Location" width="*"  >
         <ng-template kendoGridCellTemplate let-dataItem >
             <span><a href="https://www.google.com/maps/place/{{dataItem.latitude}},{{dataItem.longitude}}/@{{dataItem.latitude}},{{dataItem.longitude}},18z" target="_blank" class="fas fa-map-marker-alt lnk pl30" ></a> </span>

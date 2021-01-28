@@ -33,6 +33,20 @@ namespace DrTech.Amal.SQLServices.Controllers
                 return ServiceResponse.ErrorReponse<List<AdType>>(exp);
             }
         }
+
+        [HttpGet]
+        public ResponseObject<List<AddWeight>> GetWeight()
+        {
+            try
+            {
+                List<AddWeight> getWeight = db.Repository<AddWeight>().GetAll().ToList();
+                return ServiceResponse.SuccessReponse(getWeight, MessageEnum.DefaultSuccessMessage);
+            }
+            catch (Exception exp)
+            {
+                return ServiceResponse.ErrorReponse<List<AddWeight>>(exp);
+            }
+        }
         [HttpGet]
         public ResponseObject<List<object>> GetAdListByType(string type)
         {
@@ -176,6 +190,19 @@ namespace DrTech.Amal.SQLServices.Controllers
                 return ServiceResponse.ErrorReponse<List<object>>(exp);
             }
         }
+        [HttpGet]
+        public ResponseObject<List<object>> GetWeightList()
+        {
+            try
+            {
+                List<object> getAd = db.ExtRepositoryFor<UserPaymentRepository>().GetAdList();
+                return ServiceResponse.SuccessReponse(getAd, MessageEnum.DefaultSuccessMessage);
+            }
+            catch (Exception exp)
+            {
+                return ServiceResponse.ErrorReponse<List<object>>(exp);
+            }
+        }
 
         [HttpPost]
         public async Task<ResponseObject<bool>> AddAdInformation()
@@ -212,6 +239,42 @@ namespace DrTech.Amal.SQLServices.Controllers
                 mdlAd.CreatedBy = (int)UserID;
                 mdlAd.CreatedDate = DateTime.Now;
                 db.Repository<Ad>().Insert(mdlAd);
+                db.Save();
+
+                return ServiceResponse.SuccessReponse(true, MessageEnum.NGOAdded);
+            }
+            catch (DbEntityValidationException e)
+            {
+
+                return ServiceResponse.ErrorReponse<bool>("Text");
+            }
+            catch (Exception exp)
+            {
+                return ServiceResponse.ErrorReponse<bool>(exp);
+            }
+        }
+
+        [HttpPost]
+        public async Task<ResponseObject<bool>> AddWeightInformation()
+        {
+            try
+            {
+                AddWeight mdweight = new AddWeight();
+                if (!Request.Content.IsMimeMultipartContent())
+                {
+                    throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
+                }
+                int? UserID = JwtDecoder.GetUserIdFromToken(Request.Headers.Authorization.Parameter);
+                if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["weight"]))
+                    mdweight.Weight = HttpContext.Current.Request.Form["weight"];
+                if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["AreaID"]))
+                    mdweight.AreaID = Convert.ToInt32(HttpContext.Current.Request.Form["AreaID"].ToString());
+                if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["CityID"]))
+                    mdweight.CityID = Convert.ToInt32(HttpContext.Current.Request.Form["CityID"].ToString());
+                mdweight.IsActive = true;
+                mdweight.CreatedBy = (int)UserID;
+                mdweight.CreatedDate = DateTime.Now;
+                db.Repository<AddWeight>().Insert(mdweight);
                 db.Save();
 
                 return ServiceResponse.SuccessReponse(true, MessageEnum.NGOAdded);

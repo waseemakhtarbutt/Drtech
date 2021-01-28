@@ -39,6 +39,7 @@ namespace DrTech.Amal.SQLModels
         public string Name { get; set; }
         public string FileName { get; set; }
         public string Gender { get; set; }
+        public string AreaName { get; set; }
     
         public virtual Organization Organization { get; set; }
         public virtual User User { get; set; }

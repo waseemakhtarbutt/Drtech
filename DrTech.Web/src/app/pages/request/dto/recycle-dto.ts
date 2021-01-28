@@ -21,7 +21,7 @@ export class RecycleDTO {
   recycleSubItems: Array<RecycleSubItemDTO>;
   collectTime: Date;
   collectDate: Date;
-  collectorDate: string;
+  collectorDate: Date;
   gpv: number;
   totalGP: number;
   orderStatusID: number;

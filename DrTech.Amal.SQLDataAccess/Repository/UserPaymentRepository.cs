@@ -19,6 +19,23 @@ namespace DrTech.Amal.SQLDataAccess.Repository
         {
             dbSet = context.Set<Ad>();
         }
+        public List<object> GetWeightList()
+        {
+            List<object> mdlAD = (from com in context.AddWeights.ToList()
+
+                                  join city in context.Cities on com.CityID equals city.ID
+                                  join area in context.Areas on com.AreaID equals area.ID
+                                  where com.IsActive == true
+                                  select new
+                                  {
+                                      com.ID,
+                                      com.Weight,
+                                      com.CityID,
+                                      City = city.CityName,
+                                      Area = area.Name,
+                                  }).OrderByDescending(o => o.ID).ToList<object>();
+            return mdlAD;
+        }
         #region|Amal Ad's Functionalities|
         public List<object> GetAdList()
         {

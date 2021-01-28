@@ -50,9 +50,6 @@ E:\DrTech\DrTech.Amal.Notifications\bin\Debug\Newtonsoft.Json.dll
 E:\DrTech\DrTech.Amal.Notifications\bin\Debug\DrTech.Amal.SQLDatabase.dll
 E:\DrTech\DrTech.Amal.Notifications\bin\Debug\EntityFramework.dll
 E:\DrTech\DrTech.Amal.Notifications\bin\Debug\EntityFramework.SqlServer.dll
-E:\DrTech\DrTech.Amal.Notifications\bin\Debug\Microsoft.Data.Edm.dll
-E:\DrTech\DrTech.Amal.Notifications\bin\Debug\Microsoft.Data.Services.Client.dll
-E:\DrTech\DrTech.Amal.Notifications\bin\Debug\Microsoft.Data.OData.dll
 E:\DrTech\DrTech.Amal.Notifications\bin\Debug\Microsoft.IdentityModel.Tokens.dll
 E:\DrTech\DrTech.Amal.Notifications\bin\Debug\Microsoft.IdentityModel.Logging.dll
 E:\DrTech\DrTech.Amal.Notifications\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.dll
@@ -159,3 +156,4 @@ D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.Notifications\obj\Debug\DrTec
 D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.Notifications\obj\Debug\DrTech.Amal.Notifications.csproj.CopyComplete
 D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.Notifications\obj\Debug\DrTech.Amal.Notifications.dll
 D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.Notifications\obj\Debug\DrTech.Amal.Notifications.pdb
+E:\Drtech\DrTech.Amal.Notifications\bin\Debug\Newtonsoft.Json.xml

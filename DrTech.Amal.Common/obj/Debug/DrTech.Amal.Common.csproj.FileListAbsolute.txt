@@ -261,9 +261,6 @@ E:\DrTech\DrTech.Amal.Common\bin\Debug\System.Runtime.CompilerServices.Unsafe.dl
 E:\DrTech\DrTech.Amal.Common\bin\Debug\zxing.dll
 E:\DrTech\DrTech.Amal.Common\bin\Debug\zxing.presentation.dll
 E:\DrTech\DrTech.Amal.Common\bin\Debug\NLog.dll
-E:\DrTech\DrTech.Amal.Common\bin\Debug\Microsoft.Data.Edm.dll
-E:\DrTech\DrTech.Amal.Common\bin\Debug\Microsoft.Data.Services.Client.dll
-E:\DrTech\DrTech.Amal.Common\bin\Debug\Microsoft.Data.OData.dll
 E:\DrTech\DrTech.Amal.Common\bin\Debug\DrTech.Amal.ExceptionLogger.pdb
 E:\DrTech\DrTech.Amal.Common\bin\Debug\DrTech.Amal.SQLModels.pdb
 E:\DrTech\DrTech.Amal.Common\bin\Debug\Microsoft.Extensions.Configuration.xml
@@ -580,3 +577,6 @@ D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.Common\obj\Debug\DrTech.Amal.
 D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.Common\obj\Debug\DrTech.Amal.Common.csproj.CopyComplete
 D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.Common\obj\Debug\DrTech.Amal.Common.dll
 D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.Common\obj\Debug\DrTech.Amal.Common.pdb
+E:\Drtech\DrTech.Amal.Common\bin\Debug\Newtonsoft.Json.dll
+E:\Drtech\DrTech.Amal.Common\bin\Debug\Microsoft.WindowsAzure.Storage.pdb
+E:\Drtech\DrTech.Amal.Common\bin\Debug\Newtonsoft.Json.xml

@@ -86,8 +86,8 @@ namespace DrTech.Amal.SQLModels
         public Nullable<int> CompanyID { get; set; }
         public Nullable<int> RefUserID { get; set; }
         public Nullable<decimal> WalletBalance { get; set; }
-        public string GoogleKey { get; set; }
-        public string GoogleName { get; set; }
+        public string AreaName { get; set; }
+    
         public virtual Area Area { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Business> Businesses { get; set; }

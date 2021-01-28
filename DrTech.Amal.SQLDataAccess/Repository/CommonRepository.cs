@@ -654,7 +654,39 @@ namespace DrTech.Amal.SQLDataAccess.Repository
         public ArsRequestCount RequestCounts()
         {
             ArsRequestCount RequestCount = new ArsRequestCount();
-            int submittedRecycles = context.Recycles.Where(x => x.StatusID == 1).ToList().Count();
+            //int submittedRecycles = (from rc in context.Recycles.ToList() 
+            //                         join sub in context.RecycleSubItems on rc.ID equals sub.RecycleID
+            //                         where (rc.StatusID == 1 && sub.IsParent == true)
+            //                         select new
+            //                         {
+            //                             rc.ID
+            //                         }).ToList().Count(); ///context.Recycles.Where(x => x.StatusID == 1).ToList().Count();
+             List<object> mdlRecycles = (from rc in context.Recycles.ToList()
+                                        join sub in context.RecycleSubItems on rc.ID equals sub.RecycleID
+                                        join status in context.Status on rc.StatusID equals status.ID
+                                        join users in context.Users on rc.UserID equals users.ID
+                                        join city in context.Cities on users.CityId equals city.ID
+                                        join area in context.Areas on users.AreaID equals area.ID
+
+                                        where (rc.StatusID == 1 && sub.IsParent == true)
+                                        select new
+                                        {
+                                            rc.ID,
+                                            //sub.Description,
+                                            // rc.GreenPoints,
+                                            statusDescription = status.StatusName,
+                                            //users.Longitude,
+                                            //users.Latitude,
+                                            userId = users.ID,
+                                            userName = users.FullName,
+                                            /// rc.FileName,
+                                            rc.CreatedDate,
+                                            city.CityName,
+                                            areaName = area.Name,
+                                            users.Address,
+                                            ///updatedDate = Convert.ToDateTime(rc.CreatedDate).ToString("MMM dd, yyyy "),
+                                        }).OrderByDescending(o => o.CreatedDate).ToList<object>();
+            int submittedRecycles = mdlRecycles.Count();
             int submittedRegifts = context.Regifts.Where(x => x.StatusID == 1).ToList().Count();
             int submittedReplants = context.Replants.Where(x => x.StatusID == 1).ToList().Count();
             int submittedReuses = context.Reuses.Where(x => x.StatusID == 1).ToList().Count();

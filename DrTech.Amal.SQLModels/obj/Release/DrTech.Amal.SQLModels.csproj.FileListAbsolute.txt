@@ -4,3 +4,9 @@ D:\Drtech\DrTech.Amal.SQLModels\obj\Release\DrTech.Amal.SQLModels.csprojAssembly
 D:\Drtech\DrTech.Amal.SQLModels\obj\Release\DrTech.Amal.SQLModels.csproj.CoreCompileInputs.cache
 D:\Drtech\DrTech.Amal.SQLModels\obj\Release\DrTech.Amal.SQLModels.dll
 D:\Drtech\DrTech.Amal.SQLModels\obj\Release\DrTech.Amal.SQLModels.pdb
+E:\Drtech\DrTech.Amal.SQLModels\bin\Release\DrTech.Amal.SQLModels.dll
+E:\Drtech\DrTech.Amal.SQLModels\bin\Release\DrTech.Amal.SQLModels.pdb
+E:\Drtech\DrTech.Amal.SQLModels\obj\Release\DrTech.Amal.SQLModels.csprojAssemblyReference.cache
+E:\Drtech\DrTech.Amal.SQLModels\obj\Release\DrTech.Amal.SQLModels.csproj.CoreCompileInputs.cache
+E:\Drtech\DrTech.Amal.SQLModels\obj\Release\DrTech.Amal.SQLModels.dll
+E:\Drtech\DrTech.Amal.SQLModels\obj\Release\DrTech.Amal.SQLModels.pdb

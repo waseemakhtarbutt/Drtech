@@ -443,6 +443,23 @@
       <End Role="User" EntitySet="Users" />
       <End Role="UserPayment" EntitySet="UserPayments" />
     </AssociationSet>
+    <EntitySet Name="AddWeights" EntityType="DrTech.Amal.Model.AddWeight" />
+    <AssociationSet Name="FK__AddWeight__AreaI__62CF9BA3" Association="DrTech.Amal.Model.FK__AddWeight__AreaI__62CF9BA3">
+      <End Role="Area" EntitySet="Areas" />
+      <End Role="AddWeight" EntitySet="AddWeights" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AddWeight__AreaI__63C3BFDC" Association="DrTech.Amal.Model.FK__AddWeight__AreaI__63C3BFDC">
+      <End Role="Area" EntitySet="Areas" />
+      <End Role="AddWeight" EntitySet="AddWeights" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AddWeight__AreaI__679450C0" Association="DrTech.Amal.Model.FK__AddWeight__AreaI__679450C0">
+      <End Role="Area" EntitySet="Areas" />
+      <End Role="AddWeight" EntitySet="AddWeights" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AddWeight__AreaI__688874F9" Association="DrTech.Amal.Model.FK__AddWeight__AreaI__688874F9">
+      <End Role="Area" EntitySet="Areas" />
+      <End Role="AddWeight" EntitySet="AddWeights" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Area">
     <Key>
@@ -461,6 +478,10 @@
     <NavigationProperty Name="City" Relationship="DrTech.Amal.Model.FK_Area_City" FromRole="Area" ToRole="City" />
     <NavigationProperty Name="Ads" Relationship="DrTech.Amal.Model.FK__Ad__AreaID__2C538F61" FromRole="Area" ToRole="Ad" />
     <NavigationProperty Name="Ads1" Relationship="DrTech.Amal.Model.FK__Ad__AreaID__30242045" FromRole="Area" ToRole="Ad" />
+    <NavigationProperty Name="AddWeights" Relationship="DrTech.Amal.Model.FK__AddWeight__AreaI__62CF9BA3" FromRole="Area" ToRole="AddWeight" />
+    <NavigationProperty Name="AddWeights1" Relationship="DrTech.Amal.Model.FK__AddWeight__AreaI__63C3BFDC" FromRole="Area" ToRole="AddWeight" />
+    <NavigationProperty Name="AddWeights2" Relationship="DrTech.Amal.Model.FK__AddWeight__AreaI__679450C0" FromRole="Area" ToRole="AddWeight" />
+    <NavigationProperty Name="AddWeights3" Relationship="DrTech.Amal.Model.FK__AddWeight__AreaI__688874F9" FromRole="Area" ToRole="AddWeight" />
   </EntityType>
   <EntityType Name="BinDetail">
     <Key>
@@ -801,6 +822,7 @@
     <NavigationProperty Name="Organization" Relationship="DrTech.Amal.Model.FK_Members_Organization" FromRole="Member" ToRole="Organization" />
     <NavigationProperty Name="User" Relationship="DrTech.Amal.Model.FK_Members_Users" FromRole="Member" ToRole="User" />
     <NavigationProperty Name="OrgnizationGP_Log" Relationship="DrTech.Amal.Model.FK_OrgnizationGP_Log_Member" FromRole="Member" ToRole="OrgnizationGP_Log" />
+    <Property Name="AreaName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="NGONeed">
     <Key>
@@ -1432,6 +1454,7 @@
     <Property Name="WalletBalance" Type="Decimal" Precision="18" Scale="2" />
     <NavigationProperty Name="GCRedeems" Relationship="DrTech.Amal.Model.FK_GCRedeem_Users" FromRole="User" ToRole="GCRedeem" />
     <NavigationProperty Name="UserPayments" Relationship="DrTech.Amal.Model.FK__UserPayme__UserI__34E8D562" FromRole="User" ToRole="UserPayment" />
+    <Property Name="AreaName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <!--<Property Name="GoogleKey" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="GoogleName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />-->
   </EntityType>
@@ -2803,14 +2826,14 @@
     <NavigationProperty Name="BuyBins" Relationship="DrTech.Amal.Model.FK__BuyBin__UserPaym__3D7E1B63" FromRole="UserPayment" ToRole="BuyBin" />
     <NavigationProperty Name="PaymentMethod" Relationship="DrTech.Amal.Model.FK__UserPayme__Payme__39AD8A7F" FromRole="UserPayment" ToRole="PaymentMethod" />
     <NavigationProperty Name="User" Relationship="DrTech.Amal.Model.FK__UserPayme__UserI__34E8D562" FromRole="UserPayment" ToRole="User" />
-    <Property Name="IsSuccess" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
-    <Property Name="batchNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="orderRefNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="transactionResponse" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IsSuccess" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="batchNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="orderRefNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="transactionResponse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="StoreId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="authorizeId" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="authorizeId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="transactionNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="FK__BuyBin__UserPaym__3D7E1B63">
@@ -2846,6 +2869,72 @@
       </Principal>
       <Dependent Role="UserPayment">
         <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="AddWeight">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Weight" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="AreaID" Type="Int32" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+    <Property Name="UpdatedBy" Type="Int32" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="7" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CityID" Type="Int32" />
+    <NavigationProperty Name="Area" Relationship="DrTech.Amal.Model.FK__AddWeight__AreaI__62CF9BA3" FromRole="AddWeight" ToRole="Area" />
+    <NavigationProperty Name="Area1" Relationship="DrTech.Amal.Model.FK__AddWeight__AreaI__63C3BFDC" FromRole="AddWeight" ToRole="Area" />
+    <NavigationProperty Name="Area2" Relationship="DrTech.Amal.Model.FK__AddWeight__AreaI__679450C0" FromRole="AddWeight" ToRole="Area" />
+    <NavigationProperty Name="Area3" Relationship="DrTech.Amal.Model.FK__AddWeight__AreaI__688874F9" FromRole="AddWeight" ToRole="Area" />
+  </EntityType>
+  <Association Name="FK__AddWeight__AreaI__62CF9BA3">
+    <End Type="DrTech.Amal.Model.Area" Role="Area" Multiplicity="0..1" />
+    <End Type="DrTech.Amal.Model.AddWeight" Role="AddWeight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Area">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AddWeight">
+        <PropertyRef Name="AreaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AddWeight__AreaI__63C3BFDC">
+    <End Type="DrTech.Amal.Model.Area" Role="Area" Multiplicity="0..1" />
+    <End Type="DrTech.Amal.Model.AddWeight" Role="AddWeight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Area">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AddWeight">
+        <PropertyRef Name="AreaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AddWeight__AreaI__679450C0">
+    <End Type="DrTech.Amal.Model.Area" Role="Area" Multiplicity="0..1" />
+    <End Type="DrTech.Amal.Model.AddWeight" Role="AddWeight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Area">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AddWeight">
+        <PropertyRef Name="AreaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AddWeight__AreaI__688874F9">
+    <End Type="DrTech.Amal.Model.Area" Role="Area" Multiplicity="0..1" />
+    <End Type="DrTech.Amal.Model.AddWeight" Role="AddWeight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Area">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AddWeight">
+        <PropertyRef Name="AreaID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

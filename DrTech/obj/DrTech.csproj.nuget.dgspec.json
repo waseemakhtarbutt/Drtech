@@ -1,21 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Dev\\Drtech\\DrTech\\DrTech.csproj": {}
+    "E:\\Drtech\\DrTech\\DrTech.csproj": {}
   },
   "projects": {
-    "E:\\Dev\\Drtech\\DrTech\\DrTech.csproj": {
+    "E:\\Drtech\\DrTech\\DrTech.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Dev\\Drtech\\DrTech\\DrTech.csproj",
+        "projectUniqueName": "E:\\Drtech\\DrTech\\DrTech.csproj",
         "projectName": "DrTech",
-        "projectPath": "E:\\Dev\\Drtech\\DrTech\\DrTech.csproj",
-        "packagesPath": "C:\\Users\\ihsan\\.nuget\\packages\\",
-        "outputPath": "E:\\Dev\\Drtech\\DrTech\\obj\\",
+        "projectPath": "E:\\Drtech\\DrTech\\DrTech.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "E:\\Drtech\\DrTech\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\ihsan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.0"
@@ -26,6 +31,7 @@
         },
         "frameworks": {
           "netcoreapp2.0": {
+            "targetAlias": "netcoreapp2.0",
             "projectReferences": {}
           }
         },
@@ -37,6 +43,7 @@
       },
       "frameworks": {
         "netcoreapp2.0": {
+          "targetAlias": "netcoreapp2.0",
           "dependencies": {
             "Microsoft.AspNetCore.All": {
               "target": "Package",
@@ -63,7 +70,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

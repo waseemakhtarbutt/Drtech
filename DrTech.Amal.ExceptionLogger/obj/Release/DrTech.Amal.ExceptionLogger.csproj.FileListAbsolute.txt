@@ -7,3 +7,12 @@ D:\Drtech\DrTech.Amal.ExceptionLogger\obj\Release\DrTech.Amal.ExceptionLogger.cs
 D:\Drtech\DrTech.Amal.ExceptionLogger\obj\Release\DrTech.Amal.ExceptionLogger.csproj.CopyComplete
 D:\Drtech\DrTech.Amal.ExceptionLogger\obj\Release\DrTech.Amal.ExceptionLogger.dll
 D:\Drtech\DrTech.Amal.ExceptionLogger\obj\Release\DrTech.Amal.ExceptionLogger.pdb
+E:\Drtech\DrTech.Amal.ExceptionLogger\bin\Release\DrTech.Amal.ExceptionLogger.dll
+E:\Drtech\DrTech.Amal.ExceptionLogger\bin\Release\DrTech.Amal.ExceptionLogger.pdb
+E:\Drtech\DrTech.Amal.ExceptionLogger\bin\Release\NLog.dll
+E:\Drtech\DrTech.Amal.ExceptionLogger\bin\Release\NLog.xml
+E:\Drtech\DrTech.Amal.ExceptionLogger\obj\Release\DrTech.Amal.ExceptionLogger.csprojAssemblyReference.cache
+E:\Drtech\DrTech.Amal.ExceptionLogger\obj\Release\DrTech.Amal.ExceptionLogger.csproj.CoreCompileInputs.cache
+E:\Drtech\DrTech.Amal.ExceptionLogger\obj\Release\DrTech.Amal.ExceptionLogger.csproj.CopyComplete
+E:\Drtech\DrTech.Amal.ExceptionLogger\obj\Release\DrTech.Amal.ExceptionLogger.dll
+E:\Drtech\DrTech.Amal.ExceptionLogger\obj\Release\DrTech.Amal.ExceptionLogger.pdb

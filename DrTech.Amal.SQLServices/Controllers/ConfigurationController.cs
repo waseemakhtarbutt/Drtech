@@ -181,5 +181,18 @@ namespace DrTech.Amal.SQLServices.Controllers
                 return ServiceResponse.ErrorReponse<List<RefTable>>(exp);
             }
         }
+        [HttpGet]
+        public ResponseObject<RefTable> GetMyWasteGreenPoint()
+        {
+            try
+            {
+                RefTable configuredGPlist = db.Repository<RefTable>().GetAll().Where(x=>x.Type== "MyWaste").FirstOrDefault();
+                return ServiceResponse.SuccessReponse(configuredGPlist, MessageEnum.DefaultSuccessMessage);
+            }
+            catch (Exception exp)
+            {
+                return ServiceResponse.ErrorReponse<RefTable>(exp);
+            }
+        }
     }
 }

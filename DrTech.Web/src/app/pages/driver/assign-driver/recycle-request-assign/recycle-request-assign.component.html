@@ -75,13 +75,13 @@
                   </div>
               </div>
               <div class="row">
-                  <div class="col-md-6">
+                  <!-- <div class="col-md-6">
                       <kendo-timepicker  onkeydown="return false;"   [min]="min" [max]="max" [disabled]="_recycleModel.statusName == 'Declined' || _recycleModel.statusName == 'Delivered'" nbInput name="dt-collectTime" required #collecttime="ngModel" class="picker" [(ngModel)]="_recycleModel.collectTime"></kendo-timepicker>
-                  </div>
+                  </div> -->
                   <div class="col-md-5 pr0">
                       <kendo-datepicker [min]="mindate" [disabled]="_recycleModel.statusName == 'Declined' || _recycleModel.statusName == 'Delivered'" nbInput name="dt-collectDate" required #collectdate="ngModel" class="picker" format="dd MMM yyyy" [(ngModel)]="_recycleModel.collectDate"></kendo-datepicker>
                   </div>
-                  <div [hidden]="(collectdate.valid && collecttime.valid) || _recycleModel.statusName == 'Declined' || _recycleModel.statusName == 'Delivered'" class="col-sm-11" style="width:100%">
+                  <div [hidden]="(collectdate.valid) || _recycleModel.statusName == 'Declined' || _recycleModel.statusName == 'Delivered'" class="col-sm-11" style="width:100%">
                       <div class="vld">Collect Date/Time is not valid!</div>
                   </div>
               </div><br>
@@ -137,7 +137,7 @@
                       <!-- Hide in case of Declined and Complete -->
                         <!-- <button (click)="onRejectAction(dialogReject,$event)" [hidden]="_recycleModel.statusName == 'Declined'  || _recycleModel.statusName == 'Collected'" nbButton status="success" style="float:right" >Reject</button> -->
                     </div>
-                  <div class="col-md-3 pr0" *ngIf="(collectdate.valid && collecttime.valid) && (_recycleModel.statusName != 'Declined' && _recycleModel.statusName != 'Delivered')">
+                  <div class="col-md-3 pr0" *ngIf="(_recycleModel.statusName != 'Declined' && _recycleModel.statusName != 'Delivered')">
                       <button (click)='AssignRecycleToDriver()' nbButton status="success" style="float:right" >
                           <!-- <div *ngIf="(form.valid && _recycleModel.assignTo != -1) && (_recycleModel.statusName != 'Declined'  && _recycleModel.statusName != 'Collected')">Assign Driver</div>
                           <div *ngIf="(form.invalid || _recycleModel.assignTo == -1) && (_recycleModel.statusName != 'Declined'  && _recycleModel.statusName != 'Collected')">Save</div> -->

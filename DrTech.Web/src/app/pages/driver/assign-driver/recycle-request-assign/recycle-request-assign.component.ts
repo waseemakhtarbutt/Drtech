@@ -136,8 +136,8 @@ export class RecycleRequestAssignComponent implements OnInit {
 
   AssignRecycleToDriver() {
     var dt = this._recycleModel.collectDate;
-    var tm = this._recycleModel.collectTime;
-    this._recycleModel.collectorDate = new Date((dt.getMonth()+1) + " " + dt.getDate() +", " + dt.getFullYear() + " " + tm.getHours() + ":" + tm.getMinutes() + ":" + tm.getSeconds()).toLocaleString('ur-PK');
+    //var tm = this._recycleModel.collectTime;
+    this._recycleModel.collectorDate = dt;
 
     this.driverService.AssignRecycleToDriver(this._recycleModel).subscribe(result => {
         this.router.navigate(['/pages/request/recycle']);
