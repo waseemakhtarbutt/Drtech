@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="input-group col-md-2 search-text-box">
+      <input type="text" class="form-control rounded-right  search-text-box" placeholder="Search" name="search"
+        (input)="searchGrid($event.target.value)">
+      <span class="icon-inside"><i class="fas fa-search"></i></span>
+    </div>
+    <div class="input-group col-md-2 search-text-box" style="margin-top: 10px;">
+      <select nbInput class="form-control" [(ngModel)]="updatedStatus" (change)="filterChanged($event)">
+        <option *ngFor="let status of statusList" [value]="status.id">{{status.statusName}}</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+
+<nb-card [nbSpinner]="loading" nbSpinnerStatus="success" nbSpinnerSize="xlarge">
+  <!-- <nb-card-header>
+    Recycle List
+  </nb-card-header> -->
+  <nb-card-header class="headerText">
+    {{GridHeaderText}}  
+    <button type="button" class="btn btn-success btn-sm"
+    style="font-size: 0.95rem !important; float: right" (click)="exportAsXLSX()" >Downloud Excel File</button>
+    <br>
+  </nb-card-header> 
+  <nb-card-body>
+    <kendo-grid [data]="gridView" [pageSize]="pageSize" [pageable]="true" [skip]="skip" [height]="600" [sortable]="{
+      allowUnsort: allowUnsort,
+      mode: multiple ? 'multiple' : 'single'
+      }" [sort]="sort" (sortChange)="sortChange($event)" [selectable]="true" (pageChange)="pageChange($event)"
+    (selectionChange)="onSelect($event)">
+
+      <!-- <kendo-grid-column field="description" title="Description" width="*" [style]="{'font-weight' : 'bold'}"></kendo-grid-column> -->
+      <kendo-grid-column width="40">
+        <ng-template kendoGridCellTemplate let-dataItem>
+          <img src="assets/Icons/Recycal.png" size="small">
+        </ng-template>
+      </kendo-grid-column>
+      <kendo-grid-column field="statusDescription" title="Status" width="*"></kendo-grid-column>
+      <kendo-grid-column field="collectorDateTime" title="Collector DateTime" width="*"></kendo-grid-column>
+     <kendo-grid-column field="cityName" title="City Name" width="*"></kendo-grid-column>
+     <kendo-grid-column field="areaName" title="Area" width="*"></kendo-grid-column>
+     <kendo-grid-column field="address" title="Address" width="*"></kendo-grid-column>
+
+     <kendo-grid-column>
+        <ng-template kendoGridCellTemplate let-dataItem>
+          <a class="lnk" title="UserName" [routerLink]="['/pages/user/detail/', dataItem.userId]">{{dataItem.userName}}</a>
+        </ng-template>
+      </kendo-grid-column>
+    </kendo-grid>
+  </nb-card-body>
+</nb-card>
