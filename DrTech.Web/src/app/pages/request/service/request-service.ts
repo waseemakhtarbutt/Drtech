@@ -234,7 +234,15 @@ export class RequestService extends BaseService {
     return this.http.get<ResponseObject<Array<RecycleDTO>>>(link)
       .pipe(catchError(this.handleError));
   }
+  GetRecycleAllList(statusId: any = ""): Observable<ResponseObject<Array<RecycleDTO>>> {
 
+    if (statusId == null)
+      statusId = 0;
+
+    const link = this.baseUrl + 'Recycle/GetRecyclesAllListByStatus?StatusID=' + statusId;
+    return this.http.get<ResponseObject<Array<RecycleDTO>>>(link)
+      .pipe(catchError(this.handleError));
+  }
   updateRecycleStatus(id: string, status: number, weight: number): Observable<ResponseObject<boolean>> {
     const link = this.baseUrl + 'Recycle/UpdateStatus';
     return this.http.post<ResponseObject<boolean>>(link, {

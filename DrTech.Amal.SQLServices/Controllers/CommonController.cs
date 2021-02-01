@@ -117,7 +117,7 @@ namespace DrTech.Amal.SQLServices.Controllers
         {
             try
             {
-                var dorpdowns = db.Repository<Status>().GetAll().Where(x => x.StatusName == "Declined" || x.StatusName == "Resolved" || x.StatusName=="Submitted").ToList<object>();
+                var dorpdowns = db.Repository<Status>().GetAll().Where(x => x.StatusName == "Declined" || x.StatusName == "Resolved" || x.StatusName=="Submitted" || x.StatusName== "Collected" || x.StatusName == "No Show" || x.StatusName == "Pending").ToList<object>();
 
                 return ServiceResponse.SuccessReponse(dorpdowns, MessageEnum.DefaultSuccessMessage);
             }

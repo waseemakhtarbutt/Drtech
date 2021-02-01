@@ -8,13 +8,14 @@
   </div>
 </div>
 
-<nb-card-header class="headerText">
-  {{GridHeaderText}}  
-  <button type="button" class="btn btn-success btn-sm"
-  style="font-size: 0.95rem !important; float: right" (click)="exportAsXLSX()" >Downloud Excel File</button>
-  <br>
-</nb-card-header> 
+
 <nb-card [nbSpinner]="loading" nbSpinnerStatus="success" nbSpinnerSize="xlarge">
+  <nb-card-header class="headerText">
+    {{GridHeaderText}}  
+    <button type="button" class="btn btn-success btn-sm"
+    style="font-size: 0.95rem !important; float: right" (click)="exportAsXLSX()" >Downloud Excel File</button>
+    <br>
+  </nb-card-header> 
   <nb-card-body>
     <kendo-grid [data]="gridView" [pageSize]="pageSize" [pageable]="true" [skip]="skip" [height]="450"
       (sortChange)="sortChange($event)" [selectable]="true" (pageChange)="pageChange($event)"

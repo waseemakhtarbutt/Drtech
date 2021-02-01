@@ -7,6 +7,7 @@ import { DetailComponent } from './detail/detail.component';
 import { Driver } from 'selenium-webdriver/chrome';
 import { RegiftRequestAssignComponent } from './assign-driver/regift-request-assign/regift-request-assign.component';
 import { RecycleRequestAssignComponent } from './assign-driver/recycle-request-assign/recycle-request-assign.component';
+import { UpdateRecycleRequestAssignComponent } from './assign-driver/update-recycle-request-assign/update-recycle-request-assign.component';
 import { BinRequestAssignComponent } from './assign-driver/bin-request-assign/bin-request-assign.component';
 import { TasklistComponent } from './tasklist/tasklist.component';
 import { GuiForRecycleListComponent } from './GUIForRecycle/gui-for-recycle-list/gui-for-recycle-list.component';
@@ -41,6 +42,10 @@ const routes: Routes = [{
     {
       path: 'assign-driver/recycle-assign/:id',
       component: RecycleRequestAssignComponent,
+    },
+    {
+      path: 'assign-driver/update-recycle-assign/:id',
+      component: UpdateRecycleRequestAssignComponent,
     },
     {
       path: 'assign-driver/bin-assign/:id',
@@ -81,5 +86,6 @@ export const routedComponents = [
   DriverComponent,
   RegiftRequestAssignComponent,
   RecycleRequestAssignComponent,
+  UpdateRecycleRequestAssignComponent,
   BinRequestAssignComponent,
 ];

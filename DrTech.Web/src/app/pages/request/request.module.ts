@@ -8,6 +8,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from '../../common/token.interceptor';
 import { NbDialogModule } from '@nebular/theme';
 import { GridModule } from '@progress/kendo-angular-grid';
+import { RecycleallRequestComponent } from './recycleall-request/recycleall-request.component';
 import { RefuseRequestComponent } from './refuse-request/refuse-request.component';
 import { ReuseRequestComponent } from './reuse-request/reuse-request.component';
 import { ReduceRequestComponent } from './reduce-request/reduce-request.component';
@@ -34,6 +35,7 @@ import { DashboardRequestComponent } from './dashboard-request/dashboard-request
     ReportRequestComponent,
     ReplantRequestComponent,
     DashboardRequestComponent,
+    RecycleallRequestComponent,
   ]
 })
 export class RequestModule { }

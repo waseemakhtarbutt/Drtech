@@ -292,6 +292,37 @@ namespace DrTech.Amal.SQLDataAccess.Repository
 
             return mdlRecycles;
         }
+        public List<object> GetRecyclesAllListByStatus(int StatusID)
+        {
+            List<object> mdlRecycles = (from rc in context.Recycles.ToList()
+                                        join sub in context.RecycleSubItems on rc.ID equals sub.RecycleID
+                                        join status in context.Status on rc.StatusID equals status.ID
+                                        join users in context.Users on rc.UserID equals users.ID
+                                        join city in context.Cities on users.CityId equals city.ID
+                                        join area in context.Areas on users.AreaID equals area.ID
+
+                                        where (StatusID > 0 && sub.IsParent == true) || (StatusID == 0 && sub.IsParent == true)
+                                        select new
+                                        {
+                                            rc.ID,
+                                            //sub.Description,
+                                            // rc.GreenPoints,
+                                            statusDescription = status.StatusName,
+                                            //users.Longitude,
+                                            //users.Latitude,
+                                            userId = users.ID,
+                                            userName = users.FullName,
+                                            /// rc.FileName,
+                                            rc.CreatedDate,
+                                            city.CityName,
+                                            areaName = area.Name,
+                                            users.Address,
+                                            collectorDateTime = GetLocalDateTimeFromUTC(rc.CollectorDateTime).ToString("MMM dd, yyyy h:mm tt"),
+                                            ///updatedDate = Convert.ToDateTime(rc.CreatedDate).ToString("MMM dd, yyyy "),
+                                        }).OrderByDescending(o => o.CreatedDate).ToList<object>();
+
+            return mdlRecycles;
+        }
         public DateTime GetLocalDateTimeFromUTC(DateTime? dateTimeInUTC)
         {
             DateTime dateTimeInUTC1 = Convert.ToDateTime(dateTimeInUTC);

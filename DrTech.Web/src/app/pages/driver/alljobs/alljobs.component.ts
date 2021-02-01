@@ -15,11 +15,12 @@ export class AlljobsComponent implements OnInit {
   listViewModel: any[] = [];
   jobBadge : any = "";
   loading=false;
-
+  mindate = new Date();
   public gridView: GridDataResult;
   public pageSize = 8;
   public skip = 0;
-
+  public min: Date;
+  public max: Date;
   constructor(public driverService: DriverService,private excelService: ExcelService) { }
   async ngOnInit() {
     this.loading = true;

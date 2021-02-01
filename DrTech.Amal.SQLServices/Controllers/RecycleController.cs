@@ -196,6 +196,23 @@ namespace DrTech.Amal.SQLServices.Controllers
                 return ServiceResponse.ErrorReponse<List<object>>(exp);
             }
         }
+        [HttpGet]
+        public async Task<ResponseObject<List<object>>> GetRecyclesAllListByStatus(int StatusID = 0)
+        {
+            try
+            {
+                var recyclesList = db.ExtRepositoryFor<RecycleRepository>().GetRecyclesAllListByStatus(StatusID);
+
+                if (recyclesList.Count == 0)
+                    return ServiceResponse.SuccessReponse(recyclesList, MessageEnum.RecycleItemsNotFound);
+                else
+                    return ServiceResponse.SuccessReponse(recyclesList, MessageEnum.RecycleItemsGetSuccess);
+            }
+            catch (Exception exp)
+            {
+                return ServiceResponse.ErrorReponse<List<object>>(exp);
+            }
+        }
         [HttpPost]
         public async Task<ResponseObject<bool>> UpdateStatus([FromBody]Recycle _mdlRecycle)
         {

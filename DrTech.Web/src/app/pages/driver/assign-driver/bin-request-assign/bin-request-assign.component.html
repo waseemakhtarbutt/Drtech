@@ -80,9 +80,10 @@
                       <kendo-datepicker [min]="mindate" name="dt-deliverydate" [disabled]="_binModel.statusName == 'Declined' || _binModel.statusName == 'Delivered'" nbInput required #deliverdate="ngModel" class="picker" format="dd MMM yyyy" [(ngModel)]="_binModel.deliverDate"></kendo-datepicker>
                   </div>
                   <div [hidden]="(delivertime.valid && deliverdate.valid) || _binModel.statusName == 'Declined'  || _binModel.statusName == 'Delivered'" class="col-sm-11" style="width:100%">
-                      <div class="vld">Delivery Date/Time is not valid!</div>
+                      <!-- <div class="vld">Delivery Date/Time is not valid!</div> -->
                   </div>
-              </div><br>
+              </div>
+              <br>
               <div class="row">
                   <div class="col-md-12">
                       <h4>Driver</h4>

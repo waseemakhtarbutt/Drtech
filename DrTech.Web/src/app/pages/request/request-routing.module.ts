@@ -7,12 +7,12 @@ import { RegiftRequestComponent } from './regift-request/regift-request.componen
 import { RegiftRequestApprovalComponent } from './regift-request-approval/regift-request-approval.component';
 import { RecycleRequestComponent } from './recycle-request/recycle-request.component';
 import { RefuseRequestComponent } from './refuse-request/refuse-request.component';
-
 import { ReplantRequestComponent } from './replant-request/replant-request.component';
 import { ReuseRequestComponent } from './reuse-request/reuse-request.component';
 import { BuyBinRequestComponent } from './buybin-request/buybin-request.component';
 import { ReduceRequestComponent } from './reduce-request/reduce-request.component';
-import {DashboardRequestComponent} from './dashboard-request/dashboard-request.component';
+import { DashboardRequestComponent} from './dashboard-request/dashboard-request.component';
+import { RecycleallRequestComponent } from './recycleall-request/recycleall-request.component';
 
 const routes: Routes = [{
   path: '',
@@ -37,6 +37,10 @@ const routes: Routes = [{
     {
       path: 'recycle',
       component: RecycleRequestComponent,
+    },
+    {
+      path: 'recycleall',
+      component: RecycleallRequestComponent,
     },
     {
       path: 'recycle/:id',
@@ -108,5 +112,6 @@ export const routedComponents = [
   ReplantRequestComponent,
   ReuseRequestComponent,
   BuyBinRequestComponent,
-  DashboardRequestComponent
+  DashboardRequestComponent,
+  RecycleallRequestComponent,
 ];

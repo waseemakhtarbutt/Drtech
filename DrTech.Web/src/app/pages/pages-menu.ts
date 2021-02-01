@@ -78,14 +78,17 @@ export const MENU_ITEMS_ADMIN: NbMenuItem[] = [
         title: 'Recycle',
         link: '/pages/request/recycle',
       },
-
+      {
+        title: 'Recycle All',
+        link: '/pages/request/recycleall',
+      },
       {
         title: 'Replant',
         link: '/pages/request/replant',
       },
 
       {
-        title: 'Amal MarketPlace',
+        title: 'Amal Market Place',
         link: '/pages/request/buybin',
       },
     ],
@@ -165,14 +168,14 @@ export const MENU_ITEMS_ADMIN: NbMenuItem[] = [
             title: 'Schools',
             link: '/pages/gpn/gpnrequest/approvedschool',
           },
-          {
-            title: 'Comparison',
-            link: '/pages/gpn/gpnrequest/schoolcomparison',
-          },
-          {
-            title: 'Progress',  
-            link: '/pages/school/progress',
-          },
+          // {
+          //   title: 'Comparison',
+          //   link: '/pages/gpn/gpnrequest/schoolcomparison',
+          // },
+          // {
+          //   title: 'Progress',  
+          //   link: '/pages/school/progress',
+          // },
           {
             title: 'Organizations',
             link: '/pages/gpn/gpnrequest/approvedorganization',

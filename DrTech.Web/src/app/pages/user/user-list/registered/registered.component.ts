@@ -5,8 +5,9 @@ import { UserService } from '../../service/user-service';
 import { LocalDataSource } from 'ng2-smart-table';
 import { NbDialogService, NbDialogRef } from '@nebular/theme';
 import { compileFilter, SortDescriptor, orderBy } from '@progress/kendo-data-query';
+import { ExcelService } from '../../../../common/service/excel.service';
 @Component({
-  selector: 'ngx-user-list-registered',
+  selector: 'ngx-user-list-registered', 
   templateUrl: './registered.component.html',
   styleUrls: ['./registered.component.scss']
 })
@@ -28,7 +29,7 @@ export class RegisteredComponent implements OnInit {
   // }];
   public multiple = false;
   public allowUnsort = true;
-  constructor(public userService: UserService, private router: Router) { }
+  constructor(public userService: UserService,private excelService: ExcelService, private router: Router) { }
 
   async ngOnInit() {
     this.loading = true;
@@ -46,7 +47,10 @@ export class RegisteredComponent implements OnInit {
       }
     });
   }
-
+  exportAsXLSX(): void {
+    debugger
+    this.excelService.exportAsExcelFile(this.listViewModel, 'sample');
+  }
   public pageChange(event: PageChangeEvent): void {
     this.skip = event.skip;
     this.loadItems();

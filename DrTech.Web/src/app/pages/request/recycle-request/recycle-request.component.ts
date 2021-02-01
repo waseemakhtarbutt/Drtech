@@ -141,7 +141,7 @@ export class RecycleRequestComponent implements OnInit {
   public filterChanged(event: Event) {
     let selectElementText = event.target['value'];
     this.statusId = selectElementText;
-    var datalist = this.requestService.GetReplantList(this.statusId).subscribe(result => {
+    var datalist = this.requestService.GetRecycleList(this.statusId).subscribe(result => {
       if (result.statusCode == 0) {
         //this.listViewModel=[];
         this.skip = 0;
