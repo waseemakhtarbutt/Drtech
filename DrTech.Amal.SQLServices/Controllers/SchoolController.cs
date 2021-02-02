@@ -912,5 +912,21 @@ namespace DrTech.Amal.SQLServices.Controllers
             return ServiceResponse.SuccessReponse(reuslt, MessageEnum.RecordFoundSuccessfully);
 
         }
+        [HttpGet]
+        public async Task<ResponseObject<List<Object>>> GetSchoolBranchesByUserId()
+        {
+            int? UserID = JwtDecoder.GetUserIdFromToken(Request.Headers.Authorization.Parameter);
+            var reuslt = db.ExtRepositoryFor<SchoolRepository>().GetSchoolBranchesByUserId(Convert.ToInt32(UserID));
+            return ServiceResponse.SuccessReponse(reuslt, MessageEnum.RecordFoundSuccessfully);
+
+        }
+        [HttpGet]
+        public async Task<ResponseObject<List<Object>>> GetSchoolStudentsBySchoolId(int id)
+        {
+            int? UserID = JwtDecoder.GetUserIdFromToken(Request.Headers.Authorization.Parameter);
+            var reuslt = db.ExtRepositoryFor<SchoolRepository>().GetSchoolStudentsBySchoolId(id);
+            return ServiceResponse.SuccessReponse(reuslt, MessageEnum.RecordFoundSuccessfully);
+
+        }
     }
 }

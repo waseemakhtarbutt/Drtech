@@ -1356,6 +1356,77 @@ namespace DrTech.Amal.SQLDataAccess.Repository
             return compList;
         }
 
+        public List<object> GetSchoolBranchesByUserId(int UserId)
+        {
+            List<object> lstSchool = (from regsch in context.RegSchools
+                                      join school in context.Schools on regsch.ID equals school.ParentID
+                                      where regsch.UserID == UserId && school.IsActive == true
+                                      select new
+                                      {
+                                          school.ID,
+                                          school.BranchName,
+                                      }).ToList().Select(u => new
+                                      {
+                                          u.ID,
+                                          u.BranchName,
+                                      }).ToList<object>();
 
+
+            return lstSchool;
+        }
+
+        public List<object> GetSchoolStudentsBySchoolId(int schoolId)
+        {
+            if(schoolId == 0)
+            {
+                List<object> lstSchool = (from regsch in context.RegSchools
+                                          join school in context.Schools on regsch.ID equals school.ParentID
+                                          join student in context.Children on school.ID equals student.SchoolID
+                                          where school.IsActive == true
+                                          select new
+                                          {
+
+                                              school.ID,
+                                              school.BranchName,
+                                              school.Address,
+                                              greenWorth = school.GreenPoints,
+                                              school.Level,
+                                          }).ToList().Select(u => new
+                                          {
+                                              u.ID,
+                                              u.BranchName,
+                                              u.Address,
+                                              u.greenWorth,
+                                              Level = Utility.GetLevelByGP(u.greenWorth),
+                                          }).ToList<object>();
+
+                return lstSchool;
+            }
+            else
+            {
+                List<object> lstSchool = (from regsch in context.RegSchools
+                                          join school in context.Schools on regsch.ID equals school.ParentID
+                                          join student in context.Children on school.ID equals student.SchoolID
+                                          where school.ID == schoolId && school.IsActive == true
+                                          select new
+                                          {
+                                              school.ID,
+                                              school.BranchName,
+                                              school.Address,
+                                              greenWorth = school.GreenPoints,
+                                              school.Level,
+                                          }).ToList().Select(u => new
+                                          {
+                                              u.ID,
+                                              u.BranchName,
+                                              u.Address,
+                                              u.greenWorth,
+                                              Level = Utility.GetLevelByGP(u.greenWorth),
+                                          }).ToList<object>();
+
+                return lstSchool;
+            }
+            
+        }
     }
 }

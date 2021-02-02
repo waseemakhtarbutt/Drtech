@@ -366,6 +366,11 @@ export const MENU_ITEMS_SCHOOL: NbMenuItem[] = [
     link: '/pages/school/branchcomparison',
   },
   {
+    title: 'Students',
+    icon: 'nb-location',
+    link: '/pages/school/studentss',
+  },
+  {
     title: 'Progress',
     icon: 'nb-location',
     link: '/pages/school/progress',
