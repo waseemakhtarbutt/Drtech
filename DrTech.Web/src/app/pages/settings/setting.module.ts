@@ -13,6 +13,7 @@ import { AddEditLevelComponent } from './add-edit-level/add-edit-level.component
 import { AddGreenPointsComponent } from './add-green-points/add-green-points.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { CreateAdComponent } from './create-ad/create-ad.component';
+import { CreatemarkitplaceComponent } from './create-markitplace/create-markitplace.component';
 import { AddWeightComponent } from './add-weight/add-weight.component';
 
 @NgModule({
@@ -34,7 +35,7 @@ import { AddWeightComponent } from './add-weight/add-weight.component';
     ChangePasswordComponent,
     CreateAdComponent,
     AddWeightComponent,
-
+    CreatemarkitplaceComponent,
 
   ],
 })

@@ -53,6 +53,14 @@ export class SettingsService extends BaseService {
   async SaveAD(file, model): Promise<ResponseObject<any>> {
     return await this.UploadData<any>(file, 'UserPayment/AddAdInformation', model);
   }
+  GetAllBinDetail(): Observable<ResponseObject<Array<any>>> {
+    const link = this.baseUrl + 'BuyBin/GetBinDetail';
+    return this.http.get<ResponseObject<Array<any>>>(link)
+      .pipe(catchError(this.handleError));
+  }
+  async MarkitplaceAdd(file, model): Promise<ResponseObject<any>> {
+    return await this.UploadData<any>(file, 'BuyBin/AddNewBinInformation', model);
+  }
   async SaveWeight(model): Promise<ResponseObject<any>> {
     return await this.Post<any>('UserPayment/AddWeightInformation',model);
   }
@@ -66,6 +74,10 @@ export class SettingsService extends BaseService {
   }
   async GetAdList(): Promise<ResponseObject<any>> {
     return await this.Get<any>('UserPayment/GetAdList');
+  }
+
+  async GetBinDetailList(): Promise<ResponseObject<any>> {
+    return await this.Get<any>('BuyBin/GetBinDetailsList');
   }
 }
 
