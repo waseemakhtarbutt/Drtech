@@ -37,6 +37,21 @@ namespace DrTech.Amal.SQLDataAccess.Repository
             return mdlAD;
         }
         #region|Amal Ad's Functionalities|
+        public List<object> GetBinDetailsList()
+        {
+            List<object> mdlAD = (from com in context.BinDetails.ToList()
+                                  where com.IsActive == true
+                                  select new
+                                  {
+                                      com.ID,
+                                      com.FileName,
+                                      com.BinName,
+                                      com.Price,
+                                      com.Capacity,
+                                      com.Description
+                                  }).OrderByDescending(o => o.ID).ToList<object>();
+            return mdlAD;
+        }
         public List<object> GetAdList()
         {
             List<object> mdlAD = (from com in context.Ads.ToList()

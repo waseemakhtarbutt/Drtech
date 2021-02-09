@@ -60,6 +60,7 @@ namespace DrTech.Amal.Notifications
                             if (mdluser != null)
                             {
                                 EmailNotification EmailNotification = PrepareEmailNotification<User>(lstTemplate, mdluser, Parameter, AdminEmail);
+                                EmailHelper.SendEmail(EmailNotification.EmailSubject, EmailNotification.EmailBody, "request@Amalforlife.com");
                                 db.Repository<EmailNotification>().Insert(EmailNotification);
                                 db.Save();
                             }
@@ -85,6 +86,7 @@ namespace DrTech.Amal.Notifications
                             if (mdlUser != null)
                             {
                                 EmailNotification EmailNotification = PrepareEmailNotification<User>(lstTemplate, mdlUser, Parameter, mdlUser.Email);
+                                EmailHelper.SendEmail(EmailNotification.EmailSubject, EmailNotification.EmailBody, "request@Amalforlife.com");
                                 db.Repository<EmailNotification>().Insert(EmailNotification);
                                 db.Save();
                             }
@@ -110,6 +112,7 @@ namespace DrTech.Amal.Notifications
                         if (CommonInfo != null)
                         {
                             EmailNotification EmailNotification = PrepareEmailNotification<CommonViewModelForEmail>(lstTemplate, CommonInfo, Parameter, AdminEmail);
+                            EmailHelper.SendEmail(EmailNotification.EmailSubject, EmailNotification.EmailBody, EmailNotification.EmailTo);
                             db.Repository<EmailNotification>().Insert(EmailNotification);
                             db.Save();
                         }
@@ -136,6 +139,7 @@ namespace DrTech.Amal.Notifications
                         if (CommonInfo != null)
                         {
                             EmailNotification EmailNotification = PrepareEmailNotification<CommonViewModelForEmail>(lstTemplate, CommonInfo, Parameter, AdminEmail);
+                            EmailHelper.SendEmail(EmailNotification.EmailSubject, EmailNotification.EmailBody, EmailNotification.EmailTo);
                             db.Repository<EmailNotification>().Insert(EmailNotification);
                             db.Save();
                         }
@@ -157,6 +161,7 @@ namespace DrTech.Amal.Notifications
                         if (userinfo != null)
                         {
                             EmailNotification EmailNotification = PrepareEmailNotification<User>(lstTemplate, userinfo, Parameter, userinfo.Email);
+                            EmailHelper.SendEmail(EmailNotification.EmailSubject, EmailNotification.EmailBody, EmailNotification.EmailTo);
                             db.Repository<EmailNotification>().Insert(EmailNotification);
                             db.Save();
                         }
@@ -289,12 +294,14 @@ namespace DrTech.Amal.Notifications
                         {
                             Email = Parameters["Email"].ToString(),
                             Phone = Parameters["Phone"].ToString(),
-                            Problem = Parameters["Problem"].ToString()
+                            Problem = Parameters["Description"].ToString(),
+                            Subject = Parameters["IssueType"].ToString(),
 
                         };
                         if (userinfo != null)
                         {
                             EmailNotification EmailNotification = PrepareEmailNotification<ReportProblemViewModel>(lstTemplate, userinfo, Parameter, userinfo.Email);
+                            EmailHelper.SendEmail(EmailNotification.EmailSubject, EmailNotification.EmailBody, EmailNotification.EmailTo);
                             db.Repository<EmailNotification>().Insert(EmailNotification);
                             db.Save();
                         }
@@ -309,13 +316,14 @@ namespace DrTech.Amal.Notifications
                         {
                             Email = Parameters["Email"].ToString(),
                             Phone = Parameters["Phone"].ToString(),
-                            Problem = Parameters["Problem"].ToString(),
-                            Subject = Parameters["Subject"].ToString(),
+                            Problem = Parameters["Description"].ToString(),
+                            Subject = Parameters["IssueType"].ToString(),
 
                         };
                         if (userinfo != null)
                         {
                             EmailNotification EmailNotification = PrepareEmailNotification<ReportProblemViewModel>(lstTemplate, userinfo, Parameter, userinfo.Email);
+                            EmailHelper.SendEmail(EmailNotification.EmailSubject, EmailNotification.EmailBody, EmailNotification.EmailTo);
                             db.Repository<EmailNotification>().Insert(EmailNotification);
                             db.Save();
                         }
@@ -538,6 +546,7 @@ namespace DrTech.Amal.Notifications
                         if (userinfo != null)
                         {
                             EmailNotification EmailNotification = PrepareEmailNotification<User>(lstTemplate, userinfo, Parameter, AdminEmail);
+                            EmailHelper.SendEmail(EmailNotification.EmailSubject, EmailNotification.EmailBody, EmailNotification.EmailTo);
                             db.Repository<EmailNotification>().Insert(EmailNotification);
                             db.Save();
                         }

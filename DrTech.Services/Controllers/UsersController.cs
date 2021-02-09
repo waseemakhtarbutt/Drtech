@@ -644,7 +644,7 @@ namespace DrTech.Services.Controllers
 
 
                 NotifyEvent _events = new NotifyEvent();
-                _events.Parameters.Add("Email", mdlUser.Email);
+                _events.Parameters.Add("Email", "info@amalforlife.com");
                 _events.Parameters.Add("Phone", mdlUser.Phone);
                 _events.Parameters.Add("Description", mdlUser.Problem);
                 _events.Parameters.Add("IssueType", mdlUser.Subject);

@@ -35,12 +35,12 @@ namespace DrTech.Amal.SQLServices.Controllers
                     throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
                 }
                 string AreaName = string.Empty;
-                int? UserID =  JwtDecoder.GetUserIdFromToken(Request.Headers.Authorization.Parameter);
+                int? UserID = JwtDecoder.GetUserIdFromToken(Request.Headers.Authorization.Parameter);
                 //string FileName = string.Empty;
                 //HttpPostedFile file = HttpContext.Current.Request.Files[0];
                 //FileName = await FileOpsHelper.UploadFileNew(file, ContainerName.SCHOOL);                
 
-                 mdlSchool.FileName = "";
+                mdlSchool.FileName = "";
 
                 if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["name"]))
                     mdlSchool.Name = HttpContext.Current.Request.Form["name"].ToString();
@@ -49,7 +49,7 @@ namespace DrTech.Amal.SQLServices.Controllers
                 if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["phone"]))
                     mdlSchool.Phone = HttpContext.Current.Request.Form["phone"].ToString();
                 if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["parentId"]))
-                      mdlSchool.ParentID = Convert.ToInt32(HttpContext.Current.Request.Form["parentId"]);
+                    mdlSchool.ParentID = Convert.ToInt32(HttpContext.Current.Request.Form["parentId"]);
                 if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["level"]))
                     mdlSchool.Level = HttpContext.Current.Request.Form["level"].ToString();
                 if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["branchName"]))
@@ -62,8 +62,8 @@ namespace DrTech.Amal.SQLServices.Controllers
                     mdlSchool.Email = HttpContext.Current.Request.Form["email"].ToString();
                 if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["cityid"]))
                     mdlSchool.CityID = Convert.ToInt32(HttpContext.Current.Request.Form["cityid"]);
-                //if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["areaid"]))
-                //    mdlSchool.AreaID = Convert.ToInt32(HttpContext.Current.Request.Form["areaid"]);
+                if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["areaid"]))
+                    mdlSchool.AreaID = Convert.ToInt32(HttpContext.Current.Request.Form["areaid"]);
                 if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["areaname"]))
                     AreaName = HttpContext.Current.Request.Form["areaname"];
 
@@ -72,7 +72,7 @@ namespace DrTech.Amal.SQLServices.Controllers
                 mdlSchool.UserID = UserID;
                 mdlSchool.ParentsGreenPoints = 0;
                 mdlSchool.GreenPoints = 0;
-                mdlSchool.CreatedBy = (int)UserID;                
+                mdlSchool.CreatedBy = (int)UserID;
                 mdlSchool.CreatedDate = DateTime.Now;
                 //  mdlSchool.UserID = UserID;
                 //if (AreaName != null)
@@ -197,7 +197,7 @@ namespace DrTech.Amal.SQLServices.Controllers
         {
             try
             {
-                List<STG_School> regSchool = db.Repository<STG_School>().GetAll().Where(x => x.IsVerified == false && x.IsActive != false).ToList();               
+                List<STG_School> regSchool = db.Repository<STG_School>().GetAll().Where(x => x.IsVerified == false && x.IsActive != false).ToList();
                 return ServiceResponse.SuccessReponse(regSchool, MessageEnum.DefaultSuccessMessage);
             }
             catch (Exception exp)
@@ -235,8 +235,8 @@ namespace DrTech.Amal.SQLServices.Controllers
         {
             try
             {
-                List<RegSchool> regSchool = db.Repository<RegSchool>().GetAll().Where(x=> x.IsActive == true).ToList();
-                regSchool.Add(new RegSchool {ID = 0, Name = "Not Registered" });
+                List<RegSchool> regSchool = db.Repository<RegSchool>().GetAll().Where(x => x.IsActive == true).ToList();
+                regSchool.Add(new RegSchool { ID = 0, Name = "Not Registered" });
                 return ServiceResponse.SuccessReponse(regSchool, MessageEnum.DefaultSuccessMessage);
             }
             catch (Exception exp)
@@ -269,12 +269,12 @@ namespace DrTech.Amal.SQLServices.Controllers
                     if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["id"]))
                         mdlSchool = db.Repository<School>().FindById(Convert.ToInt32(HttpContext.Current.Request.Form["id"].ToString()));
                 }
-                
+
                 if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["imageToUpload"]))
                 {
                     HttpPostedFile file = HttpContext.Current.Request.Files[0];
                     logoFileName = await FileOpsHelper.UploadFileNew(file, ContainerName.SCHOOL);
-                    mdlSchool.FileName = logoFileName;                 
+                    mdlSchool.FileName = logoFileName;
                 }
                 else
                 {
@@ -295,7 +295,7 @@ namespace DrTech.Amal.SQLServices.Controllers
                     }
                     mdlSchool.DocumentFileName = documentFileName;
                 }
-                else if(requestType == "Edit")
+                else if (requestType == "Edit")
                 {
                     if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["DocumentFileName"]))
                         mdlSchool.DocumentFileName = HttpContext.Current.Request.Form["DocumentFileName"].ToString();
@@ -334,12 +334,12 @@ namespace DrTech.Amal.SQLServices.Controllers
                             regSchool.Name = HttpContext.Current.Request.Form["name"].ToString();
                         regSchool.IsActive = true;
                         regSchool.CreatedBy = UserID;
-                        regSchool.CreatedDate = DateTime.Now;                        
+                        regSchool.CreatedDate = DateTime.Now;
                         User user = new User
                         {
                             FullName = mdlSchool.ContactPerson,
                             Phone = mdlSchool.Phone,
-                            Email = "admin" +  mdlSchool.Email,
+                            Email = "admin" + mdlSchool.Email,
                             Password = "admin@1234",
                             UserTypeID = (int)UserTypeEnum.Web,
                             RoleID = (int)UserRoleTypeEnum.SchoolAdmin,
@@ -425,7 +425,7 @@ namespace DrTech.Amal.SQLServices.Controllers
                     return ServiceResponse.SuccessReponse(true, MessageEnum.SchoolInfoUpdated);
                 }
 
-                
+
             }
             catch (DbEntityValidationException e)
             {
@@ -589,9 +589,9 @@ namespace DrTech.Amal.SQLServices.Controllers
             catch (Exception exp)
             {
 
-                return ServiceResponse.ErrorReponse<bool>(exp); 
+                return ServiceResponse.ErrorReponse<bool>(exp);
             }
-           
+
         }
 
         [HttpGet]
@@ -607,8 +607,8 @@ namespace DrTech.Amal.SQLServices.Controllers
                 var listChilds = db.Repository<Child>().GetAll().Where(x => x.SchoolID == school.ID).ToList();
                 foreach (var child in listChilds)
                 {
-                     child.IsActive = false;
-                   // item.User.IsActive = false;
+                    child.IsActive = false;
+                    // item.User.IsActive = false;
                     db.Save();
                 }
                 //Also suspend the staff of this school.
@@ -751,7 +751,7 @@ namespace DrTech.Amal.SQLServices.Controllers
                 foreach (var child in listChilds)
                 {
                     child.IsActive = true;
-                   // item.User.IsActive = true;
+                    // item.User.IsActive = true;
                     db.Save();
                 }
                 //Also suspend the staff of this school.
@@ -831,7 +831,7 @@ namespace DrTech.Amal.SQLServices.Controllers
                 int branchId = 0;
 
                 if (RoleID == (int)UserRoleTypeEnum.SubSchoolAdmin)
-                    branchId = db.Repository<School>().GetAll().Where(x=>x.UserID == UserID).FirstOrDefault().ID;
+                    branchId = db.Repository<School>().GetAll().Where(x => x.UserID == UserID).FirstOrDefault().ID;
 
                 List<object> resultList = new List<object>();
 
@@ -887,10 +887,10 @@ namespace DrTech.Amal.SQLServices.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<ResponseObject<List<SchoolsComparisionResult>>> GetSchoolsBranchesComparisionChartBySchoolAdmin( SchoolsComparisionCriteria model)
+        public async Task<ResponseObject<List<SchoolsComparisionResult>>> GetSchoolsBranchesComparisionChartBySchoolAdmin(SchoolsComparisionCriteria model)
         {
             int? UserID = JwtDecoder.GetUserIdFromToken(Request.Headers.Authorization.Parameter);
-            var reuslt = db.ExtRepositoryFor<SchoolRepository>().GetSchoolsBranchesComparisionChartBySchoolAdmin(model,Convert.ToInt32(UserID));
+            var reuslt = db.ExtRepositoryFor<SchoolRepository>().GetSchoolsBranchesComparisionChartBySchoolAdmin(model, Convert.ToInt32(UserID));
             return ServiceResponse.SuccessReponse(reuslt, MessageEnum.RecordFoundSuccessfully);
 
         }
@@ -899,7 +899,7 @@ namespace DrTech.Amal.SQLServices.Controllers
         public async Task<ResponseObject<List<Records>>> GetSchoolsBranchesComparisionPieChartBySchoolAdmin()
         {
             int? UserID = JwtDecoder.GetUserIdFromToken(Request.Headers.Authorization.Parameter);
-            var reuslt = db.ExtRepositoryFor<SchoolRepository>().GetSchoolsBranchesComparisionPieChartBySchoolAdmin( Convert.ToInt32(UserID));
+            var reuslt = db.ExtRepositoryFor<SchoolRepository>().GetSchoolsBranchesComparisionPieChartBySchoolAdmin(Convert.ToInt32(UserID));
             return ServiceResponse.SuccessReponse(reuslt, MessageEnum.RecordFoundSuccessfully);
 
         }
@@ -909,6 +909,22 @@ namespace DrTech.Amal.SQLServices.Controllers
         {
             int? UserID = JwtDecoder.GetUserIdFromToken(Request.Headers.Authorization.Parameter);
             var reuslt = db.ExtRepositoryFor<SchoolRepository>().GetSchoolsBranchesStudentsPieChartBySchoolAdmin(Convert.ToInt32(UserID));
+            return ServiceResponse.SuccessReponse(reuslt, MessageEnum.RecordFoundSuccessfully);
+
+        }
+        [HttpGet]
+        public async Task<ResponseObject<List<Object>>> GetSchoolBranchesByUserId()
+        {
+            int? UserID = JwtDecoder.GetUserIdFromToken(Request.Headers.Authorization.Parameter);
+            var reuslt = db.ExtRepositoryFor<SchoolRepository>().GetSchoolBranchesByUserId(Convert.ToInt32(UserID));
+            return ServiceResponse.SuccessReponse(reuslt, MessageEnum.RecordFoundSuccessfully);
+
+        }
+        [HttpGet]
+        public async Task<ResponseObject<List<Object>>> GetSchoolStudentsBySchoolId(int id)
+        {
+            int? UserID = JwtDecoder.GetUserIdFromToken(Request.Headers.Authorization.Parameter);
+            var reuslt = db.ExtRepositoryFor<SchoolRepository>().GetSchoolStudentsBySchoolId(id);
             return ServiceResponse.SuccessReponse(reuslt, MessageEnum.RecordFoundSuccessfully);
 
         }

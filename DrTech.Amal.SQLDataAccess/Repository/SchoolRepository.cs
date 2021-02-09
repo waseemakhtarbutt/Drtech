@@ -139,7 +139,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                           reg.Name,
                                           sch.CreatedDate,
                                           sch.FileName,
-                                          greenWorth = 0,//GetAllBranchesGreenPointWorth(reg.ID),
+                                          greenWorth = GetAllBranchesGreenPointWorth(reg.ID),
                                           childrenCount = children.Where(x => x.UserID == UserID && x.IsActive == true).Count(),
                                           staffCount = staff.Where(x => x.UserID == UserID && x.IsActive == true).Count()
 
@@ -174,41 +174,32 @@ namespace DrTech.Amal.SQLDataAccess.Repository
         public int GetAllBranchesGreenPointWorth(int? ParentID)
         {
             int SchoolGreenWorthTotal = 0;
-            var allschool = context.Schools.Where(x => x.ParentID == ParentID).ToList();
-            if (allschool.Count > 0)
+            var allBranches = context.Schools.Where(x => x.ParentID == ParentID).ToList();
+            if (allBranches.Count > 0)
             {
-                SchoolGreenWorthTotal = allschool.Sum(item => item.GreenPoints);
+                foreach (var item in allBranches)
+                {
+                    SchoolGreenWorthTotal += GetSchoolGreenPoints(item.ID);
+                }
+
+                //foreach (var item in allBranches)
+                //{
+
+                //    var allLoggedSchools = context.SchoolGP_Log.Where(x => x.SchoolID == item.ID).ToList();
+                //    if(allLoggedSchools.Count > 0)
+                //    {
+                //        int total = 0;
+                //        foreach (var log in allLoggedSchools)
+                //        {
+                //            total += log.GreenPoints;
+                //        }
+
+                //        //total += allLoggedSchools.Sum(pm => pm.GreenPoints);
+                //        SchoolGreenWorthTotal += total;
+                //    }
+
+                //}
             }
-            else
-            {
-                return 0;
-            }
-            // int SchoolGreenWorthTotal = context.Schools.sum(x => x.ParentID == ParentID).ToList();
-            //if (allBranches.Count > 0)
-            //{
-            //    foreach (var item in allBranches)
-            //    {
-            //        SchoolGreenWorthTotal += GetSchoolGreenPoints(item.ID);
-            //    }
-
-            //    //foreach (var item in allBranches)
-            //    //{
-
-            //    //    var allLoggedSchools = context.SchoolGP_Log.Where(x => x.SchoolID == item.ID).ToList();
-            //    //    if(allLoggedSchools.Count > 0)
-            //    //    {
-            //    //        int total = 0;
-            //    //        foreach (var log in allLoggedSchools)
-            //    //        {
-            //    //            total += log.GreenPoints;
-            //    //        }
-
-            //    //        //total += allLoggedSchools.Sum(pm => pm.GreenPoints);
-            //    //        SchoolGreenWorthTotal += total;
-            //    //    }
-
-            //    //}
-            //}
             return SchoolGreenWorthTotal;
         }
 
@@ -531,6 +522,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
 
             return mdlChildren;
         }
+
         public List<object> GetStaffListByRole(int? UserID, bool IsSuspended, int? RoleID)
         {
             List<object> mdlStaff = new List<object>();
@@ -1011,6 +1003,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
 
             return new List<object>();
         }
+
         public List<object> GetClassesBySchool(int? UserId, int? RoleId)
         {
             List<object> mdlClasses = new List<object>();
@@ -1025,6 +1018,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
 
             return mdlClasses;
         }
+
         public List<object> GetSectionByClass(int? UserId, int? RoleId, string Class)
         {
             List<object> mdlClasses = new List<object>();
@@ -1039,6 +1033,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
 
             return mdlClasses;
         }
+
         public List<object> GetBranchesBySchoolAdmin(int? UserId)
         {
             List<object> mdlBranches = new List<object>();
@@ -1054,6 +1049,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
 
             return mdlBranches;
         }
+
         public List<object> GetSchoolComparison(int? BranchId, string Clas, string Sections, string Schools, DateTime FromDate, DateTime ToDate, int? RoleId)
         {
             List<object> mdlList = new List<object>();
@@ -1119,6 +1115,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
 
             return mdlList;
         }
+
         public List<SchoolsComparisionResult> GetSchoolsBranchesComparisionChartBySchoolAdmin(SchoolsComparisionCriteria filter, int UserID)
         {
 
@@ -1186,6 +1183,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
 
             return compList;
         }
+
         private List<SchoolsComparisionResult> Yearly(List<SchoolGP_Log> list)
         {
             List<SchoolsComparisionResult> compList = new List<SchoolsComparisionResult>();
@@ -1283,18 +1281,20 @@ namespace DrTech.Amal.SQLDataAccess.Repository
             //compList.OrderBy(x => x.Series.OrderBy(y => y.name)).ToList();
             return compList;
         }
+
         static string getAbbreviatedName(int month)
         {
             DateTime date = new DateTime(2021, month, 1);
 
             return date.ToString("MMM");
         }
+
         public List<Records> GetSchoolsBranchesComparisionPieChartBySchoolAdmin(int UserID)
         {
-            
+
             List<Records> compList = new List<Records>();
             List<School> schoolsList = new List<School>();
-            var baseSchool = db.Repository<RegSchool>().GetAll().Where(x=>x.UserID == UserID).FirstOrDefault();
+            var baseSchool = db.Repository<RegSchool>().GetAll().Where(x => x.UserID == UserID).FirstOrDefault();
             var result = db.Repository<School>().GetAll().Where(x => x.ParentID == baseSchool.ID);
             //schoolsList = result.Where(x => x.UserID == UserID).ToList();
             List<SchoolGP_Log> schoolsgpLog = new List<SchoolGP_Log>();
@@ -1304,7 +1304,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                 schoolsgpLog.AddRange(list);
             }
 
-            var data = schoolsgpLog.Select(k => new { k.School.BranchName, k.GreenPoints }).GroupBy(x => new { x.BranchName}, (key, group) => new
+            var data = schoolsgpLog.Select(k => new { k.School.BranchName, k.GreenPoints }).GroupBy(x => new { x.BranchName }, (key, group) => new
             {
                 name = key.BranchName,
                 value = group.Sum(k => k.GreenPoints)
@@ -1320,6 +1320,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
 
             return compList;
         }
+
         public List<Records> GetSchoolsBranchesStudentsPieChartBySchoolAdmin(int UserID)
         {
             List<Records> compList = new List<Records>();
@@ -1342,7 +1343,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
             {
                 name = key.BranchName,
                 value = group.Count()
-        }).ToList();
+            }).ToList();
 
             foreach (var item in data)
             {
@@ -1355,6 +1356,77 @@ namespace DrTech.Amal.SQLDataAccess.Repository
             return compList;
         }
 
+        public List<object> GetSchoolBranchesByUserId(int UserId)
+        {
+            List<object> lstSchool = (from regsch in context.RegSchools
+                                      join school in context.Schools on regsch.ID equals school.ParentID
+                                      where regsch.UserID == UserId && school.IsActive == true
+                                      select new
+                                      {
+                                          school.ID,
+                                          school.BranchName,
+                                      }).ToList().Select(u => new
+                                      {
+                                          u.ID,
+                                          u.BranchName,
+                                      }).ToList<object>();
 
+
+            return lstSchool;
+        }
+
+        public List<object> GetSchoolStudentsBySchoolId(int schoolId)
+        {
+            if (schoolId == 0)
+            {
+                List<object> lstSchool = (from regsch in context.RegSchools
+                                          join school in context.Schools on regsch.ID equals school.ParentID
+                                          join student in context.Children on school.ID equals student.SchoolID
+                                          where school.IsActive == true
+                                          select new
+                                          {
+
+                                              school.ID,
+                                              school.BranchName,
+                                              school.Address,
+                                              greenWorth = school.GreenPoints,
+                                              school.Level,
+                                          }).ToList().Select(u => new
+                                          {
+                                              u.ID,
+                                              u.BranchName,
+                                              u.Address,
+                                              u.greenWorth,
+                                              Level = Utility.GetLevelByGP(u.greenWorth),
+                                          }).ToList<object>();
+
+                return lstSchool;
+            }
+            else
+            {
+                List<object> lstSchool = (from regsch in context.RegSchools
+                                          join school in context.Schools on regsch.ID equals school.ParentID
+                                          join student in context.Children on school.ID equals student.SchoolID
+                                          where school.ID == schoolId && school.IsActive == true
+                                          select new
+                                          {
+                                              school.ID,
+                                              school.BranchName,
+                                              school.Address,
+                                              greenWorth = school.GreenPoints,
+                                              school.Level,
+                                          }).ToList().Select(u => new
+                                          {
+                                              u.ID,
+                                              u.BranchName,
+                                              u.Address,
+                                              u.greenWorth,
+                                              Level = Utility.GetLevelByGP(u.greenWorth),
+                                          }).ToList<object>();
+
+                return lstSchool;
+            }
+
+        }
     }
 }
