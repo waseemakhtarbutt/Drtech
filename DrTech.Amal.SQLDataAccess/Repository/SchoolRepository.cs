@@ -139,7 +139,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                           reg.Name,
                                           sch.CreatedDate,
                                           sch.FileName,
-                                          greenWorth = GetAllBranchesGreenPointWorth(reg.ID),
+                                          greenWorth = 0,// GetAllBranchesGreenPointWorth(reg.ID),
                                           childrenCount = children.Where(x => x.UserID == UserID && x.IsActive == true).Count(),
                                           staffCount = staff.Where(x => x.UserID == UserID && x.IsActive == true).Count()
 
