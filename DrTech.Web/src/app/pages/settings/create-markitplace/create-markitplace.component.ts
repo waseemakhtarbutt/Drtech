@@ -145,11 +145,54 @@ export class CreatemarkitplaceComponent implements OnInit {
     //this.router.navigate(["/pages/settings/create-ad"]);
     this.reloadGrid()
   }
+  async InactiveMarketPlace(id)
+  {
+debugger
+    var formResponse = await this.mymarkitplaceService.InactiveMarketPlace(id);
+
+     this.reloadGrid();
+  }
+  async onUpdate() {
+    this.loading = true;
+
+    //this._viewModel.imageToUpload =  1;
+   
+    if (!this.fileToUpload) this._viewModel.imageToUpload = ""; else this._viewModel.imageToUpload = this.imageToUpload;
+    if (!this.fileToUpload) this._viewModel.fileToUpload = ""; else this._viewModel.fileToUpload = this.fileToUpload;
+    // debugger
+    // if (this._viewModel.imageToUpload === "" || this.fileToUpload === undefined) {
+    //   this.loading = false;
+    //   return;
+
+    // }
+    this.file.push(this.fileToUpload);
+    // this.file.push(this.fileToUpload);
+
+    var formResponse = await this.mymarkitplaceService.MarkitplaceUpdate(this.file, this._viewModel);
+    if (formResponse.statusCode == 0)
+      this.headerInfo = "Add Amal Market Place";
+    this._viewModel = {};
+    this.file = [];
+    this.loading = false;
+
+    //this.router.navigate(["/pages/settings/create-ad"]);
+    this.reloadGrid()
+  }
   public pageChange(event: PageChangeEvent): void {
     this.skip = event.skip;
     this.loadItems();
   }
+  async editValue(id) { 
 
+    debugger
+    var response = await this.mymarkitplaceService.GetBinDetailByID(id);
+    this._viewModel.id=response.data.id;
+    this._viewModel.fileName=response.data.fileName;
+    this._viewModel.binName=response.data.binName;
+    this._viewModel.price=response.data.price;
+    this._viewModel.capacity=response.data.capacity;
+    this._viewModel.desction=response.data.description;
+  }
 
 
   public sortChange(sort: SortDescriptor[]): void {

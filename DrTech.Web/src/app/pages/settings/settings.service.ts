@@ -79,6 +79,17 @@ export class SettingsService extends BaseService {
   async GetBinDetailList(): Promise<ResponseObject<any>> {
     return await this.Get<any>('BuyBin/GetBinDetailsList');
   }
+
+  async GetBinDetailByID(Id): Promise<ResponseObject<any>> {
+    return await this.Get<any>('BuyBin/GetBinDetailsByID?Id=' + Id);
+  }
+  async MarkitplaceUpdate(file, model): Promise<ResponseObject<any>> {
+    return await this.UploadData<any>(file, 'BuyBin/UpdateBinInformation', model);
+  }
+  async InactiveMarketPlace(id): Promise<ResponseObject<any>> {
+    debugger
+    return await this.Get<any>('BuyBin/DeleteBinDetails?ID=' + id);
+  }
 }
 
 

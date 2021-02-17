@@ -20,7 +20,7 @@
                   <input type="text"
                     class="form-control"
                     [ngClass]="form-control"
-                    placeholder="BinName*" [(ngModel)]="_viewModel.binName" name="BinName" 
+                    placeholder="Item Name*" [(ngModel)]="_viewModel.binName" name="BinName" 
                   >
   
                 </div>
@@ -50,6 +50,8 @@
           <div [hidden]="picSize" class="alert alert-danger">Size must be less then 2MB</div>
           <div [hidden]="picType" class="alert alert-danger"> Please select image file</div>
           <button type="submit" class="btn btn-success btn-md" [disabled]="!AdsForm.form.valid" style="float: right;">Save</button>
+          <button type="button" (click)="onUpdate()" class="btn btn-success btn-md" [disabled]="!AdsForm.form.valid" style="float: left;">Update</button>
+
         </div>
       </div>
               
@@ -78,6 +80,25 @@
           <ng-template kendoGridCellTemplate let-dataItem >
               <a href="{{dataItem.fileName}}" target="_blank">Picture</a>
            <!-- // <a class="lnk" target="_blank" [routerLink]="'',dataItem.fileName" >qw</a> -->
+          </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column field="Action" width="100%"  [sortable]="false" filterable="false">
+          <ng-template kendoGridCellTemplate let-dataItem>
+
+            <a class="blue size13 " (click)="editValue(dataItem.id)"
+              title="Edit" data-toggle="tooltip" data-placement="top"> <button nbButton outline
+                status="success"><i class="nb-edit"></i>&nbsp;Edit</button></a>&nbsp;
+
+                <!-- <a class="blue size13 " title="Suspend" data-toggle="tooltip" data-placement="top"><button (click)="onComplaintAction(dialog,$event, dataItem.id)" nbButton outline  status="success">x</button></a>&nbsp; -->
+
+          </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column field="Action" width="100%"  [sortable]="false" filterable="false">
+          <ng-template kendoGridCellTemplate let-dataItem>
+            <a class="blue size13 " (click)="InactiveMarketPlace(dataItem.id)"
+              title="Edit" data-toggle="tooltip" data-placement="top"> <button nbButton outline
+                status="success"><i class=""></i>&nbsp;Delete</button></a>&nbsp;
+                <!-- <a class="blue size13 " title="Suspend" data-toggle="tooltip" data-placement="top"><button (click)="onComplaintAction(dialog,$event, dataItem.id)" nbButton outline  status="success">x</button></a>&nbsp; -->
           </ng-template>
         </kendo-grid-column>
 
