@@ -1,18 +1,21 @@
 
+
 import { SchoolService } from '../service/school.service'
 import { Component, OnInit, TemplateRef} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GridDataResult, PageChangeEvent } from '@progress/kendo-angular-grid';
 import { NbDialogService, NbDialogRef } from '@nebular/theme';
 import { compileFilter, CompositeFilterDescriptor, filterBy, SortDescriptor, orderBy } from '@progress/kendo-data-query';
+import { BranchRequest } from '../models/schools-comparision-criteria';
 
 @Component({
   selector: 'ngx-students',
   templateUrl: './students.component.html',
-  styleUrls: ['./students.component.css']
+ // styleUrls: ['./students.component.css']
 })
 
 export class StudentsComponent implements OnInit {
+  request : BranchRequest = new BranchRequest();
   public schoolId:any = 0;
   listViewModel: any[] = [];
   loading=false;
@@ -29,7 +32,8 @@ export class StudentsComponent implements OnInit {
   }];
   public multiple = false;
   public allowUnsort = true;
-  constructor(public schoolService: SchoolService, protected route: ActivatedRoute, protected router: Router, private dialogService: NbDialogService) { }
+  constructor(public schoolService: SchoolService, protected route: ActivatedRoute, protected router: Router, private dialogService: NbDialogService) {
+   }
 
   async ngOnInit() {
     this.schoolId.toString();
@@ -37,16 +41,25 @@ export class StudentsComponent implements OnInit {
     this.LoadData();
   }
 
-  LoadData() {
+ async LoadData() {
+   debugger;
     this.loading = true;
+    let response = this.schoolService.GetSchoolStudentsBySchoolId(this.request);
+    if ((await response).statusCode == 0) {
+      this.listViewModel = [];
+      this.listViewModel = (await response).data;
+     // this.gridView = this.listViewModel;
+      console.log('banches mapped',this.listViewModel)
+      this.loading = false;
+    }
 
-    this.schoolService.GetSchoolStudentsBySchoolId(this.schoolId).subscribe(result => {
-      if (result.statusCode == 0) {
-        this.listViewModel = result.data;
+    // this.schoolService.GetSchoolStudentsBySchoolId(this.schoolId).subscribe(result => {
+    //   if (result.statusCode == 0) {
+    //     this.listViewModel = result.data;
 
-        this.loadItems();
-      }
-    });
+    //     this.loadItems();
+    //   }
+    // });
 
     this.loading = false
   }
@@ -54,16 +67,29 @@ export class StudentsComponent implements OnInit {
     this.schoolId = value;
     this.LoadData();
   }
-  LoadSchoolBranches() {
+async  LoadSchoolBranches() {
     this.loading = true;
-    this.schoolService.GetSchoolBranchesByUserId().subscribe(result => {
-      if (result.statusCode == 0) {
-        this.schoolBranches = result.data;
-      }
-    });
-    this.loading = false
+    let response = this.schoolService.GetSchoolBranchesByUserId();
+    if ((await response).statusCode == 0) {
+      this.schoolBranches = [];
+      this.schoolBranches = (await response).data;
+      console.log('banches mapped',this.schoolBranches)
+      this.loading = false;
+    }
   }
-
+  valueChange(value):void{
+  if(parseInt(value) === 0)
+  {
+    this.request.all = true;
+  }
+  else{
+    this.request.id = parseInt(value);
+    this.request.all = false;
+  }
+  
+    debugger;
+    this.LoadData();
+  }
   private loadItems(): void {
     if(this.skip == this.listViewModel.length)
         this.skip = this.skip - this.pageSize;
