@@ -62,8 +62,11 @@ namespace DrTech.Amal.SQLServices.Controllers
                     mdlSchool.Email = HttpContext.Current.Request.Form["email"].ToString();
                 if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["cityid"]))
                     mdlSchool.CityID = Convert.ToInt32(HttpContext.Current.Request.Form["cityid"]);
-                if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["areaid"]))
+              ///  if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["areaid"]))
                    // mdlSchool.AreaID = Convert.ToInt32(HttpContext.Current.Request.Form["areaid"]);
+                //if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["areaid"]))
+                //    mdlSchool.AreaID = Convert.ToInt32(HttpContext.Current.Request.Form["areaid"]);
+
                 if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["areaname"]))
                     AreaName = HttpContext.Current.Request.Form["areaname"];
 

@@ -45,7 +45,6 @@ namespace DrTech.Amal.Common.Helpers
             msg.Subject = subject;
             msg.Body = body;
             msg.IsBodyHtml = true;
-
             SmtpClient client = new SmtpClient
             {
                 UseDefaultCredentials = false,
