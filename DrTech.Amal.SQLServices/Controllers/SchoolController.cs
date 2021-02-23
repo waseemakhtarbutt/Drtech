@@ -63,7 +63,7 @@ namespace DrTech.Amal.SQLServices.Controllers
                 if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["cityid"]))
                     mdlSchool.CityID = Convert.ToInt32(HttpContext.Current.Request.Form["cityid"]);
                 if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["areaid"]))
-                    mdlSchool.AreaID = Convert.ToInt32(HttpContext.Current.Request.Form["areaid"]);
+                   // mdlSchool.AreaID = Convert.ToInt32(HttpContext.Current.Request.Form["areaid"]);
                 if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["areaname"]))
                     AreaName = HttpContext.Current.Request.Form["areaname"];
 
@@ -340,7 +340,8 @@ namespace DrTech.Amal.SQLServices.Controllers
                             FullName = mdlSchool.ContactPerson,
                             Phone = mdlSchool.Phone,
                             Email = "admin" + mdlSchool.Email,
-                            Password = "admin@1234",
+                            // Password = "admin@1234",
+                            Password = PasswordGenerator.Generate(12),
                             UserTypeID = (int)UserTypeEnum.Web,
                             RoleID = (int)UserRoleTypeEnum.SchoolAdmin,
                             CreatedBy = db.Repository<User>().GetAll().Where(x => x.RoleID == 1).Select(x => x.ID).FirstOrDefault(),
@@ -357,7 +358,8 @@ namespace DrTech.Amal.SQLServices.Controllers
                         FullName = mdlSchool.ContactPerson,
                         Phone = mdlSchool.Phone,
                         Email = mdlSchool.Email,
-                        Password = "abcd@1234",
+                        // Password = "abcd@1234",
+                        Password = PasswordGenerator.Generate(15),
                         UserTypeID = (int)UserTypeEnum.Web,
                         RoleID = (int)UserRoleTypeEnum.SubSchoolAdmin,
                         CreatedBy = db.Repository<User>().GetAll().Where(x => x.RoleID == 1).Select(x => x.ID).FirstOrDefault(),
@@ -913,18 +915,18 @@ namespace DrTech.Amal.SQLServices.Controllers
 
         }
         [HttpGet]
-        public async Task<ResponseObject<List<Object>>> GetSchoolBranchesByUserId()
+        public async Task<ResponseObject<List<object>>> GetSchoolBranchesByUserId()
         {
             int? UserID = JwtDecoder.GetUserIdFromToken(Request.Headers.Authorization.Parameter);
             var reuslt = db.ExtRepositoryFor<SchoolRepository>().GetSchoolBranchesByUserId(Convert.ToInt32(UserID));
             return ServiceResponse.SuccessReponse(reuslt, MessageEnum.RecordFoundSuccessfully);
 
         }
-        [HttpGet]
-        public async Task<ResponseObject<List<Object>>> GetSchoolStudentsBySchoolId(int id)
+        [HttpPost]
+        public async Task<ResponseObject<List<Object>>> StudentsBySchool(BranchRequest model)
         {
             int? UserID = JwtDecoder.GetUserIdFromToken(Request.Headers.Authorization.Parameter);
-            var reuslt = db.ExtRepositoryFor<SchoolRepository>().GetSchoolStudentsBySchoolId(id);
+            var reuslt = db.ExtRepositoryFor<SchoolRepository>().GetSchoolStudentsBySchoolId(model,UserID);
             return ServiceResponse.SuccessReponse(reuslt, MessageEnum.RecordFoundSuccessfully);
 
         }
