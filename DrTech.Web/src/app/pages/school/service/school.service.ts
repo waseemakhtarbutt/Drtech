@@ -71,4 +71,21 @@ export class SchoolService extends BaseService {
   async GetSchoolsBranchesStudentsPieChartBySchoolAdmin(): Promise<ResponseObject<any>> {
     return await this.Post<any>('School/GetSchoolsBranchesStudentsPieChartBySchoolAdmin');
   }
+//  async GetSchoolBranchesByUserId(): Observable<ResponseObject<any>> {
+//     const link = this.baseUrl + 'School/GetSchoolBranchesByUserId';
+//     return this.http.get<ResponseObject<any>>(link)
+//       .pipe(catchError(this.handleError));
+//   }
+  async GetSchoolBranchesByUserId(): Promise<ResponseObject<any>> {
+    return await this.Get<any>('School/GetSchoolBranchesByUserId');
+  }
+  // GetSchoolStudentsBySchoolId(schoolId): Observable<ResponseObject<any>> {
+  //   const link = this.baseUrl + 'School/GetSchoolStudentsBySchoolId?id='+ schoolId;
+  //   return this.http.get<ResponseObject<any>>(link)
+  //     .pipe(catchError(this.handleError));
+  // }
+  async GetSchoolStudentsBySchoolId(model): Promise<ResponseObject<any>> {
+   // const link = this.baseUrl + 'School/GetSchoolStudentsBySchoolId?id='+ schoolId;
+    return await this.Post<any>('School/StudentsBySchool',model);
+  }
 }

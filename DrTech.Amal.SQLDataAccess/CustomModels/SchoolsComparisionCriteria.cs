@@ -16,4 +16,10 @@ namespace DrTech.Amal.SQLDataAccess.CustomModels
         public  string Type { get; set; }
 
     }
+    public class BranchRequest
+    {
+        public int Id { get; set; }
+        public bool All { get; set; }
+
+    }
 }

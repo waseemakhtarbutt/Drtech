@@ -18,6 +18,7 @@ import { ChartsModule } from '@progress/kendo-angular-charts';
 import { ProgressComponent } from './progress/progress.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BranchesComparisionComponent } from './branches-comparision/branches-comparision.component';
+import { StudentsComponent } from './students/students.component';
 
 @NgModule({
   imports: [
@@ -44,7 +45,8 @@ import { BranchesComparisionComponent } from './branches-comparision/branches-co
     AdminStaffListComponent,
     ComparisonComponent,
     ProgressComponent,
-    BranchesComparisionComponent
+    BranchesComparisionComponent,
+    StudentsComponent
   ],
   exports: [...routedComponents ],
 })
