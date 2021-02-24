@@ -46,6 +46,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
         public List<object> GetBuyBinList()
         {
             var binDetailList = (from bin in context.BinDetails.ToList()
+                                 where bin.IsActive==true
                                  select new
                                  {
                                      bin.BinName,

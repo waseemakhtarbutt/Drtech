@@ -47,6 +47,7 @@ namespace DrTech.Amal.Common.Helpers
             msg.IsBodyHtml = true;
             SmtpClient client = new SmtpClient
             {
+
                 UseDefaultCredentials = false,
                 Credentials = new System.Net.NetworkCredential(from, password),
                 Port = Convert.ToInt32(port), // You can use Port 25 if 587 is blocked (mine is!)

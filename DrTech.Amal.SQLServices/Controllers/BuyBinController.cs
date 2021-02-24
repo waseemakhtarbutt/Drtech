@@ -192,7 +192,7 @@ namespace DrTech.Amal.SQLServices.Controllers
         {
             try
             {
-                List<BinDetail> getBinDetail = db.Repository<BinDetail>().GetAll().ToList();
+                List<BinDetail> getBinDetail = db.Repository<BinDetail>().GetAll().Where(x=>x.IsActive==true).ToList();
                 return ServiceResponse.SuccessReponse(getBinDetail, MessageEnum.DefaultSuccessMessage);
             }
             catch (Exception exp)
@@ -211,6 +211,37 @@ namespace DrTech.Amal.SQLServices.Controllers
             catch (Exception exp)
             {
                 return ServiceResponse.ErrorReponse<List<object>>(exp);
+            }
+        }
+
+        
+        [HttpGet]
+        public ResponseObject<bool> DeleteBinDetails(int id)
+        {
+            try
+            {
+                BinDetail org = db.Repository<BinDetail>().GetAll().Where(x => x.ID == id).FirstOrDefault();
+                org.IsActive = false;
+                db.Repository<BinDetail>().Update(org);
+                db.Save();
+                return ServiceResponse.SuccessReponse(true, MessageEnum.OrgSuspended);
+            }
+            catch (Exception exp)
+            {
+                return ServiceResponse.ErrorReponse<bool>(exp);
+            }
+        }
+        [HttpGet]
+        public ResponseObject<object> GetBinDetailsByID(int id)
+        {
+            try
+            {
+                var getBinDetails = db.ExtRepositoryFor<UserPaymentRepository>().GetBinDetailsByID(id);
+                return ServiceResponse.SuccessReponse(getBinDetails, MessageEnum.DefaultSuccessMessage);
+            }
+            catch (Exception exp)
+            {
+                return ServiceResponse.ErrorReponse<object>(exp);
             }
         }
         [HttpPost]
@@ -245,6 +276,60 @@ namespace DrTech.Amal.SQLServices.Controllers
                 mdlBinDetail.CreatedBy = (int)UserID;
                 mdlBinDetail.CreatedDate = DateTime.Now;
                 db.Repository<BinDetail>().Insert(mdlBinDetail);
+                db.Save();
+
+                return ServiceResponse.SuccessReponse(true, MessageEnum.NGOAdded);
+            }
+            catch (DbEntityValidationException e)
+            {
+
+                return ServiceResponse.ErrorReponse<bool>("Text");
+            }
+            catch (Exception exp)
+            {
+                return ServiceResponse.ErrorReponse<bool>(exp);
+            }
+        }
+
+        [HttpPost]
+        public async Task<ResponseObject<bool>> UpdateBinInformation()
+        {
+            try
+            {
+                BinDetail mdlBinDetail = new BinDetail();
+                if (!Request.Content.IsMimeMultipartContent())
+                {
+                    throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
+                }
+                int? UserID = JwtDecoder.GetUserIdFromToken(Request.Headers.Authorization.Parameter);
+                if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["fileName"]))
+                    mdlBinDetail.FileName = HttpContext.Current.Request.Form["fileName"];
+                if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["id"]))
+                    mdlBinDetail.ID = Convert.ToInt32( HttpContext.Current.Request.Form["id"]);
+                if (mdlBinDetail.FileName == "" || mdlBinDetail.FileName== "undefined,undefined")
+                {
+                    string FileName = string.Empty;
+
+                    var files = HttpContext.Current.Request.Files;
+                    if (files.Count > 0)
+                    {
+                        HttpPostedFile file = HttpContext.Current.Request.Files[0];
+                        FileName = await FileOpsHelper.UploadFileNew(file, ContainerName.Business);
+                    }
+                    mdlBinDetail.FileName = FileName;
+                }
+                if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["price"]))
+                    mdlBinDetail.Price = Convert.ToDouble(HttpContext.Current.Request.Form["price"]);
+                if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["BinName"]))
+                    mdlBinDetail.BinName = HttpContext.Current.Request.Form["binName"];
+                if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["desction"]))
+                    mdlBinDetail.Description = HttpContext.Current.Request.Form["desction"];
+                if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["capacity"]))
+                    mdlBinDetail.Capacity = HttpContext.Current.Request.Form["capacity"];
+                mdlBinDetail.IsActive = true;
+                mdlBinDetail.UpdatedBy = (int)UserID;
+                mdlBinDetail.CreatedDate = DateTime.Now;
+                db.Repository<BinDetail>().Update(mdlBinDetail);
                 db.Save();
 
                 return ServiceResponse.SuccessReponse(true, MessageEnum.NGOAdded);

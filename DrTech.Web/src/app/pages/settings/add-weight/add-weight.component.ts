@@ -47,14 +47,14 @@ export class AddWeightComponent implements OnInit {
   ngOnInit() {
     this.reloadGrid();
 
-    // this.myWasteService.GetAllCitys().subscribe(result => {
-    //   this.CityList = result.data;
-    // });
+    this.myWasteService.GetAllCitys().subscribe(result => {
+      this.CityList = result.data;
+    });
 
-    // this.myAddWeightService.GetAllWeight().subscribe(result => {
-    //   debugger
-    //   this.AddTypeList = result.data;
-    // });
+    this.myAddWeightService.GetAllWeight().subscribe(result => {
+      debugger
+      this.AddTypeList = result.data;
+    });
 
   }
 

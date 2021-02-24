@@ -52,6 +52,22 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                   }).OrderByDescending(o => o.ID).ToList<object>();
             return mdlAD;
         }
+
+        public object GetBinDetailsByID(int id)
+        {
+            object mdlAD = (from com in context.BinDetails
+            where com.IsActive == true
+                                  select new
+                                  {
+                                      com.ID,
+                                      com.FileName,
+                                      com.BinName,
+                                      com.Price,
+                                      com.Capacity,
+                                      com.Description
+                                  }).Where(x =>x.ID==id).OrderByDescending(o => o.ID).FirstOrDefault();
+            return mdlAD;
+        }
         public List<object> GetAdList()
         {
             List<object> mdlAD = (from com in context.Ads.ToList()
@@ -103,8 +119,6 @@ namespace DrTech.Amal.SQLDataAccess.Repository
         //    mdlGcRedeem.CreatedBy = model.UserID;
         //    mdlGcRedeem.IsActive = true;
         //  context.Ads.Add()
-
-
         //    return false;
         //}
         #endregion

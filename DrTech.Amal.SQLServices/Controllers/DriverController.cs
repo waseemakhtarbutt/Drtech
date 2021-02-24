@@ -87,6 +87,9 @@ namespace DrTech.Amal.SQLServices.Controllers
                 if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["regNumber"]))
                     mdlDriver.RegNumber = HttpContext.Current.Request.Form["regNumber"].ToString();
 
+                if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["pin"]))
+                    mdlDriver.PIN = HttpContext.Current.Request.Form["pin"].ToString();
+
                 if (!string.IsNullOrEmpty(HttpContext.Current.Request.Form["vehicleID"]))
                     mdlDriver.VehicleID = Convert.ToInt32(HttpContext.Current.Request.Form["vehicleID"].ToString());
 
@@ -110,12 +113,12 @@ namespace DrTech.Amal.SQLServices.Controllers
                 }
                 else
                 {
-                    int _min = 1000;
-                    int _max = 9999;
-                    Random random = new Random();
-                    Int32 number = random.Next(_min, _max);
+                    //int _min = 1000;
+                    //int _max = 9999;
+                    //Random random = new Random();
+                    //Int32 number = random.Next(_min, _max);
 
-                    mdlDriver.PIN = number.ToString();
+                    //mdlDriver.PIN = number.ToString();
 
                     mdlDriver.CreatedBy = (int)UserID;
                     mdlDriver.CreatedDate = DateTime.Now;
