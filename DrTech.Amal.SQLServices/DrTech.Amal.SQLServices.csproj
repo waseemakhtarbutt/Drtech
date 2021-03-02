@@ -478,6 +478,9 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <None Include="Properties\PublishProfiles\aamalforlifeqaadmin - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\aamalforlifeqaadmin - ReadOnly - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\aamalforlifeqaadmin - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\amalforlife-android - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\amalforlife-android - FTP1.pubxml" />
     <None Include="Properties\PublishProfiles\amalforlife-android - FTP2.pubxml" />
@@ -490,6 +493,9 @@
     <None Include="Properties\PublishProfiles\amalforlife-ios - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\amalforlife-ios-prod - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\amalforlife-ios-prod - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\amalforlifeadmin - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\amalforlifeadmin - ReadOnly - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\amalforlifeadmin - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\amalforlifeqaServices - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\amalforlifeqaServices - FTP1.pubxml" />
     <None Include="Properties\PublishProfiles\amalforlifeqaServices - FTP2.pubxml" />

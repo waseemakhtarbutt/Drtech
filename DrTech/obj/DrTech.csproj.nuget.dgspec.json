@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Drtech\\DrTech\\DrTech.csproj": {}
+    "F:\\Drtech\\DrTech\\DrTech.csproj": {}
   },
   "projects": {
-    "E:\\Drtech\\DrTech\\DrTech.csproj": {
+    "F:\\Drtech\\DrTech\\DrTech.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Drtech\\DrTech\\DrTech.csproj",
+        "projectUniqueName": "F:\\Drtech\\DrTech\\DrTech.csproj",
         "projectName": "DrTech",
-        "projectPath": "E:\\Drtech\\DrTech\\DrTech.csproj",
+        "projectPath": "F:\\Drtech\\DrTech\\DrTech.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "E:\\Drtech\\DrTech\\obj\\",
+        "outputPath": "F:\\Drtech\\DrTech\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",

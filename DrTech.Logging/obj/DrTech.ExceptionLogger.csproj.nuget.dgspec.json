@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Drtech\\DrTech.Logging\\DrTech.ExceptionLogger.csproj": {}
+    "F:\\Drtech\\DrTech.Logging\\DrTech.ExceptionLogger.csproj": {}
   },
   "projects": {
-    "E:\\Drtech\\DrTech.Logging\\DrTech.ExceptionLogger.csproj": {
+    "F:\\Drtech\\DrTech.Logging\\DrTech.ExceptionLogger.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Drtech\\DrTech.Logging\\DrTech.ExceptionLogger.csproj",
+        "projectUniqueName": "F:\\Drtech\\DrTech.Logging\\DrTech.ExceptionLogger.csproj",
         "projectName": "DrTech.ExceptionLogger",
-        "projectPath": "E:\\Drtech\\DrTech.Logging\\DrTech.ExceptionLogger.csproj",
+        "projectPath": "F:\\Drtech\\DrTech.Logging\\DrTech.ExceptionLogger.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "E:\\Drtech\\DrTech.Logging\\obj\\",
+        "outputPath": "F:\\Drtech\\DrTech.Logging\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",

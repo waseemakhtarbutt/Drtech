@@ -1,84 +1,14 @@
-D:\DrTech Project\Application\Web\Source\DrTech\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLDatabase.dll.config
-D:\DrTech Project\Application\Web\Source\DrTech\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLDatabase.dll
-D:\DrTech Project\Application\Web\Source\DrTech\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLDatabase.pdb
-D:\DrTech Project\Application\Web\Source\DrTech\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLModels.dll
-D:\DrTech Project\Application\Web\Source\DrTech\DrTech.Amal.SQLDatabase\bin\Debug\EntityFramework.dll
-D:\DrTech Project\Application\Web\Source\DrTech\DrTech.Amal.SQLDatabase\bin\Debug\EntityFramework.SqlServer.dll
-D:\DrTech Project\Application\Web\Source\DrTech\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLModels.pdb
-D:\DrTech Project\Application\Web\Source\DrTech\DrTech.Amal.SQLDatabase\bin\Debug\EntityFramework.xml
-D:\DrTech Project\Application\Web\Source\DrTech\DrTech.Amal.SQLDatabase\bin\Debug\EntityFramework.SqlServer.xml
-D:\DrTech Project\Application\Web\Source\DrTech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.csprojAssemblyReference.cache
-D:\DrTech Project\Application\Web\Source\DrTech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.csproj.CoreCompileInputs.cache
-D:\DrTech Project\Application\Web\Source\DrTech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.csproj.CopyComplete
-D:\DrTech Project\Application\Web\Source\DrTech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.dll
-D:\DrTech Project\Application\Web\Source\DrTech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.pdb
-F:\drtech\Application\Web\Source\DrTech\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLDatabase.dll.config
-F:\drtech\Application\Web\Source\DrTech\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLDatabase.dll
-F:\drtech\Application\Web\Source\DrTech\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLDatabase.pdb
-F:\drtech\Application\Web\Source\DrTech\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLModels.dll
-F:\drtech\Application\Web\Source\DrTech\DrTech.Amal.SQLDatabase\bin\Debug\EntityFramework.dll
-F:\drtech\Application\Web\Source\DrTech\DrTech.Amal.SQLDatabase\bin\Debug\EntityFramework.SqlServer.dll
-F:\drtech\Application\Web\Source\DrTech\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLModels.pdb
-F:\drtech\Application\Web\Source\DrTech\DrTech.Amal.SQLDatabase\bin\Debug\EntityFramework.xml
-F:\drtech\Application\Web\Source\DrTech\DrTech.Amal.SQLDatabase\bin\Debug\EntityFramework.SqlServer.xml
-F:\drtech\Application\Web\Source\DrTech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.csprojAssemblyReference.cache
-F:\drtech\Application\Web\Source\DrTech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.csproj.CoreCompileInputs.cache
-F:\drtech\Application\Web\Source\DrTech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.csproj.CopyComplete
-F:\drtech\Application\Web\Source\DrTech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.dll
-F:\drtech\Application\Web\Source\DrTech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.pdb
-E:\DrTech\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLDatabase.dll.config
-E:\DrTech\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLDatabase.dll
-E:\DrTech\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLDatabase.pdb
-E:\DrTech\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLModels.dll
-E:\DrTech\DrTech.Amal.SQLDatabase\bin\Debug\EntityFramework.dll
-E:\DrTech\DrTech.Amal.SQLDatabase\bin\Debug\EntityFramework.SqlServer.dll
-E:\DrTech\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLModels.pdb
-E:\DrTech\DrTech.Amal.SQLDatabase\bin\Debug\EntityFramework.xml
-E:\DrTech\DrTech.Amal.SQLDatabase\bin\Debug\EntityFramework.SqlServer.xml
-E:\DrTech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.csprojAssemblyReference.cache
-E:\DrTech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.csproj.CoreCompileInputs.cache
-E:\DrTech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.csproj.CopyComplete
-E:\DrTech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.dll
-E:\DrTech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.pdb
-E:\Dev\Drtech\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLDatabase.dll.config
-E:\Dev\Drtech\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLDatabase.dll
-E:\Dev\Drtech\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLDatabase.pdb
-E:\Dev\Drtech\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLModels.dll
-E:\Dev\Drtech\DrTech.Amal.SQLDatabase\bin\Debug\EntityFramework.dll
-E:\Dev\Drtech\DrTech.Amal.SQLDatabase\bin\Debug\EntityFramework.SqlServer.dll
-E:\Dev\Drtech\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLModels.pdb
-E:\Dev\Drtech\DrTech.Amal.SQLDatabase\bin\Debug\EntityFramework.xml
-E:\Dev\Drtech\DrTech.Amal.SQLDatabase\bin\Debug\EntityFramework.SqlServer.xml
-E:\Dev\Drtech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.csprojAssemblyReference.cache
-E:\Dev\Drtech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.csproj.CoreCompileInputs.cache
-E:\Dev\Drtech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.csproj.CopyComplete
-E:\Dev\Drtech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.dll
-E:\Dev\Drtech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.pdb
-D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLDatabase.dll.config
-D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLDatabase.dll
-D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLDatabase.pdb
-D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLModels.dll
-D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.SQLDatabase\bin\Debug\EntityFramework.dll
-D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.SQLDatabase\bin\Debug\EntityFramework.SqlServer.dll
-D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLModels.pdb
-D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.SQLDatabase\bin\Debug\EntityFramework.xml
-D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.SQLDatabase\bin\Debug\EntityFramework.SqlServer.xml
-D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.csprojAssemblyReference.cache
-D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.csproj.CoreCompileInputs.cache
-D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.csproj.CopyComplete
-D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.dll
-D:\MainProject\Drtech-main\Drtech-main\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.pdb
-D:\Drtech\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLDatabase.dll.config
-D:\Drtech\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLDatabase.dll
-D:\Drtech\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLDatabase.pdb
-D:\Drtech\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLModels.dll
-D:\Drtech\DrTech.Amal.SQLDatabase\bin\Debug\EntityFramework.dll
-D:\Drtech\DrTech.Amal.SQLDatabase\bin\Debug\EntityFramework.SqlServer.dll
-D:\Drtech\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLModels.pdb
-D:\Drtech\DrTech.Amal.SQLDatabase\bin\Debug\EntityFramework.xml
-D:\Drtech\DrTech.Amal.SQLDatabase\bin\Debug\EntityFramework.SqlServer.xml
-D:\Drtech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.csprojAssemblyReference.cache
-D:\Drtech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.csproj.CoreCompileInputs.cache
-D:\Drtech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.csproj.CopyComplete
-D:\Drtech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.dll
-D:\Drtech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.pdb
+F:\Drtech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.csprojAssemblyReference.cache
+F:\Drtech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.csproj.CoreCompileInputs.cache
+F:\Drtech\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLDatabase.dll.config
+F:\Drtech\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLDatabase.dll
+F:\Drtech\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLDatabase.pdb
+F:\Drtech\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLModels.dll
+F:\Drtech\DrTech.Amal.SQLDatabase\bin\Debug\EntityFramework.dll
+F:\Drtech\DrTech.Amal.SQLDatabase\bin\Debug\EntityFramework.SqlServer.dll
+F:\Drtech\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLModels.pdb
+F:\Drtech\DrTech.Amal.SQLDatabase\bin\Debug\EntityFramework.xml
+F:\Drtech\DrTech.Amal.SQLDatabase\bin\Debug\EntityFramework.SqlServer.xml
+F:\Drtech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.csproj.CopyComplete
+F:\Drtech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.dll
+F:\Drtech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.pdb

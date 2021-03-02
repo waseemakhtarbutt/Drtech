@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Drtech\\DrTech.Models\\DrTech.Models.csproj": {}
+    "F:\\Drtech\\DrTech.Models\\DrTech.Models.csproj": {}
   },
   "projects": {
-    "E:\\Drtech\\DrTech.Common\\DrTech.Common.csproj": {
+    "F:\\Drtech\\DrTech.Common\\DrTech.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Drtech\\DrTech.Common\\DrTech.Common.csproj",
+        "projectUniqueName": "F:\\Drtech\\DrTech.Common\\DrTech.Common.csproj",
         "projectName": "DrTech.Common",
-        "projectPath": "E:\\Drtech\\DrTech.Common\\DrTech.Common.csproj",
+        "projectPath": "F:\\Drtech\\DrTech.Common\\DrTech.Common.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "E:\\Drtech\\DrTech.Common\\obj\\",
+        "outputPath": "F:\\Drtech\\DrTech.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -33,8 +33,8 @@
           "netcoreapp2.0": {
             "targetAlias": "netcoreapp2.0",
             "projectReferences": {
-              "E:\\Drtech\\DrTech.Logging\\DrTech.ExceptionLogger.csproj": {
-                "projectPath": "E:\\Drtech\\DrTech.Logging\\DrTech.ExceptionLogger.csproj"
+              "F:\\Drtech\\DrTech.Logging\\DrTech.ExceptionLogger.csproj": {
+                "projectPath": "F:\\Drtech\\DrTech.Logging\\DrTech.ExceptionLogger.csproj"
               }
             }
           }
@@ -94,14 +94,14 @@
         }
       }
     },
-    "E:\\Drtech\\DrTech.Logging\\DrTech.ExceptionLogger.csproj": {
+    "F:\\Drtech\\DrTech.Logging\\DrTech.ExceptionLogger.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Drtech\\DrTech.Logging\\DrTech.ExceptionLogger.csproj",
+        "projectUniqueName": "F:\\Drtech\\DrTech.Logging\\DrTech.ExceptionLogger.csproj",
         "projectName": "DrTech.ExceptionLogger",
-        "projectPath": "E:\\Drtech\\DrTech.Logging\\DrTech.ExceptionLogger.csproj",
+        "projectPath": "F:\\Drtech\\DrTech.Logging\\DrTech.ExceptionLogger.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "E:\\Drtech\\DrTech.Logging\\obj\\",
+        "outputPath": "F:\\Drtech\\DrTech.Logging\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -172,14 +172,14 @@
         }
       }
     },
-    "E:\\Drtech\\DrTech.Models\\DrTech.Models.csproj": {
+    "F:\\Drtech\\DrTech.Models\\DrTech.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Drtech\\DrTech.Models\\DrTech.Models.csproj",
+        "projectUniqueName": "F:\\Drtech\\DrTech.Models\\DrTech.Models.csproj",
         "projectName": "DrTech.Models",
-        "projectPath": "E:\\Drtech\\DrTech.Models\\DrTech.Models.csproj",
+        "projectPath": "F:\\Drtech\\DrTech.Models\\DrTech.Models.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "E:\\Drtech\\DrTech.Models\\obj\\",
+        "outputPath": "F:\\Drtech\\DrTech.Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -201,8 +201,8 @@
           "netcoreapp2.0": {
             "targetAlias": "netcoreapp2.0",
             "projectReferences": {
-              "E:\\Drtech\\DrTech.Common\\DrTech.Common.csproj": {
-                "projectPath": "E:\\Drtech\\DrTech.Common\\DrTech.Common.csproj"
+              "F:\\Drtech\\DrTech.Common\\DrTech.Common.csproj": {
+                "projectPath": "F:\\Drtech\\DrTech.Common\\DrTech.Common.csproj"
               }
             }
           }

@@ -16,6 +16,7 @@ export class DesegregatedGridComponent implements OnInit {
   public gridView: GridDataResult;
   source: LocalDataSource = new LocalDataSource();
   listViewModel: any[] = [];
+  TypesWithWeightRecycle: any[] = [];
   public pageSize = 8;
   public skip = 0;
   public IsSegregated: boolean = false;
@@ -66,6 +67,11 @@ export class DesegregatedGridComponent implements OnInit {
     }
     this.loading = true;
     var response = await this.service.GetDesegregatedListBetweenTwoDates(this.range);
+    var responsedata = await this.service.GetSegregatedDataBetweenTwoDates(this.range);
+    if (responsedata.statusCode == 0) {
+      this.TypesWithWeightRecycle = response.data;
+      console.log(this.TypesWithWeightRecycle)
+    }
     if (response.statusCode == 0) {
       this.listViewModel = [];
       this.skip =0;

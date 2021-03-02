@@ -1158,6 +1158,8 @@
     <EntitySetMapping Name="RecycleSubItemsTypes">
       <EntityTypeMapping TypeName="DrTech.Amal.Model.RecycleSubItemsType">
         <MappingFragment StoreEntitySet="RecycleSubItemsTypes">
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
           <ScalarProperty Name="WasteTypeID" ColumnName="WasteTypeID" />
           <ScalarProperty Name="Weight" ColumnName="Weight" />
           <ScalarProperty Name="RecycleSubItemID" ColumnName="RecycleSubItemID" />

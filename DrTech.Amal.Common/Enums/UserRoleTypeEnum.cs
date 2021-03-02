@@ -43,5 +43,7 @@ namespace DrTech.Amal.Common.Enums
         Greenwaste = 17,
         [Description("TeaBags")]
         TeaBags = 19,
+        [Description("Tissue")]
+        Tissue = 21,
     }
 }

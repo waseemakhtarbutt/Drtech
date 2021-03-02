@@ -581,6 +581,8 @@
           <Property Name="RecycleSubItemID" Type="int" />
           <Property Name="Weight" Type="decimal" Precision="18" Scale="2" />
           <Property Name="WasteTypeID" Type="int" />
+          <Property Name="Rate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Total" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="Reduce">
           <Key>
@@ -4745,6 +4747,8 @@
           <Property Name="WasteTypeID" Type="Int32" />
           <NavigationProperty Name="RecycleSubItem" Relationship="DrTech.Amal.Model.FK_RecycleSubItemsTypes_RecycleSubItems" FromRole="RecycleSubItemsType" ToRole="RecycleSubItem" />
           <NavigationProperty Name="WasteType" Relationship="DrTech.Amal.Model.FK_RecycleSubItemsTypes_WasteType" FromRole="RecycleSubItemsType" ToRole="WasteType" />
+          <Property Name="Rate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Total" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <Association Name="FK_RecycleSubItemsTypes_RecycleSubItems">
           <End Type="DrTech.Amal.Model.RecycleSubItem" Role="RecycleSubItem" Multiplicity="0..1" />
@@ -6201,6 +6205,8 @@
           <EntitySetMapping Name="RecycleSubItemsTypes">
             <EntityTypeMapping TypeName="DrTech.Amal.Model.RecycleSubItemsType">
               <MappingFragment StoreEntitySet="RecycleSubItemsTypes">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
                 <ScalarProperty Name="WasteTypeID" ColumnName="WasteTypeID" />
                 <ScalarProperty Name="Weight" ColumnName="Weight" />
                 <ScalarProperty Name="RecycleSubItemID" ColumnName="RecycleSubItemID" />

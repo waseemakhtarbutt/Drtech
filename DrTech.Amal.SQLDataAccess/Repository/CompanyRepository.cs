@@ -205,7 +205,9 @@ namespace DrTech.Amal.SQLDataAccess.Repository
             int NotWasteTypeID = (int)ConstantValues.NotWasteTypeID;
             int Greenwaste = (int)ConstantValues.Greenwaste;
             int TeaBags = (int)ConstantValues.TeaBags;
-            var allRecords = context.RecycleSubItemsTypes.Where(x => x.RecycleSubItemID == rSubItemID && x.WasteTypeID != NotWasteTypeID && x.WasteTypeID != Greenwaste && x.WasteTypeID != TeaBags).ToList();
+            int Tissue = (int)ConstantValues.Tissue;
+
+            var allRecords = context.RecycleSubItemsTypes.Where(x => x.RecycleSubItemID == rSubItemID && x.WasteTypeID != NotWasteTypeID && x.WasteTypeID != Greenwaste && x.WasteTypeID != TeaBags && x.WasteTypeID != Tissue).ToList();
                 if(allRecords != null && allRecords.Count > 0)
             {
                 return allRecords.Sum(item => item.Weight);
@@ -223,9 +225,10 @@ namespace DrTech.Amal.SQLDataAccess.Repository
             int NotWasteTypeID = (int)ConstantValues.NotWasteTypeID;
             int TeaBags = (int)ConstantValues.TeaBags;
             int Greenwaste = (int)ConstantValues.Greenwaste;
+            int Tissue = (int)ConstantValues.Tissue;
 
             List<int?> myObjects = new List<int?>();
-            myObjects.AddRange((new[] { NotWasteTypeID, TeaBags, Greenwaste }).Cast<int?>());
+            myObjects.AddRange((new[] { NotWasteTypeID, TeaBags, Greenwaste, Tissue }).Cast<int?>());
 
           
             var allRecords = context.RecycleSubItemsTypes.Where(x => x.RecycleSubItemID == rSubItemID && myObjects.Contains(x.WasteTypeID)).ToList();
@@ -245,7 +248,9 @@ namespace DrTech.Amal.SQLDataAccess.Repository
             int NotWasteTypeID = (int)ConstantValues.NotWasteTypeID;
             int TeaBags = (int)ConstantValues.TeaBags;
             int Greenwaste = (int)ConstantValues.Greenwaste;
-            var allRecords = context.RecycleSubItemsTypes.Where(x => x.RecycleSubItemID == rSubItemID && x.WasteTypeID != NotWasteTypeID && x.WasteTypeID != TeaBags && x.WasteTypeID != Greenwaste).ToList();
+            int Tissue = (int)ConstantValues.Tissue;
+
+            var allRecords = context.RecycleSubItemsTypes.Where(x => x.RecycleSubItemID == rSubItemID && x.WasteTypeID != NotWasteTypeID && x.WasteTypeID != TeaBags && x.WasteTypeID != Greenwaste && x.WasteTypeID != Tissue).ToList();
             if (allRecords != null && allRecords.Count > 0)
             {
                 return allRecords.Sum(item => item.Weight);

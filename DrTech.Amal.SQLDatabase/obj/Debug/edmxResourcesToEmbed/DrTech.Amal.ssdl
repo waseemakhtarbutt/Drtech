@@ -576,6 +576,8 @@
     <Property Name="RecycleSubItemID" Type="int" />
     <Property Name="Weight" Type="decimal" Precision="18" Scale="2" />
     <Property Name="WasteTypeID" Type="int" />
+    <Property Name="Rate" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Total" Type="decimal" Precision="18" Scale="2" />
   </EntityType>
   <EntityType Name="Reduce">
     <Key>
