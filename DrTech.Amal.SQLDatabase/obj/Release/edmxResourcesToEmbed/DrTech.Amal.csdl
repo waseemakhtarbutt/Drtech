@@ -2645,6 +2645,8 @@
     <Property Name="WasteTypeID" Type="Int32" />
     <NavigationProperty Name="RecycleSubItem" Relationship="DrTech.Amal.Model.FK_RecycleSubItemsTypes_RecycleSubItems" FromRole="RecycleSubItemsType" ToRole="RecycleSubItem" />
     <NavigationProperty Name="WasteType" Relationship="DrTech.Amal.Model.FK_RecycleSubItemsTypes_WasteType" FromRole="RecycleSubItemsType" ToRole="WasteType" />
+    <Property Name="Rate" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Total" Type="Decimal" Precision="18" Scale="2" />
   </EntityType>
   <Association Name="FK_RecycleSubItemsTypes_RecycleSubItems">
     <End Type="DrTech.Amal.Model.RecycleSubItem" Role="RecycleSubItem" Multiplicity="0..1" />

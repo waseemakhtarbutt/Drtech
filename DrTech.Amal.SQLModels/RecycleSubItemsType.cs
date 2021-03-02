@@ -18,6 +18,8 @@ namespace DrTech.Amal.SQLModels
         public Nullable<int> RecycleSubItemID { get; set; }
         public Nullable<decimal> Weight { get; set; }
         public Nullable<int> WasteTypeID { get; set; }
+        public Nullable<decimal> Rate { get; set; }
+        public Nullable<decimal> Total { get; set; }
     
         public virtual RecycleSubItem RecycleSubItem { get; set; }
         public virtual WasteType WasteType { get; set; }

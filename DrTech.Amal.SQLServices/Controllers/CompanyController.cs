@@ -532,6 +532,8 @@ namespace DrTech.Amal.SQLServices.Controllers
                         recycleSubItemsType.RecycleSubItemID = mdlRecycleSubItem.ID;
                         recycleSubItemsType.WasteTypeID = item.typeID;
                         recycleSubItemsType.Weight = item.Weight;
+                        recycleSubItemsType.Rate = item.rate;
+                        recycleSubItemsType.Total = item.Weight* item.rate;
                         db.Repository<RecycleSubItemsType>().Insert(recycleSubItemsType);
                         db.Save();
                     }
@@ -606,6 +608,8 @@ namespace DrTech.Amal.SQLServices.Controllers
                         recycleSubItemsType.RecycleSubItemID = mRecycleSubItem.ID;
                         recycleSubItemsType.WasteTypeID = item.typeID;
                         recycleSubItemsType.Weight = item.Weight;
+                        recycleSubItemsType.Rate = item.rate;
+                        recycleSubItemsType.Total = item.Weight * item.rate;
                         db.Repository<RecycleSubItemsType>().Insert(recycleSubItemsType);
                         db.Save();
                     }

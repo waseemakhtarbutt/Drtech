@@ -126,6 +126,7 @@
     <Compile Include="Helpers\ExpoPushHelper.cs" />
     <Compile Include="Helpers\FileOpsHelper.cs" />
     <Compile Include="Helpers\GreenPointHelper.cs" />
+    <Compile Include="Helpers\PasswordGenerator.cs" />
     <Compile Include="Helpers\QRCodeTagHelper.cs" />
     <Compile Include="Helpers\SmtpServer.cs" />
     <Compile Include="Helpers\TokenHelper.cs" />

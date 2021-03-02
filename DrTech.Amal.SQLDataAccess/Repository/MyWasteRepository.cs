@@ -62,7 +62,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
         }
 
 
-       
+
 
         public decimal? getWieght(int RecycleID)
         {
@@ -86,7 +86,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                           where rec.ID == RecycleID
                           select rec).FirstOrDefault();
 
-            if(result != null)
+            if (result != null)
             {
                 return true;
             }
@@ -102,15 +102,15 @@ namespace DrTech.Amal.SQLDataAccess.Repository
             List<DesegregatedDataViewModel> DesegregatedList = new List<DesegregatedDataViewModel>();
             List<DesegregatedDataViewModel> DesegregatedListCurrentDate = new List<DesegregatedDataViewModel>();
 
-            List<RegBusiness> Companies  = new List<RegBusiness>();
+            List<RegBusiness> Companies = new List<RegBusiness>();
 
             Companies = (from regBus in context.RegBusinesses.ToList()
-                                join usr in context.Users on regBus.UserID equals usr.ID
-                                where usr.Type == "G"
+                         join usr in context.Users on regBus.UserID equals usr.ID
+                         where usr.Type == "G"
 
 
 
-                                select regBus).ToList();
+                         select regBus).ToList();
 
             foreach (var company in Companies)
             {
@@ -122,9 +122,9 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                     {
                         DesegregatedDataViewModel newRecord = new DesegregatedDataViewModel();
                         newRecord.UserID = recycle.UserID;
-                        newRecord.Weight = Convert.ToDecimal( getWieght(recycle.ID));
+                        newRecord.Weight = Convert.ToDecimal(getWieght(recycle.ID));
                         newRecord.ID = recycle.ID;
-                        newRecord.IsActive =  recycle.IsActive;
+                        newRecord.IsActive = recycle.IsActive;
                         newRecord.date = recycle.CollectorDateTime;
                         newRecord.CompanyName = company.Name;
                         newRecord.BranchName = branch.OfficeName;
@@ -132,10 +132,10 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                     }
                 }
             }
-        
+
             DesegregatedList = DesegregatedList.OrderByDescending(o => o.date).ToList();
-           // DesegregatedList.ForEach(x => Convert.ToDateTime(x.date).ToString("MMM dd, yyyy"));
-           
+            // DesegregatedList.ForEach(x => Convert.ToDateTime(x.date).ToString("MMM dd, yyyy"));
+
             return DesegregatedList;
         }
 
@@ -160,8 +160,8 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                 foreach (var branch in listAllBrachs)
                 {
                     var allRecycleByBranch = context.Recycles.ToList()
-                        .Where(x => x.UserID == branch.UserID 
-                          && ( x.CollectorDateTime.Value.Date >= model.start.Date &&  x.CollectorDateTime.Value.Date <= model.end.Date))
+                        .Where(x => x.UserID == branch.UserID
+                          && (x.CollectorDateTime.Value.Date >= model.start.Date && x.CollectorDateTime.Value.Date <= model.end.Date))
                         .ToList();
                     foreach (var recycle in allRecycleByBranch)
                     {
@@ -207,7 +207,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                     collectDate = rec.CollectorDateTime,
                                     Tweight = details.Weight,
                                     rec.UserID
-                               
+
                                 }
                                 ).OrderByDescending(o => o.RecycleD).FirstOrDefault();
 
@@ -216,7 +216,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
         }
         public string GetValidTime(TimeSpan timespan)
         {
-          //  TimeSpan timespan = new TimeSpan(03, 00, 00);
+            //  TimeSpan timespan = new TimeSpan(03, 00, 00);
             DateTime time = DateTime.Today.Add(timespan);
             string displayTime = time.ToString("hh:mm tt");
             return displayTime;
@@ -226,27 +226,72 @@ namespace DrTech.Amal.SQLDataAccess.Repository
         public List<SegregatedDataViewModel> GetSegregatedDataByID(int RecycleID)
         {
             int Srno = 0;
-         List< SegregatedDataViewModel>    mdlRecycle = (from rec in context.Recycles
-                              join recSubItem in context.RecycleSubItems on rec.ID equals recSubItem.RecycleID
-                              join recSutItemTypes in context.RecycleSubItemsTypes on recSubItem.ID equals recSutItemTypes.RecycleSubItemID
-                              where  rec.ID == RecycleID  //&& rec.IsActive == true 
-                              select new SegregatedDataViewModel
-                              {                          
-                                  RecycleID = rec.ID,
-                                  Type = recSutItemTypes.WasteType.Name,
-                                  Weight = recSutItemTypes.Weight
-                              }).ToList().Select((x, index) => new SegregatedDataViewModel
-                              {
-                                  RowNumber = index + 1,
-                                  RecycleID = x.RecycleID,
-                                  Type = x.Type,
-                                  Weight = x.Weight
-                              }).ToList(); ;
+            List<SegregatedDataViewModel> mdlRecycle = (from rec in context.Recycles
+                                                        join recSubItem in context.RecycleSubItems on rec.ID equals recSubItem.RecycleID
+                                                        join recSutItemTypes in context.RecycleSubItemsTypes on recSubItem.ID equals recSutItemTypes.RecycleSubItemID
+                                                        where rec.ID == RecycleID  //&& rec.IsActive == true 
+                                                        select new SegregatedDataViewModel
+                                                        {
+                                                            RecycleID = rec.ID,
+                                                            Type = recSutItemTypes.WasteType.Name,
+                                                            Weight = recSutItemTypes.Weight,
+                                                            rate = recSutItemTypes.Rate,
+                                                            total = recSutItemTypes.Total
 
-          //  mdlRecycle = mdlRecycle
-                    
+                                                        }).ToList().Select((x, index) => new SegregatedDataViewModel
+                                                        {
+                                                            RowNumber = index + 1,
+                                                            RecycleID = x.RecycleID,
+                                                            Type = x.Type,
+                                                            Weight = x.Weight,
+                                                            rate = x.rate,
+                                                            total = x.total
+                                                        }).ToList(); ;
+
+            //  mdlRecycle = mdlRecycle
+
 
             return mdlRecycle;
+        }
+
+        public List<object> GetSegregatedDataByDate(DateRangeViewMdoel model)
+        {
+            int Srno = 0;
+            try
+            {
+                List<object> mdlRecycle = new List<object>();
+               mdlRecycle = (from rec in context.Recycles.ToList().Where (x=>x.CollectorDateTime.Value.Date >= model.start.Date && x.CollectorDateTime.Value.Date <= model.end.Date)
+                             join recSubItem in context.RecycleSubItems on rec.ID equals recSubItem.RecycleID
+                                                            join recSutItemTypess in context.RecycleSubItemsTypes on recSubItem.ID equals recSutItemTypess.RecycleSubItemID
+                                                            join recSutItemTypes in context.RecycleSubItemsTypes on recSubItem.ID equals recSutItemTypes.RecycleSubItemID into recSutItemTypes
+                                                           // join recSutItemTypes in context.RecycleSubItemsTypes on recSubItem.ID equals recSutItemTypes.RecycleSubItemID
+                                                            select new 
+                                                            {
+                                                                RecycleID = rec.ID,
+                                                                Type = recSutItemTypess.WasteType.Name,
+                                                                Weight = recSutItemTypes.Select(g => g.Weight).DefaultIfEmpty(0).Sum() ?? 0,
+                                                                rate = recSutItemTypes.Select(g => g.Rate).DefaultIfEmpty(0).Sum() ?? 0,
+                                                                total = recSutItemTypes.Select(g => g.Total).DefaultIfEmpty(0).Sum() ?? 0
+
+                                                            }).Select((x, index) => new
+                                                            {
+                                                                RowNumber = index + 1,
+                                                                RecycleID = x.RecycleID,
+                                                                Type = x.Type,
+                                                                Weight = x.Weight,
+                                                                rate = x.rate,
+                                                                total = x.total
+                                                            }).ToList<object>();
+
+                //  mdlRecycle = mdlRecycle
+
+
+                return mdlRecycle;
+            }
+            catch (Exception exp)
+            {
+                return null;//ServiceResponse.ErrorReponse<List<SegregatedDataViewModel>>(exp);
+            }
         }
     }
 }

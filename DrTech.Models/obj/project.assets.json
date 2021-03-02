@@ -3908,11 +3908,12 @@
       ]
     },
     "System.ComponentModel.TypeConverter/4.3.0": {
-      "sha512": "HZiP0DwTHJ+C+rdFqP47nBYUh5283kcwXIGY2zOVVhsJmVI/2tYiX2zNRdjRQRHsTox58Ydkec6h0pWSh8wAsw==",
+      "sha512": "16pQ6P+EdhcXzPiEK4kbA953Fu0MNG2ovxTZU81/qsCd1zPRsKc3uif5NgvllCY598k6bI0KUyKW8fanlfaDQg==",
       "type": "package",
       "path": "system.componentmodel.typeconverter/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -7191,11 +7192,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Drtech\\DrTech.Models\\DrTech.Models.csproj",
+      "projectUniqueName": "F:\\Drtech\\DrTech.Models\\DrTech.Models.csproj",
       "projectName": "DrTech.Models",
-      "projectPath": "E:\\Drtech\\DrTech.Models\\DrTech.Models.csproj",
+      "projectPath": "F:\\Drtech\\DrTech.Models\\DrTech.Models.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "E:\\Drtech\\DrTech.Models\\obj\\",
+      "outputPath": "F:\\Drtech\\DrTech.Models\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -7217,8 +7218,8 @@
         "netcoreapp2.0": {
           "targetAlias": "netcoreapp2.0",
           "projectReferences": {
-            "E:\\Drtech\\DrTech.Common\\DrTech.Common.csproj": {
-              "projectPath": "E:\\Drtech\\DrTech.Common\\DrTech.Common.csproj"
+            "F:\\Drtech\\DrTech.Common\\DrTech.Common.csproj": {
+              "projectPath": "F:\\Drtech\\DrTech.Common\\DrTech.Common.csproj"
             }
           }
         }

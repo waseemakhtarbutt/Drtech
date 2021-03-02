@@ -58,7 +58,9 @@ export class AddSeggregatedWasteWithTypesComponent implements OnInit {
   //modelValues: any = {};
   public TypesWithWeight: any[] = [{
     typeID: '',
-    Weight: ''
+    Weight: '' ,
+    rate:'',
+    total:''
   }];
 
   A: any;
@@ -164,7 +166,7 @@ export class AddSeggregatedWasteWithTypesComponent implements OnInit {
 
     for (let item of this.TypesWithWeight) {
 
-      if (item.typeID == "" || item.Weight == "") {
+      if (item.typeID == "" || item.Weight == ""|| item.rate == "") {
         this.ShowErrorMessage();
         this.errorMessage = "Please fill the empty fields first!";
         this.duplicateErrorMessage = "";
@@ -175,7 +177,9 @@ export class AddSeggregatedWasteWithTypesComponent implements OnInit {
     this.errorMessage = "";
     this.TypesWithWeight.push({
       typeID: '',
-      Weight: ''
+      Weight: '',
+      rate:'',
+      total:''
     });
   }
 

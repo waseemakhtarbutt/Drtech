@@ -506,7 +506,27 @@ namespace DrTech.Amal.SQLServices.Controllers
                 return ServiceResponse.ErrorReponse<List<SegregatedDataViewModel>>(exp);
             }
         }
+        [HttpPost]
+        public async Task<ResponseObject<List<object>>> GetSegregatedDataBetweenTwoDates(DateRangeViewMdoel model)
+        {
+            try
+            {
 
+                model.start = model.start.AddDays(1);
+                model.end = model.end.AddDays(1);
+
+                int? UserID = JwtDecoder.GetUserIdFromToken(Request.Headers.Authorization.Parameter);
+                List<object> lstDesegregated = db.ExtRepositoryFor<MyWasteRepository>().GetSegregatedDataByDate(model);
+                if (lstDesegregated.Count > 0)
+                    return ServiceResponse.SuccessReponse(lstDesegregated, MessageEnum.DefaultSuccessMessage);
+                else
+                    return ServiceResponse.SuccessReponse(lstDesegregated, "Record Not Found!");
+            }
+            catch (Exception exp)
+            {
+                return ServiceResponse.ErrorReponse<List<object>>(exp);
+            }
+        }
 
 
         [HttpGet] 
