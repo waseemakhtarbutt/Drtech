@@ -343,8 +343,15 @@ namespace DrTech.Amal.SQLServices.Controllers
                             FullName = mdlSchool.ContactPerson,
                             Phone = mdlSchool.Phone,
                             Email = "admin" + mdlSchool.Email,
+<<<<<<< .mine
                           //  Password = "admin@1234",
                             Password = PasswordGenerator.Generate(12),
+
+=======
+
+                            Password = "admin@1234",
+                           // Password = PasswordGenerator.Generate(12),
+>>>>>>> .theirs
                             UserTypeID = (int)UserTypeEnum.Web,
                             RoleID = (int)UserRoleTypeEnum.SchoolAdmin,
                             CreatedBy = db.Repository<User>().GetAll().Where(x => x.RoleID == 1).Select(x => x.ID).FirstOrDefault(),
@@ -361,8 +368,22 @@ namespace DrTech.Amal.SQLServices.Controllers
                         FullName = mdlSchool.ContactPerson,
                         Phone = mdlSchool.Phone,
                         Email = mdlSchool.Email,
+<<<<<<< .mine
+
+
+
+=======
+
+                   //     Password = "abcd@1234",
+
+>>>>>>> .theirs
                       //  Password = "abcd@1234",
                         Password = PasswordGenerator.Generate(15),
+<<<<<<< .mine
+
+=======
+
+>>>>>>> .theirs
                         UserTypeID = (int)UserTypeEnum.Web,
                         RoleID = (int)UserRoleTypeEnum.SubSchoolAdmin,
                         CreatedBy = db.Repository<User>().GetAll().Where(x => x.RoleID == 1).Select(x => x.ID).FirstOrDefault(),
