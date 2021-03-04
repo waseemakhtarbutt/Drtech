@@ -3930,11 +3930,12 @@
       ]
     },
     "System.ComponentModel.Primitives/4.3.0": {
-      "sha512": "KMVuoQ+8bMQ/Z59M3s64num5AD74X5YSqVc7ibwGkPTfmmkl2W8VuSxLRJtpw4KzQrSKUgR0BLbF0adPfcTSGQ==",
+      "sha512": "j8GUkCpM8V4d4vhLIIoBLGey2Z5bCkMVNjEZseyAlm4n5arcsJOeI3zkUP+zvZgzsbLTYh4lYeP/ZD/gdIAPrw==",
       "type": "package",
       "path": "system.componentmodel.primitives/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -7254,27 +7255,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Administrator\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\ihsan\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Drtech\\DrTech.Notifications\\DrTech.Notifications.csproj",
+      "projectUniqueName": "E:\\Dev\\Drtech\\DrTech.Notifications\\DrTech.Notifications.csproj",
       "projectName": "DrTech.Notifications",
-      "projectPath": "F:\\Drtech\\DrTech.Notifications\\DrTech.Notifications.csproj",
-      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "F:\\Drtech\\DrTech.Notifications\\obj\\",
+      "projectPath": "E:\\Dev\\Drtech\\DrTech.Notifications\\DrTech.Notifications.csproj",
+      "packagesPath": "C:\\Users\\ihsan\\.nuget\\packages\\",
+      "outputPath": "E:\\Dev\\Drtech\\DrTech.Notifications\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\ihsan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
@@ -7285,13 +7279,12 @@
       },
       "frameworks": {
         "netcoreapp2.0": {
-          "targetAlias": "netcoreapp2.0",
           "projectReferences": {
-            "F:\\Drtech\\DrTech.DAL\\DrTech.DAL.csproj": {
-              "projectPath": "F:\\Drtech\\DrTech.DAL\\DrTech.DAL.csproj"
+            "E:\\Dev\\Drtech\\DrTech.DAL\\DrTech.DAL.csproj": {
+              "projectPath": "E:\\Dev\\Drtech\\DrTech.DAL\\DrTech.DAL.csproj"
             },
-            "F:\\Drtech\\DrTech.Models\\DrTech.Models.csproj": {
-              "projectPath": "F:\\Drtech\\DrTech.Models\\DrTech.Models.csproj"
+            "E:\\Dev\\Drtech\\DrTech.Models\\DrTech.Models.csproj": {
+              "projectPath": "E:\\Dev\\Drtech\\DrTech.Models\\DrTech.Models.csproj"
             }
           }
         }
@@ -7304,7 +7297,6 @@
     },
     "frameworks": {
       "netcoreapp2.0": {
-        "targetAlias": "netcoreapp2.0",
         "dependencies": {
           "Microsoft.NETCore.App": {
             "suppressParent": "All",
@@ -7323,7 +7315,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

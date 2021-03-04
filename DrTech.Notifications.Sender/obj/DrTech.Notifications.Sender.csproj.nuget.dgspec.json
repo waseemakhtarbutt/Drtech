@@ -1,26 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Drtech\\DrTech.Notifications.Sender\\DrTech.Notifications.Sender.csproj": {}
+    "E:\\Dev\\Drtech\\DrTech.Notifications.Sender\\DrTech.Notifications.Sender.csproj": {}
   },
   "projects": {
-    "F:\\Drtech\\DrTech.Common\\DrTech.Common.csproj": {
+    "E:\\Dev\\Drtech\\DrTech.Common\\DrTech.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Drtech\\DrTech.Common\\DrTech.Common.csproj",
+        "projectUniqueName": "E:\\Dev\\Drtech\\DrTech.Common\\DrTech.Common.csproj",
         "projectName": "DrTech.Common",
-        "projectPath": "F:\\Drtech\\DrTech.Common\\DrTech.Common.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "F:\\Drtech\\DrTech.Common\\obj\\",
+        "projectPath": "E:\\Dev\\Drtech\\DrTech.Common\\DrTech.Common.csproj",
+        "packagesPath": "C:\\Users\\ihsan\\.nuget\\packages\\",
+        "outputPath": "E:\\Dev\\Drtech\\DrTech.Common\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\ihsan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.0"
@@ -31,10 +26,9 @@
         },
         "frameworks": {
           "netcoreapp2.0": {
-            "targetAlias": "netcoreapp2.0",
             "projectReferences": {
-              "F:\\Drtech\\DrTech.Logging\\DrTech.ExceptionLogger.csproj": {
-                "projectPath": "F:\\Drtech\\DrTech.Logging\\DrTech.ExceptionLogger.csproj"
+              "E:\\Dev\\Drtech\\DrTech.Logging\\DrTech.ExceptionLogger.csproj": {
+                "projectPath": "E:\\Dev\\Drtech\\DrTech.Logging\\DrTech.ExceptionLogger.csproj"
               }
             }
           }
@@ -47,7 +41,6 @@
       },
       "frameworks": {
         "netcoreapp2.0": {
-          "targetAlias": "netcoreapp2.0",
           "dependencies": {
             "Microsoft.AspNetCore.Razor": {
               "target": "Package",
@@ -90,27 +83,22 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\Drtech\\DrTech.DAL\\DrTech.DAL.csproj": {
+    "E:\\Dev\\Drtech\\DrTech.DAL\\DrTech.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Drtech\\DrTech.DAL\\DrTech.DAL.csproj",
+        "projectUniqueName": "E:\\Dev\\Drtech\\DrTech.DAL\\DrTech.DAL.csproj",
         "projectName": "DrTech.DAL",
-        "projectPath": "F:\\Drtech\\DrTech.DAL\\DrTech.DAL.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "F:\\Drtech\\DrTech.DAL\\obj\\",
+        "projectPath": "E:\\Dev\\Drtech\\DrTech.DAL\\DrTech.DAL.csproj",
+        "packagesPath": "C:\\Users\\ihsan\\.nuget\\packages\\",
+        "outputPath": "E:\\Dev\\Drtech\\DrTech.DAL\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\ihsan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.0"
@@ -121,13 +109,12 @@
         },
         "frameworks": {
           "netcoreapp2.0": {
-            "targetAlias": "netcoreapp2.0",
             "projectReferences": {
-              "F:\\Drtech\\DrTech.Common\\DrTech.Common.csproj": {
-                "projectPath": "F:\\Drtech\\DrTech.Common\\DrTech.Common.csproj"
+              "E:\\Dev\\Drtech\\DrTech.Common\\DrTech.Common.csproj": {
+                "projectPath": "E:\\Dev\\Drtech\\DrTech.Common\\DrTech.Common.csproj"
               },
-              "F:\\Drtech\\DrTech.Models\\DrTech.Models.csproj": {
-                "projectPath": "F:\\Drtech\\DrTech.Models\\DrTech.Models.csproj"
+              "E:\\Dev\\Drtech\\DrTech.Models\\DrTech.Models.csproj": {
+                "projectPath": "E:\\Dev\\Drtech\\DrTech.Models\\DrTech.Models.csproj"
               }
             }
           }
@@ -140,7 +127,6 @@
       },
       "frameworks": {
         "netcoreapp2.0": {
-          "targetAlias": "netcoreapp2.0",
           "dependencies": {
             "AspNetCore.Identity.MongoDbCore": {
               "target": "Package",
@@ -167,27 +153,22 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\Drtech\\DrTech.Logging\\DrTech.ExceptionLogger.csproj": {
+    "E:\\Dev\\Drtech\\DrTech.Logging\\DrTech.ExceptionLogger.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Drtech\\DrTech.Logging\\DrTech.ExceptionLogger.csproj",
+        "projectUniqueName": "E:\\Dev\\Drtech\\DrTech.Logging\\DrTech.ExceptionLogger.csproj",
         "projectName": "DrTech.ExceptionLogger",
-        "projectPath": "F:\\Drtech\\DrTech.Logging\\DrTech.ExceptionLogger.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "F:\\Drtech\\DrTech.Logging\\obj\\",
+        "projectPath": "E:\\Dev\\Drtech\\DrTech.Logging\\DrTech.ExceptionLogger.csproj",
+        "packagesPath": "C:\\Users\\ihsan\\.nuget\\packages\\",
+        "outputPath": "E:\\Dev\\Drtech\\DrTech.Logging\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\ihsan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.0"
@@ -198,7 +179,6 @@
         },
         "frameworks": {
           "netcoreapp2.0": {
-            "targetAlias": "netcoreapp2.0",
             "projectReferences": {}
           }
         },
@@ -210,7 +190,6 @@
       },
       "frameworks": {
         "netcoreapp2.0": {
-          "targetAlias": "netcoreapp2.0",
           "dependencies": {
             "AspNetCore.Identity.MongoDbCore": {
               "target": "Package",
@@ -245,27 +224,22 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\Drtech\\DrTech.Models\\DrTech.Models.csproj": {
+    "E:\\Dev\\Drtech\\DrTech.Models\\DrTech.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Drtech\\DrTech.Models\\DrTech.Models.csproj",
+        "projectUniqueName": "E:\\Dev\\Drtech\\DrTech.Models\\DrTech.Models.csproj",
         "projectName": "DrTech.Models",
-        "projectPath": "F:\\Drtech\\DrTech.Models\\DrTech.Models.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "F:\\Drtech\\DrTech.Models\\obj\\",
+        "projectPath": "E:\\Dev\\Drtech\\DrTech.Models\\DrTech.Models.csproj",
+        "packagesPath": "C:\\Users\\ihsan\\.nuget\\packages\\",
+        "outputPath": "E:\\Dev\\Drtech\\DrTech.Models\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\ihsan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.0"
@@ -276,10 +250,9 @@
         },
         "frameworks": {
           "netcoreapp2.0": {
-            "targetAlias": "netcoreapp2.0",
             "projectReferences": {
-              "F:\\Drtech\\DrTech.Common\\DrTech.Common.csproj": {
-                "projectPath": "F:\\Drtech\\DrTech.Common\\DrTech.Common.csproj"
+              "E:\\Dev\\Drtech\\DrTech.Common\\DrTech.Common.csproj": {
+                "projectPath": "E:\\Dev\\Drtech\\DrTech.Common\\DrTech.Common.csproj"
               }
             }
           }
@@ -292,7 +265,6 @@
       },
       "frameworks": {
         "netcoreapp2.0": {
-          "targetAlias": "netcoreapp2.0",
           "dependencies": {
             "AspNetCore.Identity.MongoDbCore": {
               "target": "Package",
@@ -319,27 +291,22 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\Drtech\\DrTech.Notifications.Sender\\DrTech.Notifications.Sender.csproj": {
+    "E:\\Dev\\Drtech\\DrTech.Notifications.Sender\\DrTech.Notifications.Sender.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Drtech\\DrTech.Notifications.Sender\\DrTech.Notifications.Sender.csproj",
+        "projectUniqueName": "E:\\Dev\\Drtech\\DrTech.Notifications.Sender\\DrTech.Notifications.Sender.csproj",
         "projectName": "DrTech.Notifications.Sender",
-        "projectPath": "F:\\Drtech\\DrTech.Notifications.Sender\\DrTech.Notifications.Sender.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "F:\\Drtech\\DrTech.Notifications.Sender\\obj\\",
+        "projectPath": "E:\\Dev\\Drtech\\DrTech.Notifications.Sender\\DrTech.Notifications.Sender.csproj",
+        "packagesPath": "C:\\Users\\ihsan\\.nuget\\packages\\",
+        "outputPath": "E:\\Dev\\Drtech\\DrTech.Notifications.Sender\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\ihsan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.0"
@@ -350,16 +317,15 @@
         },
         "frameworks": {
           "netcoreapp2.0": {
-            "targetAlias": "netcoreapp2.0",
             "projectReferences": {
-              "F:\\Drtech\\DrTech.Common\\DrTech.Common.csproj": {
-                "projectPath": "F:\\Drtech\\DrTech.Common\\DrTech.Common.csproj"
+              "E:\\Dev\\Drtech\\DrTech.Common\\DrTech.Common.csproj": {
+                "projectPath": "E:\\Dev\\Drtech\\DrTech.Common\\DrTech.Common.csproj"
               },
-              "F:\\Drtech\\DrTech.DAL\\DrTech.DAL.csproj": {
-                "projectPath": "F:\\Drtech\\DrTech.DAL\\DrTech.DAL.csproj"
+              "E:\\Dev\\Drtech\\DrTech.DAL\\DrTech.DAL.csproj": {
+                "projectPath": "E:\\Dev\\Drtech\\DrTech.DAL\\DrTech.DAL.csproj"
               },
-              "F:\\Drtech\\DrTech.Models\\DrTech.Models.csproj": {
-                "projectPath": "F:\\Drtech\\DrTech.Models\\DrTech.Models.csproj"
+              "E:\\Dev\\Drtech\\DrTech.Models\\DrTech.Models.csproj": {
+                "projectPath": "E:\\Dev\\Drtech\\DrTech.Models\\DrTech.Models.csproj"
               }
             }
           }
@@ -372,7 +338,6 @@
       },
       "frameworks": {
         "netcoreapp2.0": {
-          "targetAlias": "netcoreapp2.0",
           "dependencies": {
             "Microsoft.NETCore.App": {
               "suppressParent": "All",
@@ -391,7 +356,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     }
