@@ -9,6 +9,7 @@ import { ComparisonComponent} from './comparison/comparison.component'
 import {ProgressComponent} from './progress/progress.component'
 import { AdminSuspendedListComponent } from './student/admin-suspended-list/admin-suspended-list.component';
 import { BranchesComparisionComponent } from './branches-comparision/branches-comparision.component';
+import { StudentsComponent } from './students/students.component';
 
 const routes: Routes = [{
   path: '',
@@ -49,6 +50,10 @@ const routes: Routes = [{
     {
       path: 'branchcomparison',
      component: BranchesComparisionComponent,
+    },
+    {
+      path: 'students',
+     component: StudentsComponent,
     },
   ],
 }];

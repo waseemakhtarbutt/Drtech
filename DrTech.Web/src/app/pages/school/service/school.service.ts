@@ -71,4 +71,10 @@ export class SchoolService extends BaseService {
   async GetSchoolsBranchesStudentsPieChartBySchoolAdmin(): Promise<ResponseObject<any>> {
     return await this.Post<any>('School/GetSchoolsBranchesStudentsPieChartBySchoolAdmin');
   }
+  async GetSchoolBranchesByUserId(): Promise<ResponseObject<any>> {
+    return await this.Get<any>('School/GetSchoolBranchesByUserId');
+  }
+  async StudentsBySchool(model): Promise<ResponseObject<any>> {
+     return await this.Post<any>('School/StudentsBySchool',model);
+   }
 }

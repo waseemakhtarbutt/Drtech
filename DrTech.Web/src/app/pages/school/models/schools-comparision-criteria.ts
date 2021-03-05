@@ -6,3 +6,8 @@ export class SchoolsComparisionCriteria
     shoolId :number[] = []
     type:string;
 }
+export class BranchRequest
+{
+    id:number = 1;
+    all :boolean = false;
+} 

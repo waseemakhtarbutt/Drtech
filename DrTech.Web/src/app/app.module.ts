@@ -29,12 +29,6 @@ import { UserRightsComponent } from './user-rights/user-rights.component';
 //const link = CommonFunction.GetCurrentURLOrigin();
 //var link = "http://amalforlifedev.azurewebsites.net/api/";
 //var link = "http://10.200.10.33:8001/api/";
-<<<<<<< HEAD
- var link = "https://amalforlife-android.azurewebsites.net/api/";
-//var link = 'http://amalforlifeqaservices.azurewebsites.net/api/';
- //var link = "http://amalforlife-android.azurewebsites.net/api/";
-// var link = 'http://localhost:64331/api/';
-=======
 
  //var link = "http://life-android.azurewebsites.net/api/";
 
@@ -43,7 +37,6 @@ import { UserRightsComponent } from './user-rights/user-rights.component';
 //var link = 'http://amalforlifeqaservices.azurewebsites.net/api/';
  //var link = "http://amalforlife-android.azurewebsites.net/api/";
  var link = 'http://localhost:64331/api/';
->>>>>>> dev/StudentsUnderSchool
 
 @NgModule({
   declarations: [AppComponent, UserRightsComponent],

@@ -920,11 +920,11 @@ namespace DrTech.Amal.SQLServices.Controllers
             return ServiceResponse.SuccessReponse(reuslt, MessageEnum.RecordFoundSuccessfully);
 
         }
-        [HttpGet]
-        public async Task<ResponseObject<List<Object>>> GetSchoolStudentsBySchoolId(int id)
+        [HttpPost]
+        public async Task<ResponseObject<List<Object>>> StudentsBySchool(BranchRequest model)
         {
             int? UserID = JwtDecoder.GetUserIdFromToken(Request.Headers.Authorization.Parameter);
-            var reuslt = db.ExtRepositoryFor<SchoolRepository>().GetSchoolStudentsBySchoolId(id);
+            var reuslt = db.ExtRepositoryFor<SchoolRepository>().GetSchoolStudentsBySchoolId(model,UserID);
             return ServiceResponse.SuccessReponse(reuslt, MessageEnum.RecordFoundSuccessfully);
 
         }
