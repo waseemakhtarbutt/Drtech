@@ -338,3 +338,9 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/DrTech.Amal.Notifications/bin
+/DrTech.Amal.Notifications/bin
+/DrTech.Amal.Notifications/obj/Debug
+/DrTech.Services/obj
+/DrTech.Amal.SQLServices/bin
+/DrTech.Amal.SQLServices/obj
