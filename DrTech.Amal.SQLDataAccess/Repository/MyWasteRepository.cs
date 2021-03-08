@@ -267,7 +267,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                                             select new 
                                                             {
                                                                 RecycleID = rec.ID,
-                                                                Type   =   recSutItemTypess.WasteType?.Name,
+                                                                Type   =   recSutItemTypess.WasteType.Name,
                                                                 Weight = recSutItemTypes.Select(g => g.Weight).DefaultIfEmpty(0).Sum() ?? 0,
                                                                 rate   = recSutItemTypes.Select(g => g.Rate).DefaultIfEmpty(0).Sum() ?? 0,
                                                                 total  = recSutItemTypes.Select(g => g.Total).DefaultIfEmpty(0).Sum() ?? 0
