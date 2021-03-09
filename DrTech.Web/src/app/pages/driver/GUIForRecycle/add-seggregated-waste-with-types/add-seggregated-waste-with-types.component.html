@@ -132,7 +132,7 @@
 <div class="row">
   <div class="col-md-8">
     <ngx-desegregated-grid (childData)='handleEvent($event)' (ShowHideChilds)='showHideHandleEvent($event)'
-      (passRecyleID)='getRIDHandleEvent($event)'>
+      (passRecyleID)='getRIDHandleEvent($event)' (typeData)='getListHandleEvent($event)'>
     </ngx-desegregated-grid>
   </div>
   <div class="col-md-4">
@@ -141,8 +141,11 @@
       margin-top: 56px;
   ">
         <div class="row justify-content-center">
-
+          <button type="button" class="btn btn-success btn-sm"
+          style="font-size: 0.95rem !important; float: right" (click)="exportAsXLSX()" >Downloud Excel File</button>
+          <br>
           <nb-card>
+            
             <nb-card-header class="k-header k-grid-draggable-header ng-star-inserted" 
             style="
             height: 10px !important;
@@ -154,6 +157,8 @@
 
         ">
               Weight with types
+
+          
             </nb-card-header>
             <nb-card-body>
               <table class="table table-bordered">

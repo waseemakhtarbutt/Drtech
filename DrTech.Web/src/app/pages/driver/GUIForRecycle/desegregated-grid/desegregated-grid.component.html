@@ -83,7 +83,9 @@
             style="font-size: 0.95rem !important; height: 32px;">Clear</button>
                </div>
              </div> -->
-
+             <button type="button" class="btn btn-success btn-sm"
+             style="font-size: 0.95rem !important; float: right" (click)="exportAsXLSX()" >Downloud Excel File</button>
+             
           </div>
         </div>
 
@@ -124,7 +126,9 @@
             style="font-size: 0.95rem !important; height: 32px;">Clear</button>
           </div>
         </div> -->
-
+ 
+       
+        
       </nb-card-header>
       <nb-card-body>
         <kendo-grid [data]="gridView" [pageSize]="pageSize" [pageable]="true" [skip]="skip" [selectable]="true"

@@ -254,38 +254,47 @@ namespace DrTech.Amal.SQLDataAccess.Repository
             return mdlRecycle;
         }
 
-        public List<object> GetSegregatedDataByDate(DateRangeViewMdoel model)
+        public List<SegregatedDataViewModel> GetSegregatedDataByDate(DateRangeViewMdoel model)
         {
             int Srno = 0;
             try
             {
-                List<object> mdlRecycle = new List<object>();
-               mdlRecycle = (from rec in context.Recycles.ToList().Where (x=>x.CollectorDateTime.Value.Date >= model.start.Date && x.CollectorDateTime.Value.Date <= model.end.Date)
+             //   List<SegregatedDataViewModel> mdlRecycle = new List<SegregatedDataViewModel>();
+                List<SegregatedDataViewModel> mdlRecycle = (from rec in context.Recycles.ToList().Where (x=>x.CollectorDateTime.Value.Date >= model.start.Date && x.CollectorDateTime.Value.Date <= model.end.Date)
                                                             join recSubItem in context.RecycleSubItems on rec.ID equals recSubItem.RecycleID
                                                             join recSutItemTypess in context.RecycleSubItemsTypes on recSubItem.ID equals recSutItemTypess.RecycleSubItemID
-                                                            join recSutItemTypes in context.RecycleSubItemsTypes on recSubItem.ID equals recSutItemTypes.RecycleSubItemID into recSutItemTypes
-                                                            select new 
+                                                            join wastetype in context.WasteTypes on recSutItemTypess.WasteTypeID equals wastetype.ID
+                                                            select new SegregatedDataViewModel
                                                             {
-                                                                RecycleID = rec.ID,
-                                                                Type   =   recSutItemTypess.WasteType.Name,
-                                                                Weight = recSutItemTypes.Select(g => g.Weight).DefaultIfEmpty(0).Sum() ?? 0,
-                                                                rate   = recSutItemTypes.Select(g => g.Rate).DefaultIfEmpty(0).Sum() ?? 0,
-                                                                total  = recSutItemTypes.Select(g => g.Total).DefaultIfEmpty(0).Sum() ?? 0
-
-                                                            }).Select((x, index) => new
+                                                                Type   = wastetype.Name,
+                                                                Weight = recSutItemTypess.Weight,//.Select(g => g.Weight).DefaultIfEmpty(0).Sum() ?? 0,
+                                                                rate   = recSutItemTypess.Rate,//Select(g => g.Rate).DefaultIfEmpty(0).Sum() ?? 0,
+                                                                total  = recSutItemTypess.Total,//.Select(g => g.Total).DefaultIfEmpty(0).Sum() ?? 0
+                                                            }).ToList().Select((x, index) => new SegregatedDataViewModel
                                                             {
                                                                 RowNumber = index + 1,
-                                                                RecycleID = x.RecycleID,
                                                                 Type = x.Type,
                                                                 Weight = x.Weight,
                                                                 rate = x.rate,
-                                                                total = x.total
-                                                            }).ToList<object>();
-
-                //  mdlRecycle = mdlRecycle
+                                                                total = x.total,
+                                                            }).ToList<SegregatedDataViewModel>();
 
 
-                return mdlRecycle;
+                List < SegregatedDataViewModel > results = (from p in mdlRecycle
+                              group p by p.Type into g
+                              select new SegregatedDataViewModel
+                              {
+                                  Type = g.Select(c => c.Type).FirstOrDefault()/**/,
+                                  RowNumber = g.Select(c => c.RowNumber).FirstOrDefault()/**/,
+                                  Weight = g.Select(c => c.Weight).DefaultIfEmpty(0).Sum() ?? 0,
+                                  rate = g.Select(c => c.rate).FirstOrDefault(),
+                                  total = g.Select(c => c.total).DefaultIfEmpty(0).Sum() ?? 0,
+                                  FromDate = model.start,
+                                  ToDate = model.end,
+                              }).ToList();
+
+
+            return results;
             }
             catch (Exception exp)
             {

@@ -3,7 +3,7 @@ import { GridDataResult, PageChangeEvent } from '@progress/kendo-angular-grid';
 import { MywasteserviceService } from '../../../my-waste/mywasteservice.service';
 import { LocalDataSource } from 'ng2-smart-table';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { ExcelService } from '../../../../common/service/excel.service';
 @Component({
   selector: 'ngx-desegregated-grid',
   templateUrl: './desegregated-grid.component.html',
@@ -16,7 +16,9 @@ export class DesegregatedGridComponent implements OnInit {
   public gridView: GridDataResult;
   source: LocalDataSource = new LocalDataSource();
   listViewModel: any[] = [];
-  TypesWithWeightRecycle: any[] = [];
+  @Input()  TypesWithWeightRecycle: any[] = [];
+  @Output('typeData') TypesWithWeightRecycleData = new EventEmitter<any[]>()
+
   public pageSize = 8;
   public skip = 0;
   public IsSegregated: boolean = false;
@@ -37,7 +39,7 @@ export class DesegregatedGridComponent implements OnInit {
   @Input() typeswithWeight: any[];
 
 
-  constructor(private service: MywasteserviceService, private router: Router) { }
+  constructor(private service: MywasteserviceService, private router: Router,private excelService: ExcelService) { }
 
   ngOnInit() {
     this.reloadGrid();
@@ -68,9 +70,13 @@ export class DesegregatedGridComponent implements OnInit {
     this.loading = true;
     var response = await this.service.GetDesegregatedListBetweenTwoDates(this.range);
     var responsedata = await this.service.GetSegregatedDataBetweenTwoDates(this.range);
+    debugger
     if (responsedata.statusCode == 0) {
-      this.TypesWithWeightRecycle = response.data;
-      console.log(this.TypesWithWeightRecycle)
+
+      this.TypesWithWeightRecycleData.emit(responsedata.data);
+      
+    //  this.TypesWithWeightRecycle = responsedata.data;
+      //console.log(this.TypesWithWeightRecycle)
     }
     if (response.statusCode == 0) {
       this.listViewModel = [];
@@ -95,14 +101,14 @@ export class DesegregatedGridComponent implements OnInit {
       return response.data;
     }
   }
-
+  exportAsXLSX(): void {
+    debugger
+    this.excelService.exportAsExcelFile(this.listViewModel, 'sample');
+  }
   async LoadSegregatedData(Id: number) {
     var response = await this.service.GetSegregatedDataByID(Id);
     if (response.statusCode == 0) {
-      //this.typeswithWeight = response.data;
       this.dataa = response.data;
-      // console.log('Uff Hi this is Ihsan')
-      // console.log(response.data)
     }
   }
 
@@ -113,23 +119,14 @@ export class DesegregatedGridComponent implements OnInit {
       this.IssSegregated.emit(true);
       this.RecycleID = this.gridView.data[e.index % this.pageSize].id;
       this.RecycleIDTo.emit(this.RecycleID)
-      // this.LoadSegregatedData(this.RecycleID)
       console.log(this.typeswithWeight)
-      //this.RecycleData.emit(this.RecycleID)
-      //console.log(this.RecycleData.emit(this.RecycleID))
-
-      // this.SegregatedData.emit(await this.LoadSegregatedData(this.RecycleID));
-      //  console.log('vvvvvvvvvvvvvvvvvvvvvvvvvv')
-      //  console.log( this.SegregatedData.emit(await this.LoadSegregatedData(this.RecycleID)))
-
-    }
+    } 
     else {
       this.IssSegregated.emit(false);
       var response = await this.service.GetDesegregatedByID(this.gridView.data[e.index % this.pageSize].id);
       if (response.statusCode == 0) {
         debugger
         this.Data.emit(response.data);
-        //this.collectDate = response.data.date;
         debugger
       }
       this.loading = false
@@ -151,9 +148,7 @@ export class DesegregatedGridComponent implements OnInit {
 
   }
   ShowErrorMessage(): void {
-    //show box msg
     this.ShowError = true;
-    //wait 3 Seconds and hide
     setTimeout(function() {
         this.ShowError = false;
     }.bind(this), 2500);
