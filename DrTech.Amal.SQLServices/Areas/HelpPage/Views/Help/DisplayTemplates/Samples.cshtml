@@ -6,7 +6,7 @@
     Dictionary<string, object> samples = Model.GroupBy(pair => pair.Value).ToDictionary(
         pair => String.Join(", ", pair.Select(m => m.Key.ToString()).ToArray()), 
         pair => pair.Key);
-    var mediaTypes = samples.Keys;
+        var mediaTypes = samples.Keys;
 }
 <div>
     @foreach (var mediaType in mediaTypes)

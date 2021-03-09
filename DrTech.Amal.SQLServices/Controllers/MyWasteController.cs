@@ -507,16 +507,14 @@ namespace DrTech.Amal.SQLServices.Controllers
             }
         }
         [HttpPost]
-        public async Task<ResponseObject<List<object>>> GetSegregatedDataBetweenTwoDates(DateRangeViewMdoel model)
+        public async Task<ResponseObject<List<SegregatedDataViewModel>>> GetSegregatedDataBetweenTwoDates(DateRangeViewMdoel model)
         {
             try
             {
 
                 model.start = model.start.AddDays(1);
                 model.end = model.end.AddDays(1);
-
-                int? UserID = JwtDecoder.GetUserIdFromToken(Request.Headers.Authorization.Parameter);
-                List<object> lstDesegregated = db.ExtRepositoryFor<MyWasteRepository>().GetSegregatedDataByDate(model);
+                List<SegregatedDataViewModel> lstDesegregated = db.ExtRepositoryFor<MyWasteRepository>().GetSegregatedDataByDate(model);
                 if (lstDesegregated.Count > 0)
                     return ServiceResponse.SuccessReponse(lstDesegregated, MessageEnum.DefaultSuccessMessage);
                 else
@@ -524,7 +522,7 @@ namespace DrTech.Amal.SQLServices.Controllers
             }
             catch (Exception exp)
             {
-                return ServiceResponse.ErrorReponse<List<object>>(exp);
+                return ServiceResponse.ErrorReponse<List<SegregatedDataViewModel>>(exp);
             }
         }
 

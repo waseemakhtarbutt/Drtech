@@ -9,6 +9,7 @@ import { DriverService } from '../../service/driver.service';
 import { NbTokenService } from '../../../../common/auth';
 import { Location } from '@angular/common';
 import { DesegregatedGridComponent } from '../desegregated-grid/desegregated-grid.component';
+import { ExcelService } from '../../../../common/service/excel.service';
 
 @Component({
 
@@ -76,7 +77,7 @@ export class AddSeggregatedWasteWithTypesComponent implements OnInit {
   // }];
   public modelValues: any[] = []
 
-  constructor(public service: MywasteserviceService, private route: ActivatedRoute, private router: Router) {
+  constructor(public service: MywasteserviceService, private route: ActivatedRoute, private router: Router,private excelService: ExcelService) {
 
   }
   ngOnInit() {
@@ -151,6 +152,16 @@ export class AddSeggregatedWasteWithTypesComponent implements OnInit {
       this.LoadSegregatedData(id);
     }
 
+  }
+  public getListHandleEvent(objet: []) {
+debugger
+      this.TypesWithWeightRecycle = objet;
+  
+
+  }
+  exportAsXLSX(): void {
+    debugger
+    this.excelService.exportAsExcelFile(this.TypesWithWeightRecycle, 'sample');
   }
   async LoadSegregatedData(Id: number) {
     var response = await this.service.GetSegregatedDataByID(Id);

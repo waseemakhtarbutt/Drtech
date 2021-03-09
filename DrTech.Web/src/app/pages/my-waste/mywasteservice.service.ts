@@ -95,11 +95,11 @@ export class MywasteserviceService extends BaseService {
   GetSegregatedDataByID(id): Promise<ResponseObject<any>> {
     return this.Get<any>('MyWaste/GetSegregatedDataByID?RecycleID=' + id);
   }
-
+ 
   async GetDesegregatedListBetweenTwoDates(model): Promise<ResponseObject<any>> {
     return await this.Post<any>('MyWaste/GetDesegregatedListBetweenTwoDates', model);
   }
-
+ 
   async GetSegregatedDataBetweenTwoDates(model): Promise<ResponseObject<any>> {
     return await this.Post<any>('MyWaste/GetSegregatedDataBetweenTwoDates', model);
   }

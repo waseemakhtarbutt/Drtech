@@ -14,5 +14,18 @@ namespace DrTech.Amal.SQLDataAccess.CustomModels
         public decimal? rate { get; set; }
         public decimal? total { get; set; }
         public int RowNumber { get; set; }
+        public string CompanyName { get; set; }
+        public string BranchName { get; set; }
+        public DateTime? FromDate { get; set; }
+        public DateTime? ToDate { get; set; }
+
+    }
+
+    public class SegregatedDataViewModelType
+    {
+        public string Type { get; set; }
+        public List<SegregatedDataViewModel> Model { get; set; }
+
+
     }
 }
