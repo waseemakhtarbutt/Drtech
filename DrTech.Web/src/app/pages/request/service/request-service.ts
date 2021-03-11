@@ -4,7 +4,7 @@
  * Licensed under the MIT License. See License.txt in the project root for license information.
  */
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, of as observableOf } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { BaseService } from '../../../common/base.service';
@@ -225,13 +225,17 @@ export class RequestService extends BaseService {
       .pipe(catchError(this.handleError));
   }
 
-  GetRecycleList(statusId: any = ""): Observable<ResponseObject<Array<RecycleDTO>>> {
+  GetRecycleList(model): Observable<ResponseObject<Array<RecycleDTO>>> {
+debugger;
+    if (model.statusId == null)
+      model.statusId = 0;
+  //     const params = new HttpParams()
+  //  .set('statusId', statusId)
+  //  .set('startDate', startDate)
+  //  .set('endDate', endDate);
 
-    if (statusId == null)
-      statusId = 0;
-
-    const link = this.baseUrl + 'Recycle/GetRecyclesListByStatus?StatusID=' + statusId;
-    return this.http.get<ResponseObject<Array<RecycleDTO>>>(link)
+    const link = this.baseUrl + 'Recycle/GetRecyclesListByStatus';
+    return this.http.post<ResponseObject<Array<RecycleDTO>>>(link,model)
       .pipe(catchError(this.handleError));
   }
   GetRecycleAllList(statusId: any = ""): Observable<ResponseObject<Array<RecycleDTO>>> {

@@ -179,12 +179,12 @@ namespace DrTech.Amal.SQLServices.Controllers
             }
         }
 
-        [HttpGet]
-        public async Task<ResponseObject<List<object>>> GetRecyclesListByStatus(int StatusID = 0)
+        [HttpPost]
+        public async Task<ResponseObject<List<RecycleDto>>> GetRecyclesListByStatus(RecycleRequest model)
         {
             try
             {
-                var recyclesList = db.ExtRepositoryFor<RecycleRepository>().GetRecyclesListByStatus(StatusID);
+                var recyclesList = db.ExtRepositoryFor<RecycleRepository>().GetRecyclesListByStatus(model);
 
                 if (recyclesList.Count == 0)
                     return ServiceResponse.SuccessReponse(recyclesList, MessageEnum.RecycleItemsNotFound);
@@ -193,7 +193,7 @@ namespace DrTech.Amal.SQLServices.Controllers
             }
             catch (Exception exp)
             {
-                return ServiceResponse.ErrorReponse<List<object>>(exp);
+                return ServiceResponse.ErrorReponse<List<RecycleDto>>(exp);
             }
         }
         [HttpGet]

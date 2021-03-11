@@ -15,6 +15,7 @@ import { ReduceRequestComponent } from './reduce-request/reduce-request.componen
 import { ReportRequestComponent } from './report-request/report-request.component';
 import { ReplantRequestComponent } from './replant-request/replant-request.component';
 import { DashboardRequestComponent } from './dashboard-request/dashboard-request.component';
+import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { DashboardRequestComponent } from './dashboard-request/dashboard-request
     Ng2SmartTableModule,
     NbDialogModule.forChild(),
     GridModule,
+    DateInputsModule,
   ],
   providers: [RequestService, CommonService,
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }

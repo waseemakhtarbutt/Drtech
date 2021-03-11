@@ -1,5 +1,13 @@
 <div class="row">
   <div class="col-md-12">
+    <div class="input-group col-md-4 search-text-box" style="float: left;">
+      <kendo-daterange style="float: right; margin-top: 10px;">
+        <kendo-dateinput kendoDateRangeStartInput [(value)]="range.start"></kendo-dateinput>
+        <kendo-dateinput kendoDateRangeEndInput [(value)]="range.end"></kendo-dateinput>&nbsp;&nbsp;&nbsp;
+        <button  (click)= "filterDateRange()" style="color: white; background-color: #8cc63e;">Filter</button>
+    </kendo-daterange>
+    </div>
+    
     <div class="input-group col-md-2 search-text-box">
       <input type="text" class="form-control rounded-right  search-text-box" placeholder="Search" name="search"
         (input)="searchGrid($event.target.value)">
@@ -10,6 +18,20 @@
         <option *ngFor="let status of statusList" [value]="status.id">{{status.statusName}}</option>
       </select>
     </div>
+    <!-- <div class="input-group col-md-2 search-text-box" style="margin-top: 10px;">
+     
+    </div> -->
+
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-8" >
+
+    
+ 
+  </div>
+  <div class="col-md-4">
+   
   </div>
 </div>
 
@@ -19,10 +41,13 @@
     Recycle List
   </nb-card-header> -->
   <nb-card-header class="headerText">
+   
     {{GridHeaderText}}  
     <button type="button" class="btn btn-success btn-sm"
     style="font-size: 0.95rem !important; float: right" (click)="exportAsXLSX()" >Downloud Excel File</button>
-    <br>
+    
+    
+  
   </nb-card-header> 
   <nb-card-body>
     <kendo-grid [data]="gridView" [pageSize]="pageSize" [pageable]="true" [skip]="skip" [height]="600" [sortable]="{

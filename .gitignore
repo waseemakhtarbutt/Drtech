@@ -344,3 +344,4 @@ healthchecksdb
 /DrTech.Services/obj
 /DrTech.Amal.SQLServices/bin
 /DrTech.Amal.SQLServices/obj
+/DrTech/obj/Debug/netcoreapp2.0/DrTech.pdb

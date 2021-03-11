@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { GridDataResult, PageChangeEvent } from '@progress/kendo-angular-grid';
 import { compileFilter, SortDescriptor, orderBy } from '@progress/kendo-data-query';
 import { ExcelService } from '../../../common/service/excel.service';
+import { RecycleRequest } from '../dto/recycleRequest-dto';
 
 @Component({
   selector: 'ngx-recycle-request',
@@ -38,6 +39,7 @@ import { ExcelService } from '../../../common/service/excel.service';
   `],
 })
 export class RecycleRequestComponent implements OnInit {
+ public recycleRequest = new RecycleRequest();
   source: LocalDataSource = new LocalDataSource();
   userId: any;
   statusId: any;
@@ -45,7 +47,7 @@ export class RecycleRequestComponent implements OnInit {
   points: number = 0;
   listViewModel: any[] = [];
   loading = false;
-
+  public range = { start: null, end: null };
   public gridView: GridDataResult;
   public pageSize = 9;
   public skip = 0;
@@ -59,6 +61,7 @@ export class RecycleRequestComponent implements OnInit {
   constructor(public requestService: RequestService,private excelService: ExcelService, public commonService: CommonService, private dialogService: NbDialogService, private route: ActivatedRoute, private router: Router) {
     this.userId = route.snapshot.paramMap.get("id");
     this.statusId = 1;
+    this.recycleRequest.statusId = 1;
   }
 
   ngOnInit() {
@@ -72,8 +75,9 @@ export class RecycleRequestComponent implements OnInit {
   LoadData() {
     this.loading = true;
 
-    this.requestService.GetRecycleList(this.statusId).subscribe(result => {
+    this.requestService.GetRecycleList(this.recycleRequest).subscribe(result => {
       if (result.statusCode == 0) {
+        this.listViewModel = [];
         this.listViewModel = result.data;
         this.loadItems();
         this.loading = false
@@ -141,7 +145,7 @@ export class RecycleRequestComponent implements OnInit {
   public filterChanged(event: Event) {
     let selectElementText = event.target['value'];
     this.statusId = selectElementText;
-    var datalist = this.requestService.GetRecycleList(this.statusId).subscribe(result => {
+    var datalist = this.requestService.GetRecycleList(this.recycleRequest).subscribe(result => {
       if (result.statusCode == 0) {
         //this.listViewModel=[];
         this.skip = 0;
@@ -151,5 +155,14 @@ export class RecycleRequestComponent implements OnInit {
       }
     });
 
+  }
+  filterDateRange():void{
+    debugger;
+    if(this.range.start != null && this.range.end != null)
+    {
+      this.recycleRequest.startDate = this.range.start;
+      this.recycleRequest.endDate = this.range.end;
+      this.LoadData();
+    }
   }
 }

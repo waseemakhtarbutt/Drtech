@@ -48,4 +48,10 @@ namespace DrTech.Amal.SQLDataAccess.CustomModels
         public string Description { get; set; }
         public decimal? Weight { get; set; }
     }
+    public class RecycleRequest
+    {
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public int StatusID { get; set; } = 0;
+    }
 }
