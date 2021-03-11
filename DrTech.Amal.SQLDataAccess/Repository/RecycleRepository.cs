@@ -261,36 +261,44 @@ namespace DrTech.Amal.SQLDataAccess.Repository
         }
 
 
-        public List<object> GetRecyclesListByStatus(int StatusID)
+        public List<RecycleDto> GetRecyclesListByStatus(RecycleRequest model)
         {
-            List<object> mdlRecycles = (from rc in context.Recycles.ToList()
+            List<RecycleDto> mdlRecycles = (from rc in context.Recycles.ToList()
                                         join sub in context.RecycleSubItems on rc.ID equals sub.RecycleID
                                         join status in context.Status on rc.StatusID equals status.ID
                                         join users in context.Users on rc.UserID equals users.ID
                                         join city in context.Cities on users.CityId equals city.ID
                                         join area in context.Areas on users.AreaID equals area.ID
 
-                                        where (StatusID > 0 && rc.StatusID == StatusID && sub.IsParent == true) || (StatusID == 0 && sub.IsParent == true)
-                                        select new
+                                        where (model.StatusID > 0 && rc.StatusID == model.StatusID && sub.IsParent == true) || (model.StatusID == 0 && sub.IsParent == true)
+                                        select new RecycleDto
                                         {
-                                            rc.ID,
+                                          ID =  rc.ID,
                                             //sub.Description,
                                            // rc.GreenPoints,
-                                            statusDescription = status.StatusName,
+                                          statusDescription = status.StatusName,
                                             //users.Longitude,
                                             //users.Latitude,
                                             userId = users.ID,
                                             userName = users.FullName,
                                            /// rc.FileName,
-                                            rc.CreatedDate,
-                                            city.CityName,
+                                           CreatedDate = rc.CreatedDate,
+                                           CityName = city.CityName,
                                             areaName=  area.Name,
-                                            users.Address,
+                                           Address = users.Address,
                                             collectorDateTime = GetLocalDateTimeFromUTC(rc.CollectorDateTime).ToString("MMM dd, yyyy h:mm tt"),
                                             ///updatedDate = Convert.ToDateTime(rc.CreatedDate).ToString("MMM dd, yyyy "),
-                                        }).OrderByDescending(o => o.CreatedDate).ToList<object>();
+                                        }).OrderByDescending(o => o.CreatedDate).ToList();
+            if(model.StartDate != null && model.EndDate != null)
+            {
+              return  mdlRecycles.Where(x => x.CreatedDate >= model.StartDate && x.CreatedDate <= model.EndDate).ToList();
+            }
+            else
+            {
+                return mdlRecycles;
+            }
 
-            return mdlRecycles;
+            
         }
         public List<object> GetRecyclesAllListByStatus(int StatusID)
         {
