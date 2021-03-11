@@ -18,7 +18,8 @@ export class DesegregatedGridComponent implements OnInit {
   listViewModel: any[] = [];
   @Input()  TypesWithWeightRecycle: any[] = [];
   @Output('typeData') TypesWithWeightRecycleData = new EventEmitter<any[]>()
-
+  HeadBusinessesList: any;
+  companyList: any;
   public pageSize = 8;
   public skip = 0;
   public IsSegregated: boolean = false;
@@ -43,6 +44,7 @@ export class DesegregatedGridComponent implements OnInit {
 
   ngOnInit() {
     this.reloadGrid();
+    this.loadBusinesses();
   }
 
   async reloadGrid() {
@@ -58,7 +60,29 @@ export class DesegregatedGridComponent implements OnInit {
     this.loading = false
 
   }
+  async loadBusinesses() {
+    var Headresponse = await this.service.GetHeadOfficesOFBusinessForGOI();
+    if (Headresponse.statusCode == 0) {
+      this.HeadBusinessesList = Headresponse.data;
 
+    }
+  }  async onChangeBusiness(event) {
+    this.companyList = [];
+    console.log(event.target.value);
+    var response = await this.service.GetBusinessBranchesByIdForGOI(event.target.value);
+    if (response.statusCode == 0) {
+      this.companyList = response.data;
+    }
+  }
+
+  async onBusinesSelectionLoadBranches(id: number) {
+    this.companyList = [];
+
+    var response = await this.service.GetBusinessBranchesByIdForGOI(id);
+    if (response.statusCode == 0) {
+      this.companyList = response.data;
+    }
+  }
   async loadFilteredData() {
 
     if(this.range.start == null || this.range.end == null)

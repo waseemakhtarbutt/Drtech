@@ -18,6 +18,8 @@ namespace DrTech.Amal.SQLDataAccess.CustomModels
         public string BranchName { get; set; }
         public DateTime? FromDate { get; set; }
         public DateTime? ToDate { get; set; }
+        public DateTime? CollectedDate { get; set; }
+        public int Days { get; set; }
 
     }
 

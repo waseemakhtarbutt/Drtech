@@ -4,9 +4,8 @@ export class CommonFunction {
 
   public static GetCurrentURLOrigin(): string {
    /////////// http://localhost:60889/api/values
-  // var baseUrl = 'http://localhost:64331/api/';
+  //           var baseUrl = 'http://localhost:64331/api/';
     //var baseUrl = 'http://10.200.10.33:9001/api/';
-
     // var baseUrl = 'https://amalforlife-android.azurewebsites.net/api/';
 
   //  var baseUrl = 'https://amalforlife-android.azurewebsites.net/api/';

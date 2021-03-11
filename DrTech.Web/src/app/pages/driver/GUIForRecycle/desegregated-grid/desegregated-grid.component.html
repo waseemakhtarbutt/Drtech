@@ -5,18 +5,32 @@
 
         <div class="row">
           <div class="col-md-2" style="margin-top: 10px;">  {{GridHeaderText}}
-
-            <div *ngIf="ShowError">
-              <h6 style="color: red; float:right">{{ErrorMessage}}</h6>
-            </div>
-
+         
           </div>
-          <div class="col-md-10 col-lg-10 col-sm-10 col-xs-10">
+          <div class="col-md-10 col-lg-10 col-sm-12 col-xs-10">
           <div class="row">
             <div class="col-md-8 col-lg-8 col-sm-8 col-xs-8">
                 <form (ngSubmit)="loadFilteredData()" #filterForm="ngForm">
-                    <div class="form-group">
+                  <div class="form-group">
+                      <label style="margin-top: 10px;">Company</label>
+                      <select (change)="onChangeBusiness($event)" class="form-control" [(ngModel)]='range.companyID' name="businessID"
+                        required >
+                        <option [ngValue]="undefined" selected>Select Company*</option>
+                        <option *ngFor="let busness of HeadBusinessesList" [value]="busness.id">{{busness.name}}</option>
+                      </select>
+                    </div>
+                      <div class="form-group">
+                      <label style="margin-top: 10px;">Branch</label>
+                      <select class="form-control" [(ngModel)]='range.branchID' name="companyID" required >
+                        <option *ngFor="let company of companyList" [value]="company.id">{{company.name}}</option>
+                      </select>
+                      <div *ngIf="ShowError">
+                        <h6 style="color: red; float:right">{{ErrorMessage}}</h6>
+                      </div>
+                    </div>
+                      <div class="form-group">
                         <kendo-daterange>
+                       
                             <label>
                               <!-- <span class="label" >Start &nbsp;&nbsp;&nbsp;&nbsp; </span> -->
 

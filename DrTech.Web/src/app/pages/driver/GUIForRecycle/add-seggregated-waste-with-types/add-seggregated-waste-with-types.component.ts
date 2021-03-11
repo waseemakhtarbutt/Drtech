@@ -49,7 +49,7 @@ export class AddSeggregatedWasteWithTypesComponent implements OnInit {
   public max: Date;
   public min: Date;
   MainArray: any = [];
-  _viewModell: any;
+  _viewModell: any; 
   public resultss: [];
   ABC: any[][]
   model: any;

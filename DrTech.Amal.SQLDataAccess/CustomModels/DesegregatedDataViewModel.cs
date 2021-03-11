@@ -21,5 +21,7 @@ namespace DrTech.Amal.SQLDataAccess.CustomModels
     {
         public DateTime start { get; set; }
         public DateTime end { get; set; }
+        public int companyID { get; set; }
+        public int branchID { get; set; }
     }
 }
