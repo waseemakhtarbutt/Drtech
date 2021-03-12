@@ -1,9 +1,0 @@
-F:\drtech\Application\Web\Source\DrTech\DrTech.Logging\bin\Debug\netcoreapp2.0\DrTech.ExceptionLogger.deps.json
-F:\drtech\Application\Web\Source\DrTech\DrTech.Logging\bin\Debug\netcoreapp2.0\DrTech.ExceptionLogger.dll
-F:\drtech\Application\Web\Source\DrTech\DrTech.Logging\bin\Debug\netcoreapp2.0\DrTech.ExceptionLogger.pdb
-F:\drtech\Application\Web\Source\DrTech\DrTech.Logging\obj\Debug\netcoreapp2.0\DrTech.ExceptionLogger.csprojAssemblyReference.cache
-F:\drtech\Application\Web\Source\DrTech\DrTech.Logging\obj\Debug\netcoreapp2.0\DrTech.ExceptionLogger.csproj.CoreCompileInputs.cache
-F:\drtech\Application\Web\Source\DrTech\DrTech.Logging\obj\Debug\netcoreapp2.0\DrTech.ExceptionLogger.AssemblyInfoInputs.cache
-F:\drtech\Application\Web\Source\DrTech\DrTech.Logging\obj\Debug\netcoreapp2.0\DrTech.ExceptionLogger.AssemblyInfo.cs
-F:\drtech\Application\Web\Source\DrTech\DrTech.Logging\obj\Debug\netcoreapp2.0\DrTech.ExceptionLogger.dll
-F:\drtech\Application\Web\Source\DrTech\DrTech.Logging\obj\Debug\netcoreapp2.0\DrTech.ExceptionLogger.pdb

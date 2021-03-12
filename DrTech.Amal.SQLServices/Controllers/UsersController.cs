@@ -1417,10 +1417,10 @@ namespace DrTech.Amal.SQLServices.Controllers
             {
 
                 NotifyEvent _events = new NotifyEvent();
-                _events.Parameters.Add("Email", "info@amalforlife.com");
-                _events.Parameters.Add("Phone", "03124678345");
-                _events.Parameters.Add("Description", "sdjvfusd");
-                _events.Parameters.Add("IssueType", "asdfasfafs");
+                _events.Parameters.Add("Email", "infoamalfrolife@gmail.com");
+                _events.Parameters.Add("Phone", mdlUser.Phone);
+                _events.Parameters.Add("Description", mdlUser.Problem);
+                _events.Parameters.Add("IssueType", mdlUser.Subject);
                 _events.AddNotifyEvent((long)NotificationEventConstants.Common.EmailSendtoAdminReportAProblem, "");
                 SMSNotifyEvent _event = new SMSNotifyEvent();
                 _event.Parameters.Add("Phone", mdlUser.Phone);

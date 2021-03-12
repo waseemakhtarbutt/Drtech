@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<parameters>
-  <parameter name="IIS Web Application Name" description="" value="amalforlife-android" tags="IisApp">
-    <parameterEntry kind="ProviderPath" scope="IisApp" match="^F:\\drtech\\Application\\Web\\Source\\DrTech\\DrTech\\obj\\Release\\netcoreapp2\.0\\PubTmp\\Out\\$" />
-  </parameter>
-</parameters>
