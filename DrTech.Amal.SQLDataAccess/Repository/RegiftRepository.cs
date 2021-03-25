@@ -98,18 +98,18 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                        join sub in context.RegiftSubItems on rg.ID equals sub.RegiftID
                                        join status in context.Status on rg.StatusID equals status.ID
                                        join users in context.Users on rg.UserID equals users.ID
-                                       join type in context.LookupTypes on sub.TypeID equals type.ID
+                                     //  join type in context.LookupTypes on sub.TypeID equals type.ID
                                        join subtype in context.LookupTypes on sub.SubTypeID equals subtype.ID into st
-                                       from stype in st.DefaultIfEmpty()
+                                      // from stype in st.DefaultIfEmpty()
                                        join city in context.LookupTypes on rg.CityID equals city.ID
-                                       where (StatusID > 0 && rg.StatusID == StatusID && sub.IsParent == true) || (StatusID == 0 && sub.IsParent == true)
+                                       where (StatusID > 0 && rg.StatusID == StatusID) || (StatusID == 0 )
                                        select new
                                        {
                                            rg.ID,
                                            rg.Description,
                                            rg.GreenPoints,
-                                           typeDescription = type.Name,
-                                           subTypeTitle = stype.Name,
+                                          // typeDescription = type.Name,
+                                          // subTypeTitle = stype.Name,
                                            statusDescription = status.StatusName,
                                            users.Longitude,
                                            users.Latitude,
@@ -124,8 +124,8 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                            ID = u.ID,
                                            Description = u.Description,
                                            GreenPoints = subitemscalculate(u.ID),
-                                           typeDescription = u.typeDescription,
-                                           subTypeTitle = u.subTypeTitle,
+                                         //  typeDescription = u.typeDescription,
+                                          // subTypeTitle = u.subTypeTitle,
                                            statusDescription = u.statusDescription,
                                            Longitude = u.Longitude,
                                            Latitude = u.Latitude,

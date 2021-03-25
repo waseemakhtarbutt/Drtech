@@ -652,7 +652,7 @@ namespace DrTech.Amal.SQLServices.Controllers
                 //if (RoleID == (int)UserRoleTypeEnum.Admin)
                 //{
 
-                    int CompanyUserID = 0;
+                int CompanyUserID = 0;
                 var UserCompany = db.Repository<RegBusiness>().GetAll().Where(x => x.ID == model.CompanyID).FirstOrDefault();
                 var CompanyallBraches = db.Repository<Business>().GetAll().Where(x => x.ParentId == UserCompany.ID).ToList();
 
@@ -674,7 +674,7 @@ namespace DrTech.Amal.SQLServices.Controllers
                     mdlRecycle.CollectorDateTime = model.CollectionDate;
                     mdlRecycle.FileName = "";
                     mdlRecycle.IsActive = false;
-                mdlRecycle.CreatedBy = 1; // (int)UserID;
+                    mdlRecycle.CreatedBy = 1; // (int)UserID;
                     mdlRecycle.CreatedDate = DateTime.Now.ToUniversalTime();
                     mdlRecycle.UserID = (int)CompanyUserID;
                     db.Repository<Recycle>().Insert(mdlRecycle);
@@ -687,7 +687,7 @@ namespace DrTech.Amal.SQLServices.Controllers
                     mdlRecycleSubItem.IsActive = false;
                     mdlRecycleSubItem.CreatedDate = DateTime.Now;
                     mdlRecycleSubItem.GreenPoints = 0;
-                mdlRecycleSubItem.CreatedBy = 1; // (int)UserID;
+                    mdlRecycleSubItem.CreatedBy = 1; // (int)UserID;
                     db.Repository<RecycleSubItem>().Insert(mdlRecycleSubItem);
                     db.Save();
                 // Insert into sub child table

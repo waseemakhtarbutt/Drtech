@@ -104,7 +104,7 @@ export function nbNoOpInterceptorFilter(req: HttpRequest<any>): boolean {
     FormsModule,
     NbSelectModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDOc69qVnxX7jNYY9l_A-7S5SPoMbGRYBN',
+      apiKey: 'AIzaSyCbQp4NlQjZNR6U0lrCCfjFLWlMfaXsAMk',
       libraries: ['places'],
     }),
   ],

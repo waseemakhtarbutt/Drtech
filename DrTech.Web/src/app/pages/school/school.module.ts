@@ -29,7 +29,7 @@ import { BranchesComparisionComponent } from './branches-comparision/branches-co
     DateInputsModule,
     ChartsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAdd8mG4D6aF656mtwuL-w1mE84a0ZY8Mo',
+      apiKey: 'AIzaSyCbQp4NlQjZNR6U0lrCCfjFLWlMfaXsAMk',
       libraries: ['places'],
     }),
     NgMultiSelectDropDownModule.forRoot(),
