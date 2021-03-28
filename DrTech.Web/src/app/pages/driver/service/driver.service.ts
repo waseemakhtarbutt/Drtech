@@ -8,6 +8,7 @@ import { catchError } from 'rxjs/operators';
 import { DriverDTO } from '../dto/driver.dto';
 import { BinDTO } from '../../request/dto/bin-dto';
 import { CommentsDTO } from '../../request/dto/comments-dto';
+import { DriverRequestDto } from '../dto/driver.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +17,9 @@ export class DriverService extends BaseService {
 
   constructor(public http: HttpClient) { super(http); }
 
-  GetDrivers(): Observable<ResponseObject<any>> {
+  GetDrivers(model: DriverRequestDto): Observable<ResponseObject<any>> {
     const link = this.baseUrl + 'Driver/GetAllDrivers';
-    return this.http.get<ResponseObject<any>>(link)
+    return this.http.post<ResponseObject<any>>(link,model)
       .pipe(catchError(this.handleError));
   }
 

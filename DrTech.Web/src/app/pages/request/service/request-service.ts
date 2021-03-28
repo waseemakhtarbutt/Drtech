@@ -14,6 +14,7 @@ import { DropdownDTO } from '../../../common/dropdown-dto';
 import { ReduceDTO } from '../../registration-request/dto/reduce-dto';
 import { ReportDTO } from '../dto/report-dto';
 import { ReplantDTO } from '../../registration-request/dto';
+import { RecycleRequest } from '../dto/recycleRequest-dto';
 
 
 @Injectable()
@@ -138,15 +139,15 @@ export class RequestService extends BaseService {
   }
 
 
-  GetRefuseList(statusId: any = ""): Observable<ResponseObject<Array<RefuseDTO>>> {
-    if (statusId == null)
-      statusId = 0;
+  GetRefuseList(model): Observable<ResponseObject<Array<RefuseDTO>>> {
+    if (model.statusId == null)
+      model.statusId = 0;
 
-    if (statusId == "")
-      statusId = 0;
+    if (model.statusId == "")
+      model.statusId = 0;
 
-    const link = this.baseUrl + 'Refuse/GetRefusesListByStatus?StatusID=' + statusId;
-    return this.http.get<ResponseObject<Array<RefuseDTO>>>(link)
+    const link = this.baseUrl + 'Refuse/GetRefusesListByStatus';
+    return this.http.post<ResponseObject<Array<RefuseDTO>>>(link,model)
       .pipe(catchError(this.handleError));
   }
   // GetRefuseById(Id: any = ""): Observable<ResponseObject<RefuseDTO>> {
@@ -238,13 +239,13 @@ debugger;
     return this.http.post<ResponseObject<Array<RecycleDTO>>>(link,model)
       .pipe(catchError(this.handleError));
   }
-  GetRecycleAllList(statusId: any = ""): Observable<ResponseObject<Array<RecycleDTO>>> {
+  GetRecycleAllList(model: RecycleRequest): Observable<ResponseObject<Array<RecycleDTO>>> {
 
-    if (statusId == null)
-      statusId = 0;
+    if (model.statusId == null)
+      model.statusId = 0;
 
-    const link = this.baseUrl + 'Recycle/GetRecyclesAllListByStatus?StatusID=' + statusId;
-    return this.http.get<ResponseObject<Array<RecycleDTO>>>(link)
+    const link = this.baseUrl + 'Recycle/GetRecyclesAllListByStatus';
+    return this.http.post<ResponseObject<Array<RecycleDTO>>>(link,model)
       .pipe(catchError(this.handleError));
   }
   updateRecycleStatus(id: string, status: number, weight: number): Observable<ResponseObject<boolean>> {

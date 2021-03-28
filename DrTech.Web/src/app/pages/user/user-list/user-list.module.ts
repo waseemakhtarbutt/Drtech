@@ -10,6 +10,7 @@ import { BasicComponent } from './basic/basic.component';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { RegisteredComponent } from './registered/registered.component';
 import { SystemAdminsListComponent } from './system-admins-list/system-admins-list.component';
+import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { SystemAdminsListComponent } from './system-admins-list/system-admins-li
     UserListRoutingModule,
     Ng2SmartTableModule,
     NbDialogModule.forChild(),
-    GridModule
+    GridModule,
+    DateInputsModule
   ],
   providers: [UserService,
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }

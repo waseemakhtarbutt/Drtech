@@ -5,6 +5,7 @@ import { ResponseObject } from '../../../common/response-object';
 import { CommonService } from '../../../common/service/common-service';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { SchoolRequestDto,OrganizationRequestDto, BusinessRequestDto } from '../gpnrequest/dto/dto';
 
 @Injectable({
   providedIn: 'root'
@@ -95,15 +96,15 @@ export class GpnRequestService extends BaseService {
     return await this.Get<any>('school/SuspendSchool?ID=' + id);
   }
 
-  async GetApprovedSchoolsList(): Promise<ResponseObject<any>> {
-    return await this.Get<any>('school/GetSchoolList');
+  async GetApprovedSchoolsList(model: SchoolRequestDto): Promise<ResponseObject<any>> {
+    return await this.Post<any>('school/GetSchoolList',model);
   }
 
-  async GetApprovedOrganizationsList(): Promise<ResponseObject<any>> {
-    return await this.Get<any>('Organization/GetOrganizationList');
+  async GetApprovedOrganizationsList(model: OrganizationRequestDto): Promise<ResponseObject<any>> {
+    return await this.Post<any>('Organization/GetOrganizationList',model);
   }
-  async GetApprovedBusinessList(): Promise<ResponseObject<any>> {
-    return await this.Get<any>('Business/GetBusinessList');
+  async GetApprovedBusinessList(model: BusinessRequestDto): Promise<ResponseObject<any>> {
+    return await this.Post<any>('Business/GetBusinessList',model);
   }
 
   async GetSuspendedSchoolsList(): Promise<ResponseObject<any>> {

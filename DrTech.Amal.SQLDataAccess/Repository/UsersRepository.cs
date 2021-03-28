@@ -639,11 +639,11 @@ namespace DrTech.Amal.SQLDataAccess.Repository
             return GP;
         }
 
-        public IEnumerable<object> GetUserList(string type)
+        public IEnumerable<object> GetUserList(UserRequestDto model)
         {
             bool IsVerified = true;
 
-            if (type != "registered")
+            if (model.Type != "registered")
                 IsVerified = false;
 
             var users = (from user in context.Users
@@ -704,8 +704,19 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                              //CreatedDate = u.CreatedDate
                              CreatedDate =  u.CreatedDate
                          }).ToList();
+            if (model.StartDate != null && model.EndDate != null)
+            {
+                return users.Where(x => x.CreatedDate >= model.StartDate && x.CreatedDate <= model.EndDate).OrderByDescending(x => x.CreatedDate).ToList();
+                //response = mdlRefuses.Where(x => x.CreatedDate >= model.StartDate && x.CreatedDate <= model.EndDate).ToList<object>();
+                //return response;
+                // return mdlRecycles.Where(x => x.CreatedDate >= model.StartDate && x.CreatedDate <= model.EndDate).ToList();
+            }
+            else
+            {
+                return users.OrderByDescending(x => x.CreatedDate).ToList();
+            }
 
-            return users.OrderByDescending(x => x.CreatedDate).ToList();
+           
         }
         public string getUserSchools(int id)
         {

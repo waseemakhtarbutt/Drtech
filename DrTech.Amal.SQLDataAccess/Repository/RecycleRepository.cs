@@ -300,16 +300,17 @@ namespace DrTech.Amal.SQLDataAccess.Repository
 
             
         }
-        public List<object> GetRecyclesAllListByStatus(int StatusID)
+        public List<object> GetRecyclesAllListByStatus(RecycleRequest model)
         {
-            List<object> mdlRecycles = (from rc in context.Recycles.ToList()
+            List<object> response = new List<object>();
+          var mdlRecycles = (from rc in context.Recycles.ToList()
                                         join sub in context.RecycleSubItems on rc.ID equals sub.RecycleID
                                         join status in context.Status on rc.StatusID equals status.ID
                                         join users in context.Users on rc.UserID equals users.ID
                                         join city in context.Cities on users.CityId equals city.ID
                                         join area in context.Areas on users.AreaID equals area.ID
 
-                                        where (StatusID > 0 && sub.IsParent == true) || (StatusID == 0 && sub.IsParent == true)
+                                        where (model.StatusID > 0 && sub.IsParent == true) || (model.StatusID == 0 && sub.IsParent == true)
                                         select new
                                         {
                                             rc.ID,
@@ -327,9 +328,19 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                             users.Address,
                                             collectorDateTime = GetLocalDateTimeFromUTC(rc.CollectorDateTime).ToString("MMM dd, yyyy h:mm tt"),
                                             ///updatedDate = Convert.ToDateTime(rc.CreatedDate).ToString("MMM dd, yyyy "),
-                                        }).OrderByDescending(o => o.CreatedDate).ToList<object>();
+                                        }).OrderByDescending(o => o.CreatedDate).ToList();
 
-            return mdlRecycles;
+            if (model.StartDate != null && model.EndDate != null)
+            {
+                response = mdlRecycles.Where(x => x.CreatedDate >= model.StartDate && x.CreatedDate <= model.EndDate).ToList<object>();
+                return response;
+                // return mdlRecycles.Where(x => x.CreatedDate >= model.StartDate && x.CreatedDate <= model.EndDate).ToList();
+            }
+            else
+            {
+                response = mdlRecycles.ToList<object>();
+                return response;
+            }
         }
         public DateTime GetLocalDateTimeFromUTC(DateTime? dateTimeInUTC)
         {

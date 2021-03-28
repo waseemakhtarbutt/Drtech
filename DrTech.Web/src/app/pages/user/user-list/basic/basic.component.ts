@@ -8,6 +8,7 @@ import { NbDialogService, NbDialogRef } from '@nebular/theme';
 import { compileFilter, SortDescriptor, orderBy } from '@progress/kendo-data-query';
 // import { LocationLinkComponent, UserDetailLinkComponent } from '../../../common/custom-control';
 import { ActivatedRoute } from '@angular/router';
+import { UserRequestDto } from '../../dto/user-dto';
 @Component({
   selector: 'ngx-user-list-basic',
   templateUrl: './basic.component.html',
@@ -32,7 +33,10 @@ export class BasicComponent implements OnInit {
   // }];
   public multiple = false;
   public allowUnsort = true;
-  constructor(public userService: UserService, private router: Router) { }
+  userRequestDto : UserRequestDto = new UserRequestDto();
+  constructor(public userService: UserService, private router: Router) {
+    this.userRequestDto.type = 'basic';
+   }
   async ngOnInit() {
     this.loading = true;
     this.LoadData();
@@ -40,7 +44,7 @@ export class BasicComponent implements OnInit {
   }
 
   LoadData() {
-    this.userService.GetUserList("basic").subscribe(result => {
+    this.userService.GetUserList(this.userRequestDto).subscribe(result => {
       if (result.statusCode == 0) {
         result.data.forEach(p => p.pinType = "user");
         this.source.load(result.data);

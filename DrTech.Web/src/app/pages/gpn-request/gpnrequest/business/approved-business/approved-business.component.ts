@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { NbDialogRef, NbDialogService } from '@nebular/theme';
 import { compileFilter, SortDescriptor, orderBy } from '@progress/kendo-data-query';
 import { ExcelService } from '../../../../../common/service/excel.service';
+import { BusinessRequestDto } from '../../dto/dto';
 
 @Component({
   selector: 'ngx-approved-business',
@@ -25,18 +26,12 @@ export class ApprovedBusinessComponent implements OnInit {
   }];
   public multiple = false;
   public allowUnsort = true;
+  public businessRequestDto = new BusinessRequestDto();
+  public range = { start: null, end: null };
   constructor(public gpnRequestService: GpnRequestService, private excelService: ExcelService,private router: Router,private dialogService: NbDialogService) { }
 
   async ngOnInit() {
-    this.loading = true;
-
-    var response = await this.gpnRequestService.GetApprovedBusinessList();
-    if (response.statusCode == 0) {
-      this.listViewModel = response.data;
-      this.businessBadge = this.listViewModel.length;
-      this.loadItems();
-    }
-    this.loading = false
+    this.loadData();
   }
 
   public pageChange(event: PageChangeEvent): void {
@@ -71,7 +66,7 @@ export class ApprovedBusinessComponent implements OnInit {
   var delResponse = await this.gpnRequestService.SuspendBusiness(id);
   if(delResponse.statusCode == 0)
   {
-    var response = await this.gpnRequestService.GetApprovedBusinessList();
+    var response = await this.gpnRequestService.GetApprovedBusinessList(this.businessRequestDto);
     if (response.statusCode == 0) {
       this.listViewModel = response.data;
       this.loadItems();
@@ -117,5 +112,32 @@ searchGrid(search) {
        };
       }
 }
-
+async filterDateRange():Promise<void>{
+  debugger;
+  if(this.range.start != null && this.range.end != null)
+  {
+    this.businessRequestDto.startDate = this.range.start;
+    this.businessRequestDto.endDate = this.range.end;
+    this.loading = true;
+    this.loadData();
+  }
+}
+  async loadData() {
+    this.loading = true;
+   this.skip = 0;
+    var response = await this.gpnRequestService.GetApprovedBusinessList(this.businessRequestDto);
+    if (response.statusCode == 0) {
+      this.listViewModel = response.data;
+      this.businessBadge = this.listViewModel.length;
+      this.loadItems();
+    }
+    this.loading = false
+  }
+  clearDateRange():void{
+    this.range.start = null;
+    this.range.end = null;
+    this.businessRequestDto.startDate = null;
+    this.businessRequestDto.endDate = null;
+    this.loadData();
+  }
 }

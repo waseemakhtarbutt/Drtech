@@ -9,3 +9,7 @@ export class DriverDTO {
     fileName:string;
     address:string;
   }
+  export class DriverRequestDto{
+    startDate: any = null;
+    endDate: any = null;
+}

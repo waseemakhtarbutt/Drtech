@@ -165,4 +165,11 @@ export class RecycleRequestComponent implements OnInit {
       this.LoadData();
     }
   }
+  clearDateRange():void{
+    this.range.start = null;
+    this.range.end = null;
+    this.recycleRequest.startDate = null;
+    this.recycleRequest.endDate = null;
+    this.LoadData();
+  }
 }

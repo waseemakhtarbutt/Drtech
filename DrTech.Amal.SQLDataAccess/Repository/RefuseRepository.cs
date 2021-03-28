@@ -1,4 +1,5 @@
-﻿using DrTech.Amal.SQLDatabase;
+﻿using DrTech.Amal.SQLDataAccess.CustomModels;
+using DrTech.Amal.SQLDatabase;
 using DrTech.Amal.SQLModels;
 using System;
 using System.Collections.Generic;
@@ -110,12 +111,13 @@ namespace DrTech.Amal.SQLDataAccess.Repository
 
             return mdlRefuses;
         }
-        public List<object> GetRefusesListByStatus(int StatusID)
+        public List<object> GetRefusesListByStatus(RecycleRequest model)
         {
-            List<object> mdlRefuses = (from rf in context.Refuses
+            List<object> response = new List<object>();
+            var mdlRefuses = (from rf in context.Refuses
                                        join status in context.Status on rf.StatusID equals status.ID
                                        join users in context.Users on rf.UserID equals users.ID
-                                       where (StatusID > 0 && rf.StatusID == StatusID) || (StatusID == 0)
+                                       where (model.StatusID > 0 && rf.StatusID == model.StatusID) || (model.StatusID == 0)
                                        select new
                                        {
                                            rf.ID,
@@ -128,9 +130,18 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                            userName = users.FullName,
                                            rf.FileName,
                                            rf.CreatedDate,                                       
-                                       }).OrderByDescending(o => o.CreatedDate).ToList<object>();
-
-            return mdlRefuses;
+                                       }).OrderByDescending(o => o.CreatedDate).ToList();
+            if (model.StartDate != null && model.EndDate != null)
+            {
+              response = mdlRefuses.Where(x => x.CreatedDate >= model.StartDate && x.CreatedDate <= model.EndDate).ToList<object>();
+                return response;
+               // return mdlRecycles.Where(x => x.CreatedDate >= model.StartDate && x.CreatedDate <= model.EndDate).ToList();
+            }
+            else
+            {
+                response = mdlRefuses.ToList<object>();
+                return response;
+            }
         }
 
         public object GetRefuseById(int Id)
