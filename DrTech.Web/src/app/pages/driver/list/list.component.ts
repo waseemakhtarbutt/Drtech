@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { CompositeFilterDescriptor, filterBy, compileFilter, SortDescriptor, orderBy } from '@progress/kendo-data-query';
 import { NbDialogService, NbDialogRef } from '@nebular/theme';
 import { ExcelService } from '../../../common/service/excel.service';
+import { DriverRequestDto } from '../dto/driver.dto';
 
 @Component({
   selector: 'ngx-list',
@@ -29,6 +30,8 @@ export class ListComponent implements OnInit {
   }];
   public multiple = false;
   public allowUnsort = true;
+  public driverRequestDto = new DriverRequestDto();
+  public range = { start: null, end: null };
   constructor(public driverService: DriverService, private excelService: ExcelService,private router: Router, private dialogService: NbDialogService) { }
 
   async ngOnInit() {
@@ -43,7 +46,7 @@ export class ListComponent implements OnInit {
   LoadData() {
     this.loading = true;
 
-    this.driverService.GetDrivers().subscribe(result => {
+    this.driverService.GetDrivers(this.driverRequestDto).subscribe(result => {
       if (result.statusCode == 0) {
         this.listViewModel = result.data;
 
@@ -157,4 +160,22 @@ export class ListComponent implements OnInit {
         }
  }
 
+ filterDateRange():void{
+  debugger;
+  if(this.range.start != null && this.range.end != null)
+  {
+    this.driverRequestDto.startDate = this.range.start;
+    this.driverRequestDto.endDate = this.range.end;
+    this.skip = 0;
+    this.LoadData();
+  }
+}
+clearDateRange():void{
+  this.range.start = null;
+  this.range.end = null;
+  this.driverRequestDto.startDate = null;
+  this.driverRequestDto.endDate = null;
+  this.skip = 0;
+  this.LoadData();
+}
 }

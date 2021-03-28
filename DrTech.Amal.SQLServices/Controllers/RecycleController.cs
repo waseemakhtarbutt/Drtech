@@ -196,12 +196,12 @@ namespace DrTech.Amal.SQLServices.Controllers
                 return ServiceResponse.ErrorReponse<List<RecycleDto>>(exp);
             }
         }
-        [HttpGet]
-        public async Task<ResponseObject<List<object>>> GetRecyclesAllListByStatus(int StatusID = 0)
+        [HttpPost]
+        public async Task<ResponseObject<List<object>>> GetRecyclesAllListByStatus(RecycleRequest model)
         {
             try
             {
-                var recyclesList = db.ExtRepositoryFor<RecycleRepository>().GetRecyclesAllListByStatus(StatusID);
+                var recyclesList = db.ExtRepositoryFor<RecycleRepository>().GetRecyclesAllListByStatus(model);
 
                 if (recyclesList.Count == 0)
                     return ServiceResponse.SuccessReponse(recyclesList, MessageEnum.RecycleItemsNotFound);

@@ -2,6 +2,7 @@
 using DrTech.Amal.Common.Helpers;
 using DrTech.Amal.Common.ServerResponse;
 using DrTech.Amal.Notifications;
+using DrTech.Amal.SQLDataAccess.CustomModels;
 using DrTech.Amal.SQLDataAccess.Repository;
 using DrTech.Amal.SQLModels;
 using DrTech.Amal.SQLServices.Auth;
@@ -162,12 +163,12 @@ namespace DrTech.Amal.SQLServices.Controllers
         //        return ServiceResponse.ErrorReponse<bool>(exp);
         //    }
         //}
-        [HttpGet]
-        public async Task<ResponseObject<List<object>>> GetRefusesListByStatus(int StatusID = 0)
+        [HttpPost]
+        public async Task<ResponseObject<List<object>>> GetRefusesListByStatus(RecycleRequest model)
         {
             try
             {
-                var refusesList = db.ExtRepositoryFor<RefuseRepository>().GetRefusesListByStatus(StatusID);
+                var refusesList = db.ExtRepositoryFor<RefuseRepository>().GetRefusesListByStatus(model);
 
                 if (refusesList.Count == 0)
                     return ServiceResponse.SuccessReponse(refusesList, MessageEnum.RefuseItemsNotFound);

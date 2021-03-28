@@ -2506,12 +2506,12 @@ namespace DrTech.Amal.SQLServices.Controllers
             }
         }
 
-        [HttpGet]
-        public async Task<ResponseObject<IEnumerable<Object>>> GetUserList(string type)
+        [HttpPost]
+        public async Task<ResponseObject<IEnumerable<Object>>> GetUserList(UserRequestDto model)
         {
             try
             {
-                IEnumerable<Object> users = db.ExtRepositoryFor<UsersRepository>().GetUserList(type);
+                IEnumerable<Object> users = db.ExtRepositoryFor<UsersRepository>().GetUserList(model);
 
                 if (users.Count() == 0)
                     return ServiceResponse.SuccessReponse(users, MessageEnum.UserListNotFound);

@@ -1,4 +1,5 @@
-﻿using DrTech.Amal.SQLDatabase;
+﻿using DrTech.Amal.SQLDataAccess.CustomModels;
+using DrTech.Amal.SQLDatabase;
 using DrTech.Amal.SQLModels;
 using System;
 using System.Collections.Generic;
@@ -16,9 +17,10 @@ namespace DrTech.Amal.SQLDataAccess.Repository
             dbSet = context.Set<Driver>();
         }
         
-        public List<object> GetAllDrivers()
+        public List<object> GetAllDrivers(DriverRequestDto model)
         {
-            List<object> mdlDrivers = (from drv in context.Drivers
+            List<object> response = new List<object>();
+          var mdlDrivers = (from drv in context.Drivers
                                        join vch in context.VehicleTypes on drv.VehicleID equals vch.ID
                                        where drv.IsActive != false
                                        select new
@@ -29,10 +31,21 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                            drv.RegNumber,
                                            drv.Phone,
                                            drv.FileName,
-                                           drv.LicienceFileName,                                          
-                                       }).OrderBy(o => o.fullName).ToList<object>();
+                                           drv.LicienceFileName, 
+                                           drv.CreatedDate
+                                       }).OrderBy(o => o.fullName).ToList();
 
-            return mdlDrivers;
+            if (model.StartDate != null && model.EndDate != null)
+            {
+                response = mdlDrivers.Where(x => x.CreatedDate >= model.StartDate && x.CreatedDate <= model.EndDate).ToList<object>();
+                return response;
+                // return mdlRecycles.Where(x => x.CreatedDate >= model.StartDate && x.CreatedDate <= model.EndDate).ToList();
+            }
+            else
+            {
+                response = mdlDrivers.ToList<object>();
+                return response;
+            }
         }
 
        

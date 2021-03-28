@@ -104,6 +104,7 @@
     <Compile Include="CustomModels\Payment.cs" />
     <Compile Include="CustomModels\QRCodeViewModel.cs" />
     <Compile Include="CustomModels\RecycleDetailChartVM.cs" />
+    <Compile Include="CustomModels\RecycleDto.cs" />
     <Compile Include="CustomModels\RecycleViewModel.cs" />
     <Compile Include="CustomModels\RegiftViewModel.cs" />
     <Compile Include="CustomModels\ReportProblemViewModel.cs" />

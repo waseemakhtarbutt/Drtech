@@ -6,6 +6,7 @@ import { LocalDataSource } from 'ng2-smart-table';
 import { NbDialogService, NbDialogRef } from '@nebular/theme';
 import { compileFilter, SortDescriptor, orderBy } from '@progress/kendo-data-query';
 import { ExcelService } from '../../../../common/service/excel.service';
+import { UserRequestDto } from '../../dto/user-dto';
 @Component({
   selector: 'ngx-user-list-registered', 
   templateUrl: './registered.component.html',
@@ -29,23 +30,28 @@ export class RegisteredComponent implements OnInit {
   // }];
   public multiple = false;
   public allowUnsort = true;
-  constructor(public userService: UserService,private excelService: ExcelService, private router: Router) { }
+  userRequestDto : UserRequestDto = new UserRequestDto();
+  public range = { start: null, end: null };
+  constructor(public userService: UserService,private excelService: ExcelService, private router: Router) { 
+    this.userRequestDto.type = 'registered';
+  }
 
   async ngOnInit() {
-    this.loading = true;
     this.LoadData();
-    this.loading = false
   }
 
   LoadData() {
-    this.userService.GetUserList("registered").subscribe(result => {
+    this.loading = true;
+    this.userService.GetUserList(this.userRequestDto).subscribe(result => {
       if (result.statusCode == 0) {
         result.data.forEach(p => p.pinType = "user");
         this.source.load(result.data);
+        this.listViewModel = [];
         this.listViewModel = result.data;
         this.loadItems();
       }
     });
+    this.loading = false
   }
   exportAsXLSX(): void {
     debugger
@@ -97,5 +103,21 @@ export class RegisteredComponent implements OnInit {
         total: this.listViewModel.length
       };
     }
+  }
+  filterDateRange():void{
+    debugger;
+    if(this.range.start != null && this.range.end != null)
+    {
+      this.userRequestDto.startDate = this.range.start;
+      this.userRequestDto.endDate = this.range.end;
+      this.LoadData();
+    }
+  }
+  clearDateRange():void{
+    this.range.start = null;
+    this.range.end = null;
+    this.userRequestDto.startDate = null;
+    this.userRequestDto.endDate = null;
+    this.LoadData();
   }
 }

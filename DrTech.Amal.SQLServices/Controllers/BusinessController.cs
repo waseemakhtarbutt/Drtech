@@ -18,6 +18,7 @@ using System.Web;
 using System.Web.Http;
 using static DrTech.Amal.Common.Extentions.Constants;
 using System.Text;
+using DrTech.Amal.SQLDataAccess.CustomModels;
 
 namespace DrTech.Amal.SQLServices.Controllers
 {
@@ -428,8 +429,8 @@ namespace DrTech.Amal.SQLServices.Controllers
                 return ServiceResponse.ErrorReponse<bool>(exp);
             }
         }
-
-        public ResponseObject<List<Business>> GetBusinessList()
+        [HttpPost]
+        public ResponseObject<List<Business>> GetBusinessList(BusinesssRequestDto model)
         {
             try
             {
@@ -438,6 +439,10 @@ namespace DrTech.Amal.SQLServices.Controllers
                 int roleID = Convert.ToInt32(UserRoleTypeEnum.Admin);
 
                 List<Business> businessList = db.Repository<Business>().GetAll().Where(x => x.UserID == UserID || RoleID == roleID && x.IsVerified==true && x.IsActive == true).ToList();
+                if (model?.StartDate != null && model?.EndDate != null)
+                {
+                    businessList = businessList.Where(x => x.CreatedDate >= model.StartDate && x.CreatedDate <= model.EndDate).OrderByDescending(x => x.CreatedDate).ToList();
+                }
                 return ServiceResponse.SuccessReponse(businessList, MessageEnum.DefaultSuccessMessage);
             }
             catch (Exception exp)

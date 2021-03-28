@@ -12,6 +12,7 @@ import { LocationLinkComponent, UserDetailLinkComponent } from '../../../common/
 import { ActivatedRoute } from '@angular/router';
 import { compileFilter, SortDescriptor, orderBy } from '@progress/kendo-data-query';
 import { ExcelService } from '../../../common/service/excel.service';
+import { RecycleRequest } from '../dto/recycleRequest-dto';
 
 @Component({
   selector: 'ngx-refuse-request',
@@ -41,7 +42,8 @@ export class RefuseRequestComponent implements OnInit {
   }];
   public multiple = false;
   public allowUnsort = true;
-
+  public refuseRequest = new RecycleRequest();
+  public range = { start: null, end: null };
   constructor(public requestService: RequestService,private excelService: ExcelService, public commonService: CommonService, private router: Router, private dialogService: NbDialogService) { }
 
   async ngOnInit() {
@@ -118,7 +120,7 @@ export class RefuseRequestComponent implements OnInit {
 
   }
   LoadData() {
-    this.requestService.GetRefuseList(this.statusId).subscribe(result => {
+    this.requestService.GetRefuseList(this.refuseRequest).subscribe(result => {
       if (result.statusCode == 0) {
         result.data.forEach(p => p.pinType = "refuse");
         this.source.load(result.data);
@@ -205,7 +207,7 @@ export class RefuseRequestComponent implements OnInit {
     let selectElementText = event.target['value'];
     this.statusId = selectElementText;
     let list
-    var datalist = this.requestService.GetRefuseList(this.statusId).subscribe(result => {
+    var datalist = this.requestService.GetRefuseList(this.refuseRequest).subscribe(result => {
       if (result.statusCode == 0) {
         this.listViewModel = result.data;
         this.loadItems();
@@ -233,6 +235,22 @@ export class RefuseRequestComponent implements OnInit {
       this.IsGPTextBoxDisabled = false;
 
     }
+  }
+  filterDateRange():void{
+    debugger;
+    if(this.range.start != null && this.range.end != null)
+    {
+      this.refuseRequest.startDate = this.range.start;
+      this.refuseRequest.endDate = this.range.end;
+      this.LoadData();
+    }
+  }
+  clearDateRange():void{
+    this.range.start = null;
+    this.range.end = null;
+    this.refuseRequest.startDate = null;
+    this.refuseRequest.endDate = null;
+    this.LoadData();
   }
 }
 

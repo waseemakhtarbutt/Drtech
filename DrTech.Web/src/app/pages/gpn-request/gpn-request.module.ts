@@ -10,6 +10,7 @@ import { ThemeModule } from '../../@theme/theme.module';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 //import { NumberDirective } from '../../directives/number-only.directive';
+import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     NbDialogModule.forChild(),
     CommonModule,
     GpnRequestRoutingModule,
-    NgxChartsModule
+    NgxChartsModule,
+    DateInputsModule
   ],
   providers: [GpnRequestService,
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },

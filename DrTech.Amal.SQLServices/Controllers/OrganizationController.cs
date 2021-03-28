@@ -18,6 +18,7 @@ using System.Web.Http;
 using static DrTech.Amal.Common.Extentions.Constants;
 using DrTech.Amal.SQLDataAccess;
 using System.Text;
+using DrTech.Amal.SQLDataAccess.CustomModels;
 
 namespace DrTech.Amal.SQLServices.Controllers
 {
@@ -414,8 +415,8 @@ namespace DrTech.Amal.SQLServices.Controllers
                 return ServiceResponse.ErrorReponse<bool>(exp);
             }
         }
-
-        public async Task<ResponseObject<List<object>>> GetOrganizationList()
+        [HttpPost]
+        public async Task<ResponseObject<List<object>>> GetOrganizationList(OrganizationRequestDto model)
         {
             try
             {
@@ -425,7 +426,7 @@ namespace DrTech.Amal.SQLServices.Controllers
 
                 //  List<Organization> organizationList = db.Repository<Organization>().GetAll().Where(x => x.UserID == UserID || RoleID == roleID && x.IsVerified==true).ToList();
                 //return ServiceResponse.SuccessReponse(organizationList, MessageEnum.DefaultSuccessMessage);
-                var approvedOrgs = db.ExtRepositoryFor<OrganizationRepository>().GetApprovedOrganizationList(UserID);
+                var approvedOrgs = db.ExtRepositoryFor<OrganizationRepository>().GetApprovedOrganizationList(model,UserID);
 
                 if (approvedOrgs.Count == 0)
                     return ServiceResponse.SuccessReponse(approvedOrgs, MessageEnum.RegiftItemsNotFound);

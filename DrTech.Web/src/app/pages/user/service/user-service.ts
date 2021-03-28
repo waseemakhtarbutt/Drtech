@@ -16,9 +16,14 @@ export class UserService extends BaseService {
 
   constructor(public http: HttpClient) { super(http); }
 
-  GetUserList(type: string): Observable<ResponseObject<Array<UserDTO>>> {
-    const link = this.baseUrl + 'users/GetUserList?type=' + type;
-    return this.http.get<ResponseObject<Array<UserDTO>>>(link)
+  // GetUserList(type: string): Observable<ResponseObject<Array<UserDTO>>> {
+  //   const link = this.baseUrl + 'users/GetUserList?type=' + type;
+  //   return this.http.get<ResponseObject<Array<UserDTO>>>(link)
+  //     .pipe(catchError(this.handleError));
+  // }
+  GetUserList(model): Observable<ResponseObject<Array<UserDTO>>> {
+    const link = this.baseUrl + 'users/GetUserList';
+    return this.http.post<ResponseObject<Array<UserDTO>>>(link,model)
       .pipe(catchError(this.handleError));
   }
 

@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { GridDataResult, PageChangeEvent } from '@progress/kendo-angular-grid';
 import { compileFilter, SortDescriptor, orderBy } from '@progress/kendo-data-query';
 import { ExcelService } from '../../../common/service/excel.service';
+import { RecycleRequest } from '../dto/recycleRequest-dto';
 
 @Component({
   selector: 'ngx-recycleall-request',
@@ -55,10 +56,12 @@ export class RecycleallRequestComponent implements OnInit {
   // }];
   public multiple = false;
   public allowUnsort = true;
+  public recycleRequest = new RecycleRequest();
+  public range = { start: null, end: null };
   statusList: Array<DropdownDTO> = new Array<DropdownDTO>();
   constructor(public requestService: RequestService,private excelService: ExcelService, public commonService: CommonService, private dialogService: NbDialogService, private route: ActivatedRoute, private router: Router) {
     this.userId = route.snapshot.paramMap.get("id");
-    this.statusId = 1;
+    this.recycleRequest.statusId = 1;
   }
 
   ngOnInit() {
@@ -72,8 +75,9 @@ export class RecycleallRequestComponent implements OnInit {
   LoadData() {
     this.loading = true;
 
-    this.requestService.GetRecycleAllList(this.statusId).subscribe(result => {
+    this.requestService.GetRecycleAllList(this.recycleRequest).subscribe(result => {
       if (result.statusCode == 0) {
+        this.listViewModel = [];
         this.listViewModel = result.data;
         this.loadItems();
         this.loading = false
@@ -151,5 +155,21 @@ export class RecycleallRequestComponent implements OnInit {
       }
     });
 
+  }
+  filterDateRange():void{
+    debugger;
+    if(this.range.start != null && this.range.end != null)
+    {
+      this.recycleRequest.startDate = this.range.start;
+      this.recycleRequest.endDate = this.range.end;
+      this.LoadData();
+    }
+  }
+  clearDateRange():void{
+    this.range.start = null;
+    this.range.end = null;
+    this.recycleRequest.startDate = null;
+    this.recycleRequest.endDate = null;
+    this.LoadData();
   }
 }

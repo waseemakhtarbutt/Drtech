@@ -140,12 +140,12 @@ namespace DrTech.Amal.SQLServices.Controllers
             }
         }
 
-        [HttpGet]
-        public async Task<ResponseObject<List<object>>> GetAllDrivers()
+        [HttpPost]
+        public async Task<ResponseObject<List<object>>> GetAllDrivers(DriverRequestDto model)
         {
             try
             {
-                var drivers = db.ExtRepositoryFor<DriverRepository>().GetAllDrivers();
+                var drivers = db.ExtRepositoryFor<DriverRepository>().GetAllDrivers(model);
 
                 if (drivers.Count() == 0)
                     return ServiceResponse.SuccessReponse(drivers, MessageEnum.RecordNotFound);

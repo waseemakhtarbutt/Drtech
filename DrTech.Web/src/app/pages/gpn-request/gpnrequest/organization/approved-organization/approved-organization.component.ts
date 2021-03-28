@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { NbDialogService, NbDialogRef } from '@nebular/theme';
 import { compileFilter, SortDescriptor, orderBy } from '@progress/kendo-data-query';
 import { ExcelService } from '../../../../../common/service/excel.service';
+import { OrganizationRequestDto } from '../../dto/dto';
 
 @Component({
   selector: 'ngx-approved-organization',
@@ -25,13 +26,19 @@ export class ApprovedOrganizationComponent implements OnInit {
   }];
   public multiple = false;
   public allowUnsort = true;
+  public organizationRequestDto = new OrganizationRequestDto();
+  public range = { start: null, end: null };
   constructor(public gpnRequestService: GpnRequestService,private excelService: ExcelService, private router: Router,private dialogService: NbDialogService) { }
 
   async ngOnInit() {
+   this.loadData();
+  }
+  async loadData(){
     this.loading = true;
-
-    var response = await this.gpnRequestService.GetApprovedOrganizationsList();
+   this.skip = 0;
+    var response = await this.gpnRequestService.GetApprovedOrganizationsList(this.organizationRequestDto);
     if (response.statusCode == 0) {
+      this.listViewModel = [];
       this.listViewModel = response.data;
       this.organizationBadge = this.listViewModel.length;
       this.loadItems();
@@ -66,7 +73,7 @@ export class ApprovedOrganizationComponent implements OnInit {
   var delResponse = await this.gpnRequestService.SuspendOrg(id);
   if(delResponse.statusCode == 0)
   {
-    var response = await this.gpnRequestService.GetApprovedOrganizationsList();
+    var response = await this.gpnRequestService.GetApprovedOrganizationsList(this.organizationRequestDto);
     if (response.statusCode == 0) {
       this.listViewModel = response.data;
       this.loadItems();
@@ -115,6 +122,23 @@ searchGrid(search) {
            total: this.listViewModel.length
        };
       }
+}
+async filterDateRange():Promise<void>{
+  debugger;
+  if(this.range.start != null && this.range.end != null)
+  {
+    this.organizationRequestDto.startDate = this.range.start;
+    this.organizationRequestDto.endDate = this.range.end;
+    this.loading = true;
+    this.loadData();
+  }
+}
+clearDateRange():void{
+  this.range.start = null;
+  this.range.end = null;
+  this.organizationRequestDto.startDate = null;
+  this.organizationRequestDto.endDate = null;
+  this.loadData();
 }
 
 }

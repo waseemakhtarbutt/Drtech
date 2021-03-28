@@ -31,3 +31,8 @@ export class AssociationDTO{
   name:string;
   type:string;
 }
+export class UserRequestDto{
+  type:string;
+  startDate:any = null;
+  endDate:any = null;
+}

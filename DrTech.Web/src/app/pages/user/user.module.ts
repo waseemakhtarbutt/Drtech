@@ -8,6 +8,7 @@ import { TokenInterceptor } from '../../common/token.interceptor';
 import { NbDialogModule } from '@nebular/theme';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { AdminUsersListComponent } from './admin-users-list/admin-users-list.component';
+import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 @NgModule({
   imports: [
     ThemeModule,
@@ -15,6 +16,7 @@ import { AdminUsersListComponent } from './admin-users-list/admin-users-list.com
     Ng2SmartTableModule,
     NbDialogModule.forChild(),
     GridModule,
+    DateInputsModule
     ],
   providers: [UserService,
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }

@@ -21,7 +21,6 @@ E:\Dev\Drtech\DrTech.Amal.SQLDatabase\bin\Debug\EntityFramework.SqlServer.dll
 E:\Dev\Drtech\DrTech.Amal.SQLDatabase\bin\Debug\DrTech.Amal.SQLModels.pdb
 E:\Dev\Drtech\DrTech.Amal.SQLDatabase\bin\Debug\EntityFramework.xml
 E:\Dev\Drtech\DrTech.Amal.SQLDatabase\bin\Debug\EntityFramework.SqlServer.xml
-E:\Dev\Drtech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.csprojAssemblyReference.cache
 E:\Dev\Drtech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.csproj.CoreCompileInputs.cache
 E:\Dev\Drtech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.csproj.CopyComplete
 E:\Dev\Drtech\DrTech.Amal.SQLDatabase\obj\Debug\DrTech.Amal.SQLDatabase.dll

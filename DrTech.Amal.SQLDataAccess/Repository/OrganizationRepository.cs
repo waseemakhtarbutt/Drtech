@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DrTech.Amal.Common.Helpers;
 using System.Data.Entity.Core.Objects;
+using DrTech.Amal.SQLDataAccess.CustomModels;
 
 namespace DrTech.Amal.SQLDataAccess.Repository
 {
@@ -233,9 +234,10 @@ namespace DrTech.Amal.SQLDataAccess.Repository
 
             return mdlMembers;
         }
-        public List<object> GetApprovedOrganizationList(int? UserId)
+        public List<object> GetApprovedOrganizationList(OrganizationRequestDto model,int? UserId)
         {
-            List<object> mdlApprovedOrgs = (from rg in context.Organizations                                     
+            List<object> response = new List<object>();
+           var mdlApprovedOrgs = (from rg in context.Organizations                                     
                                       // join city in context.LookupTypes on rg.CityID equals city.ID
                                        where ( rg.IsVerified == true  && rg.IsActive == true)
                                        select new
@@ -248,10 +250,21 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                            userId = UserId,
                                           // cityDescription = city.Name,
                                            rg.FileName,
-                                           rg.Email,                                          
-                                       }).OrderByDescending(o => o.Name).ToList<object>();
+                                           rg.Email,
+                                           rg.CreatedDate
+                                       }).OrderByDescending(o => o.Name).ToList();
+            if (model.StartDate != null && model.EndDate != null)
+            {
+                response = mdlApprovedOrgs.Where(x => x.CreatedDate >= model.StartDate && x.CreatedDate <= model.EndDate).ToList<object>();
+                return response;
+                // return mdlRecycles.Where(x => x.CreatedDate >= model.StartDate && x.CreatedDate <= model.EndDate).ToList();
+            }
+            else
+            {
+                response = mdlApprovedOrgs.ToList<object>();
+                return response;
+            }
 
-            return mdlApprovedOrgs;
         }
         public List<object> GetSuspendedOrganizationList(int? UserId)
         {

@@ -1,5 +1,12 @@
 <div class="row">
     <div class ="col-md-12">
+      <div class="input-group col-md-4 search-text-box" style="float: left;">
+        <kendo-daterange style="float: right; margin-top: 10px;">
+          <kendo-dateinput kendoDateRangeStartInput [(value)]="range.start"></kendo-dateinput>
+          <kendo-dateinput kendoDateRangeEndInput [(value)]="range.end"></kendo-dateinput>&nbsp;&nbsp;&nbsp;
+          <button  (click)= "filterDateRange()" style="color: white; background-color: #8cc63e;">Filter</button>
+      </kendo-daterange>
+      </div>
        <div class="input-group col-md-3 search-text-box">
            <input type="text" class="form-control rounded-right  search-text-box"  placeholder="Search"  name="search" (input)="searchGrid($event.target.value)">
              <span class="icon-inside"><i class="fas fa-search"></i></span>
