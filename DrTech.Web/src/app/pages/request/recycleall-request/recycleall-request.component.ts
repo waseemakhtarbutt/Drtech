@@ -164,8 +164,10 @@ export class RecycleallRequestComponent implements OnInit {
     debugger;
     if(this.range.start != null && this.range.end != null)
     {
-      this.recycleRequest.startDate = this.range.start;
-      this.recycleRequest.endDate = this.range.end;
+
+      
+      this.recycleRequest.startDate = this.range.start.toLocaleDateString();
+      this.recycleRequest.endDate =  this.range.end.toLocaleDateString();
       this.LoadData();
     }
   }

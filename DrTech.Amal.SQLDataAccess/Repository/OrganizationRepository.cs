@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using DrTech.Amal.Common.Helpers;
 using System.Data.Entity.Core.Objects;
 using DrTech.Amal.SQLDataAccess.CustomModels;
+using DrTech.Amal.Common.Helpers;
 
 namespace DrTech.Amal.SQLDataAccess.Repository
 {
@@ -255,7 +256,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                        }).OrderByDescending(o => o.Name).ToList();
             if (model.StartDate != null && model.EndDate != null)
             {
-                response = mdlApprovedOrgs.Where(x => x.CreatedDate >= model.StartDate && x.CreatedDate <= model.EndDate).ToList<object>();
+                response = mdlApprovedOrgs.Where(x => x.CreatedDate >= Utility.GetDateFromString(model.StartDate) && x.CreatedDate <= Utility.GetDateFromString(model.EndDate)).ToList<object>();
                 return response;
                 // return mdlRecycles.Where(x => x.CreatedDate >= model.StartDate && x.CreatedDate <= model.EndDate).ToList();
             }

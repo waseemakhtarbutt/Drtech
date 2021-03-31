@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DrTech.Amal.Common.Helpers;
 
 namespace DrTech.Amal.SQLDataAccess.Repository
 {
@@ -37,7 +38,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
 
             if (model.StartDate != null && model.EndDate != null)
             {
-                response = mdlDrivers.Where(x => x.CreatedDate >= model.StartDate && x.CreatedDate <= model.EndDate).ToList<object>();
+                response = mdlDrivers.Where(x => x.CreatedDate >= Utility.GetDateFromString(model.StartDate) && x.CreatedDate <= Utility.GetDateFromString(model.EndDate)).ToList<object>();
                 return response;
                 // return mdlRecycles.Where(x => x.CreatedDate >= model.StartDate && x.CreatedDate <= model.EndDate).ToList();
             }

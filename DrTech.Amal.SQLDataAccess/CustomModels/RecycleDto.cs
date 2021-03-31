@@ -17,5 +17,6 @@ namespace DrTech.Amal.SQLDataAccess.CustomModels
         public string areaName { get; set; }
         public string Address { get; set; }
         public string collectorDateTime { get; set; }
+        public DateTime? collectionDate { get; set; }
     }
 }

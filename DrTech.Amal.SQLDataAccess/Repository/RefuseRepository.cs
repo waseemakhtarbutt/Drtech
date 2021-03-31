@@ -1,4 +1,5 @@
-﻿using DrTech.Amal.SQLDataAccess.CustomModels;
+﻿using DrTech.Amal.Common.Helpers;
+using DrTech.Amal.SQLDataAccess.CustomModels;
 using DrTech.Amal.SQLDatabase;
 using DrTech.Amal.SQLModels;
 using System;
@@ -133,7 +134,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                        }).OrderByDescending(o => o.CreatedDate).ToList();
             if (model.StartDate != null && model.EndDate != null)
             {
-              response = mdlRefuses.Where(x => x.CreatedDate >= model.StartDate && x.CreatedDate <= model.EndDate).ToList<object>();
+              response = mdlRefuses.Where(x => x.CreatedDate >= Utility.GetDateFromString(model.StartDate) && x.CreatedDate <= Utility.GetDateFromString(model.EndDate)).ToList<object>();
                 return response;
                // return mdlRecycles.Where(x => x.CreatedDate >= model.StartDate && x.CreatedDate <= model.EndDate).ToList();
             }

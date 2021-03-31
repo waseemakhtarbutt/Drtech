@@ -108,8 +108,8 @@ export class RegisteredComponent implements OnInit {
     debugger;
     if(this.range.start != null && this.range.end != null)
     {
-      this.userRequestDto.startDate = this.range.start;
-      this.userRequestDto.endDate = this.range.end;
+      this.userRequestDto.startDate = this.range.start.toLocaleDateString();;
+      this.userRequestDto.endDate = this.range.end.toLocaleDateString();;
       this.LoadData();
     }
   }

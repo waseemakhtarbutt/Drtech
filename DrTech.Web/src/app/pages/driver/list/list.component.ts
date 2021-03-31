@@ -164,8 +164,8 @@ export class ListComponent implements OnInit {
   debugger;
   if(this.range.start != null && this.range.end != null)
   {
-    this.driverRequestDto.startDate = this.range.start;
-    this.driverRequestDto.endDate = this.range.end;
+    this.driverRequestDto.startDate = this.range.start.toLocaleDateString();;
+    this.driverRequestDto.endDate = this.range.end.toLocaleDateString();;
     this.skip = 0;
     this.LoadData();
   }

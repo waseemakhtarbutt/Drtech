@@ -706,7 +706,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                          }).ToList();
             if (model.StartDate != null && model.EndDate != null)
             {
-                return users.Where(x => x.CreatedDate >= model.StartDate && x.CreatedDate <= model.EndDate).OrderByDescending(x => x.CreatedDate).ToList();
+                return users.Where(x => x.CreatedDate >= Utility.GetDateFromString(model.StartDate) && x.CreatedDate <= Utility.GetDateFromString(model.EndDate)).OrderByDescending(x => x.CreatedDate).ToList();
                 //response = mdlRefuses.Where(x => x.CreatedDate >= model.StartDate && x.CreatedDate <= model.EndDate).ToList<object>();
                 //return response;
                 // return mdlRecycles.Where(x => x.CreatedDate >= model.StartDate && x.CreatedDate <= model.EndDate).ToList();

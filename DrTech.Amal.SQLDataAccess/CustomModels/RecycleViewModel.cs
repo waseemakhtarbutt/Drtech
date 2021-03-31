@@ -50,8 +50,8 @@ namespace DrTech.Amal.SQLDataAccess.CustomModels
     }
     public class RecycleRequest
     {
-        public DateTime? StartDate { get; set; }
-        public DateTime? EndDate { get; set; }
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
         public int StatusID { get; set; } = 0;
     }
 }

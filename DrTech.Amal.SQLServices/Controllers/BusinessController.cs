@@ -441,7 +441,7 @@ namespace DrTech.Amal.SQLServices.Controllers
                 List<Business> businessList = db.Repository<Business>().GetAll().Where(x => x.UserID == UserID || RoleID == roleID && x.IsVerified==true && x.IsActive == true).ToList();
                 if (model?.StartDate != null && model?.EndDate != null)
                 {
-                    businessList = businessList.Where(x => x.CreatedDate >= model.StartDate && x.CreatedDate <= model.EndDate).OrderByDescending(x => x.CreatedDate).ToList();
+                    businessList = businessList.Where(x => x.CreatedDate >= Utility.GetDateFromString(model.StartDate) && x.CreatedDate <= Utility.GetDateFromString(model.EndDate)).OrderByDescending(x => x.CreatedDate).ToList();
                 }
                 return ServiceResponse.SuccessReponse(businessList, MessageEnum.DefaultSuccessMessage);
             }

@@ -122,6 +122,11 @@ namespace DrTech.Amal.Common.Helpers
             return resultedDate;
         }
 
-
+        public static DateTime GetDateFromString(string date)
+        {
+            DateTime dt = Convert.ToDateTime(date);
+            return dt;
+        }
     }
+
 }

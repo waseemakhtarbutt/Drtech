@@ -116,8 +116,8 @@ async filterDateRange():Promise<void>{
   debugger;
   if(this.range.start != null && this.range.end != null)
   {
-    this.businessRequestDto.startDate = this.range.start;
-    this.businessRequestDto.endDate = this.range.end;
+    this.businessRequestDto.startDate = this.range.start.toLocaleDateString();
+    this.businessRequestDto.endDate = this.range.end.toLocaleDateString();
     this.loading = true;
     this.loadData();
   }

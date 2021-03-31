@@ -286,13 +286,14 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                            CityName = city.CityName,
                                             areaName=  area.Name,
                                            Address = users.Address,
+                                           collectionDate = rc.CollectorDateTime,
                                             collectorDateTime = GetLocalDateTimeFromUTC(rc.CollectorDateTime).ToString("MMM dd, yyyy h:mm tt"),
                                             ///updatedDate = Convert.ToDateTime(rc.CreatedDate).ToString("MMM dd, yyyy "),
                                         }).OrderByDescending(o => o.CreatedDate).ToList();
             if(model.StartDate != null && model.EndDate != null)
             {
-               DateTime dateTime=    model.StartDate.Value.AddDays(1);
-              return  mdlRecycles.Where(x => x.CreatedDate >= dateTime && x.CreatedDate <= model.EndDate).ToList();
+              
+              return  mdlRecycles.Where(x => x.collectionDate >=  Utility.GetDateFromString(model.StartDate) && x.collectionDate <= Utility.GetDateFromString(model.EndDate)).ToList();
             }
             else
             {
@@ -327,15 +328,15 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                             city.CityName,
                                             areaName = area.Name,
                                             users.Address,
+                                            collectionDate = rc.CollectorDateTime,
                                             collectorDateTime = GetLocalDateTimeFromUTC(rc.CollectorDateTime).ToString("MMM dd, yyyy h:mm tt"),
                                             ///updatedDate = Convert.ToDateTime(rc.CreatedDate).ToString("MMM dd, yyyy "),
                                         }).OrderByDescending(o => o.CreatedDate).ToList();
 
             if (model.StartDate != null && model.EndDate != null)
             {
-                DateTime StartDate = model.StartDate.Value.AddDays(1);
-                DateTime EndDate = model.EndDate.Value.AddDays(1);
-                response = mdlRecycles.Where(x => x.CreatedDate >= StartDate && x.CreatedDate <= EndDate).OrderByDescending(o => o.CreatedDate).ToList<object>();
+               
+                response = mdlRecycles.Where(x => x.collectionDate >= Utility.GetDateFromString(model.StartDate) && x.collectionDate <= Utility.GetDateFromString(model.EndDate)).OrderByDescending(o => o.CreatedDate).ToList<object>();
                 return response;
                 // return mdlRecycles.Where(x => x.CreatedDate >= model.StartDate && x.CreatedDate <= model.EndDate).ToList();
             }

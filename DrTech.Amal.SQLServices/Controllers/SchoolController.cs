@@ -460,7 +460,7 @@ namespace DrTech.Amal.SQLServices.Controllers
                 List<School> schoolList = db.Repository<School>().GetAll().Where(x => x.UserID == UserID || RoleID == roleID && x.IsVerified == true && x.IsActive == true).ToList();
                 if(model.StartDate != null && model.EndDate != null)
                 {
-                schoolList = schoolList.Where(x => x.CreatedDate >= model.StartDate && x.CreatedDate <= model.EndDate).OrderByDescending(x => x.CreatedDate).ToList();
+                schoolList = schoolList.Where(x => x.CreatedDate >= Utility.GetDateFromString(model.StartDate) && x.CreatedDate <= Utility.GetDateFromString(model.EndDate)).OrderByDescending(x => x.CreatedDate).ToList();
                 }
                 return ServiceResponse.SuccessReponse(schoolList, MessageEnum.DefaultSuccessMessage);
             }

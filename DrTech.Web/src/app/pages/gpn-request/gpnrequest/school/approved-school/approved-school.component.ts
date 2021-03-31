@@ -126,8 +126,8 @@ exportAsXLSX(): void {
     debugger;
     if(this.range.start != null && this.range.end != null)
     {
-      this.schoolRequestDto.startDate = this.range.start;
-      this.schoolRequestDto.endDate = this.range.end;
+      this.schoolRequestDto.startDate = this.range.start.toLocaleDateString();
+      this.schoolRequestDto.endDate = this.range.end.toLocaleDateString();
       this.loading = true;
       this.loadData();
     }

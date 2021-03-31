@@ -240,8 +240,8 @@ export class RefuseRequestComponent implements OnInit {
     debugger;
     if(this.range.start != null && this.range.end != null)
     {
-      this.refuseRequest.startDate = this.range.start;
-      this.refuseRequest.endDate = this.range.end;
+      this.refuseRequest.startDate = this.range.start.toLocaleDateString();
+      this.refuseRequest.endDate = this.range.end.toLocaleDateString();
       this.LoadData();
     }
   }
