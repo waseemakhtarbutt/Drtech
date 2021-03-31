@@ -9,6 +9,7 @@ import { DriverDTO } from '../../dto/driver.dto';
 import { NbDialogService, NbDialogRef } from '@nebular/theme';
 import { GridDataResult, PageChangeEvent } from '@progress/kendo-angular-grid';
 import { CommentsDTO } from '../../../request/dto/comments-dto';
+import { DriverRequestDto } from '../../dto/driver.dto';
 
 @Component({
   selector: 'ngx-update-recycle-request-assign',
@@ -24,6 +25,7 @@ export class UpdateRecycleRequestAssignComponent implements OnInit {
   statusList: Array<DropdownDTO> = new Array<DropdownDTO>();
   isDriver: boolean = true;
   pendingConfirmation: string = "";
+  public driverRequestDto = new DriverRequestDto();
 
   public gridView: GridDataResult;
   public pageSize = 5;
@@ -40,7 +42,7 @@ export class UpdateRecycleRequestAssignComponent implements OnInit {
     this.LoadData();
     this.loadShif();
 
-    this.driverService.GetAllDrivers().subscribe(result => {
+    this.driverService.GetAllDrivers(this.driverRequestDto).subscribe(result => {
       var driver = new DriverDTO();
 
       driver.fullName = 'Select a Driver';

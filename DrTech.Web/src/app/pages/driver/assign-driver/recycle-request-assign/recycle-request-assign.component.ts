@@ -9,6 +9,7 @@ import { DriverDTO } from '../../dto/driver.dto';
 import { NbDialogService, NbDialogRef } from '@nebular/theme';
 import { GridDataResult, PageChangeEvent } from '@progress/kendo-angular-grid';
 import { CommentsDTO } from '../../../request/dto/comments-dto';
+import { DriverRequestDto } from '../../dto/driver.dto';
 
 @Component({
   selector: 'ngx-recycle-request-assign',
@@ -20,6 +21,7 @@ export class RecycleRequestAssignComponent implements OnInit {
   recycleId: string = "";
   driverList: Array<DriverDTO> = new Array<DriverDTO>();
   _recycleModel: RecycleDTO = new RecycleDTO();
+  public driverRequestDto = new DriverRequestDto();
   listViewModel: any[] = [];
   statusList: Array<DropdownDTO> = new Array<DropdownDTO>();
   isDriver: boolean = true;
@@ -40,7 +42,7 @@ export class RecycleRequestAssignComponent implements OnInit {
     this.LoadData();
     this.loadShif();
 
-    this.driverService.GetAllDrivers().subscribe(result => {
+    this.driverService.GetAllDrivers(this.driverRequestDto).subscribe(result => {
       var driver = new DriverDTO();
 
       driver.fullName = 'Select a Driver';

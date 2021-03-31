@@ -55,10 +55,10 @@ export class DriverService extends BaseService {
         .pipe(catchError(this.handleError));
 
   }
-
-  GetAllDrivers(): Observable<ResponseObject<Array<DriverDTO>>> {
+ 
+  GetAllDrivers(model: DriverRequestDto): Observable<ResponseObject<Array<DriverDTO>>> {
     const link = this.baseUrl + 'Driver/GetAllDrivers';
-    return this.http.get<ResponseObject<Array<DriverDTO>>>(link)
+    return this.http.post<ResponseObject<Array<DriverDTO>>>(link,model)
       .pipe(catchError(this.handleError));
   }
 

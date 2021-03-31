@@ -9,7 +9,7 @@ import { DriverDTO } from '../../dto/driver.dto';
 import { BinDTO } from '../../../request/dto/bin-dto';
 import { GridDataResult, PageChangeEvent } from '@progress/kendo-angular-grid';
 import { CommentsDTO } from '../../../request/dto/comments-dto';
-
+import { DriverRequestDto } from '../../dto/driver.dto';
 @Component({
   selector: 'ngx-bin-request-assign',
   templateUrl: './bin-request-assign.component.html',
@@ -22,7 +22,7 @@ export class BinRequestAssignComponent implements OnInit {
   _binModel: BinDTO = new BinDTO();
   listViewModel: any[] = [];
   statusList: Array<DropdownDTO> = new Array<DropdownDTO>();
-
+  public driverRequestDto = new DriverRequestDto();
   public gridView: GridDataResult;
   public pageSize = 5;
   public skip = 0;
@@ -36,7 +36,7 @@ export class BinRequestAssignComponent implements OnInit {
 
     this.LoadData();
     this.loadShif();
-    this.driverService.GetAllDrivers().subscribe(result => {
+    this.driverService.GetAllDrivers(this.driverRequestDto).subscribe(result => {
       var driver = new DriverDTO();
 
       driver.fullName = 'Select a Driver';

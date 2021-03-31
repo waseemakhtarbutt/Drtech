@@ -9,6 +9,7 @@ import { DriverDTO } from '../../dto/driver.dto';
 import { NbDialogService, NbDialogRef } from '@nebular/theme';
 import { PageChangeEvent, GridDataResult } from '@progress/kendo-angular-grid';
 import { CommentsDTO } from '../../../request/dto/comments-dto';
+import { DriverRequestDto } from '../../dto/driver.dto';
 
 @Component({
   selector: 'ngx-regift-request-assign',
@@ -21,6 +22,7 @@ export class RegiftRequestAssignComponent implements OnInit {
   typeName: string = "";
   typeList: Array<DropdownDTO> = new Array<DropdownDTO>();
   driverList: Array<DriverDTO> = new Array<DriverDTO>();
+  public driverRequestDto = new DriverRequestDto();
   _regiftModel: RegiftDTO = new RegiftDTO();
   isDriver: boolean = true;
   listViewModel: any[] = [];
@@ -58,7 +60,7 @@ export class RegiftRequestAssignComponent implements OnInit {
       this.typeList = result.data;
     });
 
-    this.driverService.GetAllDrivers().subscribe(result => {
+    this.driverService.GetAllDrivers(this.driverRequestDto).subscribe(result => {
       var driver = new DriverDTO();
       driver.fullName = 'Select a Driver';
       driver.id = -1;

@@ -10,7 +10,7 @@ import { ExcelService } from '../../../../common/service/excel.service';
   styleUrls: ['./desegregated-grid.component.scss']
 })
 export class DesegregatedGridComponent implements OnInit {
-  public range = { start: null, end: null };
+  public range = { start: null, end: null, companyID:0,branchID:0};
   GridHeaderText: string = "Collected Waste";
   loading: boolean = false;
   public gridView: GridDataResult;
@@ -115,7 +115,7 @@ export class DesegregatedGridComponent implements OnInit {
   async ClearFilter() {
     console.log('clear button clicked')
    // this.range = []
-    this.range = { start: null, end: null };
+    this.range = { start: null, end: null, companyID:0,branchID:0};
     this.reloadGrid();
   }
 

@@ -125,7 +125,11 @@ export class RecycleallRequestComponent implements OnInit {
           { field: "idea", operator: "contains", value: search },
           { field: "userName", operator: "contains", value: search },
           { field: "statusDescription", operator: "contains", value: search },
-          { field: "cityName", operator: "contains", value: search }
+          { field: "cityName", operator: "contains", value: search },
+          { field: "areaName", operator: "contains", value: search },
+          { field: "address", operator: "contains", value: search },
+          { field: "collectorDateTime", operator: "contains", value: search }
+
         ]
       });
 

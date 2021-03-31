@@ -115,7 +115,6 @@ namespace DrTech.Amal.SQLServices.Controllers {
                 return ServiceResponse.ErrorReponse<bool>(exp);
             }
         }
-
         public ResponseObject<List<Regift>> GetDonation(int userId, int DonationId)
         {
             try
@@ -133,7 +132,6 @@ namespace DrTech.Amal.SQLServices.Controllers {
                 return ServiceResponse.ErrorReponse<List<Regift>>(exp);
             }
         }
-
         [HttpPost]
         public ResponseObject<object> ChangeStatusForRegift(int rID, string status)
         {
@@ -195,30 +193,19 @@ namespace DrTech.Amal.SQLServices.Controllers {
                 return ServiceResponse.ErrorReponse<List<object>>(exp);
             }
         }
-
-
         public async Task<ResponseObject<List<LookupType>>> GetDonationDropdowns()
         {
             ResponseObject<List<LookupType>> DonationList = await new CommonController().GetDropdownByType("DonationType");
 
             return DonationList;
         }
-
-
         public async Task<ResponseObject<List<LookupType>>> GetSubTypeDropdown(int id)
         {
             ResponseObject<List<LookupType>> SubDonationList = await new CommonController().GetDropdownByParentID(id);
 
             return SubDonationList;
         }
-
-        //public async Task<ResponseObject<List<LookupType>>> GetAllNGOs()
-        //{
-        //    ResponseObject<List<LookupType>> OrgnizationList = await new CommonController().GetDropdownByType("DonationTo");
-        //    return OrgnizationList;
-        //}
-        [HttpGet]
-
+        [HttpGet] 
         public ResponseObject<List<Organization>> GetAllNGOs()
         {
             try
@@ -250,7 +237,6 @@ namespace DrTech.Amal.SQLServices.Controllers {
                 return ServiceResponse.ErrorReponse<List<Organization>>(exp);
             }
         }
-
         [HttpGet]
         public async Task<ResponseObject<List<object>>> GetRegiftsListByStatus(int StatusID = 0)
         {

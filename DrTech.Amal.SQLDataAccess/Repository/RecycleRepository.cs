@@ -291,7 +291,8 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                         }).OrderByDescending(o => o.CreatedDate).ToList();
             if(model.StartDate != null && model.EndDate != null)
             {
-              return  mdlRecycles.Where(x => x.CreatedDate >= model.StartDate && x.CreatedDate <= model.EndDate).ToList();
+               DateTime dateTime=    model.StartDate.Value.AddDays(1);
+              return  mdlRecycles.Where(x => x.CreatedDate >= dateTime && x.CreatedDate <= model.EndDate).ToList();
             }
             else
             {
@@ -332,7 +333,9 @@ namespace DrTech.Amal.SQLDataAccess.Repository
 
             if (model.StartDate != null && model.EndDate != null)
             {
-                response = mdlRecycles.Where(x => x.CreatedDate >= model.StartDate && x.CreatedDate <= model.EndDate).ToList<object>();
+                DateTime StartDate = model.StartDate.Value.AddDays(1);
+                DateTime EndDate = model.EndDate.Value.AddDays(1);
+                response = mdlRecycles.Where(x => x.CreatedDate >= StartDate && x.CreatedDate <= EndDate).OrderByDescending(o => o.CreatedDate).ToList<object>();
                 return response;
                 // return mdlRecycles.Where(x => x.CreatedDate >= model.StartDate && x.CreatedDate <= model.EndDate).ToList();
             }

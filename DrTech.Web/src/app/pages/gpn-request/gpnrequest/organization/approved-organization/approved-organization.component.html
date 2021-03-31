@@ -3,13 +3,13 @@
     badgeStatus="success">
     <div class="row">
         <div class ="col-md-12">
-          <div class="input-group input-group-text col-md-4" style="float: left; background-color: #ffffff; margin-top: 10px;">
+          <div class="input-group  col-md-8" style="float: left;  margin-top: 10px;">
             <kendo-daterange>
               <kendo-dateinput   kendoDateRangeStartInput [(value)]="range.start"></kendo-dateinput>
               <kendo-dateinput   kendoDateRangeEndInput [(value)]="range.end"></kendo-dateinput>&nbsp;&nbsp;&nbsp;              
-                <button  (click)= "clearDateRange()"class="btn btn-secondary" style="padding: 5px;color: white; background-color:#005169; margin-left: 6%;">Clear</button>
-                <button (click)= "filterDateRange()" class="btn btn-secondary"  style="padding: 5px;color: white; background-color: #8cc63e; margin-left: 2%;">Filter</button>
           </kendo-daterange>
+          <button  (click)= "clearDateRange()"class="btn btn-secondary" style="padding: 5px;color: white; background-color:#005169; margin-left: 6%;">Clear</button>
+          <button (click)= "filterDateRange()" class="btn btn-secondary"  style="padding: 5px;color: white; background-color: #8cc63e; margin-left: 2%;">Filter</button>
           </div>
            <div class="input-group col-md-3 search-text-box">
                <input type="text" class="form-control rounded-right  search-text-box"  placeholder="Search"  name="search" (input)="searchGrid($event.target.value)">
@@ -43,22 +43,16 @@
                                   <nb-user  [picture]="dataItem.fileName" [name]="dataItem.name"  size="small"></nb-user>
                                 </ng-template>
                           </kendo-grid-column>
-
                 <!-- <kendo-grid-column field="fullName" title="Name" width="*">  </kendo-grid-column> -->
                 <kendo-grid-column field="siteOffice" title="Center" width="*"></kendo-grid-column>
                 <kendo-grid-column field="contactPerson" title="Contact Person" width="*"></kendo-grid-column>
                 <kendo-grid-column field="phone" title="Contact Number" width="*"></kendo-grid-column>
                 <kendo-grid-column field="email" title="Email Address" width="*"></kendo-grid-column>
-
-
-
                 <kendo-grid-column field="Action" width="100%" [sortable]="false">
-                  <ng-template kendoGridCellTemplate let-dataItem>
-
+                <ng-template kendoGridCellTemplate let-dataItem>
                     <a routerLink="/pages/gpn/gpnrequest/addorganization/{{dataItem.id}}-Edit" class="blue size13 " title="Approve" data-toggle="tooltip" data-placement="top"> <button nbButton outline  status="success"><i  class="nb-edit"></i>&nbsp;Edit</button></a>&nbsp;
                     <a class="blue size13" title="Suspend" data-toggle="tooltip" data-placement="top"><button (click)="onComplaintAction(dialog,dataItem.id)" nbButton outline  status="success">x</button></a>&nbsp;
                     <!-- <a routerLink="/pages/driver/editdriver/{{dataItem.id}}" class="blue size13 " title="Approve" data-toggle="tooltip" data-placement="top"> <button nbButton outline  status="success"><i  class="nb-delete"></i>&times;</button></a>&nbsp; -->
-
                     <!-- <a routerLink="/pages/driver/tasklist/{{dataItem.id}}" class="blue size13 " title="Approve" data-toggle="tooltip" data-placement="top"> <button nbButton outline  status="success" ><i  class="nblist"></i>&nbsp;Detail</button></a>&nbsp;
                     <a class="blue size13 " title="Delete" data-toggle="tooltip" data-placement="top"><button (click)="deleteSchool(dataItem.id)" nbButton outline  status="success">X</button></a>&nbsp; -->
                   </ng-template>

@@ -20,8 +20,6 @@ namespace DrTech.Amal.SQLDataAccess.Repository
         {
             dbSet = context.Set<Regift>();
         }
-
-       
         public List<object> GetDonations(int? userID)
         {
             var reGift = (from rg in context.Regifts
@@ -140,7 +138,6 @@ namespace DrTech.Amal.SQLDataAccess.Repository
 
             return mdlRegifts;
         }
-
         public int subitemscalculate (int id)
         {
             int count = 0;
@@ -164,7 +161,6 @@ namespace DrTech.Amal.SQLDataAccess.Repository
 
             return count;
         }
-
         public RegiftViewModel GetRegiftDetailById(int RegiftID, bool IsWebAdmin)
         {
             RegiftViewModel mdlRegift = (from rg in context.Regifts
@@ -325,7 +321,6 @@ namespace DrTech.Amal.SQLDataAccess.Repository
 
             return true;
         }
-
         public bool CollectedRegiftByDriver(int? regiftID, List<RegiftSubItem> lstSubItems)
         {
             try
@@ -344,7 +339,6 @@ namespace DrTech.Amal.SQLDataAccess.Repository
             }
             return true;
         }
-
         public bool RejectRegift(RegiftViewModel _mdlRegiftVM, int? userId)
         {
             try
