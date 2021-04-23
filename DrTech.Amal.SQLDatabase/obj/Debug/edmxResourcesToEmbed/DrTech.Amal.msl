@@ -1232,6 +1232,7 @@
     <EntitySetMapping Name="UserPayments">
       <EntityTypeMapping TypeName="DrTech.Amal.Model.UserPayment">
         <MappingFragment StoreEntitySet="UserPayment">
+          <ScalarProperty Name="RemainingAmount" ColumnName="RemainingAmount" />
           <ScalarProperty Name="transactionNumber" ColumnName="transactionNumber" />
           <ScalarProperty Name="authorizeId" ColumnName="authorizeId" />
           <ScalarProperty Name="StoreId" ColumnName="StoreId" />

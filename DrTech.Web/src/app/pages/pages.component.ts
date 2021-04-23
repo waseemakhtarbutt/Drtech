@@ -40,6 +40,9 @@ export class PagesComponent {
     }
     if (role === 1 && this.type ==="S")
       this.menu = MENU_ITEMS_DumpRecycle_Staff;
+      if ((role === 11 ) && this.type === "G"){
+        this.menu = MENU_ITEMS_BUSINESS_GOI;
+      }
 
 
 

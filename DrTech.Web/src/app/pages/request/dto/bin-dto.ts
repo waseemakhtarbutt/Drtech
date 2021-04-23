@@ -23,7 +23,9 @@ export class BinDTO {
   totalGP: number;
   orderStatusID: number;
   totalPrice: number;
+  amountPaid: number;
   price: number;
   comments: string;
+  paymentMethod: string;
   buyBinComments:Array<CommentsDTO>;
 }

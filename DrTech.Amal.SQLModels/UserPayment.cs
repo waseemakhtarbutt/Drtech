@@ -40,6 +40,7 @@ namespace DrTech.Amal.SQLModels
         public string StoreId { get; set; }
         public string authorizeId { get; set; }
         public string transactionNumber { get; set; }
+        public Nullable<decimal> RemainingAmount { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BuyBin> BuyBins { get; set; }

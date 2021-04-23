@@ -13,6 +13,7 @@ import { BuyBinRequestComponent } from './buybin-request/buybin-request.componen
 import { ReduceRequestComponent } from './reduce-request/reduce-request.component';
 import { DashboardRequestComponent} from './dashboard-request/dashboard-request.component';
 import { RecycleallRequestComponent } from './recycleall-request/recycleall-request.component';
+import { RecyclelistRequestComponent } from './recyclelist-request/recyclelist-request.component';
 
 const routes: Routes = [{
   path: '',
@@ -41,6 +42,10 @@ const routes: Routes = [{
     {
       path: 'recycleall',
       component: RecycleallRequestComponent,
+    },
+    {
+      path: 'recyclelist',
+      component: RecyclelistRequestComponent,
     },
     {
       path: 'recycle/:id',
@@ -114,4 +119,5 @@ export const routedComponents = [
   BuyBinRequestComponent,
   DashboardRequestComponent,
   RecycleallRequestComponent,
+  RecyclelistRequestComponent,
 ];

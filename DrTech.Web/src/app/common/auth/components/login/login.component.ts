@@ -100,6 +100,8 @@ export class NbLoginComponent {
       this.router.navigate(['/pages/driver/GUIForRecycle/gui-for-recycle-list']);
       else if (this.service.isAuthenticated && role === 1 && this.type === "S")
       this.router.navigate(['/pages/driver/GUIForRecycle/add-seggregated-waste-with-types']);
+      else if (this.service.isAuthenticated && (role === 11) && this.type === "G")
+      this.router.navigate(['/pages/request/recyclelist']);
   }
 
   getConfigValue(key: string): any {

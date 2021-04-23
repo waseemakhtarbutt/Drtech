@@ -13,10 +13,12 @@ namespace DrTech.Amal.SQLDataAccess.CustomModels
         public int userId { get; set; }
         public string userName { get; set; }
         public DateTime? CreatedDate { get; set; }
+        public DateTime? Fdate { get; set; }
         public string CityName { get; set; }
         public string areaName { get; set; }
         public string Address { get; set; }
         public string collectorDateTime { get; set; }
+        public string CreateDate { get; set; }
         public DateTime? collectionDate { get; set; }
     }
 }

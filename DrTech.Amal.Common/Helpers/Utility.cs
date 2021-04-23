@@ -1,10 +1,12 @@
-﻿using System;
+﻿using PhoneNumbers;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utf8Json.Formatters;
 
 namespace DrTech.Amal.Common.Helpers
 {
@@ -123,6 +125,11 @@ namespace DrTech.Amal.Common.Helpers
         }
 
         public static DateTime GetDateFromString(string date)
+        {
+            DateTime dt = Convert.ToDateTime(date);
+            return dt;
+        }
+        public static DateTime GetDateFromStrings(string date)
         {
             DateTime dt = Convert.ToDateTime(date);
             return dt;

@@ -27,8 +27,8 @@ namespace DrTech.Amal.Common.Enums
         SubBusinessAdmin = 9,
         [Description("CompanyAdmin")]
         CompanyAdmin = 10,
-        [Description("GOIBusinessAdmin")]
-        GOIBusinessAdmin = 11,
+        [Description("WWF")]
+        WWF = 11,
         [Description("GOIBusinessStaffAdmin")]
         GOIBusinessStaffAdmin = 12
     }

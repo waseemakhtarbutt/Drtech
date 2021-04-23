@@ -1,4 +1,6 @@
 ﻿using DrTech.Amal.Common.Enums;
+using DrTech.Amal.Common.Helpers;
+using DrTech.Amal.SQLDataAccess.CustomModels;
 using DrTech.Amal.SQLDatabase;
 using DrTech.Amal.SQLModels;
 using System;
@@ -344,6 +346,84 @@ namespace DrTech.Amal.SQLDataAccess.Repository
             return mdlGUIList;
 
 
+        }
+        public List<object> GOIListForSuperAdmin(RecycleRequest model)
+        {
+            List<object> response = new List<object>();
+
+            try
+            {
+                int CompanyId = 0;
+                if (model.StartDate != null && model.EndDate != null)
+                {
+                    if (model.BranchID > 0)
+                    {
+                        var branch = context.Businesses.Where(x => x.ID == model.BranchID).FirstOrDefault();
+                        var UserFromDB = context.Users.Where(x => x.ID == branch.UserID).FirstOrDefault();
+
+                        var mdlGUIList = (from rec in context.Recycles.ToList()
+                                          join subItem in context.RecycleSubItems on rec.ID equals subItem.RecycleID
+                                          where rec.IsActive == true && rec.UserID == UserFromDB.ID
+                                          select new
+                                          {
+                                              rec.ID,
+                                              GreenPoints = (int)ConstantValues.WasteDefaultGCValuePerKG * getTotalWasteFromWasteTypes(subItem.ID),
+                                              Time = GetLocalDateTimeFromUTC(Convert.ToDateTime(rec.CreatedDate)).ToString("hh:mm tt"),
+                                              Weight = getWasteWeightFromRSTypes(subItem.ID),
+                                              NotWaste = getNotWasteFromWasteTypes(subItem.ID),
+                                              Date = rec.CollectorDateTime,                          //Convert.ToDateTime(rec.CollectorDateTime).ToString("MMM dd, yyyy"),
+                                              LocationName = GetLocationNameByUserID(rec.UserID)
+                                          }).ToList();
+
+                        if (model.StartDate != null && model.EndDate != null)
+                        {
+
+                            response = mdlGUIList.Where(x => x.Date >= Utility.GetDateFromString(model.StartDate) && x.Date <= Utility.GetDateFromString(model.EndDate)).OrderByDescending(o => o.Date).ToList<object>();
+                            return response;
+                        }
+                        else
+                        {
+                            return response = mdlGUIList.ToList<object>();
+                        }
+                    }
+                    else
+                    {
+
+                        var mdlGUIList = (from rec in context.Recycles.ToList()
+                                          join subItem in context.RecycleSubItems on rec.ID equals subItem.RecycleID
+                                          where rec.IsActive == true //&& rec.UserID == UserFromDB.ID
+                                          select new
+                                          {
+                                              rec.ID,
+                                              GreenPoints = (int)ConstantValues.WasteDefaultGCValuePerKG * getTotalWasteFromWasteTypes(subItem.ID),
+                                              Time = GetLocalDateTimeFromUTC(Convert.ToDateTime(rec.CreatedDate)).ToString("hh:mm tt"),
+                                              Weight = getWasteWeightFromRSTypes(subItem.ID),
+                                              NotWaste = getNotWasteFromWasteTypes(subItem.ID),
+                                              Date = rec.CollectorDateTime,                          //Convert.ToDateTime(rec.CollectorDateTime).ToString("MMM dd, yyyy"),
+                                              LocationName = GetLocationNameByUserID(rec.UserID)
+                                          }).ToList();
+
+                        if (model.StartDate != null && model.EndDate != null)
+                        {
+
+                            response = mdlGUIList.Where(x => x.Date >= Utility.GetDateFromString(model.StartDate) && x.Date <= Utility.GetDateFromString(model.EndDate)).OrderByDescending(o => o.Date).ToList<object>();
+                            return response;
+                        }
+                        else
+                        {
+                            return response = mdlGUIList.ToList<object>();
+                        }
+
+                    }
+                    //    return response;
+
+                }
+                else { return response; }
+            }
+            catch (Exception ex)
+            {
+                return response;
+            }
         }
         public List<RecyclesDataExcel> GetSegregatedDataByID(int BranchID)
         {

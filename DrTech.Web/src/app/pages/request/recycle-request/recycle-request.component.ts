@@ -46,6 +46,7 @@ export class RecycleRequestComponent implements OnInit {
   badge: any;
   points: number = 0;
   listViewModel: any[] = [];
+  ExcellistViewModel: any[] = [];
   loading = false;
   public range = { start: null, end: null };
   public gridView: GridDataResult;
@@ -87,8 +88,19 @@ export class RecycleRequestComponent implements OnInit {
     // this.loading = false
   }
   exportAsXLSX(): void {
+
+    this.loading = true;
+
+    this.requestService.GetRecycleListExcel(this.recycleRequest).subscribe(result => {
+      if (result.statusCode == 0) {
+        this.ExcellistViewModel = [];
+        this.ExcellistViewModel = result.data;
+        this.loading = false;
+        this.excelService.exportAsExcelFile(this.ExcellistViewModel, 'sample');
+
+      }
+    });
     debugger
-    this.excelService.exportAsExcelFile(this.listViewModel, 'sample');
   }
   public onSelect(e) {
     this.router.navigate(["/pages/driver/assign-driver/recycle-assign/" + this.gridView.data[e.index % this.pageSize].id]);

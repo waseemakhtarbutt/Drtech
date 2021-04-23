@@ -9,7 +9,7 @@
         <EntityTypeShape EntityType="DrTech.Amal.Model.BinDetail" Width="1.5" PointX="9" PointY="67" />
         <EntityTypeShape EntityType="DrTech.Amal.Model.Business" Width="1.5" PointX="7.5" PointY="89.125" />
         <EntityTypeShape EntityType="DrTech.Amal.Model.BusinessGP_Log" Width="1.5" PointX="9.75" PointY="71.75" />
-        <EntityTypeShape EntityType="DrTech.Amal.Model.BusinessType" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DrTech.Amal.Model.BusinessType" Width="1.5" PointX="0.875" PointY="0.75" />
         <EntityTypeShape EntityType="DrTech.Amal.Model.BuyBin" Width="1.5" PointX="11.25" PointY="63.5" />
         <EntityTypeShape EntityType="DrTech.Amal.Model.BuyBinComment" Width="1.5" PointX="16.5" PointY="64.5" />
         <EntityTypeShape EntityType="DrTech.Amal.Model.Child" Width="1.5" PointX="5.25" PointY="50.625" />

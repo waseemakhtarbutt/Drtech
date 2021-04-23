@@ -41,10 +41,6 @@ namespace DrTech.Amal.SQLServices.Controllers
                 return ServiceResponse.ErrorReponse<List<object>>(exp);
             }
         }
-
-      
-
-
         [HttpPost]
         public async Task<ResponseObject<bool>> RequestForNewBin([FromBody]BuyBinOrderWithPayment buyBin)
         {
@@ -69,6 +65,7 @@ namespace DrTech.Amal.SQLServices.Controllers
                         mdlUserPayment.DeductedFromWallet = buyBin.deductedFromWallet;
                         // mdlUserPayment.AmountPaid = buyBin.Price;
                         mdlUserPayment.AmountPaid = buyBin.PaidAmount;
+                        mdlUserPayment.RemainingAmount = buyBin.RemainingAmount;
                         mdlUserPayment.PaymentMethodID = buyBin.paymentMethodID;
                         mdlUserPayment.UserID = UserID;
                         mdlUserPayment.CreatedBy = UserID;
@@ -91,6 +88,34 @@ namespace DrTech.Amal.SQLServices.Controllers
                     #endregion
 
                 }
+                if (buyBin.paymentMethodID == 5)
+                {
+                    #region|Save user payment history|
+
+                        UserID = JwtDecoder.GetUserIdFromToken(Request.Headers.Authorization.Parameter);
+
+                        mdlUserPayment.OrderPrice = buyBin.Price;
+                        mdlUserPayment.DeductedFromWallet = buyBin.deductedFromWallet;
+                        // mdlUserPayment.AmountPaid = buyBin.Price;
+                        mdlUserPayment.AmountPaid = buyBin.PaidAmount;
+                        mdlUserPayment.RemainingAmount = buyBin.RemainingAmount;
+                        mdlUserPayment.PaymentMethodID = buyBin.paymentMethodID;
+                        mdlUserPayment.UserID = UserID;
+                        mdlUserPayment.CreatedBy = UserID;
+                        mdlUserPayment.CreatedDate = DateTime.Now;
+                        mdlUserPayment.IsActive = true;
+                        db.Repository<UserPayment>().Insert(mdlUserPayment);
+                        db.Save();
+                        //Deduct Wallet Amount from User wallet;
+                        var mdlUser = db.Repository<User>().FindById(UserID);
+                        mdlUser.WalletBalance = mdlUser.WalletBalance - mdlUserPayment.DeductedFromWallet;
+                        db.Repository<User>().Update(mdlUser);
+                        db.Save();
+                   
+
+                    #endregion
+
+                }
                 else {
                     #region|Save user payment Easypaisa history|
                     UserID = JwtDecoder.GetUserIdFromToken(Request.Headers.Authorization.Parameter);
@@ -100,6 +125,7 @@ namespace DrTech.Amal.SQLServices.Controllers
                         mdlUserPayment.OrderPrice = buyBin.Price;
                         mdlUserPayment.DeductedFromWallet = buyBin.deductedFromWallet;
                         mdlUserPayment.AmountPaid = buyBin.PaidAmount;
+                        mdlUserPayment.RemainingAmount = buyBin.RemainingAmount;
                         mdlUserPayment.PaymentMethodID = buyBin.paymentMethodID;
                         if (buyBin.UserPayment != null)
                         {
@@ -213,8 +239,6 @@ namespace DrTech.Amal.SQLServices.Controllers
                 return ServiceResponse.ErrorReponse<List<object>>(exp);
             }
         }
-
-        
         [HttpGet]
         public ResponseObject<bool> DeleteBinDetails(int id)
         {
@@ -290,7 +314,6 @@ namespace DrTech.Amal.SQLServices.Controllers
                 return ServiceResponse.ErrorReponse<bool>(exp);
             }
         }
-
         [HttpPost]
         public async Task<ResponseObject<bool>> UpdateBinInformation()
         {
@@ -344,7 +367,6 @@ namespace DrTech.Amal.SQLServices.Controllers
                 return ServiceResponse.ErrorReponse<bool>(exp);
             }
         }
-
         [HttpGet]
         public ResponseObject<List<object>> GetStatusOfBin(int UserId = 0)
         {
@@ -369,8 +391,6 @@ namespace DrTech.Amal.SQLServices.Controllers
                 return ServiceResponse.ErrorReponse<List<object>>(exp);
             }
         }
-
-
         [HttpGet]
         public async Task<ResponseObject<List<object>>> GetBinsListByStatus(int StatusID = 0)
         {
@@ -388,7 +408,6 @@ namespace DrTech.Amal.SQLServices.Controllers
                 return ServiceResponse.ErrorReponse<List<object>>(exp);
             }
         }
-
         [HttpGet]
         public async Task<ResponseObject<BuyBinViewModel>> GetBinDetailById(int BinId)
         {
@@ -439,7 +458,6 @@ namespace DrTech.Amal.SQLServices.Controllers
                 return ServiceResponse.ErrorReponse<bool>(exp);
             }
         }
-
         [HttpPost]
         public ResponseObject<bool> SMSBinComments([FromBody]CommentsViewModel _mdlCommentsVM)
         {

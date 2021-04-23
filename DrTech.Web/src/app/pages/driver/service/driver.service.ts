@@ -166,6 +166,9 @@ export class DriverService extends BaseService {
   async GetGUIList(): Promise<ResponseObject<any>> {
     return await this.Get<any>('Company/GetGUIList');
   }
+  async GetGUIListDateRange(): Promise<ResponseObject<any>> {
+    return await this.Get<any>('Company/GetGUIList');
+  }
   async GetPerformerPIChartData(): Promise<ResponseObject<any>> {
     return await this.Get<any>('Users/RsCountForGPN');
   }
@@ -186,6 +189,9 @@ export class DriverService extends BaseService {
   }
   async GetGOIListForSuperAdmin(BranchID): Promise<ResponseObject<any>> {
     return await this.Get<any>('Company/GetGOIListForSuperAdminByBranchID?BranchID='+ BranchID);
+  }
+  async GetGOIListForSuperAdminByDate(model): Promise<ResponseObject<any>> {
+    return await this.Post<any>('Company/GetGOIListForSuperAdminByBranchDate',model);
   }
   async GetDataForRecycleDetailChartByAdmin(): Promise<ResponseObject<any>> {
     return await this.Get<any>('Users/GetDataForRecycleDetailChartByAdmin');

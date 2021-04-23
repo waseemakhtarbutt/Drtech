@@ -2837,6 +2837,7 @@
     <Property Name="StoreId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="authorizeId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="transactionNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="RemainingAmount" Type="Decimal" Precision="18" Scale="0" />
   </EntityType>
   <Association Name="FK__BuyBin__UserPaym__3D7E1B63">
     <End Type="DrTech.Amal.Model.UserPayment" Role="UserPayment" Multiplicity="0..1" />

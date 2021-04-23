@@ -229,6 +229,7 @@
   </div> -->
 
   <!--Recycle Detail Chart with Types-->
+
   <div class="row" *ngIf="ShowLocation">
     <div class="col-md-12">
       <div class="input-group col-md-3 search-text-box">
@@ -266,14 +267,27 @@
               Company </div>
 
           </div>
-
         </div>
+        
         <!--Grid System Is Bellow Code-->
       </nb-card-body>
     </nb-card>
   </div>
+  <nb-card>
+    <nb-card-body>
+  <div class="row" >  
+    <div class="form-group col-md-12">
+      <kendo-daterange>
+        <kendo-dateinput   kendoDateRangeStartInput [(value)]="range.start"></kendo-dateinput>
+        <kendo-dateinput   kendoDateRangeEndInput [(value)]="range.end"></kendo-dateinput>          
+        <button  (click)= "clearDateRange()"class="btn btn-secondary" style="padding: 5px;color: white; background-color:#005169; margin-left: 6%;">Clear</button>
+        <button (click)= "filterDateRange()" class="btn btn-secondary"  style="padding: 5px;color: white; background-color: #8cc63e; margin-left: 2%;">Filter</button>
+     </kendo-daterange>
+    </div>
+ </div>
+</nb-card-body>
+</nb-card>
   <div class="row">
- 
     <nb-card>
       <nb-card-header class="headerText">
         {{GridHeaderText}}  
@@ -299,4 +313,5 @@
       </nb-card-body>
     </nb-card>
   </div>
+
 </div>

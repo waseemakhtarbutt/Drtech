@@ -260,7 +260,77 @@ namespace DrTech.Amal.SQLDataAccess.Repository
 
         }
 
+        public List<object> GetRecyclesListByStatusExcel(RecycleRequest model)
+        {
+           
+            List<object> response = new List<object>();
+            var mdlRecycles = (from rc in context.Recycles.ToList()
+                                            join sub in context.RecycleSubItems on rc.ID equals sub.RecycleID
+                                            join status in context.Status on rc.StatusID equals status.ID
+                                            join users in context.Users on rc.UserID equals users.ID
+                                            join city in context.Cities on users.CityId equals city.ID
+                                            join area in context.Areas on users.AreaID equals area.ID
 
+                                            where (model.StatusID > 0 && rc.StatusID == model.StatusID && sub.IsParent == true) || (model.StatusID == 0 && sub.IsParent == true)
+                                            select new
+                               {
+                                   statusDescription = status.StatusName,
+                                   userName = users.FullName,
+                                   city.CityName,
+                                   areaName = area.Name,
+                                   users.Address,
+                                   users.Phone,
+                                   CreatedDate = GetLocalDateTimeFromUTC(rc.CollectorDateTime).ToString("MMM dd, yyyy h:mm tt"),
+                                   FDate = rc.CollectorDateTime
+                               }).OrderByDescending(o => o.FDate).ToList();
+            if (model.StartDate != null && model.EndDate != null)
+            {
+
+                return response = mdlRecycles.Where(x => x.FDate >= Utility.GetDateFromString(model.StartDate) && x.FDate <= Utility.GetDateFromString(model.EndDate)).OrderByDescending(o => o.CreatedDate).ToList<object>();
+
+            }
+            else
+            {
+                response = mdlRecycles.ToList<object>();
+                return response;
+            }
+
+
+        }
+        public List<object> GetRecyclesAllListByStatusExcel(RecycleRequest model)
+        {
+            List<object> response = new List<object>();
+            var mdlRecycles = (from rc in context.Recycles.ToList()
+                               join sub in context.RecycleSubItems on rc.ID equals sub.RecycleID
+                               join status in context.Status on rc.StatusID equals status.ID
+                               join users in context.Users on rc.UserID equals users.ID
+                               join city in context.Cities on users.CityId equals city.ID
+                               join area in context.Areas on users.AreaID equals area.ID
+
+                               where (model.StatusID > 0 && sub.IsParent == true) || (model.StatusID == 0 && sub.IsParent == true)
+                               select new
+                               {
+                                   statusDescription = status.StatusName,
+                                   userName = users.FullName,
+                                   city.CityName,
+                                   areaName = area.Name,
+                                   users.Address,
+                                   users.Phone,
+                                   CreatedDate = GetLocalDateTimeFromUTC(rc.CollectorDateTime).ToString("MMM dd, yyyy h:mm tt"),
+                                   FDate =rc.CollectorDateTime
+                               }).OrderByDescending(o => o.FDate).ToList();
+
+            if (model.StartDate != null && model.EndDate != null)
+            {
+
+                response = mdlRecycles.Where(x => x.FDate >= Utility.GetDateFromString(model.StartDate) && x.FDate <= Utility.GetDateFromString(model.EndDate)).OrderByDescending(o => o.CreatedDate).ToList<object>();
+                return response;            }
+            else
+            {
+                response = mdlRecycles.ToList<object>();
+                return response;
+            }
+        }
         public List<RecycleDto> GetRecyclesListByStatus(RecycleRequest model)
         {
             List<RecycleDto> mdlRecycles = (from rc in context.Recycles.ToList()
@@ -317,17 +387,18 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                         {
                                             rc.ID,
                                             //sub.Description,
-                                            // rc.GreenPoints,
+                                            // rc.GreenPoints,  
                                             statusDescription = status.StatusName,
                                             //users.Longitude,
                                             //users.Latitude,
                                             userId = users.ID,
                                             userName = users.FullName,
-                                            /// rc.FileName,
-                                            rc.CreatedDate,
+                                            /// rc.FileName,=
+                                            CreatedDate= GetLocalDateTimeFromUTC(rc.CollectorDateTime).ToString("MMM dd, yyyy h:mm tt"),
                                             city.CityName,
                                             areaName = area.Name,
                                             users.Address,
+                                            users.Phone,
                                             collectionDate = rc.CollectorDateTime,
                                             collectorDateTime = GetLocalDateTimeFromUTC(rc.CollectorDateTime).ToString("MMM dd, yyyy h:mm tt"),
                                             ///updatedDate = Convert.ToDateTime(rc.CreatedDate).ToString("MMM dd, yyyy "),

@@ -559,7 +559,8 @@ namespace DrTech.Amal.SQLServices.Controllers
             try
             {
                 var TWeights = model.lists.Sum(x => x.Weight);
-                if (TWeights != model.TWeight)
+                TWeights = Convert.ToDecimal(TWeights);
+                if (TWeights != Convert.ToDecimal(model.TWeight))
                 {
                     return ServiceResponse.SuccessReponse(false, "Weight must be  Equal to Total weight");
 
@@ -784,6 +785,21 @@ namespace DrTech.Amal.SQLServices.Controllers
             {
                 int? UserID = JwtDecoder.GetUserIdFromToken(Request.Headers.Authorization.Parameter);
                 List<object> lstGUIs = db.ExtRepositoryFor<CompanyRepository>().GOIListForSuperAdmin(BranchID);
+
+                return ServiceResponse.SuccessReponse(lstGUIs, MessageEnum.DefaultSuccessMessage);
+            }
+            catch (Exception exp)
+            {
+                return ServiceResponse.ErrorReponse<List<object>>(exp);
+            }
+        }
+        [HttpPost]
+        public async Task<ResponseObject<List<object>>> GetGOIListForSuperAdminByBranchDate(RecycleRequest model)
+        {
+            try
+            {
+                int? UserID = JwtDecoder.GetUserIdFromToken(Request.Headers.Authorization.Parameter);
+                List<object> lstGUIs = db.ExtRepositoryFor<CompanyRepository>().GOIListForSuperAdmin(model);
 
                 return ServiceResponse.SuccessReponse(lstGUIs, MessageEnum.DefaultSuccessMessage);
             }

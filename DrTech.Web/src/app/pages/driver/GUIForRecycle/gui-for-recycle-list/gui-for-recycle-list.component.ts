@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, TemplateRef } from '@angular/c
 import { GridDataResult, PageChangeEvent } from '@progress/kendo-angular-grid';
 import { NbDialogService, NbDialogRef } from '@nebular/theme';
 import { compileFilter, SortDescriptor, orderBy } from '@progress/kendo-data-query';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { ExcelService } from '../../../../common/service/excel.service';
 
@@ -10,6 +11,7 @@ import { DriverService } from '../../service/driver.service';
 import { NbTokenService } from '../../../../common/auth';
 import { MywasteserviceService } from '../../../my-waste/mywasteservice.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { guiforecycleRequest } from '../dto/guiforecycleRequest-dto';
 @Component({
   selector: 'ngx-gui-for-recycle-list',
   templateUrl: './gui-for-recycle-list.component.html',
@@ -44,12 +46,13 @@ export class GuiForRecycleListComponent implements OnInit {
   ScreenSize :number;
   barChartWidth:number = 300;
   barChartCircularWidth:number = 250;
-
+  public range = { start: null, end: null };
   barChartMonthWidth:number = 200;
   barChartYearWidth:number = 200;
   barChartDetailWidth:number = 350;
   //I am using this property to hide the location Admin of the previous dashboard- (In future if needed just make this property to true and set the LocationAdmin directive on the html Div to show accordingly.)
   HideLocationAdminPreviousDashboard = true;
+  public guiforecycleRequest = new guiforecycleRequest();
   constructor(
     private formBuilder: FormBuilder,
     public driverservice: DriverService,
@@ -117,7 +120,28 @@ export class GuiForRecycleListComponent implements OnInit {
       }
 
   }
-
+  async filterDateRange(){
+    debugger;
+    if(this.range.start != null && this.range.end != null)
+    {
+      this.guiforecycleRequest.startDate = this.range.start.toLocaleDateString();
+      this.guiforecycleRequest.endDate = this.range.end.toLocaleDateString();
+      var response = await this.driverservice.GetGOIListForSuperAdminByDate(this.guiforecycleRequest);
+      if(response.statusCode == 0){
+        this.listViewModel = response.data;
+        this.skip = 0;
+        this.loadItems();
+        //console.log(this.companyList)
+       }
+    }
+  }
+  clearDateRange():void{
+    this.range.start = null;
+    this.range.end = null;
+    this.guiforecycleRequest.startDate = null;
+    this.guiforecycleRequest.endDate = null;
+    this.reloadGrid();
+  }
   async reloadGrid() {
     this.loading = true;
 
@@ -159,6 +183,8 @@ exportAsXLSX(): void {
 async onChangeBusinessGOI(event) {
 
  // this.listViewModel =[];
+ this.guiforecycleRequest.branchID =event.target.value
+
   var response =await this.driverservice.GetGOIListForSuperAdmin(event.target.value);
   if(response.statusCode == 0){
     this.listViewModel = response.data;

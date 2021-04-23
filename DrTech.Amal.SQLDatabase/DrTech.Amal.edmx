@@ -1036,6 +1036,7 @@
           <Property Name="StoreId" Type="varchar" MaxLength="50" />
           <Property Name="authorizeId" Type="varchar" MaxLength="50" />
           <Property Name="transactionNumber" Type="varchar" MaxLength="100" />
+          <Property Name="RemainingAmount" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -4939,6 +4940,7 @@
           <Property Name="StoreId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="authorizeId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="transactionNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RemainingAmount" Type="Decimal" Precision="18" Scale="0" />
         </EntityType>
         <Association Name="FK__BuyBin__UserPaym__3D7E1B63">
           <End Type="DrTech.Amal.Model.UserPayment" Role="UserPayment" Multiplicity="0..1" />
@@ -6279,6 +6281,7 @@
           <EntitySetMapping Name="UserPayments">
             <EntityTypeMapping TypeName="DrTech.Amal.Model.UserPayment">
               <MappingFragment StoreEntitySet="UserPayment">
+                <ScalarProperty Name="RemainingAmount" ColumnName="RemainingAmount" />
                 <ScalarProperty Name="transactionNumber" ColumnName="transactionNumber" />
                 <ScalarProperty Name="authorizeId" ColumnName="authorizeId" />
                 <ScalarProperty Name="StoreId" ColumnName="StoreId" />

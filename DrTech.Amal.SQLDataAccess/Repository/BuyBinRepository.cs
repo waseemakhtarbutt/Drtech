@@ -132,7 +132,9 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                              DeliverDate = (buybin.DeliveryDate == null) ? DateTime.Now : buybin.DeliveryDate,
                                              OrderStatusID = (orderTracking.StatusID == (int)StatusEnum.Pending || orderTracking.StatusID == (int)StatusEnum.Declined) ? orderTracking.StatusID : -1,
                                              AssignTo = orderTracking.AssignTo ?? -1,
-                                             Price = bd.Price
+                                             Price = bd.Price,
+                                             PaidAmount = buybin.UserPayment.AmountPaid,
+                                             PaymentMethod = buybin.UserPayment.PaymentMethod.Name
                                          }).ToList()[0];
 
             return mdlBinDetail;

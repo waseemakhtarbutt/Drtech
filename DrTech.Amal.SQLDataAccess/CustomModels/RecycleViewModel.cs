@@ -53,5 +53,6 @@ namespace DrTech.Amal.SQLDataAccess.CustomModels
         public string StartDate { get; set; }
         public string EndDate { get; set; }
         public int StatusID { get; set; } = 0;
+        public int BranchID { get; set; } = 0;
     }
 }

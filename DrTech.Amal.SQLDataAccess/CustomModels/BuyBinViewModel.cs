@@ -31,6 +31,9 @@ namespace DrTech.Amal.SQLDataAccess.CustomModels
         public int TotalGP { get; set; }
         public int OrderStatusID { get; set; }
         public double Price { get; set; }
+        public decimal? PaidAmount { get; set; }
+        public decimal? RemainingAmount { get; set; }
+        public string PaymentMethod { get; set; }
         public string Comments { get; set; }
         public List<CommentsViewModel> BuyBinComments { get; set; }
     }

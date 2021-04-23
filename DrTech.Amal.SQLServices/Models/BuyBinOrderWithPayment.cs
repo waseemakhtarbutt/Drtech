@@ -21,6 +21,7 @@ namespace DrTech.Amal.SQLServices.Models
         public string TrackingNumber { get; set; }
         public string FileName { get; set; }
         public decimal Price { get; set; }
+        public decimal? RemainingAmount { get; set; }
         public int CreatedBy { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public Nullable<int> UpdatedBy { get; set; }

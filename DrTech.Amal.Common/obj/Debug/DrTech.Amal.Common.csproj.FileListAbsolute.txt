@@ -144,3 +144,11 @@ F:\Drtech\DrTech.Amal.Common\obj\Debug\DrTech.Amal.Common.csproj.CoreCompileInpu
 F:\Drtech\DrTech.Amal.Common\obj\Debug\DrTech.Amal.Common.csproj.CopyComplete
 F:\Drtech\DrTech.Amal.Common\obj\Debug\DrTech.Amal.Common.dll
 F:\Drtech\DrTech.Amal.Common\obj\Debug\DrTech.Amal.Common.pdb
+F:\Drtech\DrTech.Amal.Common\bin\Debug\PhoneNumbers.dll
+F:\Drtech\DrTech.Amal.Common\bin\Debug\System.Collections.Immutable.dll
+F:\Drtech\DrTech.Amal.Common\bin\Debug\System.Threading.Tasks.Extensions.dll
+F:\Drtech\DrTech.Amal.Common\bin\Debug\Utf8Json.dll
+F:\Drtech\DrTech.Amal.Common\bin\Debug\PhoneNumbers.xml
+F:\Drtech\DrTech.Amal.Common\bin\Debug\System.Collections.Immutable.xml
+F:\Drtech\DrTech.Amal.Common\bin\Debug\System.Threading.Tasks.Extensions.xml
+F:\Drtech\DrTech.Amal.Common\bin\Debug\Utf8Json.xml

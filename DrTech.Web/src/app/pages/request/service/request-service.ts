@@ -239,7 +239,29 @@ debugger;
     return this.http.post<ResponseObject<Array<RecycleDTO>>>(link,model)
       .pipe(catchError(this.handleError));
   }
+  GetRecycleListExcel(model): Observable<ResponseObject<Array<RecycleDTO>>> {
+    debugger;
+        if (model.statusId == null)
+          model.statusId = 0;
+      //     const params = new HttpParams()
+      //  .set('statusId', statusId)
+      //  .set('startDate', startDate)
+      //  .set('endDate', endDate);
+    
+        const link = this.baseUrl + 'Recycle/GetRecyclesListByStatusExcel';
+        return this.http.post<ResponseObject<Array<RecycleDTO>>>(link,model)
+          .pipe(catchError(this.handleError));
+      }
   GetRecycleAllList(model: RecycleRequest): Observable<ResponseObject<Array<RecycleDTO>>> {
+
+    if (model.statusId == null)
+      model.statusId = 0;
+
+    const link = this.baseUrl + 'Recycle/GetRecyclesAllListByStatus';
+    return this.http.post<ResponseObject<Array<RecycleDTO>>>(link,model)
+      .pipe(catchError(this.handleError));
+  }
+  GetRecycleAllListExcel(model: RecycleRequest): Observable<ResponseObject<Array<RecycleDTO>>> {
 
     if (model.statusId == null)
       model.statusId = 0;
