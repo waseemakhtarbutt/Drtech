@@ -121,6 +121,7 @@ export class AddSeggregatedWasteWithTypesComponent implements OnInit {
   }
 
   public handleEvent(data: any) {
+    //TODO NAbeel
     debugger
     this.collectDate = new Date(data.collectDate);
     // Naming convenstion not correct like companyID consider businessID and branchID consider companyID

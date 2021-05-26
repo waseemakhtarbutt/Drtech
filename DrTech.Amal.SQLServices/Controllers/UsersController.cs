@@ -1239,7 +1239,11 @@ namespace DrTech.Amal.SQLServices.Controllers
                             RedeemablePoints = GPRedeemable,
                             WalletBalance = user.WalletBalance ?? 0,
                             BusinessKey = db.ExtRepositoryFor<CommonRepository>().GetBusinessKeyCompanyIdFrom(user.CompanyID),
-                            QRCode = user.QRCode
+                            QRCode = user.QRCode,
+                            RemainingAmount = 150,
+                            PaidAmount = 1000,
+                            DueDate = DateTime.Now
+
                         }, MessageEnum.UserAuthorizedSuccessFully);
                     }
                     else

@@ -535,6 +535,7 @@ export const MENU_ITEMS_BUSINESS_GOI: NbMenuItem[] = [
     icon: 'nb-bar-chart',
     link: '/pages/driver/GUIForRecycle/gui-for-recycle-list',
   },
+  
 
   // {
   //   title: 'Recycle Dashboard',
@@ -557,6 +558,14 @@ export const MENU_ITEMS_BUSINESS_GOI: NbMenuItem[] = [
   //   ],
   // },
 
+];
+export const MENU_ITEMS_RecycleList_Staff: NbMenuItem[] = [
+
+  {
+    title: 'DashBoard',
+    icon: 'nb-bar-chart',
+    link: '/pages/request/recyclelist',
+  },
 ];
 export const MENU_ITEMS_DumpRecycle_Staff: NbMenuItem[] = [
 

@@ -17,7 +17,7 @@ namespace DrTech.Amal.SQLDataAccess.CustomModels
         public string amount { get; set; }
         public decimal paidAmount { get; set; }
         public decimal deductedFromWallet { get; set; }
-        public string Mobile { get; set; }
+        public string Mobile { get; set; } 
         public string Email { get; set; }
         public string auth_token { get; set; }
         public string postBackURL { get; set; }

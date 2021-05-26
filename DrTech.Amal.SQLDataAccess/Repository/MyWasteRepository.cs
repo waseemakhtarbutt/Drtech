@@ -125,7 +125,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                         newRecord.Weight = Convert.ToDecimal(getWieght(recycle.ID));
                         newRecord.ID = recycle.ID;
                         newRecord.IsActive = recycle.IsActive;
-                        newRecord.date = recycle.CollectorDateTime;
+                        newRecord.date = recycle.CreatedDate;
                         newRecord.CompanyName = company.Name;
                         newRecord.BranchName = branch.OfficeName;
                         DesegregatedList.Add(newRecord);

@@ -56,7 +56,7 @@ export class ComparisonComponent implements OnInit {
       
       this.ddlDepartmentList = this.dynamicdropdown;
     }
-    else if (this.roleId == 11) { // Business Admin
+    else if (this.roleId == 4) { // Business Admin
       var response = await this.businessService.GetBranchesList();
 
       this.dynamicdropdown = [];

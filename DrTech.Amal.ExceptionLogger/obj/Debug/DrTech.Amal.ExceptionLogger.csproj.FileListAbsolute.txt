@@ -6,3 +6,4 @@ F:\Drtech\DrTech.Amal.ExceptionLogger\obj\Debug\DrTech.Amal.ExceptionLogger.cspr
 F:\Drtech\DrTech.Amal.ExceptionLogger\obj\Debug\DrTech.Amal.ExceptionLogger.csproj.CopyComplete
 F:\Drtech\DrTech.Amal.ExceptionLogger\obj\Debug\DrTech.Amal.ExceptionLogger.dll
 F:\Drtech\DrTech.Amal.ExceptionLogger\obj\Debug\DrTech.Amal.ExceptionLogger.pdb
+F:\Drtech\DrTech.Amal.ExceptionLogger\obj\Debug\DrTech.Amal.ExceptionLogger.csprojAssemblyReference.cache

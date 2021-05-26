@@ -61,5 +61,10 @@ namespace DrTech.Amal.SQLServices.Auth
         {
             throw new NotImplementedException();
         }
+
+        internal static int? GetUserIdFromToken(object parameter)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
