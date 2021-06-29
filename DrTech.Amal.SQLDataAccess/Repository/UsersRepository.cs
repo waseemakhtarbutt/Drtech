@@ -647,6 +647,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                 IsVerified = false;
 
             var users = (from user in context.Users
+                         join city in context.Cities on user.CityId equals city.ID into city
                          join bb in context.BuyBins on user.ID equals bb.UserID into buybin
                          join re in context.Refuses on user.ID equals re.UserID into refuses
                          join rd in context.Reduces on user.ID equals rd.UserID into reduses
@@ -662,6 +663,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                              FullName = user.FullName,
                              Email = user.Email,
                              Phone = user.Phone,
+                             CityName=city.FirstOrDefault().CityName,
                              Latitude = user.Latitude,
                              Longitude = user.Longitude,
                              UserId = user.ID.ToString(),
@@ -701,6 +703,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                              ReportCount = u.ReportCount,
                              ReuseCount = u.ReuseCount,
                              RegiftCount = u.RegiftCount,
+                             CityName=u.CityName,
                              //CreatedDate = u.CreatedDate
                              CreatedDate =  u.CreatedDate
                          }).ToList();

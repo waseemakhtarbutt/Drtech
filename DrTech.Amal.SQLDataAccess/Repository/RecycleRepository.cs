@@ -394,7 +394,8 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                             userId = users.ID,
                                             userName = users.FullName,
                                             /// rc.FileName,=
-                                            CreatedDate= GetLocalDateTimeFromUTC(rc.CollectorDateTime).ToString("MMM dd, yyyy h:mm tt"),
+                                            sub.Weight,
+                                            CreatedDate = GetLocalDateTimeFromUTC(rc.CollectorDateTime).ToString("MMM dd, yyyy h:mm tt"),
                                             city.CityName,
                                             areaName = area.Name,
                                             users.Address,
