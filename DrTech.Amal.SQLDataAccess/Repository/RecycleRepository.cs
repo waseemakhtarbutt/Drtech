@@ -334,13 +334,13 @@ namespace DrTech.Amal.SQLDataAccess.Repository
         public List<RecycleDto> GetRecyclesListByStatus(RecycleRequest model)
         {
             List<RecycleDto> mdlRecycles = (from rc in context.Recycles.ToList()
-                                        join sub in context.RecycleSubItems on rc.ID equals sub.RecycleID
+                                       // join sub in context.RecycleSubItems on rc.ID equals sub.RecycleID
                                         join status in context.Status on rc.StatusID equals status.ID
                                         join users in context.Users on rc.UserID equals users.ID
                                         join city in context.Cities on users.CityId equals city.ID
                                         join area in context.Areas on users.AreaID equals area.ID
 
-                                        where (model.StatusID > 0 && rc.StatusID == model.StatusID && sub.IsParent == true) || (model.StatusID == 0 && sub.IsParent == true)
+                                        where (model.StatusID > 0 && rc.StatusID == model.StatusID ) || (model.StatusID == 0 )
                                         select new RecycleDto
                                         {
                                           ID =  rc.ID,
@@ -376,13 +376,13 @@ namespace DrTech.Amal.SQLDataAccess.Repository
         {
             List<object> response = new List<object>();
           var mdlRecycles = (from rc in context.Recycles.ToList()
-                                        join sub in context.RecycleSubItems on rc.ID equals sub.RecycleID
+                                        ///join sub in context.RecycleSubItems on rc.ID equals sub.RecycleID
                                         join status in context.Status on rc.StatusID equals status.ID
                                         join users in context.Users on rc.UserID equals users.ID
                                         join city in context.Cities on users.CityId equals city.ID
                                         join area in context.Areas on users.AreaID equals area.ID
 
-                                        where (model.StatusID > 0 && sub.IsParent == true) || (model.StatusID == 0 && sub.IsParent == true)
+                                        where (model.StatusID > 0) || (model.StatusID == 0)
                                         select new
                                         {
                                             rc.ID,
@@ -394,7 +394,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                             userId = users.ID,
                                             userName = users.FullName,
                                             /// rc.FileName,=
-                                            sub.Weight,
+                                          //  sub.Weight,
                                             CreatedDate = GetLocalDateTimeFromUTC(rc.CollectorDateTime).ToString("MMM dd, yyyy h:mm tt"),
                                             city.CityName,
                                             areaName = area.Name,

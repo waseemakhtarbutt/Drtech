@@ -23,6 +23,7 @@ using DrTech.Notifications;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
+using Microsoft.ReportingServices.ReportProcessing.OnDemandReportObjectModel;
 
 namespace DrTech.Services.Controllers
 {

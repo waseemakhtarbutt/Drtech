@@ -670,7 +670,7 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                              Address = user.Address,
                              FileName = user.FileName,
                              IsVarified = user.IsVerified,
-                             GreenPoints = user.GreenPoints,
+                             GreenPoints = recycles.FirstOrDefault().RecycleSubItems.FirstOrDefault().GreenPoints,
                              BinCount = buybin.Count(),
                              RecycleCount = recycles.Count(),
                              ReduceCount = reduses.Count(),
