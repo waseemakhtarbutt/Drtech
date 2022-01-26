@@ -1,0 +1,14 @@
+F:\Drtech\DrTech\bin\Debug\netcoreapp2.0\appsettings.Development.json
+F:\Drtech\DrTech\bin\Debug\netcoreapp2.0\appsettings.json
+F:\Drtech\DrTech\bin\Debug\netcoreapp2.0\DrTech.deps.json
+F:\Drtech\DrTech\bin\Debug\netcoreapp2.0\DrTech.runtimeconfig.json
+F:\Drtech\DrTech\bin\Debug\netcoreapp2.0\DrTech.runtimeconfig.dev.json
+F:\Drtech\DrTech\bin\Debug\netcoreapp2.0\DrTech.dll
+F:\Drtech\DrTech\bin\Debug\netcoreapp2.0\DrTech.pdb
+F:\Drtech\DrTech\obj\Debug\netcoreapp2.0\DrTech.csprojAssemblyReference.cache
+F:\Drtech\DrTech\obj\Debug\netcoreapp2.0\DrTech.AssemblyInfoInputs.cache
+F:\Drtech\DrTech\obj\Debug\netcoreapp2.0\DrTech.AssemblyInfo.cs
+F:\Drtech\DrTech\obj\Debug\netcoreapp2.0\DrTech.csproj.CoreCompileInputs.cache
+F:\Drtech\DrTech\obj\Debug\netcoreapp2.0\DrTech.dll
+F:\Drtech\DrTech\obj\Debug\netcoreapp2.0\DrTech.pdb
+F:\Drtech\DrTech\obj\Debug\netcoreapp2.0\DrTech.genruntimeconfig.cache

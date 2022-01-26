@@ -400,7 +400,7 @@ namespace DrTech.Amal.SQLServices.Controllers
         }
 
         [HttpGet]
-        public ResponseObject<object> GetDriverAllTasks(string status)
+        public ResponseObject<object> GetDriverAllTasks(string status="open")
         {
             try
             {
@@ -416,6 +416,24 @@ namespace DrTech.Amal.SQLServices.Controllers
                 return ServiceResponse.ErrorReponse<object>(exp);
             }
         }
+        [HttpGet]
+        public ResponseObject<object> GetDriverAllWetWasteList(string status = "open")
+        {
+            try
+            {
+                int? DriverID = JwtDecoder.GetUserIdFromToken(Request.Headers.Authorization.Parameter);
+                var lstDetails = db.ExtRepositoryFor<OrderTrackingRepository>().GetDriverTasksByID(DriverID, status);
+                if (lstDetails == null)
+                    return ServiceResponse.SuccessReponse(lstDetails, MessageEnum.RecordNotFound);
+                else
+                    return ServiceResponse.SuccessReponse(lstDetails, MessageEnum.RecordFoundSuccessfully);
+            }
+            catch (Exception exp)
+            {
+                return ServiceResponse.ErrorReponse<object>(exp);
+            }
+        }
+
 
         [HttpPost]
         public async Task<ResponseObject<object>> CollectedRecycleItem()

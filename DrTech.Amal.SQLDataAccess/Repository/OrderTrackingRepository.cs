@@ -212,8 +212,8 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                       join driver in context.Drivers on order.AssignTo equals driver.ID
                                       join regift in context.Regifts.Include("RegiftSubItems") on order.RsID equals regift.ID
                                       join user in context.Users on regift.UserID equals user.ID
-                                      //join subRegift in context.RegiftSubItems.Include("LookupTypes") on regift.ID equals subRegift.RegiftID
-                                      //join subItemName in context.LookupTypes on subRegift.TypeID equals subItemName.ID
+                                      join subRegift in context.RegiftSubItems.Include("LookupTypes") on regift.ID equals subRegift.RegiftID
+                                      join subItemName in context.LookupTypes on subRegift.TypeID equals subItemName.ID
                                       join vehicle in context.VehicleTypes on driver.VehicleID equals vehicle.ID
                                       where order.AssignTo == DriverID && order.Type == "Regift" && order.StatusID == statusID
                                       select new
@@ -237,8 +237,8 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                           order.StatusID,
                                           regift.Quality,
                                           userID = user.ID,
-                                          //subItemName = subItemName.Description,
-                                          // subName = subRegift.LookupType.Description,
+                                          subItemName = subItemName.Description,
+                                          subName = subRegift.LookupType.Description,
                                           subItems = regift.RegiftSubItems,
                                           order.ID
                                       }).OrderByDescending(o => o.ID).ToList<object>();
@@ -262,9 +262,9 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                        driver.Phone,
                                        driver.Address,
                                        driver.FileName,
-                                       userName = recycle.User.FullName,
-                                       userAddress = recycle.User.Address,
-                                       userPhoneNumber = recycle.User.Phone,
+                                       userName = user.FullName,
+                                       userAddress = user.Address,
+                                       userPhoneNumber = user.Phone,
                                        orderNumber = order.ID,
                                        pickupTime = recycle.CollectorDateTime,
                                        order.Type,
@@ -278,12 +278,13 @@ namespace DrTech.Amal.SQLDataAccess.Repository
             List<object> lstBin = (from order in context.OrderTrackings
                                    join driver in context.Drivers on order.AssignTo equals driver.ID
                                    join bin in context.BuyBins on order.RsID equals bin.ID
+                                   join user in context.Users on bin.UserID equals user.ID
                                    join BinDet in context.BinDetails on bin.BinID equals BinDet.ID
                                    join vehicle in context.VehicleTypes on driver.VehicleID equals vehicle.ID
                                    where order.AssignTo == DriverID && order.Type == "Bin" && order.StatusID == statusID
                                    select new
                                    {
-                                       Price = BinDet.Price ,
+                                       Price = BinDet.Price,
                                        driverName = string.Concat(driver.FirstName, driver.LastName),
                                        vehicle.VehicleName,
                                        driver.RegNumber,
@@ -293,17 +294,17 @@ namespace DrTech.Amal.SQLDataAccess.Repository
                                        driver.FileName,
                                        order.StatusID,
                                        bin.TrackingNumber,
-                                       bin.DeliveryDate, 
-                                       userName = bin.User.FullName,
-                                       userAddress = bin.User.Address,
-                                       userPhoneNumber = bin.User.Phone,
-                                       latitude = bin.User.Latitude,
-                                       longitude = bin.User.Longitude,
+                                       bin.DeliveryDate,
+                                       userName = user.FullName,
+                                       userAddress = user.Address,
+                                       userPhoneNumber = user.Phone,
+                                       latitude = user.Latitude,
+                                       longitude = user.Longitude,
                                        orderNumber = order.ID,
                                        order.Type,
                                        quantity = bin.Qty,
                                        order.ID,
-                                       userID = bin.User.ID,
+                                       userID = user.ID,
                                    }).OrderByDescending(o => o.ID).ToList<object>();
 
             Dictionary<String, List<object>> driverTasks = new Dictionary<String, List<object>>();

@@ -230,6 +230,25 @@ namespace DrTech.Amal.SQLServices.Controllers
                 return ServiceResponse.ErrorReponse<List<object>>(exp);
             }
         }
+        public ResponseObject<List<object>> GetWetWastePickList()
+        {
+            try
+            {
+                int? UserID = JwtDecoder.GetUserIdFromToken(Request.Headers.Authorization.Parameter);
+
+                List<object> LstRecycleItems = db.ExtRepositoryFor<RecycleRepository>().GetWetWastePickList(UserID);
+
+                if (LstRecycleItems?.Count == 0)
+                    return ServiceResponse.SuccessReponse(LstRecycleItems, MessageEnum.RecycleItemsNotFound);
+
+                return ServiceResponse.SuccessReponse(LstRecycleItems, MessageEnum.RecycleItemsGetSuccess);
+            }
+            catch (Exception exp)
+            {
+                return ServiceResponse.ErrorReponse<List<object>>(MessageEnum.RecycleItemsNotFound);
+            }
+
+        }
 
         [HttpPost]
         public async Task<ResponseObject<List<object>>> GetRecyclesAllListByStatus(RecycleRequest model)

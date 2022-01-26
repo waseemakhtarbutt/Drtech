@@ -35,8 +35,8 @@ import { UserRightsComponent } from './user-rights/user-rights.component';
  //var link = "https://amalforlife-android.azurewebsites.net/api/";
 
 //var link = 'http://amalforlifeqaservices.azurewebsites.net/api/';
- //var link = "http://amalforlife-android.azurewebsites.net/api/";
-var link = 'http://localhost:64331/api/';
+ var link = "http://amalforlife-android.azurewebsites.net/api/";
+//var link = 'http://localhost:64331/api/';
 
 @NgModule({
   declarations: [AppComponent, UserRightsComponent],

@@ -1,5 +1,3 @@
-F:\Drtech\DrTech.Amal.SQLServices\obj\Debug\DrTech.Amal.SQLServices.csprojAssemblyReference.cache
-F:\Drtech\DrTech.Amal.SQLServices\obj\Debug\DrTech.Amal.SQLServices.csproj.CoreCompileInputs.cache
 F:\Drtech\DrTech.Amal.SQLServices\bin\DrTech.Amal.SQLServices.dll.config
 F:\Drtech\DrTech.Amal.SQLServices\bin\DrTech.Amal.SQLServices.dll
 F:\Drtech\DrTech.Amal.SQLServices\bin\DrTech.Amal.SQLServices.pdb
@@ -282,6 +280,8 @@ F:\Drtech\DrTech.Amal.SQLServices\bin\Microsoft.CodeDom.Providers.DotNetCompiler
 F:\Drtech\DrTech.Amal.SQLServices\bin\zxing.pdb
 F:\Drtech\DrTech.Amal.SQLServices\bin\zxing.xml
 F:\Drtech\DrTech.Amal.SQLServices\bin\System.IdentityModel.Tokens.Jwt.xml
+F:\Drtech\DrTech.Amal.SQLServices\obj\Debug\DrTech.Amal.SQLServices.csprojAssemblyReference.cache
+F:\Drtech\DrTech.Amal.SQLServices\obj\Debug\DrTech.Amal.SQLServices.csproj.CoreCompileInputs.cache
 F:\Drtech\DrTech.Amal.SQLServices\obj\Debug\DrTech.Amal.SQLServices.csproj.CopyComplete
 F:\Drtech\DrTech.Amal.SQLServices\obj\Debug\DrTech.Amal.SQLServices.dll
 F:\Drtech\DrTech.Amal.SQLServices\obj\Debug\DrTech.Amal.SQLServices.pdb

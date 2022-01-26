@@ -297,6 +297,71 @@ namespace DrTech.Amal.SQLDataAccess.Repository
 
 
         }
+
+        public List<object> GetWetWastePickList(int? id)
+        {
+            try
+            {
+                List<object> mdlRecycle = (from rf in context.Recycles
+                                           join sub in context.RecycleSubItems on rf.ID equals sub.RecycleID
+                                           join ot in context.OrderTrackings on rf.ID equals ot.RsID
+                                           where  (ot.Type == "Recycle")
+                                           select new
+                                           {
+                                               Status = rf.Status.StatusName,
+                                               ID = rf.ID,
+                                               FileName = rf.FileName,
+                                               Description = sub.Description,
+                                               UserID = rf.UserID,
+                                               CollectorDateTime = rf.CollectorDateTime.ToString(),
+                                               StatusID = rf.StatusID,
+                                               Weight = sub.Weight,
+                                               GreenPoints = rf.GreenPoints,
+                                               CreatedBy = rf.CreatedBy,
+                                               CreatedDate = rf.CreatedDate.ToString(),
+                                               UpdatedBy = rf.UpdatedBy,
+                                               UpdatedDate = rf.UpdatedDate,
+                                               IsActive = rf.IsActive,
+                                               CollectedPendingConfirmation = ot.CollectedPendingConfirmation,
+                                               DeliveredPendingConfirmation = ot.DeliveredPendingConfirmation,
+                                               ot.DeliveredDate,
+                                               ot.CollectedDate,
+                                               rf.User.Latitude,
+                                               rf.User.Longitude
+                                           }).ToList().Select(x => new
+                                           {
+                                               Status = x.Status,
+                                               ID = x.ID,
+                                               FileName = x.FileName,
+                                               Description = x.Description,
+                                               UserID = x.UserID,
+                                               CollectorDateTime = Utility.GetFormattedDateTime(x.CollectorDateTime),
+                                               StatusID = x.StatusID,
+                                               Weight = GetWeight(x.ID),
+                                               GreenPoints = subitemscalculate(x.ID),
+                                               CreatedBy = x.CreatedBy,
+                                               CreatedDate = string.IsNullOrEmpty(x.CreatedDate) ? string.Empty : Utility.GetFormattedDateTime(x.CreatedDate),
+                                               UpdatedBy = x.UpdatedBy,
+                                               UpdatedDate = Utility.CheckIfDateIsNotValid(x.UpdatedDate),     // Convert.ToDateTime(x.UpdatedDate).ToString("MMM dd, yyyy"),
+                                                                                                               // UpdatedDate = string.IsNullOrEmpty(x.UpdatedDate) ? string.Empty : Utility.GetFormattedDateTime(x.UpdatedDate),
+                                               IsActive = x.IsActive,
+                                               //Carbons = GetValue(x.ID),
+                                               CollectedPendingConfirmation = x.CollectedPendingConfirmation,
+                                               DeliveredPendingConfirmation = x.DeliveredPendingConfirmation,
+                                               CollectedDate = x.CollectedDate == null ? null : Convert.ToDateTime(x.CollectedDate).ToString("MMM dd, yyyy"),
+                                               DeliveredDate = x.DeliveredDate == null ? null : Convert.ToDateTime(x.DeliveredDate).ToString("MMM dd, yyyy"),
+                                               x.Latitude,
+                                               x.Longitude
+                                           }).OrderByDescending(o => o.ID).ToList<object>();
+
+                return mdlRecycle;
+            }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                return null;
+            }
+        }
         public List<object> GetRecyclesAllListByStatusExcel(RecycleRequest model)
         {
             List<object> response = new List<object>();
